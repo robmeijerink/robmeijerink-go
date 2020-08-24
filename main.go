@@ -10,6 +10,9 @@ func main() {
 	// Fiber instance
 	app := fiber.New()
 
+	// Public
+	app.Static("/", "./public")
+
 	// Routes
 	app.Get("/", home)
 
