@@ -1,0 +1,24 @@
+{
+  "name": "robmeijerink-go",
+  "version": "1.0.0",
+  "description": "Personal website made in Go with Fiber, Tailwind CSS and Vuejs.",
+  "dependencies": {
+    "tailwindcss": "^1.7.3"
+  },
+  "devDependencies": {
+    "laravel-mix": "^5.0.5"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/robmeijerink/robmeijerink-go.git"
+  },
+  "author": "Rob Meijerink",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/robmeijerink/robmeijerink-go/issues"
+  },
+  "homepage": "https://github.com/robmeijerink/robmeijerink-go#readme"
+}

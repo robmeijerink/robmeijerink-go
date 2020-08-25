@@ -4,11 +4,17 @@ import (
 	"log"
 
 	"github.com/gofiber/fiber"
+	"github.com/gofiber/template/django"
 )
 
 func main() {
+	// Templates
+	engine := django.New("./resources/views", ".html")
+
 	// Fiber instance
-	app := fiber.New()
+	app := fiber.New(&fiber.Settings{
+		Views: engine,
+	})
 
 	// Public
 	app.Static("/", "./public")
@@ -20,7 +26,10 @@ func main() {
 	log.Fatal(app.Listen(8080))
 }
 
-// Handler
+// Routes
+
 func home(c *fiber.Ctx) {
-	c.Send("New website coming soon 👋!")
+	c.Render("pages/home", fiber.Map{
+		"Title": "New website coming soon 👋!",
+	}, "master")
 }
