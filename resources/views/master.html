@@ -3,8 +3,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>RobMeijerink - Website</title>
+
+    {% include "resources/views/partials/head.html" %}
 </head>
 <body>
+    {% include "resources/views/layout/header.html" %}
+
     {{embed}}
+
+    {% include "resources/views/partials/bottom.html" %}
 </body>
 </html>
