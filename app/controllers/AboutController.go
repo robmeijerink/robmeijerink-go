@@ -1,11 +1,12 @@
-package web
+package controllers
 
 import (
-	"log"
-
-	"github.com/gofiber/fiber/2"
+	"github.com/gofiber/fiber/v2"
 )
 
-func Index(c *fiber.Ctx) {
-	 return c.Render("pages/about", fiber.Map{}, "master")
+type AboutController struct {
+}
+
+func (AboutController) Index(c *fiber.Ctx) error {
+    return c.Render("pages/about", fiber.Map{}, "master")
 }

@@ -1,17 +1,15 @@
 package routes
 
 import (
-	"github.com/gofiber/fiber"
-	"log"
+	"github.com/gofiber/fiber/v2"
 
-	HomeController "github.com/romeijerink/robmeijerink-go/app/controllers/HomeController.go"
-	AboutController "github.com/romeijerink/robmeijerink-go/app/controllers/AboutController.go"
+	. "robmeijerink-go/app/controllers"
 )
 
 func RegisterWeb(app *fiber.App) {
 	// Homepage
-	app.Get("/", HomeController.Index)
-    app.Get("/about", AboutController.Index())
+	app.Get("/", HomeController{}.Index)
+    app.Get("/about", AboutController{}.Index)
 
     // Page not found
     app.Use(func (c *fiber.Ctx) error {
