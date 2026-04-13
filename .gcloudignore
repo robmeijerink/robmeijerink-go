@@ -23,3 +23,14 @@
 *.test
 # Output of the go coverage tool, specifically when used with LiteIDE
 *.out
+
+tmp/
+.github/
+.docker/
+docker-compose.yml
+node_modules/
+sites/*/frontend/node_modules/
+.air.toml
+Taskfile.local.yml
+Taskfile.yaml
+bin/

@@ -1,0 +1,23 @@
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    ports:
+      - "3000:3000"
+    volumes:
+      - .:/app
+    environment:
+      - APP_ENV=dev
+
+  frontend:
+    image: node:24-alpine
+    # Dynamically set the working directory based on the $SITE variable
+    working_dir: /app/sites/${SITE:-robmeijerink}/frontend
+    ports:
+      - "5173:5173"
+    volumes:
+      - .:/app
+    # Install packages and start Vite.
+    # Note: --host 0.0.0.0 is mandatory for Vite inside Docker!
+    command: sh -c "npm install && npm run dev -- --host 0.0.0.0"

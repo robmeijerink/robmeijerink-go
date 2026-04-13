@@ -1,79 +1,86 @@
 package main
 
 import (
-    "log"
-    "os"
-    "strings"
+	"log"
+	"strings"
+	"time"
 
-    "github.com/gofiber/fiber/v3"
-    "github.com/gofiber/fiber/v3/middleware/recover"
-    // "github.com/gofiber/fiber/v3/middleware/static"
+	// Internal "Engine"
+	"github.com/robmeijerink/robmeijerink-go/internal/config"
+	"github.com/robmeijerink/robmeijerink-go/internal/web"
+
+	// Domain Specific Sites
+	"github.com/robmeijerink/robmeijerink-go/sites/robmeijerink"
+	"github.com/robmeijerink/robmeijerink-go/sites/solvalutions"
+
+	// External
+	"github.com/gofiber/fiber/v3"
+	"github.com/gofiber/fiber/v3/middleware/limiter"
+	"github.com/gofiber/fiber/v3/middleware/logger"
+	"github.com/gofiber/fiber/v3/middleware/recover"
+	"github.com/gofiber/fiber/v3/middleware/static"
+	"github.com/gofiber/template/html/v2"
 )
 
-func viteCacheControl() fiber.Handler {
-    return func(c fiber.Ctx) error {
-        path := c.Path()
-        if strings.HasPrefix(path, "/assets/") {
-            c.Set(fiber.HeaderCacheControl, "public, max-age=31536000, immutable")
-        } else {
-            c.Set(fiber.HeaderCacheControl, "no-cache")
-        }
-        return c.Next()
-    }
-}
-
-func setupSolvalutionsApp() *fiber.App {
-    app := fiber.New()
-
-    // Temporary Catch-All Route for testing
-    app.Use(func(c fiber.Ctx) error {
-        // Resultaat: "Dit is solvalutions.nl/over-ons"
-        return c.SendString("Dit is solvalutions.nl" + c.Path())
-    })
-
-    return app
-}
-
-func setupRobMeijerinkApp() *fiber.App {
-    app := fiber.New()
-
-    app.Get("/workstation-setup", func(c fiber.Ctx) error {
-        c.Set(fiber.HeaderStrictTransportSecurity, "max-age=31536000; includeSubDomains")
-        return c.Redirect().Status(fiber.StatusFound).To("https://raw.githubusercontent.com/robmeijerink/workstation-setup/main/workstation-setup.sh")
-    })
-
-    // Temporary Catch-All Route
-    app.Use(func(c fiber.Ctx) error {
-        return c.SendString("Dit is robmeijerink.nl" + c.Path())
-    })
-
-    return app
-}
-
 func main() {
-    gateway := fiber.New()
-    gateway.Use(recover.New())
+	cfg := config.Load()
 
-    solApp := setupSolvalutionsApp()
-    robApp := setupRobMeijerinkApp()
+	engine := html.New("./sites", ".html")
+	if !cfg.IsProd {
+		engine.Reload(true)
+	}
 
-    gateway.Use(func(c fiber.Ctx) error {
-        host := strings.TrimPrefix(c.Hostname(), "www.")
+	if cfg.IsProd {
+		_ = web.LoadManifest("robmeijerink", "./sites/robmeijerink/frontend/public/.vite/manifest.json")
+		_ = web.LoadManifest("solvalutions", "./sites/solvalutions/frontend/public/.vite/manifest.json")
+	}
 
-        if host == "solvalutions.nl" {
-            solApp.Handler()(c.RequestCtx())
-            return nil
-        }
+	app := fiber.New(fiber.Config{
+		Views: engine,
+	})
 
-        // robmeijerink.nl is the default fallback
-        robApp.Handler()(c.RequestCtx())
-        return nil
-    })
+	app.Use(recover.New())
+	app.Use(logger.New())
 
-    port := os.Getenv("PORT")
-    if port == "" {
-        port = "8080"
-    }
+	app.Use(limiter.New(limiter.Config{
+		Max:        30,
+		Expiration: 1 * time.Minute,
+		LimitReached: func(c fiber.Ctx) error {
+			return c.Status(fiber.StatusTooManyRequests).SendString("429 Too Many Requests: Je bent even geblokkeerd want er waren te veel verzoeken. Neem even pauze.")
+		},
+	}))
 
-    log.Fatal(gateway.Listen(":" + port))
+	app.Use(func(c fiber.Ctx) error {
+		rawHost := c.Hostname()
+		canonicalHost := strings.TrimPrefix(rawHost, "www.")
+
+		site := "robmeijerink"
+		if strings.Contains(canonicalHost, "solvalutions") {
+			site = "solvalutions"
+		}
+
+		c.Locals("Site", site)
+		c.Locals("CanonicalHost", canonicalHost)
+		c.Locals("IsProd", cfg.IsProd)
+		c.Locals("Path", c.Path())
+
+		return c.Next()
+	})
+
+	if !cfg.IsProd {
+		app.Get("/assets/rob/*", static.New("./sites/robmeijerink/public/assets"))
+		app.Get("/assets/sol/*", static.New("./sites/solvalutions/public/assets"))
+	}
+
+	robmeijerink.Setup(&web.DomainRouter{
+		App:    app,
+		Domain: "robmeijerink",
+	})
+
+	solvalutions.Setup(&web.DomainRouter{
+		App:    app,
+		Domain: "solvalutions",
+	})
+
+	log.Fatal(app.Listen(":" + cfg.Port))
 }

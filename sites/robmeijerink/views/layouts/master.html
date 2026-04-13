@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="nl" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{.Title}}</title>
+
+    <meta name="description" content="Freelance Senior Full Stack & DevOps Engineer uit Zutphen. Web Development & Moderne Schaalbare Web Oplossingen in Javascript, Go, Docker en PHP.">
+
+    {{if .CanonicalHost}}
+    <link rel="canonical" href="https://{{ .CanonicalHost }}{{ .Path }}">
+    {{end}}
+
+    {{ if .IsProd }}
+    <link rel="stylesheet" href="{{ .Vite.Css "src/scripts/app.js" }}">
+    <script type="module" src="{{ .Vite.Asset "src/scripts/app.js" }}"></script>
+    {{ else }}
+    <script type="module" src="http://localhost:5173/@vite/client"></script>
+    <script type="module" src="http://localhost:5173/src/scripts/app.js"></script>
+    {{ end }}
+</head>
+<body class="bg-slate-50 text-slate-900 font-sans antialiased selection:bg-blue-600 selection:text-white">
+
+    <main class="min-h-screen flex flex-col justify-center items-center p-6 sm:p-12">
+        {{embed}}
+    </main>
+
+</body>
+</html>
