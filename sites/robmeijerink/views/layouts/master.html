@@ -4,16 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{.Title}}</title>
-
-    <meta name="description" content="Senior Software & DevOps Engineer uit Zutphen. Robuuste automatisering, risicoreductie en schaalbare architectuur voor complexe B2B knelpunten.">
+    <meta name="description" content="Senior Software & DevOps Engineer. Robuuste automatisering en schaalbare architectuur.">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-
-    {{if .CanonicalHost}}
-    <link rel="canonical" href="https://{{ .CanonicalHost }}{{ .Path }}">
-    {{end}}
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 
     {{ if .IsProd }}
     <link rel="stylesheet" href="{{ .Vite.Css "src/scripts/app.js" }}">
@@ -32,22 +27,29 @@
     </div>
 
     <main class="relative z-10 min-h-screen flex flex-col items-center px-6 sm:px-12">
-        <div class="w-full max-w-3xl py-16 sm:py-24">
+        <header class="w-full max-w-5xl mx-auto flex items-center justify-between py-8 relative z-20">
+            <a href="/" class="group flex items-center gap-0.5 text-xl font-extrabold tracking-tighter text-slate-900 transition-all">
+                Rob<span class="text-brand-blue group-hover:text-brand-blue transition-colors">M</span>.
+            </a>
+            <nav class="flex items-center gap-8 text-sm font-semibold">
+                <a href="/expertise" class="text-slate-500 transition-colors hover:text-slate-900">Expertise</a>
+                <a href="/blog" class="text-slate-500 transition-colors hover:text-slate-900">Blog</a>
+            </nav>
+        </header>
 
+        <div class="w-full max-w-5xl pb-16 sm:pb-24">
             <div class="space-y-24">
                 {{embed}}
             </div>
 
-            <footer class="flex items-center justify-between border-t border-slate-200/60 pt-8 mt-24 text-xs font-medium text-slate-400">
-                <p>&copy; 2026 - Rob Meijerink | Senior Tech Partner & Software Engineer
-                <div class="flex gap-4">
-                    <a href="https://linkedin.com/in/robm89" target="_blank" rel="noopener noreferrer" class="hover:text-slate-600 transition-colors">LinkedIn</a>
-                    <a href="https://github.com/robmeijerink" target="_blank" rel="noopener noreferrer" class="hover:text-slate-600 transition-colors">GitHub</a>
+            <footer class="flex items-center justify-between border-t border-slate-200/60 pt-8 mt-24 text-xs font-medium text-slate-400 uppercase tracking-wider">
+                <p>&copy; 2026 - Rob Meijerink</p>
+                <div class="flex gap-6">
+                    <a href="https://linkedin.com/in/robm89" class="hover:text-slate-600 transition-colors">LinkedIn</a>
+                    <a href="https://github.com/robmeijerink" class="hover:text-slate-600 transition-colors">GitHub</a>
                 </div>
             </footer>
-
         </div>
     </main>
-
 </body>
 </html>
