@@ -5,7 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{.Title}}</title>
 
-    <meta name="description" content="Freelance Senior Full Stack & DevOps Engineer uit Zutphen. Web Development & Moderne Schaalbare Web Oplossingen in Javascript, Go, Docker en PHP.">
+    <meta name="description" content="Senior Software & DevOps Engineer uit Zutphen. Robuuste automatisering, risicoreductie en schaalbare architectuur voor complexe B2B knelpunten.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
     {{if .CanonicalHost}}
     <link rel="canonical" href="https://{{ .CanonicalHost }}{{ .Path }}">
@@ -19,10 +23,30 @@
     <script type="module" src="http://localhost:5173/src/scripts/app.js"></script>
     {{ end }}
 </head>
-<body class="bg-slate-50 text-slate-900 font-sans antialiased selection:bg-blue-600 selection:text-white">
+<body class="bg-slate-50 text-slate-900 font-sans antialiased selection:bg-indigo-500 selection:text-white relative overflow-x-hidden">
 
-    <main class="min-h-screen flex flex-col justify-center items-center p-6 sm:p-12">
-        {{embed}}
+    <div class="pointer-events-none absolute inset-0 flex justify-center overflow-hidden z-0" aria-hidden="true">
+        <div class="absolute -top-32 left-1/2 w-200 -translate-x-1/2 opacity-30">
+            <div class="aspect-1155/678 w-full bg-linear-to-tr from-indigo-300 to-emerald-200 blur-3xl mix-blend-multiply"></div>
+        </div>
+    </div>
+
+    <main class="relative z-10 min-h-screen flex flex-col items-center px-6 sm:px-12">
+        <div class="w-full max-w-3xl py-16 sm:py-24">
+
+            <div class="space-y-24">
+                {{embed}}
+            </div>
+
+            <footer class="flex items-center justify-between border-t border-slate-200/60 pt-8 mt-24 text-xs font-medium text-slate-400">
+                <p>&copy; 2026 - Rob Meijerink | Senior Tech Partner & Software Engineer
+                <div class="flex gap-4">
+                    <a href="https://linkedin.com/in/robm89" target="_blank" rel="noopener noreferrer" class="hover:text-slate-600 transition-colors">LinkedIn</a>
+                    <a href="https://github.com/robmeijerink" target="_blank" rel="noopener noreferrer" class="hover:text-slate-600 transition-colors">GitHub</a>
+                </div>
+            </footer>
+
+        </div>
     </main>
 
 </body>

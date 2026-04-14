@@ -1,43 +1,152 @@
-<div class="w-full max-w-3xl rounded-2xl border border-slate-200 bg-white p-8 shadow-sm sm:p-12">
-    <header class="mb-12">
-        <h1 class="mb-4 text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">Rob Meijerink</h1>
-        <h2 class="text-xl leading-relaxed font-medium text-slate-600">
-            Freelance Senior Full Stack & DevOps Engineer.
+<section class="animate-fade-in-up space-y-8">
+    <div
+        class="inline-flex items-center gap-2 rounded-full border border-emerald-200 bg-emerald-50/80 px-3 py-1.5 text-sm font-medium text-emerald-800 shadow-sm backdrop-blur-sm"
+        role="status">
+        <span
+            class="relative flex h-2 w-2"
+            aria-hidden="true">
+            <span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75"></span>
+            <span class="relative inline-flex h-2 w-2 rounded-full bg-emerald-500"></span>
+        </span>
+        Beschikbaar voor freelance projecten (Q3)
+    </div>
+
+    <div class="space-y-4">
+        <h1 class="text-4xl font-extrabold tracking-tight sm:text-5xl">
+            <span class="bg-linear-to-r from-slate-900 to-slate-600 bg-clip-text text-transparent">Rob Meijerink.</span>
+        </h1>
+        <h2 class="max-w-2xl text-lg leading-relaxed font-normal text-slate-600 sm:text-xl">
+            Senior Full Stack & DevOps Engineer. Ik ontwikkel robuuste backend systemen met naadloze frontends en snel en schaalbare API's.
             <br />
-            <span class="text-slate-500">Gevestigd in regio Zutphen.</span>
+            Geen hypes, gewoon betrouwbare en stabiele software.
         </h2>
-    </header>
+    </div>
 
-    <section class="prose prose-slate mb-12 max-w-none">
-        <p class="rob font-bold">
-            Ik bouw, repareer en schaal complexe software-architecturen. Geen holle buzzwords of eindeloos overleg, maar code die werkt en
-            systemen die in de lucht blijven. Transparant, betrouwbaar en direct.
-        </p>
-    </section>
-
-    <section class="mb-12">
-        <h3 class="mb-4 text-sm font-semibold tracking-wider text-slate-400 uppercase">Core Stack</h3>
-        <div class="flex flex-wrap gap-2">
-            <span class="rounded-md bg-slate-100 px-3 py-1 text-sm font-medium text-slate-700">Go (Golang)</span>
-            <span class="rounded-md bg-slate-100 px-3 py-1 text-sm font-medium text-slate-700">Docker & CI/CD</span>
-            <span class="rounded-md bg-slate-100 px-3 py-1 text-sm font-medium text-slate-700">Modern PHP / Laravel</span>
-            <span class="rounded-md bg-slate-100 px-3 py-1 text-sm font-medium text-slate-700">REST API's & Middleware</span>
-            <span class="rounded-md bg-slate-100 px-3 py-1 text-sm font-medium text-slate-700">Linux Serverbeheer</span>
-        </div>
-    </section>
-
-    <section class="rounded-xl border border-slate-200 bg-slate-50 p-6 sm:p-8">
-        <h3 class="mb-2 text-lg font-bold text-slate-900">Zoek je een technische partner voor jouw bedrijf?</h3>
-        <p class="mb-6 text-sm text-slate-600 sm:text-base">
-            Voor complexe B2B-trajecten, legacy-rescue (het overnemen van vastgelopen projecten), en industriële automatisering werk ik
-            vanuit mijn tech taskforce
-            <strong>Solvalutions</strong>
-            .
-        </p>
+    <div class="flex flex-wrap items-center gap-4 pt-2">
         <a
-            href="https://solvalutions.nl"
-            class="inline-flex items-center justify-center rounded-lg bg-slate-900 px-5 py-2.5 text-sm font-medium text-white transition-colors hover:bg-slate-800">
-            Bezoek Solvalutions.nl &rarr;
+            href="mailto:rob@solvalutions.nl"
+            class="focus-ring inline-flex items-center justify-center rounded-lg bg-indigo-600 px-5 py-2.5 text-sm font-medium text-white shadow-md shadow-indigo-200 transition-all hover:-translate-y-0.5 hover:bg-indigo-700 hover:shadow-lg">
+            Neem contact met me op
         </a>
-    </section>
-</div>
+        <a
+            href="#werkwijze"
+            class="focus-ring inline-flex items-center justify-center rounded-lg border border-slate-200 bg-white/80 px-5 py-2.5 text-sm font-medium text-slate-700 shadow-sm backdrop-blur-sm transition-all hover:bg-slate-50 hover:text-slate-900">
+            Mijn werkwijze
+        </a>
+    </div>
+
+    <div
+        class="flex flex-wrap gap-2.5 border-t border-slate-200/60 pt-6"
+        aria-label="Core technologies">
+        <span class="rounded-md border border-cyan-200 bg-cyan-50 px-2.5 py-1 text-xs font-semibold text-cyan-800 shadow-sm">
+            Go (Golang)
+        </span>
+        <span class="rounded-md border border-violet-200 bg-violet-50 px-2.5 py-1 text-xs font-semibold text-violet-800 shadow-sm">
+            Vite & Tailwind CSS
+        </span>
+        <span class="rounded-md border border-blue-200 bg-blue-50 px-2.5 py-1 text-xs font-semibold text-blue-800 shadow-sm">
+            Docker & DevOps
+        </span>
+        <span class="rounded-md border border-slate-200 bg-white px-2.5 py-1 text-xs font-semibold text-slate-700 shadow-sm">
+            Linux & Kubernetes
+        </span>
+        <span class="rounded-md border border-rose-200 bg-rose-50 px-2.5 py-1 text-xs font-semibold text-rose-800 shadow-sm">
+            PHP & Laravel
+        </span>
+    </div>
+</section>
+
+<section
+    id="werkwijze"
+    class="scroll-mt-24 space-y-8">
+    <h3 class="flex items-center gap-3 text-lg font-bold tracking-tight text-slate-900">
+        <span
+            class="flex h-8 w-8 items-center justify-center rounded-lg border border-indigo-100 bg-indigo-50 text-indigo-600 shadow-sm"
+            aria-hidden="true">
+            <svg
+                class="h-4 w-4"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24">
+                <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+            </svg>
+        </span>
+        Hoe ik te werk ga
+    </h3>
+
+    <div class="grid gap-6 sm:grid-cols-2">
+        <div
+            class="group relative overflow-hidden rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-indigo-200 hover:shadow-md">
+            <div
+                class="absolute top-0 left-0 h-1 w-full bg-linear-to-r from-emerald-400 to-teal-400 opacity-0 transition-opacity duration-300 group-hover:opacity-100"></div>
+            <h4 class="mb-3 text-base font-semibold text-slate-900">Business-Driven Architectuur</h4>
+            <p class="text-sm leading-relaxed text-slate-600">
+                Geen hype-driven development of onnodige over-engineering. Ik kies de architectuur die past bij jouw specifieke vraagstuk.
+                Vaak is een razendsnelle, modulaire monoliet de slimste en meest efficiënte start. Maar zodra je platform écht schaalt of je
+                teams groeien, bouwen wij samen zorgvuldig een naadloos, schaalbaar netwerk van microservices. De techniek volgt de
+                business.
+            </p>
+        </div>
+
+        <div
+            class="group relative overflow-hidden rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-indigo-200 hover:shadow-md">
+            <div
+                class="absolute top-0 left-0 h-1 w-full bg-linear-to-r from-indigo-400 to-blue-400 opacity-0 transition-opacity duration-300 group-hover:opacity-100"></div>
+            <h4 class="mb-3 text-base font-semibold text-slate-900">DevOps First</h4>
+            <p class="text-sm leading-relaxed text-slate-600">
+                Code levert pas waarde als het live staat. Ik benader servers daarom exact hetzelfde als software:
+                <em>Infrastructure as Code</em>
+                . Door handmatig serverbeheer te vervangen door Docker en geautomatiseerde CI/CD pipelines, maken we van elke deployment een
+                voorspelbare, stressvrije druk op de knop. Volledige automatisering en reproduceerbaarheid zijn daarbij geen voorkeur, maar
+                de standaard.
+            </p>
+        </div>
+    </div>
+</section>
+
+<section class="relative overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-sm">
+    <div class="pointer-events-none absolute inset-0 z-0 bg-linear-to-br from-indigo-50/50 to-white"></div>
+
+    <div class="relative z-10 grid sm:grid-cols-2">
+        <div class="border-b border-slate-100 p-8 sm:border-r sm:border-b-0 sm:p-10">
+            <h4 class="mb-2 text-base font-semibold text-slate-900">Bedrijf met een missie?</h4>
+            <p class="mb-6 text-sm text-slate-600">Zoek je een complete technische partner voor je platform?</p>
+            <a
+                href="https://solvalutions.nl"
+                class="focus-ring inline-flex items-center gap-2 rounded-md text-sm font-medium text-indigo-600 transition-colors hover:text-indigo-800"
+                aria-label="Visit Solvalutions website">
+                Bekijk Solvalutions
+                <svg
+                    class="h-4 w-4 transition-transform group-hover:translate-x-1"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                    aria-hidden="true">
+                    <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                </svg>
+            </a>
+        </div>
+
+        <div class="p-8 sm:p-10">
+            <h4 class="mb-2 text-base font-semibold text-slate-900">Freelance opdracht?</h4>
+            <p class="mb-6 text-sm text-slate-600">
+                Op zoek naar een Senior Engineer of Software Specialist voor je huidige team of opdracht?
+            </p>
+            <div class="flex flex-wrap gap-3">
+                <a
+                    href="mailto:rob@solvalutions.nl"
+                    class="focus-ring inline-flex items-center justify-center rounded-lg bg-slate-900 px-4 py-2 text-sm font-medium text-white shadow-sm transition-colors hover:bg-slate-800">
+                    Stuur een bericht
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
