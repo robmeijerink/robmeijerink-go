@@ -18,13 +18,9 @@
     <script type="module" src="http://localhost:5173/src/scripts/app.js"></script>
     {{ end }}
 </head>
-<body class="bg-slate-50 text-slate-900 font-sans antialiased selection:bg-indigo-500 selection:text-white relative overflow-x-hidden">
+<body class="bg-slate-50 text-slate-900 font-sans antialiased selection:bg-brand-blue selection:text-white relative overflow-x-hidden">
 
-    <div class="pointer-events-none absolute inset-0 flex justify-center overflow-hidden z-0" aria-hidden="true">
-        <div class="absolute -top-32 left-1/2 w-200 -translate-x-1/2 opacity-30">
-            <div class="aspect-1155/678 w-full bg-linear-to-tr from-indigo-300 to-emerald-200 blur-3xl mix-blend-multiply"></div>
-        </div>
-    </div>
+    <div class="pointer-events-none fixed -top-40 -right-40 z-1 h-[800px] w-[800px] rounded-full bg-brand-blue/15 blur-[120px]" aria-hidden="true"></div>
 
     <main class="relative z-10 min-h-screen flex flex-col items-center px-6 sm:px-12">
         <header class="w-full max-w-5xl mx-auto flex items-center justify-between py-8 relative z-20">
@@ -43,7 +39,7 @@
             </div>
 
             <footer class="flex items-center justify-between border-t border-slate-200/60 pt-8 mt-24 text-xs font-medium text-slate-400 uppercase tracking-wider">
-                <p>&copy; 2026 - Rob Meijerink</p>
+                <p>&copy; 2026 - Rob Meijerink <span class="text-brand-blue">| Solvalutions</span></p>
                 <div class="flex gap-6">
                     <a href="https://linkedin.com/in/robm89" class="hover:text-slate-600 transition-colors">LinkedIn</a>
                     <a href="https://github.com/robmeijerink" class="hover:text-slate-600 transition-colors">GitHub</a>
