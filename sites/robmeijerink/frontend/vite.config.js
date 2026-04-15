@@ -5,7 +5,7 @@ export default defineConfig(({ command }) => ({
     base: command === 'serve' ? '/' : '/assets/rob/',
 
     build: {
-        outDir: '../public/assets',
+        outDir: '../public/dist',
         emptyOutDir: true,
         manifest: true,
         rollupOptions: {

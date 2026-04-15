@@ -31,8 +31,8 @@ func main() {
 	}
 
 	if cfg.IsProd {
-		_ = web.LoadManifest("robmeijerink", "./sites/robmeijerink/frontend/public/.vite/manifest.json")
-		_ = web.LoadManifest("solvalutions", "./sites/solvalutions/frontend/public/.vite/manifest.json")
+		_ = web.LoadManifest("robmeijerink", "./sites/robmeijerink/public/dist/.vite/manifest.json")
+		_ = web.LoadManifest("solvalutions", "./sites/solvalutions/public/dist/.vite/manifest.json")
 	}
 
 	app := fiber.New(fiber.Config{
@@ -68,8 +68,11 @@ func main() {
 	})
 
 	if !cfg.IsProd {
-		app.Get("/assets/rob/*", static.New("./sites/robmeijerink/public/assets"))
-		app.Get("/assets/sol/*", static.New("./sites/solvalutions/public/assets"))
+		app.Get("/assets/rob/*", static.New("./sites/robmeijerink/public/dist"))
+		app.Get("/assets/sol/*", static.New("./sites/solvalutions/public/dist"))
+
+		app.Get("/img/rob/*", static.New("./sites/robmeijerink/public/img"))
+		app.Get("/img/sol/*", static.New("./sites/solvalutions/public/img"))
 	}
 
 	robmeijerink.Setup(&web.DomainRouter{

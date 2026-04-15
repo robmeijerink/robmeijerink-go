@@ -11,9 +11,9 @@ automatic_scaling:
   min_pending_latency: 30ms
 
 handlers:
-  # 1. Vite Assets (CSS/JS with hashes)
-  - url: /assets
-    static_dir: sites/robmeijerink/public/assets
+  # 1. Vite Assets - RobMeijerink
+  - url: /assets/rob
+    static_dir: sites/robmeijerink/public/dist
     expiration: "365d"
     http_headers:
       Vary: Accept-Encoding
@@ -21,18 +21,15 @@ handlers:
       Strict-Transport-Security: "max-age=31536000; includeSubDomains"
       X-Content-Type-Options: nosniff
 
-  # 2. Images / Favicons
-  - url: /assets/rob
-    static_dir: sites/robmeijerink/public/assets
-    expiration: "365d"
-    http_headers:
-      Cache-Control: "public, max-age=31536000, immutable"
-
+  # 2. Vite Assets - Solvalutions
   - url: /assets/sol
-    static_dir: sites/solvalutions/public/assets
+    static_dir: sites/solvalutions/public/dist
     expiration: "365d"
     http_headers:
+      Vary: Accept-Encoding
       Cache-Control: "public, max-age=31536000, immutable"
+      Strict-Transport-Security: "max-age=31536000; includeSubDomains"
+      X-Content-Type-Options: nosniff
 
   # 3. Send the rest to the Go (Fiber) binary
   - url: /.*
