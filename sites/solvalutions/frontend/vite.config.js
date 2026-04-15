@@ -1,15 +1,21 @@
 import { defineConfig } from 'vite'
 import path from 'path'
 
-export default defineConfig(({ command }) => ({
-    base: command === 'serve' ? '/' : '/assets/sol/',
+export default defineConfig({
+    base: '/assets/dist/',
 
     build: {
-        outDir: '../public/dist',
+        outDir: '../public/assets/dist',
+        assetsDir: '',
         emptyOutDir: true,
         manifest: true,
         rollupOptions: {
             input: path.resolve(__dirname, 'src/scripts/app.js'),
+            output: {
+                entryFileNames: `[name]-[hash].js`,
+                chunkFileNames: `[name]-[hash].js`,
+                assetFileNames: `[name]-[hash].[ext]`
+            },
         },
     },
 
@@ -30,4 +36,4 @@ export default defineConfig(({ command }) => ({
             ignored: ['!**/views/**'],
         },
     },
-}))
+})

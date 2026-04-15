@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"log"
 	"strings"
 	"time"
@@ -18,7 +19,6 @@ import (
 	"github.com/gofiber/fiber/v3/middleware/limiter"
 	"github.com/gofiber/fiber/v3/middleware/logger"
 	"github.com/gofiber/fiber/v3/middleware/recover"
-	"github.com/gofiber/fiber/v3/middleware/static"
 	"github.com/gofiber/template/html/v2"
 )
 
@@ -31,8 +31,8 @@ func main() {
 	}
 
 	if cfg.IsProd {
-		_ = web.LoadManifest("robmeijerink", "./sites/robmeijerink/public/dist/.vite/manifest.json")
-		_ = web.LoadManifest("solvalutions", "./sites/solvalutions/public/dist/.vite/manifest.json")
+		_ = web.LoadManifest("robmeijerink", "./sites/robmeijerink/public/assets/dist/.vite/manifest.json")
+		_ = web.LoadManifest("solvalutions", "./sites/solvalutions/public/assets/dist/.vite/manifest.json")
 	}
 
 	app := fiber.New(fiber.Config{
@@ -67,13 +67,31 @@ func main() {
 		return c.Next()
 	})
 
-	if !cfg.IsProd {
-		app.Get("/assets/rob/*", static.New("./sites/robmeijerink/public/dist"))
-		app.Get("/assets/sol/*", static.New("./sites/solvalutions/public/dist"))
+	app.Get("/assets/*", func(c fiber.Ctx) error {
+		site := c.Locals("Site").(string)
+		filePath := fmt.Sprintf("./sites/%s/public/assets/%s", site, c.Params("*"))
+		c.Set("Cache-Control", "public, max-age=31536000, immutable")
+		return c.SendFile(filePath)
+	})
 
-		app.Get("/img/rob/*", static.New("./sites/robmeijerink/public/img"))
-		app.Get("/img/sol/*", static.New("./sites/solvalutions/public/img"))
-	}
+	app.Get("/:rootFile", func(c fiber.Ctx) error {
+		file := c.Params("rootFile")
+
+		rootFiles := map[string]bool{
+			"favicon.ico":          true,
+			"apple-touch-icon.png": true,
+			"site.webmanifest":     true,
+			"robots.txt":           true,
+		}
+
+		if rootFiles[file] {
+			site := c.Locals("Site").(string)
+			c.Set("Cache-Control", "public, max-age=3600, must-revalidate")
+			return c.SendFile(fmt.Sprintf("./sites/%s/public/%s", site, file))
+		}
+
+		return c.Next()
+	})
 
 	robmeijerink.Setup(&web.DomainRouter{
 		App:    app,

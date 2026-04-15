@@ -55,7 +55,7 @@ func LoadManifest(site, manifestPath string) error {
 func assetLookup(site, assetName string) string {
 	manifest, ok := manifests[site]
 	if !ok {
-		return "/assets/" + site + "/" + assetName
+		return "/assets/" + assetName
 	}
 
 	chunk, ok := manifest[assetName]
@@ -63,7 +63,7 @@ func assetLookup(site, assetName string) string {
 		return fmt.Sprintf("ASSET-NOT-FOUND-[%s]", assetName)
 	}
 
-	return fmt.Sprintf("/assets/%s/%s", site, chunk.File)
+	return fmt.Sprintf("/assets/dist/%s", chunk.File)
 }
 
 // cssLookup specifically searches for the CSS belonging to a JS entry file.
@@ -80,5 +80,5 @@ func cssLookup(site, entryName string) string {
 	}
 
 	// Return the hashed CSS file path.
-	return fmt.Sprintf("/assets/%s/%s", site, chunk.Css[0])
+	return fmt.Sprintf("/assets/dist/%s", chunk.Css[0])
 }

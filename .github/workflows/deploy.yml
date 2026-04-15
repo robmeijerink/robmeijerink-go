@@ -11,38 +11,40 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v4
-    #
-    # - name: Set up Node.js
-    #   uses: actions/setup-node@v4
-    #   with:
-    #     cache: 'npm'
-    #     cache-dependency-path: 'package-lock.json'
-    #     node-version: '20'
-    #
-    # - name: Install dependencies
-    #   run: npm install
-    #
-    # - name: Run build script
-    #   run: npm run build
+      - name: Checkout code
+        uses: actions/checkout@v4
 
-    - name: Authenticate to Google Cloud
-      uses: google-github-actions/auth@v2
-      with:
-        credentials_json: ${{ secrets.GOOGLE_APP_CREDENTIALS }}
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "24"
 
-    - name: Set up Cloud SDK
-      uses: google-github-actions/setup-gcloud@v2
-      with:
-        project_id: ${{ secrets.GOOGLE_APP_PROJECT_ID }}
+      # --- BUILD SITE: RobMeijerink ---
+      - name: Install & Build Rob Meijerink
+        run: |
+          cd sites/robmeijerink/frontend
+          npm ci
+          npm run build
 
-    - name: Prepare deployment directory
-      run: |
-        mkdir temp_deploy_files
-        cp -r app.yaml .gcloudignore main.go go.mod temp_deploy_files/
+      # --- BUILD SITE: Solvalutions ---
+      # - name: Install & Build Solvalutions
+      #   run: |
+      #     if [ -d "sites/solvalutions/frontend" ]; then
+      #       cd sites/solvalutions/frontend
+      #       npm ci
+      #       npm run build
+      #     fi
 
-    - name: Deploy to App Engine
-      working-directory: temp_deploy_files
-      run: |
-        gcloud app deploy --quiet
+      # --- GOOGLE CLOUD DEPLOY ---
+      - name: Authenticate to Google Cloud
+        uses: google-github-actions/auth@v2
+        with:
+          credentials_json: ${{ secrets.GOOGLE_APP_CREDENTIALS }}
+
+      - name: Set up Cloud SDK
+        uses: google-github-actions/setup-gcloud@v2
+        with:
+          project_id: ${{ secrets.GOOGLE_APP_PROJECT_ID }}
+
+      - name: Deploy to App Engine
+        run: gcloud app deploy app.yaml --quiet

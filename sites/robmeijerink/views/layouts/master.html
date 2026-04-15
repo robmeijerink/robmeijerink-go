@@ -23,9 +23,51 @@
     <link rel="stylesheet" href="{{ .Vite.Css "src/scripts/app.js" }}">
     <script type="module" src="{{ .Vite.Asset "src/scripts/app.js" }}"></script>
     {{ else }}
-    <script type="module" src="http://localhost:5173/@vite/client"></script>
-    <script type="module" src="http://localhost:5173/src/scripts/app.js"></script>
+    <script type="module" src="http://localhost:5173/assets/dist/@vite/client"></script>
+    <script type="module" src="http://localhost:5173/assets/dist/src/scripts/app.js"></script>
     {{ end }}
+
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="manifest" href="/site.webmanifest">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Rob Meijerink",
+      "jobTitle": "Senior Software Developer & DevOps Engineer",
+      "url": "https://robmeijerink.nl",
+      "worksFor": {
+        "@type": "Organization",
+        "name": "Solvalutions"
+      },
+      "sameAs": [
+        "https://linkedin.com/in/robm89",
+        "https://github.com/robmeijerink"
+      ],
+      "knowsAbout": [
+        "Software Architecture",
+        "Full Stack Engineer",
+        "Back End Developer",
+        "Web Development",
+        "Go",
+        "Golang",
+        "PHP",
+        "Laravel",
+        "WordPress",
+        "Vue.js",
+        "TypeScript",
+        "DevOps",
+        "Docker",
+        "Kubernetes",
+        "Domain-Driven Design"
+      ]
+    }
+    </script>
 </head>
 <body class="bg-slate-50 text-slate-900 font-sans antialiased selection:bg-brand-blue selection:text-white relative overflow-x-hidden">
 

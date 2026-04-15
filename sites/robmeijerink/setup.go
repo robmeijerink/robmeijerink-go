@@ -1,6 +1,9 @@
 package robmeijerink
 
 import (
+	"fmt"
+	"time"
+
 	"github.com/gofiber/fiber/v3"
 	"github.com/robmeijerink/robmeijerink-go/internal/web"
 )
@@ -9,6 +12,8 @@ func Setup(router *web.DomainRouter) {
 	router.Get("/", home)
 	router.Get("/expertise", work)
 	// router.Get("/blog", blog)
+
+	router.Get("/sitemap.xml", sitemap)
 }
 
 func home(c fiber.Ctx) error {
@@ -30,3 +35,34 @@ func work(c fiber.Ctx) error {
 // func blog(c fiber.Ctx) error {
 // 	return web.Render(c, "blog", fiber.Map{"Title": "Mijn Blog"})
 // }
+
+func sitemap(c fiber.Ctx) error {
+	host := c.Hostname()
+	now := time.Now().Format("2006-01-02")
+
+	pages := []struct {
+		loc      string
+		priority string
+	}{
+		{loc: "/", priority: "1.0"},
+		{loc: "/expertise", priority: "0.8"},
+	}
+
+	xml := `<?xml version="1.0" encoding="UTF-8"?>`
+	xml += `<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">`
+
+	for _, page := range pages {
+		xml += fmt.Sprintf(`
+	<url>
+		<loc>https://%s%s</loc>
+		<lastmod>%s</lastmod>
+		<changefreq>monthly</changefreq>
+		<priority>%s</priority>
+	</url>`, host, page.loc, now, page.priority)
+	}
+
+	xml += `</urlset>`
+
+	c.Type("xml")
+	return c.SendString(xml)
+}

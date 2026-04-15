@@ -11,27 +11,6 @@ automatic_scaling:
   min_pending_latency: 30ms
 
 handlers:
-  # 1. Vite Assets - RobMeijerink
-  - url: /assets/rob
-    static_dir: sites/robmeijerink/public/dist
-    expiration: "365d"
-    http_headers:
-      Vary: Accept-Encoding
-      Cache-Control: "public, max-age=31536000, immutable"
-      Strict-Transport-Security: "max-age=31536000; includeSubDomains"
-      X-Content-Type-Options: nosniff
-
-  # 2. Vite Assets - Solvalutions
-  - url: /assets/sol
-    static_dir: sites/solvalutions/public/dist
-    expiration: "365d"
-    http_headers:
-      Vary: Accept-Encoding
-      Cache-Control: "public, max-age=31536000, immutable"
-      Strict-Transport-Security: "max-age=31536000; includeSubDomains"
-      X-Content-Type-Options: nosniff
-
-  # 3. Send the rest to the Go (Fiber) binary
   - url: /.*
     script: auto
     secure: always

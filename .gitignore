@@ -23,6 +23,8 @@ lerna-debug.log*
 *.sln
 *.sw?
 
+.env
+
 README.md
 
 tmp/*
@@ -31,8 +33,8 @@ bin/*
 Taskfile.yml
 Taskfile.local.yml
 
-sites/robmeijerink/public/dist/*
+sites/robmeijerink/public/assets/dist/*
 sites/robmeijerink/frontend/node_modules/*
 
-sites/solvalutions/public/dist/*
+sites/solvalutions/public/assets/dist/*
 sites/solvalutions/frontend/node_modules/*

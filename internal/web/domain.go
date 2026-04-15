@@ -31,7 +31,6 @@ func Render(c fiber.Ctx, template string, data fiber.Map) error {
 	availabilityDate := availability.NextQuarter(time.Now())
 
 	fullData := fiber.Map{
-		"Site":              site,
 		"Vite":              ViteHelper{Site: site},
 		"IsProd":            isProd,
 		"CanonicalHost":     canonicalHost,
