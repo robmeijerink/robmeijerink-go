@@ -7,11 +7,16 @@ import (
 
 func Setup(router *web.DomainRouter) {
 	router.Get("/", home)
+	router.Get("/expertise", work)
 	// router.Get("/blog", blog)
 }
 
 func home(c fiber.Ctx) error {
-	return web.Render(c, "home", fiber.Map{"Title": "Rob Meijerink"})
+	return web.Render(c, "home", fiber.Map{"Title": "Rob Meijerink | Software Developer & B2B Tech Partner"})
+}
+
+func work(c fiber.Ctx) error {
+	return web.Render(c, "work", fiber.Map{"Title": "Rob Meijerink | Go, Laravel, PHP, JavaScript & Cloud Development"})
 }
 
 // func blog(c fiber.Ctx) error {

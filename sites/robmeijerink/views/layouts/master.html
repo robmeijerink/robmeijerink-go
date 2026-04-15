@@ -34,7 +34,11 @@
                 Rob<span class="text-brand-blue group-hover:text-brand-blue transition-colors">Meijerink</span>. <span class="text-slate-500 text-sm">NL</span>
             </a>
             <nav class="flex items-center gap-8 text-sm font-semibold">
+                {{ if eq .Path "/" }}
                 <a href="/expertise" class="text-slate-500 transition-colors hover:text-slate-900">Expertise</a>
+                {{ else }}
+                <a href="/" class="text-slate-500 transition-colors hover:text-slate-900">Home</a>
+                {{ end }}
                 <!-- <a href="/blog" class="text-slate-500 transition-colors hover:text-slate-900">Blog</a> -->
             </nav>
         </header>
@@ -46,7 +50,7 @@
 
             <footer class="mt-12 flex flex-col items-center gap-6 border-t border-slate-200/60 pt-8 pb-28 text-xs font-medium tracking-wider text-slate-400 sm:flex-row sm:justify-between sm:pb-8">
 
-                <p class="text-center sm:text-left">&copy; 2026 - Rob Meijerink <span class="text-brand-blue">| Solvalutions</span></p>
+                <p class="text-center sm:text-left">&copy; {{.CurrentYear}} - Rob Meijerink <span class="text-brand-blue">| Solvalutions</span></p>
 
                 <div class="flex items-center gap-6">
                     <a href="https://linkedin.com/in/robm89" class="flex items-center gap-1.5 text-slate-400 transition-colors hover:text-slate-600" title="Connect met mij op LinkedIn">

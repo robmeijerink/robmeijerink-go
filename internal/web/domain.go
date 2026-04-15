@@ -1,6 +1,10 @@
 package web
 
 import (
+	"time"
+
+	"github.com/robmeijerink/robmeijerink-go/internal/availability"
+
 	"github.com/gofiber/fiber/v3"
 )
 
@@ -24,12 +28,22 @@ func Render(c fiber.Ctx, template string, data fiber.Map) error {
 	canonicalHost := c.Locals("CanonicalHost").(string)
 	path := c.Locals("Path").(string)
 
+	availabilityDate := availability.NextQuarter(time.Now())
+
 	fullData := fiber.Map{
-		"Site":          site,
-		"Vite":          ViteHelper{Site: site},
-		"IsProd":        isProd,
-		"CanonicalHost": canonicalHost,
-		"Path":          path,
+		"Site":              site,
+		"Vite":              ViteHelper{Site: site},
+		"IsProd":            isProd,
+		"CanonicalHost":     canonicalHost,
+		"Path":              path,
+		"AvailableForWorkQ": availabilityDate,
+		"CurrentYear":       time.Now().Year(),
+	}
+
+	if data != nil {
+		for key, value := range data {
+			fullData[key] = value
+		}
 	}
 
 	layoutPath := site + "/views/layouts/master"
