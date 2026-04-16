@@ -16,6 +16,7 @@ import (
 
 	// External
 	"github.com/gofiber/fiber/v3"
+	"github.com/gofiber/fiber/v3/middleware/compress"
 	"github.com/gofiber/fiber/v3/middleware/limiter"
 	"github.com/gofiber/fiber/v3/middleware/logger"
 	"github.com/gofiber/fiber/v3/middleware/recover"
@@ -38,6 +39,10 @@ func main() {
 	app := fiber.New(fiber.Config{
 		Views: engine,
 	})
+
+	app.Use(compress.New(compress.Config{
+		Level: compress.LevelDefault,
+	}))
 
 	app.Use(recover.New())
 	app.Use(logger.New())
