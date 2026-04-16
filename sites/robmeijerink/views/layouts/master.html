@@ -23,12 +23,11 @@
     <script type="module" src="http://localhost:5173/assets/dist/src/scripts/app.js"></script>
     {{ end }}
 
-    <link rel="icon" type="image/x-icon" href="/favicon.ico">
-    <link rel="icon" type="image/x-icon" href="/favicon.ico">
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-    <link rel="manifest" href="/site.webmanifest">
+    <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
 
     <script type="application/ld+json">
     {
@@ -97,7 +96,12 @@
 
             <footer class="mt-12 flex flex-col items-center gap-6 border-t border-slate-200/60 pt-8 pb-28 text-xs font-medium tracking-wider text-slate-600 sm:flex-row sm:justify-between sm:pb-8">
 
-                <p class="text-center sm:text-left">&copy; {{.CurrentYear}} - Rob Meijerink <span class="text-brand-blue">| Solvalutions</span></p>
+                <p class="text-center sm:text-left">&copy; {{.CurrentYear}} - Rob Meijerink <span class="text-brand-blue">| <a href="https://solvalutions.nl" target="_blank" class="text-brand-blue" title="Expert in software ontwikkeling & architectuur">Solvalutions</a></span></p>
+
+                <nav class="flex items-center gap-8 font-semibold">
+                    <a href="/" class="transition-colors hover:text-slate-900" title="Home">Home</a>
+                    <a href="/expertise" class="transition-colors hover:text-slate-900" title="Bekijk mijn expertise">Expertise</a>
+                </nav>
 
                 <div class="flex items-center gap-6">
                     <a href="https://linkedin.com/in/robm89" target="_blank" rel="noopener noreferrer" class="flex items-center gap-1.5 text-slate-400 transition-colors hover:text-slate-600" title="Connect met mij op LinkedIn">
@@ -122,6 +126,7 @@ target="_blank" rel="noopener noreferrer"
             </footer>
         </div>
     </main>
+
     <a href="https://wa.me/+31649691374"
        target="_blank"
        rel="noopener noreferrer"
