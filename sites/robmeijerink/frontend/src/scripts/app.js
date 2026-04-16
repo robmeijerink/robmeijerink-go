@@ -1,3 +1,4 @@
+import '@fontsource-variable/inter';
 import '../styles/app.css'
 
 import { initTypedCursor } from './typed-cursor.js'
