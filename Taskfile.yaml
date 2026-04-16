@@ -1,0 +1,74 @@
+version: "3"
+
+includes:
+  local:
+    taskfile: Taskfile.local.yml
+    optional: true
+
+tasks:
+  # ==========================================
+  # 💻 SYSTEM
+  # ==========================================
+  default:
+    desc: Open search window task
+    silent: true
+    cmds:
+      - task: search
+
+  search:
+    desc: Open search window
+    silent: true
+    cmds:
+      - |
+        CHOICE=$(task --list | grep '^\*' | grep -vE 'default|search' | fzf --reverse --border="rounded" --prompt="🚀 Search Task: " --pointer="👉")
+        if [ -n "$CHOICE" ]; then
+          TASK_NAME=$(echo "$CHOICE" | awk '{print $2}' | sed 's/:$//')
+          echo -e "\033[1;32mRunning:\033[0m task $TASK_NAME\n"
+          task "$TASK_NAME"
+        fi
+
+  # ==========================================
+  # 🚀 ROBMEIJERINK
+  # ==========================================
+  rob:dev:
+    desc: Start DEV server for RobMeijerink
+    cmds:
+      - task: _dev
+        vars: { SITE: "robmeijerink" }
+
+  rob:build:
+    desc: Build frontend & backend for RobMeijerink
+    cmds:
+      - task: _build
+        vars: { SITE: "robmeijerink" }
+
+  # ==========================================
+  # 🚀 SOLVALUTIONS
+  # ==========================================
+  sol:dev:
+    desc: Start DEV server for Solvalutions
+    cmds:
+      - task: _dev
+        vars: { SITE: "solvalutions" }
+
+  sol:build:
+    desc: Build frontend & backend for Solvalutions
+    cmds:
+      - task: _build
+        vars: { SITE: "solvalutions" }
+
+  # ==========================================
+  # ⚙️ INTERNAL TASKS
+  # ==========================================
+  _dev:
+    internal: true
+    cmds:
+      - SITE={{.SITE}} docker-compose up --build
+
+  _build:
+    internal: true
+    cmds:
+      # 1. Frontend
+      - docker run --rm -v .:/app -w /app/sites/{{.SITE}}/frontend node:24-alpine sh -c "npm install && npm run build"
+      # 2. Backend
+      - go build -o bin/main .

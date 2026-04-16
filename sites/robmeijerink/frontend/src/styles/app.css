@@ -1,0 +1,30 @@
+@import 'tailwindcss';
+@import './transitions.css';
+@import './typed-cursor.css';
+
+@source '../../../views/';
+
+@theme {
+    --font-sans: 'Inter', system-ui, sans-serif;
+
+    --color-brand-blue: #004d8c;
+    --color-brand-blue-hover: #003663;
+}
+
+@layer utilities {
+    .focus-ring {
+        @apply focus:outline-none focus-visible:ring-2 focus-visible:ring-slate-900 focus-visible:ring-offset-2;
+    }
+}
+
+:root {
+    --brand-shadow: rgba(0, 77, 140, 0.35);
+}
+
+.shadow-brand-blue {
+    box-shadow: 0 10px 25px -5px var(--brand-shadow);
+}
+
+.hover\:shadow-brand-blue-xl:hover {
+    box-shadow: 0 20px 35px -10px var(--brand-shadow);
+}

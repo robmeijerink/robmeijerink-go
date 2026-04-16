@@ -1,0 +1,25 @@
+@keyframes blink {
+    from,
+    to {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0;
+    }
+}
+
+.typed-cursor {
+    display: inline-block;
+    width: 2px;
+    height: 1.1em;
+    background-color: var(--color-brand-blue);
+    margin-left: 2px;
+    vertical-align: middle;
+    animation: blink 1s step-end infinite;
+    transition: opacity 0.5s ease;
+}
+
+.typed-cursor.fade-out {
+    opacity: 0 !important;
+    animation: none !important;
+}

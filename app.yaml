@@ -1,28 +1,16 @@
 runtime: go126
-
 instance_class: F1
 
-# env_variables:
-#   BUCKET_NAME: "example-gcs-bucket"
+env_variables:
+  APP_ENV: "production"
+
+# Costs saving
+automatic_scaling:
+  target_cpu_utilization: 0.6
+  max_instances: 1
+  min_pending_latency: 30ms
 
 handlers:
-- url: /css
-  static_dir: public/css
-  http_headers:
-    Strict-Transport-Security: max-age=31536000; includeSubDomains
-
-- url: /js
-  static_dir: public/js
-  http_headers:
-    Strict-Transport-Security: max-age=31536000; includeSubDomains
-
-- url: /(.*\.(svg|gif|png|jpg))$
-  static_files: public/images/\1
-  upload: public/.*\.(svg|gif|png|jpg)$
-  http_headers:
-    Strict-Transport-Security: max-age=31536000; includeSubDomains
-    
-- url: /.*
-  script: auto
-  secure: always
-  redirect_http_response_code: 301
+  - url: /.*
+    script: auto
+    secure: always
