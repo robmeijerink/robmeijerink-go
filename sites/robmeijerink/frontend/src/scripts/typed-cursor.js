@@ -1,5 +1,4 @@
-export function initTypedCursor() {
-    const text = 'Geen hypes, gewoon betrouwbare en stabiele software.'
+export function initTypedCursor(text) {
     const target = document.getElementById('typed-manifesto')
     const cursor = document.getElementById('cursor')
 
@@ -19,6 +18,6 @@ export function initTypedCursor() {
         }
     }
 
-    // Start de animatie
+    // Start animation
     setTimeout(typeWriter, 1250)
 }

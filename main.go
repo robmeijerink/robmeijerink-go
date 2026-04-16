@@ -82,11 +82,16 @@ func main() {
 	app.Get("/:rootFile", func(c fiber.Ctx) error {
 		file := c.Params("rootFile")
 
+		// Whitelist public root files.
 		rootFiles := map[string]bool{
-			"favicon.ico":          true,
-			"apple-touch-icon.png": true,
-			"site.webmanifest":     true,
-			"robots.txt":           true,
+			"favicon.ico":                  true,
+			"favicon.svg":                  true,
+			"favicon-96x96.png":            true,
+			"apple-touch-icon.png":         true,
+			"site.webmanifest":             true,
+			"robots.txt":                   true,
+			"web-app-manifest-192x192.png": true,
+			"web-app-manifest-512x512.png": true,
 		}
 
 		if rootFiles[file] {

@@ -22,15 +22,15 @@ func home(c fiber.Ctx) error {
 	return web.Render(c, "home", fiber.Map{
 		"Title":           "Rob Meijerink | Software Developer & B2B Tech Partner",
 		"MetaDescription": "Beschikbaar voor freelance projecten (ZZP). Gespecialiseerd in schaalbare backends (Go/PHP), cloud-architectuur en DevOps automatisering (Kubernetes/AWS).",
-		"Keywords":        "Freelance, ZZP, Software Engineer, DevOps, Backend Developer, Go, Golang, PHP, Laravel, Kubernetes, Systeem Architectuur, B2B",
+		"Keywords":        "Freelance, ZZP, Software Engineer, inhuren, DevOps, Backend Developer, Go, Golang, PHP, Laravel, Kubernetes, Systeem Architectuur, B2B",
 	})
 }
 
 func work(c fiber.Ctx) error {
 	return web.Render(c, "work", fiber.Map{
 		"Title":           "Rob Meijerink | Go, Laravel, PHP, JavaScript & Cloud Development",
-		"MetaDescription": "Ontdek mijn expertise als Freelance Software Architect (ZZP). Ervaring in schaalbare software (Go/PHP/Laravel), Domain-Driven Design en DevOps (Kubernetes)",
-		"Keywords":        "Backend Development, Ervaring, CV, ZZP, DevOps Engineering, Systeem Architectuur, Domain Driven Design, Event Sourcing, Go, Golang, PHP, Laravel, Kubernetes, CI/CD",
+		"MetaDescription": "Mijn expertise als Freelance Software Developer inhuren (ZZP). Ervaring in schaalbare software (Go/PHP/Laravel) Domain-Driven Design en DevOps (Kubernetes)",
+		"Keywords":        "Developer, inhuren, Backend Development, Ervaring, CV, ZZP, DevOps Engineering, Systeem Architectuur, Domain Driven Design, Event Sourcing, Go, Golang, PHP, Laravel, Kubernetes, CI/CD",
 	})
 }
 
