@@ -9,6 +9,8 @@ import (
 )
 
 func Setup(router *web.DomainRouter) {
+	router.Get("/workstation-setup", workstationSetup)
+
 	router.Get("/", home)
 	router.Get("/expertise", work)
 	// router.Get("/blog", blog)
@@ -35,6 +37,11 @@ func work(c fiber.Ctx) error {
 // func blog(c fiber.Ctx) error {
 // 	return web.Render(c, "blog", fiber.Map{"Title": "Mijn Blog"})
 // }
+
+func workstationSetup(c fiber.Ctx) error {
+	c.Set(fiber.HeaderStrictTransportSecurity, "max-age=31536000; includeSubDomains")
+	return c.Redirect().Status(fiber.StatusFound).To("https://raw.githubusercontent.com/robmeijerink/workstation-setup/main/workstation-setup.sh")
+}
 
 func sitemap(c fiber.Ctx) error {
 	host := c.Hostname()
