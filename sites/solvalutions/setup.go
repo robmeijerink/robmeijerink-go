@@ -10,5 +10,5 @@ func Setup(router *web.DomainRouter) {
 }
 
 func home(c fiber.Ctx) error {
-	return web.Render(c, "home", fiber.Map{"Title": "Solvalutions"})
+	return web.Render(c, "home", fiber.Map{"Title": "Solvalutions | Jouw B2B Tech Partner"})
 }

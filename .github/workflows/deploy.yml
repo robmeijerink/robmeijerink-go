@@ -27,13 +27,13 @@ jobs:
           npm run build
 
       # --- BUILD SITE: Solvalutions ---
-      # - name: Install & Build Solvalutions
-      #   run: |
-      #     if [ -d "sites/solvalutions/frontend" ]; then
-      #       cd sites/solvalutions/frontend
-      #       npm ci
-      #       npm run build
-      #     fi
+      - name: Install & Build Solvalutions
+        run: |
+          if [ -d "sites/solvalutions/frontend" ]; then
+            cd sites/solvalutions/frontend
+            npm ci
+            npm run build
+          fi
 
       # --- GOOGLE CLOUD DEPLOY ---
       - name: Authenticate to Google Cloud
