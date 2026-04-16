@@ -48,7 +48,7 @@ func main() {
 	app.Use(logger.New())
 
 	app.Use(limiter.New(limiter.Config{
-		Max:        30,
+		Max:        100,
 		Expiration: 1 * time.Minute,
 		LimitReached: func(c fiber.Ctx) error {
 			return c.Status(fiber.StatusTooManyRequests).SendString("429 Too Many Requests: Je bent even geblokkeerd want er waren te veel verzoeken. Neem even pauze.")
