@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="nl" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{or .Title "Solvalutions | Jouw Senior B2B Tech Partner"}}</title>
+    <meta name="description" content="{{or .MetaDescription "Solvalutions is de technische partner voor robuuste weboplossingen en software-architectuur. Geleid door Senior Tech Partner Rob Meijerink."}}">
+    <meta name="author" content="Rob Meijerink">
+    {{if .Keywords}}
+    <meta name="keywords" content="{{.Keywords}}">
+    {{end}}
+
+    <meta property="og:description" content="Solvalutions is de technische partner voor robuuste weboplossingen en software-architectuur. Bekijk robmeijerink.nl voor actuele projecten.">
+    <meta property="og:image" content="https://solvalutions.nl/assets/img/logo-solvalutions-email.png">
+
+    {{if .CanonicalHost}}
+    <link rel="canonical" href="https://{{ .CanonicalHost }}{{ .Path }}">
+    {{end}}
+    <meta name="robots" content="index, follow">
+
+    {{ if .IsProd }}
+    <link rel="stylesheet" href="{{ .Vite.Css "src/scripts/app.js" }}">
+    <script type="module" src="{{ .Vite.Asset "src/scripts/app.js" }}"></script>
+    {{ else }}
+    <script type="module" src="http://localhost:5173/assets/dist/@vite/client"></script>
+    <script type="module" src="http://localhost:5173/assets/dist/src/scripts/app.js"></script>
+    {{ end }}
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ProfessionalService",
+      "name": "Solvalutions",
+      "url": "https://solvalutions.nl",
+      "logo": "https://solvalutions.nl/assets/img/logo-solvalutions-email.png",
+      "telephone": "+31649691374",
+      "taxID": "NL005319604B24",
+      "founder": {
+        "@type": "Person",
+        "name": "Rob Meijerink",
+        "url": "https://robmeijerink.nl",
+        "sameAs": [
+          "https://www.linkedin.com/in/robm89/"
+        ]
+      },
+      "sameAs": [
+        "https://www.linkedin.com/in/robm89/"
+      ]
+    }
+    </script>
+</head>
+<body class="bg-slate-50 antialiased font-sans text-slate-800 min-h-screen flex flex-col items-center justify-center p-4">
+
+    <main class="bg-white rounded-2xl shadow-xl border border-slate-100 max-w-md w-full relative overflow-hidden">
+        {{embed}}
+
+    </main>
+
+    <footer class="mt-8 text-xs text-slate-400">
+        &copy; 2026 Solvalutions - Website onder constructie - under construction
+    </footer>
+
+</body>
+</html>

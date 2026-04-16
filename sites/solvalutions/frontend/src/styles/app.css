@@ -1,0 +1,14 @@
+@import 'tailwindcss';
+
+@source '../../../views/';
+
+@theme {
+    --font-sans: 'Inter', system-ui, sans-serif;
+
+    --color-brand-blue: #004d8c;
+    --color-brand-blue-hover: #003663;
+}
+
+:root {
+    --brand-shadow: rgba(0, 77, 140, 0.35);
+}
