@@ -5,7 +5,7 @@
 @source '../../../views/';
 
 @theme {
-    --font-sans: 'Inter', system-ui, sans-serif;
+    --font-sans: "Inter Variable", ui-sans-serif, system-ui, sans-serif;
 
     --color-brand-blue: #004d8c;
     --color-brand-blue-hover: #003663;
