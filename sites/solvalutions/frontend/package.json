@@ -13,6 +13,7 @@
     "devDependencies": {
         "@tailwindcss/postcss": "^4.2.2",
         "@tailwindcss/typography": "^0.5.19",
+        "geist": "^1.3.0",
         "postcss": "^8.5.9",
         "tailwindcss": "^4.2.2",
         "vite": "^8.0.8"
