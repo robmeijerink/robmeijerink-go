@@ -40,6 +40,7 @@ func main() {
 		Views: engine,
 	})
 
+	// Enables brotli compression
 	app.Use(compress.New(compress.Config{
 		Level: compress.LevelDefault,
 	}))
@@ -47,6 +48,7 @@ func main() {
 	app.Use(recover.New())
 	app.Use(logger.New())
 
+	// Set Rate Limiter
 	app.Use(limiter.New(limiter.Config{
 		Max:        100,
 		Expiration: 1 * time.Minute,
@@ -55,23 +57,38 @@ func main() {
 		},
 	}))
 
+	// 301 Redirect on www.
 	app.Use(func(c fiber.Ctx) error {
-		rawHost := c.Hostname()
-		canonicalHost := strings.TrimPrefix(rawHost, "www.")
+		hostname := c.Hostname()
+
+		if strings.HasPrefix(hostname, "www.") {
+			newHost := strings.TrimPrefix(hostname, "www.")
+			target := "https://" + newHost + c.OriginalURL()
+
+			return c.Redirect().Status(fiber.StatusMovedPermanently).To(target)
+		}
+
+		return c.Next()
+	})
+
+	// Sets canonical host
+	app.Use(func(c fiber.Ctx) error {
+		host := c.Hostname()
 
 		site := "robmeijerink"
-		if strings.Contains(canonicalHost, "solvalutions") {
+		if strings.Contains(host, "solvalutions") {
 			site = "solvalutions"
 		}
 
 		c.Locals("Site", site)
-		c.Locals("CanonicalHost", canonicalHost)
+		c.Locals("CanonicalHost", host)
 		c.Locals("IsProd", cfg.IsProd)
 		c.Locals("Path", c.Path())
 
 		return c.Next()
 	})
 
+	// Asset router to site's public folder
 	app.Get("/assets/*", func(c fiber.Ctx) error {
 		site := c.Locals("Site").(string)
 		filePath := fmt.Sprintf("./sites/%s/public/assets/%s", site, c.Params("*"))
