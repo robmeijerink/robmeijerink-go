@@ -1,14 +1,14 @@
-@import "geist/dist/fonts/geist-sans/style.css";
-@import "geist/dist/fonts/geist-mono/style.css";
+@import "@fontsource/geist-sans";
+@import "@fontsource/geist-mono";
 @import 'tailwindcss';
 
 @source '../../../views/';
 
 @theme {
-    --font-sans: 'Geist', system-ui, sans-serif;
+    --font-sans: 'Geist Sans', system-ui, sans-serif;
     --font-mono: 'Geist Mono', ui-monospace, monospace;
 
-    --color-brand-accent: #38bdf8; /* Better visibility than brand primary color in dark mode */
+    --color-brand-accent: #38bdf8;
     --color-brand-accent-hover: #7dd3fc;
 
     --color-brand-bg: #0f172a;
@@ -17,11 +17,7 @@
 
 @layer base {
     body {
-        @apply bg-brand-bg text-slate-400;
-
-        /* Antialiasing is required in dark mode! */
-        -webkit-font-smoothing: antialiased;
-        -moz-osx-font-smoothing: grayscale;
+        @apply bg-brand-bg text-slate-400 antialiased;
     }
 
     h1, h2, h3, h4, h5, h6 {
