@@ -1,23 +1,24 @@
 <div class="w-full">
-    <section class="relative pt-4 pb-16 sm:pt-12">
-        <div class="animate-fade-in-up max-w-5xl space-y-6 sm:space-y-10">
+    <section class="relative flex flex-col min-h-screen sm:pt-10">
+
+        <div class="animate-fade-in-up max-w-5xl space-y-6 sm:space-y-8">
+
             {{ template "components/availability-alert" . }}
 
-            <div class="mt-2 sm:mt-10 mb-6 flex flex-col items-start gap-6 sm:flex-row sm:items-start sm:justify-between sm:gap-10">
+            <div class="flex flex-col items-start gap-8 sm:flex-row sm:items-start sm:justify-between sm:gap-12">
 
                 <picture class="shrink-0 sm:order-last sm:mt-2">
                     <source srcset="/assets/img/foto-rob-meijerink-solvalutions.webp" type="image/webp">
-
                     <img src="/assets/img/foto-rob-meijerink-solvalutions.png"
                          alt="Profielfoto Rob Meijerink - Solvalutions"
                          title="Laten we samenwerken!"
-                         class="h-32 w-32 rounded-full border-4 border-slate-100 shadow-lg object-cover sm:h-40 sm:w-40"
+                         class="h-32 w-32 rounded-full border-4 border-slate-100 object-cover sm:h-40 sm:w-40 shadow-lg transition-all duration-500 ease-out hover:-translate-y-1 hover:border-brand-blue/50 hover:shadow-[0_0_30px_var(--color-brand-blue)]"
                          width="160"
                          height="160" />
                 </picture>
 
-                <div class="flex-1 space-y-4 sm:space-y-6">
-                   <div class="flex flex-col items-start gap-4">
+                <div class="flex-1 space-y-6">
+                   <div class="space-y-4">
                         <span class="flex flex-wrap items-center text-4xl font-extrabold tracking-tight text-slate-900 sm:text-5xl lg:text-6xl">
                             <span>Rob</span>
                             <span class="text-brand-blue ml-2.5">Meijerink</span>
@@ -28,26 +29,24 @@
                         </h1>
                     </div>
 
-                    <div class="max-w-2xl space-y-4">
+                    <div class="max-w-2xl space-y-5">
                         <p class="text-base leading-relaxed font-medium text-slate-600 sm:text-lg">
-                        Specialist in de ontwikkeling van toekomstbestendige backendsystemen, naadloze frontends en schaalbare API's die de technische complexiteit vertalen naar duurzame en betrouwbare digitale oplossingen.
+                        Specialist in de ontwikkeling van toekomstbestendige backend-systemen, naadloze frontends en schaalbare API's die de technische complexiteit vertalen naar duurzame en betrouwbare digitale oplossingen.
                         </p>
                         <p class="text-brand-blue flex min-h-[1.5em] items-center text-base font-bold tracking-tight sm:text-lg">
                         <span id="typed-manifesto"></span>
-                        <span
-                            id="cursor"
-                            class="typed-cursor"></span>
+                        <span id="cursor" class="typed-cursor"></span>
                         </p>
                     </div>
                 </div>
             </div>
 
-            <div class="pt-2">
+            <div class="space-y-10">
                 <div class="flex flex-col sm:flex-row items-center gap-4 w-full max-w-md sm:max-w-none">
                     <a
                         href="mailto:rob@solvalutions.nl?subject=Contactaanvraag%20via%20robmeijerink.nl"
                         title="Stuur een e-mail"
-                        class="focus-ring bg-brand-blue shadow-brand-blue hover:shadow-brand-blue hover:bg-brand inline-flex items-center justify-center rounded-xl px-7 py-3.5 text-sm font-bold text-white transition-all hover:-translate-y-1 active:scale-95 gap-3 w-full sm:w-auto">
+                        class="focus-ring bg-brand-blue shadow-brand-blue hover:shadow-brand-blue hover:bg-brand-home inline-flex items-center justify-center rounded-xl px-7 py-3.5 text-sm font-bold text-white transition-all hover:-translate-y-1 active:scale-95 gap-3 w-full sm:w-auto">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <rect width="20" height="16" x="2" y="4" rx="2"></rect>
                             <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
@@ -56,79 +55,57 @@
                     </a>
 
                     <a
-                        href="#werkwijze"
+                        href="#expertise-skills"
                         title="Werken aan de toekomst"
                         class="group focus-ring ring-brand-blue hover:ring-brand-blue-hover relative inline-flex items-center justify-center overflow-hidden rounded-xl bg-white px-7 py-3.5 text-sm font-bold shadow-sm ring-2 transition-all hover:shadow-md active:scale-95 w-full sm:w-auto">
-                        <div
-                            class="from-brand-blue/15 via-brand-blue/3 absolute inset-0 bg-linear-to-br to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100"></div>
-
-                        <span
-                            class="text-brand-blue group-hover:text-brand-blue-hover relative z-10 flex items-center gap-1 transition-colors">
+                        <div class="from-brand-blue/15 via-brand-blue/3 absolute inset-0 bg-linear-to-br to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100"></div>
+                        <span class="text-brand-blue group-hover:text-brand-blue-hover relative z-10 flex items-center gap-1 transition-colors">
                             Mijn werkwijze &rarr;
                         </span>
                     </a>
                 </div>
 
-                <div class="mt-8 flex items-center gap-3 pl-1">
+                <div class="flex items-center gap-3 pl-1">
                     <div class="text-amber-500">
-                        <svg
-                            fill="none"
-                            stroke="currentColor"
-                            viewBox="0 0 24 24"
-                            class="h-5 w-5"
-                            stroke-width="2.5">
-                            <path
-                                d="M8.25 18.75a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m3 0h6m-9 0H3.375a1.125 1.125 0 0 1-1.125-1.125V14.25m17.25 4.5a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m3 0h1.125c.621 0 1.129-.504 1.09-1.124a17.902 17.902 0 0 0-3.213-9.193 2.056 2.056 0 0 0-1.58-.86H14.25M16.5 18.75h-2.25m0-11.177v-.958c0-.568-.422-1.048-.987-1.106a48.554 48.554 0 0 0-10.026 0 1.106 1.106 0 0 0-.987 1.106v7.635m12-6.677v6.677m0 4.5v-4.5m0 0h-12"></path>
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" class="h-5 w-5" stroke-width="2.5">
+                            <path d="M8.25 18.75a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m3 0h6m-9 0H3.375a1.125 1.125 0 0 1-1.125-1.125V14.25m17.25 4.5a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m3 0h1.125c.621 0 1.129-.504 1.09-1.124a17.902 17.902 0 0 0-3.213-9.193 2.056 2.056 0 0 0-1.58-.86H14.25M16.5 18.75h-2.25m0-11.177v-.958c0-.568-.422-1.048-.987-1.106a48.554 48.554 0 0 0-10.026 0 1.106 1.106 0 0 0-.987 1.106v7.635m12-6.677v6.677m0 4.5v-4.5m0 0h-12"></path>
                         </svg>
                     </div>
                     <p class="text-sm font-medium tracking-tight text-slate-500">
-                        Al
-                        <span class="text-brand-blue font-bold">15+ jaar</span>
-                        software-oplossingen die écht
-                        <span class="text-brand-blue font-bold whitespace-nowrap">het verschil maken</span>
+                        Al <span class="text-brand-blue font-bold">15+ jaar</span> software-oplossingen die écht <span class="text-brand-blue font-bold whitespace-nowrap">het verschil maken</span>
                     </p>
-                </div>
-            </div>
-
-            <div class="pt-30">
-                <p class="mb-4 text-[11px] font-bold tracking-[0.2em] text-slate-600 uppercase">Expertise & Skills</p>
-                <div class="flex flex-wrap items-center gap-3">
-                    <span
-                        class="inline-flex items-center gap-2 rounded-lg border border-cyan-100 bg-cyan-50 px-3 py-1.5 text-xs font-bold text-cyan-700 shadow-sm shadow-cyan-200/50 transition-transform hover:-translate-y-0.5">
-                        <span class="h-1.5 w-1.5 rounded-full bg-cyan-500"></span>
-                        Go (Golang) & Cloud
-                    </span>
-                    <span
-                        class="inline-flex items-center gap-2 rounded-lg border border-rose-100 bg-rose-50 px-3 py-1.5 text-xs font-bold text-rose-700 shadow-sm shadow-rose-200/50 transition-transform hover:-translate-y-0.5">
-                        <span class="h-1.5 w-1.5 rounded-full bg-rose-500"></span>
-                        PHP & Laravel
-                    </span>
-                    <span
-                        class="inline-flex items-center gap-2 rounded-lg border border-blue-100 bg-blue-50 px-3 py-1.5 text-xs font-bold text-blue-700 shadow-sm shadow-blue-200/50 transition-transform hover:-translate-y-0.5">
-                        <span class="h-1.5 w-1.5 rounded-full bg-blue-500"></span>
-                        Docker & DevOps
-                    </span>
-                    <span
-                        class="inline-flex items-center gap-2 rounded-lg border border-slate-200 bg-slate-100 px-3 py-1.5 text-xs font-bold text-slate-700 shadow-sm shadow-slate-200/50 transition-transform hover:-translate-y-0.5">
-                        <span class="h-1.5 w-1.5 rounded-full bg-slate-400"></span>
-                        Linux & Kubernetes
-                    </span>
-                    <span
-                        class="inline-flex items-center gap-2 rounded-lg border border-cyan-100 bg-green-50 px-3 py-1.5 text-xs font-bold text-green-700 shadow-sm shadow-green-200/50 transition-transform hover:-translate-y-0.5">
-                        <span class="h-1.5 w-1.5 rounded-full bg-green-500"></span>
-                        Node.js & TypeScript
-                    </span>
-                    <span
-                        class="inline-flex items-center gap-2 rounded-lg border border-amber-100 bg-rose-50 px-3 py-1.5 text-xs font-bold text-amber-700 shadow-sm shadow-amber-200/50 transition-transform hover:-translate-y-0.5">
-                        <span class="h-1.5 w-1.5 rounded-full bg-amber-500"></span>
-                        Agile & Scrum
-                    </span>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="werkwijze" class="mt-24 scroll-mt-10 sm:scroll-mt-60">
+    <section id="expertise-skills" class="pt-2 pb-10 scroll-mt-4">
+        <div class="max-w-5xl">
+            <p class="mb-6 text-[11px] font-bold tracking-[0.2em] text-slate-600 uppercase">Expertise & Skills</p>
+            <div class="flex flex-wrap items-center gap-3">
+                <span class="inline-flex items-center gap-2 rounded-lg border border-cyan-100 bg-cyan-50 px-3 py-1.5 text-xs font-bold text-cyan-700 shadow-sm shadow-cyan-200/50 transition-transform hover:-translate-y-0.5">
+                    <span class="h-1.5 w-1.5 rounded-full bg-cyan-500"></span> Go (Golang) & Cloud
+                </span>
+                <span class="inline-flex items-center gap-2 rounded-lg border border-rose-100 bg-rose-50 px-3 py-1.5 text-xs font-bold text-rose-700 shadow-sm shadow-rose-200/50 transition-transform hover:-translate-y-0.5">
+                    <span class="h-1.5 w-1.5 rounded-full bg-rose-500"></span> PHP & Laravel
+                </span>
+                <span class="inline-flex items-center gap-2 rounded-lg border border-blue-100 bg-blue-50 px-3 py-1.5 text-xs font-bold text-blue-700 shadow-sm shadow-blue-200/50 transition-transform hover:-translate-y-0.5">
+                    <span class="h-1.5 w-1.5 rounded-full bg-blue-500"></span> Docker & DevOps
+                </span>
+                <span class="inline-flex items-center gap-2 rounded-lg border border-slate-200 bg-slate-100 px-3 py-1.5 text-xs font-bold text-slate-700 shadow-sm shadow-slate-200/50 transition-transform hover:-translate-y-0.5">
+                    <span class="h-1.5 w-1.5 rounded-full bg-slate-400"></span> Linux & Kubernetes
+                </span>
+                <span class="inline-flex items-center gap-2 rounded-lg border border-cyan-100 bg-green-50 px-3 py-1.5 text-xs font-bold text-green-700 shadow-sm shadow-green-200/50 transition-transform hover:-translate-y-0.5">
+                    <span class="h-1.5 w-1.5 rounded-full bg-green-500"></span> Node.js & TypeScript
+                </span>
+                <span class="inline-flex items-center gap-2 rounded-lg border border-amber-100 bg-rose-50 px-3 py-1.5 text-xs font-bold text-amber-700 shadow-sm shadow-amber-200/50 transition-transform hover:-translate-y-0.5">
+                    <span class="h-1.5 w-1.5 rounded-full bg-amber-500"></span> Agile & Scrum
+                </span>
+            </div>
+        </div>
+    </section>
+
+    <section id="werkwijze" class="mt-4 scroll-mt-10 sm:scroll-mt-60">
         <div class="mb-12 flex flex-col items-start gap-4">
             <div class="bg-brand-blue/3 ring-brand-blue/30 mb-5 inline-flex items-center gap-2.5 rounded-full px-3 py-1 ring-1">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="text-brand-blue/70 h-3.5 w-3.5">
@@ -142,6 +119,9 @@
                 <span class="text-brand-blue">door vooruitgang</span>
                 <span>.</span>
             </h2>
+
+            <p class="max-w-2xl text-base leading-relaxed text-slate-600 sm:text-lg">
+                Als freelance senior developer overbrug ik de kloof tussen complexe business-eisen en schaalbare techniek. Van betrouwbare <strong class="font-semibold text-slate-900">backend architecturen</strong> tot geautomatiseerde <strong class="font-semibold text-slate-900">DevOps pipelines</strong>: ik bouw de fundering waarmee jouw applicaties én team veilig kunnen versnellen.</p>
         </div>
 
         <div class="grid grid-cols-1 gap-6 md:grid-cols-12">
@@ -219,6 +199,10 @@
                 <span class="text-brand-blue">koffie drinken</span>
                 <span>?</span>
             </h2>
+
+            <p class="max-w-2xl text-base leading-relaxed text-slate-600 sm:text-lg">
+                Of je nu een <strong class="font-semibold text-slate-900">freelance software engineer</strong> zoekt voor tijdelijke versterking, of een strategische <strong class="font-semibold text-slate-900">B2B tech partner</strong> voor complexe architectuur: ik denk graag vrijblijvend met je mee over de juiste technische koers.
+            </p>
         </div>
 
         <div class="grid gap-6 md:grid-cols-2">
@@ -237,7 +221,7 @@
                         </p>
                     </div>
                 </div>
-                <div class="mt-auto pt-8 ml-17">
+                <div class="mt-auto pt-8 ml-16">
                     <a href="https://solvalutions.nl" title="Jouw B2B Tech Partner" class="focus-ring hover:text-brand-blue inline-flex items-center gap-2 text-sm font-bold text-slate-600 transition-colors">
                         Bekijk Solvalutions
                         <svg class="h-4 w-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -264,7 +248,7 @@
                         </p>
                     </div>
                 </div>
-                <div class="relative z-10 mt-auto pt-8 ml-17">
+                <div class="relative z-10 mt-auto pt-8 ml-16">
                     <a href="mailto:rob@solvalutions.nl?subject=Contactaanvraag%20via%20robmeijerink.nl" title="Stuur een e-mail" class="focus-ring bg-brand-blue shadow-brand-blue hover:bg-brand-blue inline-flex items-center justify-center rounded-lg px-6 py-3 text-sm font-bold text-white transition-all hover:-translate-y-0.5 gap-3">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <rect width="20" height="16" x="2" y="4" rx="2"></rect>
