@@ -6,13 +6,12 @@
     <title>{{or .Title "Solvalutions | Your B2B Tech Partner"}}</title>
     <meta name="description" content="{{or .MetaDescription "Solvalutions is the technical partner for robust web solutions and software architecture."}}">
 
-    {{ if .IsProd }}
+      {{ if .IsProd }}
         <link rel="stylesheet" href="{{ .Vite.Css "src/scripts/app.js" }}">
+        <script type="module" src="{{ .Vite.Asset "src/scripts/app.js" }}"></script>
     {{ else }}
-
-    <script type="module" src="http://localhost:5173/assets/dist/@vite/client"></script>
-    <script type="module" src="http://localhost:5173/assets/dist/src/scripts/app.js"></script>
-        <script type="module" src="http://localhost:5173/src/scripts/app.js"></script>
+        <script type="module" src="http://localhost:5173/assets/dist/@vite/client"></script>
+        <script type="module" src="http://localhost:5173/assets/dist/src/scripts/app.js"></script>
     {{ end }}
 </head>
 <body class="bg-brand-bg text-slate-400 antialiased selection:bg-brand-accent selection:text-brand-bg flex flex-col min-h-screen">
@@ -32,7 +31,7 @@
                 <a href="/about" class="hover:text-white transition-colors">Approach</a>
             </nav>
 
-            <a href="/contact" class="hidden md:inline-flex px-5 py-2.5 text-sm font-bold text-brand-bg bg-white rounded-lg hover:bg-brand-accent transition-all shadow-[var(--brand-glow)] active:scale-95">
+            <a href="/contact" class="hidden md:inline-flex px-5 py-2.5 text-sm font-bold text-brand-bg bg-white rounded-lg hover:bg-brand-accent transition-all shadow-(--brand-glow) active:scale-95">
                 Start Deployment
             </a>
         </div>
@@ -40,18 +39,6 @@
 
     <main class="grow">
         {{embed}}
-
-        <section class="py-20 border-y border-slate-800/50 bg-slate-900/20">
-            <div class="max-w-7xl mx-auto px-6">
-                <p class="text-center font-mono text-xs uppercase tracking-[0.3em] text-slate-500 mb-12">Trusted by teams at</p>
-                <div class="flex flex-wrap justify-center items-center gap-12 md:gap-24 opacity-40 grayscale hover:grayscale-0 transition-all duration-700">
-                   <span class="text-xl font-bold tracking-tighter text-white">TECHCORE</span>
-                   <span class="text-xl font-bold tracking-tighter text-white">NEXUS.AI</span>
-                   <span class="text-xl font-bold tracking-tighter text-white">DATAFLOW</span>
-                   <span class="text-xl font-bold tracking-tighter text-white">CLOUDSCALE</span>
-                </div>
-            </div>
-        </section>
 
         <section class="py-32">
             <div class="max-w-7xl mx-auto px-6">
@@ -152,11 +139,5 @@
             </div>
         </div>
     </footer>
-
-    {{ if .IsProd }}
-        <script type="module" src="{{ .Vite.Asset "src/scripts/app.js" }}"></script>
-    {{ else }}
-        <script type="module" src="http://localhost:5173/src/scripts/app.js"></script>
-    {{ end }}
 </body>
 </html>

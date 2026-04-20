@@ -1,20 +1,22 @@
 <section class="relative pt-20 pb-32 overflow-hidden">
+    <canvas id="tech-grid-tracer-canvas" class="absolute inset-0 w-full h-full z-0 opacity-60"></canvas>
+
     <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full z-0 pointer-events-none">
-        <div class="absolute top-[-10%] left-1/2 -translate-x-1/2 w-[600px] h-[400px] bg-brand-accent/10 blur-[120px] rounded-full"></div>
+        <div class="absolute top-[-10%] left-1/2 -translate-x-1/2 w-150 h-100 bg-brand-accent/10 blur-[120px] rounded-full"></div>
     </div>
 
     <div class="max-w-7xl mx-auto px-6 relative z-10">
         <div class="max-w-3xl">
             <div class="flex items-center gap-3 mb-6">
-                <span class="px-2 py-1 rounded border border-brand-accent/30 bg-brand-accent/5 text-[10px] font-mono text-brand-accent uppercase tracking-[0.2em]">
-                    Available for Q3 2026
+                <span class="animate-neon-flicker w-full sm:w-auto px-2 py-1 rounded border border-brand-accent/30 bg-brand-accent/5 text-[10px] font-mono text-brand-accent uppercase tracking-[0.2em]">
+                    Available for <span class="whitespace-nowrap">Q3 2026</span>
                 </span>
                 <span class="w-1 h-1 rounded-full bg-slate-700"></span>
-                <span class="text-xs font-mono text-slate-500 italic">// Engineering high-performance backends</span>
+                <span class="text-xs font-mono text-slate-500 italic w-full sm:w-auto">// Engineering high-performance backends</span>
             </div>
 
             <h1 class="text-5xl md:text-7xl font-extrabold text-white leading-[1.1] mb-8 tracking-tighter">
-                Building the <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-accent to-blue-400">digital backbone</span> for tech-driven business.
+                Building the <span class="text-transparent bg-clip-text bg-linear-to-r from-brand-accent to-blue-400">digital backbone</span> for tech-driven business.
             </h1>
 
             <p class="text-lg md:text-xl text-slate-400 mb-10 leading-relaxed max-w-2xl">
@@ -22,7 +24,7 @@
             </p>
 
             <div class="flex flex-wrap gap-4">
-                <a href="/contact" class="px-8 py-4 bg-white text-brand-bg font-bold rounded-xl hover:bg-brand-accent transition-all duration-300 shadow-[var(--brand-glow)] hover:scale-[1.02]">
+                <a href="/contact" class="px-8 py-4 bg-white text-brand-bg font-bold rounded-xl hover:bg-brand-accent transition-all duration-300 shadow-(--brand-glow) hover:scale-[1.02]">
                     Get in touch
                 </a>
                 <a href="/expertise" class="px-8 py-4 bg-brand-surface border border-slate-700 text-white font-bold rounded-xl hover:bg-slate-800 transition-all">
