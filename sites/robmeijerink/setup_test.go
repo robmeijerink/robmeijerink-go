@@ -35,6 +35,7 @@ func TestSetupRoutes(t *testing.T) {
 	// like `c.Locals("Site").(string)`.
 	app.Use(func(c fiber.Ctx) error {
 		c.Locals("Site", "robmeijerink")
+		c.Locals("Region", "nl")
 		c.Locals("IsProd", true)
 		c.Locals("CanonicalHost", "robmeijerink.nl")
 		c.Locals("Path", c.Path())

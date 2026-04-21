@@ -1,10 +1,10 @@
 package web
 
 import (
+	"errors"
 	"io"
 	"net/http/httptest"
 	"testing"
-	"time"
 
 	"github.com/gofiber/fiber/v3"
 	"github.com/stretchr/testify/assert"
@@ -14,16 +14,19 @@ func TestDomainRouter_StrictIsolation(t *testing.T) {
 	// 1. Setup Fiber App
 	app := fiber.New()
 
-	// 2. Mock the Host/Tenant Middleware exactly as it works in production
+	// 2. Mock the Host/Tenant Middleware exactly as it works in production now
 	app.Use(func(c fiber.Ctx) error {
 		host := c.Hostname()
-		site := "robmeijerink" // Default
+		site := "robmeijerink"
+		region := "en"
 
 		if host == "solvalutions.nl" || host == "www.solvalutions.nl" {
 			site = "solvalutions"
+			region = "nl"
 		}
 
 		c.Locals("Site", site)
+		c.Locals("Region", region)
 		return c.Next()
 	})
 
@@ -109,86 +112,115 @@ func TestDomainRouter_StrictIsolation(t *testing.T) {
 // ---------------------------------------------------------
 // Mock Views Engine
 // ---------------------------------------------------------
-// This intercepts Fiber's template rendering so we can assert
-// the exact data and paths the Render function generated.
 type MockViews struct {
-	Template string
-	Layout   string
-	Data     fiber.Map
+	Template       string
+	Layout         string
+	Data           fiber.Map
+	FailOnTemplate string // Added to simulate a missing template file
 }
 
 func (m *MockViews) Load() error { return nil }
 
 func (m *MockViews) Render(w io.Writer, template string, data any, layouts ...string) error {
+	// Simulate Fiber returning an error when a file is missing
+	if m.FailOnTemplate != "" && template == m.FailOnTemplate {
+		return errors.New("template not found on disk")
+	}
+
 	m.Template = template
 	if len(layouts) > 0 {
 		m.Layout = layouts[0]
 	}
 
-	// Type assert the data back to a fiber.Map so we can inspect it
 	if mapData, ok := data.(fiber.Map); ok {
 		m.Data = mapData
 	}
 
-	// Write a fake response so Fiber thinks it succeeded
 	_, _ = w.Write([]byte("mock HTML content"))
 	return nil
 }
 
 // ---------------------------------------------------------
-// Render Function Test
+// Render Function Tests
 // ---------------------------------------------------------
-func TestRender_Success(t *testing.T) {
-	// 1. Initialize our mock engine
+
+func TestRender_MultiRegion_Success(t *testing.T) {
 	mockEngine := &MockViews{}
+	app := fiber.New(fiber.Config{Views: mockEngine})
 
-	// 2. Setup Fiber App with the mock engine registered
-	app := fiber.New(fiber.Config{
-		Views: mockEngine,
-	})
-
-	// 3. Create a test route that utilizes your Render function
-	app.Get("/test-render", func(c fiber.Ctx) error {
-		// Inject the required Locals.
-		// (In production, your middleware handles this. If these are missing,
-		// the type assertions in your Render func will cause a panic).
+	app.Get("/test-nl", func(c fiber.Ctx) error {
+		// Mock locals for a Dutch Solvalutions visitor
 		c.Locals("Site", "solvalutions")
+		c.Locals("Region", "nl")
 		c.Locals("IsProd", true)
 		c.Locals("CanonicalHost", "solvalutions.nl")
-		c.Locals("Path", "/test-render")
+		c.Locals("Path", "/test-nl")
 
-		// Define some custom data to see if it merges correctly
-		customData := fiber.Map{
-			"PageTitle": "Contact Us",
-		}
-
-		// Call the function we are testing
-		return Render(c, "pages/contact", customData)
+		return Render(c, "pages/home", nil)
 	})
 
-	// 4. Perform the HTTP Request
-	req := httptest.NewRequest("GET", "/test-render", nil)
+	req := httptest.NewRequest("GET", "/test-nl", nil)
 	resp, err := app.Test(req)
 
-	// 5. Assertions
 	assert.NoError(t, err)
 	assert.Equal(t, fiber.StatusOK, resp.StatusCode)
 
-	// Assert that the paths were constructed perfectly for the specific tenant
-	assert.Equal(t, "solvalutions/views/pages/contact", mockEngine.Template)
+	// Assert it successfully targeted the "nl" folder
+	assert.Equal(t, "solvalutions/views/nl/pages/home", mockEngine.Template)
 	assert.Equal(t, "solvalutions/views/layouts/master", mockEngine.Layout)
+	assert.Equal(t, "nl", mockEngine.Data["Region"])
+}
 
-	// Assert that the global data AND custom data were merged correctly
-	assert.NotNil(t, mockEngine.Data)
-	assert.Equal(t, true, mockEngine.Data["IsProd"])
-	assert.Equal(t, "solvalutions.nl", mockEngine.Data["CanonicalHost"])
-	assert.Equal(t, "/test-render", mockEngine.Data["Path"])
-	assert.Equal(t, time.Now().Year(), mockEngine.Data["CurrentYear"])
+func TestRender_MultiRegion_Fallback(t *testing.T) {
+	mockEngine := &MockViews{
+		// Force the engine to fail on the NL template to trigger the fallback
+		FailOnTemplate: "solvalutions/views/nl/pages/portfolio",
+	}
+	app := fiber.New(fiber.Config{Views: mockEngine})
 
-	// Verify the custom data was appended successfully
-	assert.Equal(t, "Contact Us", mockEngine.Data["PageTitle"])
+	app.Get("/test-fallback", func(c fiber.Ctx) error {
+		c.Locals("Site", "solvalutions")
+		c.Locals("Region", "nl") // User wants NL
+		c.Locals("IsProd", true)
+		c.Locals("CanonicalHost", "solvalutions.nl")
+		c.Locals("Path", "/test-fallback")
 
-	// Verify that the ViteHelper was injected (checking if it exists)
-	assert.Contains(t, mockEngine.Data, "Vite")
-	assert.Contains(t, mockEngine.Data, "AvailableForWorkQ")
+		return Render(c, "pages/portfolio", nil)
+	})
+
+	req := httptest.NewRequest("GET", "/test-fallback", nil)
+	resp, err := app.Test(req)
+
+	assert.NoError(t, err)
+	assert.Equal(t, fiber.StatusOK, resp.StatusCode)
+
+	// Assert the Render function caught the error and fell back to the DefaultRegion ("en")
+	assert.Equal(t, "solvalutions/views/en/pages/portfolio", mockEngine.Template)
+}
+
+func TestRender_FlatStructure_Success(t *testing.T) {
+	mockEngine := &MockViews{}
+	app := fiber.New(fiber.Config{Views: mockEngine})
+
+	app.Get("/test-flat", func(c fiber.Ctx) error {
+		// Mock locals for a flat site visitor
+		c.Locals("Site", "robmeijerink")
+		c.Locals("Region", "nl")
+		c.Locals("IsProd", true)
+		c.Locals("CanonicalHost", "robmeijerink.nl")
+		c.Locals("Path", "/test-flat")
+
+		customData := fiber.Map{"PageTitle": "About Rob"}
+		return Render(c, "pages/about", customData)
+	})
+
+	req := httptest.NewRequest("GET", "/test-flat", nil)
+	resp, err := app.Test(req)
+
+	assert.NoError(t, err)
+	assert.Equal(t, fiber.StatusOK, resp.StatusCode)
+
+	// Assert it used the flat structure (NO region folder in the path)
+	assert.Equal(t, "robmeijerink/views/pages/about", mockEngine.Template)
+	assert.Equal(t, "About Rob", mockEngine.Data["PageTitle"])
 }

@@ -4,6 +4,7 @@ import (
 	"time"
 
 	"github.com/robmeijerink/robmeijerink-go/internal/availability"
+	"github.com/robmeijerink/robmeijerink-go/internal/config"
 
 	"github.com/gofiber/fiber/v3"
 )
@@ -24,6 +25,7 @@ func (r *DomainRouter) Get(path string, handler fiber.Handler) {
 
 func Render(c fiber.Ctx, template string, data fiber.Map) error {
 	site := c.Locals("Site").(string)
+	region := c.Locals("Region").(string)
 	isProd := c.Locals("IsProd").(bool)
 	canonicalHost := c.Locals("CanonicalHost").(string)
 	path := c.Locals("Path").(string)
@@ -35,6 +37,7 @@ func Render(c fiber.Ctx, template string, data fiber.Map) error {
 		"IsProd":            isProd,
 		"CanonicalHost":     canonicalHost,
 		"Path":              path,
+		"Region":            region,
 		"AvailableForWorkQ": availabilityDate,
 		"CurrentYear":       time.Now().Year(),
 	}
@@ -46,7 +49,29 @@ func Render(c fiber.Ctx, template string, data fiber.Map) error {
 	}
 
 	layoutPath := site + "/views/layouts/master"
-	templatePath := site + "/views/" + template
 
-	return c.Render(templatePath, fullData, layoutPath)
+	config, exists := config.SiteRegistry[site]
+	if !exists {
+		return fiber.NewError(fiber.StatusInternalServerError, "Site configuration missing for: "+site)
+	}
+
+	var templatePath string
+
+	if config.IsMultiRegion {
+		templatePath = site + "/views/" + region + "/" + template
+
+		err := c.Render(templatePath, fullData, layoutPath)
+		if err != nil {
+			if region != config.DefaultRegion {
+				fallbackPath := site + "/views/" + config.DefaultRegion + "/" + template
+				return c.Render(fallbackPath, fullData, layoutPath)
+			}
+			return err
+		}
+		return nil
+
+	} else {
+		templatePath = site + "/views/" + template
+		return c.Render(templatePath, fullData, layoutPath)
+	}
 }
