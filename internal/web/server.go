@@ -1,7 +1,9 @@
 package web
 
 import (
+	"errors"
 	"fmt"
+	"log"
 
 	"github.com/gofiber/fiber/v3"
 	"github.com/gofiber/fiber/v3/middleware/compress"
@@ -30,11 +32,43 @@ func NewServer(cfg *config.AppConfig) *Server {
 
 	app := fiber.New(fiber.Config{
 		Views: engine,
+		ErrorHandler: func(c fiber.Ctx, err error) error {
+			code := fiber.StatusInternalServerError
+
+			var e *fiber.Error
+			if errors.As(err, &e) {
+				code = e.Code
+			}
+
+			log.Printf("ERROR [%s]: %v", c.Path(), err)
+
+			isProd, _ := c.Locals("IsProd").(bool)
+
+			if code == fiber.StatusNotFound {
+				c.Status(code)
+				if err := Render(c, "404", nil); err != nil {
+					return c.SendString("404 - Page not found")
+				}
+				return nil
+			}
+
+			if isProd {
+				c.Status(code)
+				if err := Render(c, "500", nil); err != nil {
+					return c.SendString("500 - Internal server error. The site admin has been notified.")
+				}
+				return nil
+			}
+
+			return c.Status(code).SendString(err.Error())
+		},
 	})
 
 	// Standard Middlewares
 	app.Use(compress.New(compress.Config{Level: compress.LevelDefault}))
-	app.Use(recover.New())
+	app.Use(recover.New(recover.Config{
+		EnableStackTrace: true,
+	}))
 	app.Use(logger.New())
 
 	// Custom Modular Middlewares

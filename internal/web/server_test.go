@@ -2,6 +2,7 @@ package web
 
 import (
 	"encoding/json"
+	"errors"
 	"io"
 	"net/http/httptest"
 	"testing"
@@ -12,19 +13,77 @@ import (
 )
 
 // setupTestServer generates a clean server instance for integration tests.
-func setupTestServer() *Server {
+// Added 'isProd' parameter so we can test production-specific security behaviors.
+func setupTestServer(isProd bool) *Server {
 	cfg := &config.AppConfig{
-		IsProd: false, // Bypass manifest loading during test runs
+		IsProd: isProd,
 		Port:   "3000",
 	}
 	return NewServer(cfg)
 }
 
 // ---------------------------------------------------------
+// Integration Tests: Error Handling (Security & Leak Prevention)
+// ---------------------------------------------------------
+func TestServer_ErrorHandlingIntegration(t *testing.T) {
+	// Helper function to spin up a server, inject a crashing route, and return the response
+	runCrashTest := func(isProd bool) (int, string) {
+		server := setupTestServer(isProd)
+
+		// Inject a temporary route that simulates a fatal internal error containing highly sensitive data
+		server.App.Get("/crash", func(c fiber.Ctx) error {
+			return errors.New("FATAL_DB_ERROR: SENSITIVE_PASSWORD_12345_LEAKED")
+		})
+
+		req := httptest.NewRequest("GET", "/crash", nil)
+		req.Host = "solvalutions.nl" // Required to pass the SiteContext middleware
+
+		resp, err := server.App.Test(req)
+		assert.NoError(t, err)
+
+		bodyBytes, _ := io.ReadAll(resp.Body)
+		return resp.StatusCode, string(bodyBytes)
+	}
+
+	t.Run("Development mode leaks debug info intentionally", func(t *testing.T) {
+		status, body := runCrashTest(false)
+
+		assert.Equal(t, fiber.StatusInternalServerError, status)
+		assert.Contains(t, body, "SENSITIVE_PASSWORD", "In dev mode, the raw error should be visible to the developer")
+	})
+
+	t.Run("Production mode securely hides debug info", func(t *testing.T) {
+		status, body := runCrashTest(true)
+
+		assert.Equal(t, fiber.StatusInternalServerError, status)
+		// SECURITY CHECK: Ensure the sensitive data is absolutely not in the output
+		assert.NotContains(t, body, "SENSITIVE_PASSWORD", "CRITICAL SECURITY FAILURE: Production mode leaked sensitive data!")
+		// Check if the generic fallback is presented instead
+		assert.Contains(t, body, "500", "Production mode should show the safe fallback message or view")
+	})
+
+	t.Run("404 Not Found returns safe string or view", func(t *testing.T) {
+		server := setupTestServer(true)
+
+		req := httptest.NewRequest("GET", "/this-route-does-not-exist-at-all", nil)
+		req.Host = "solvalutions.nl"
+
+		resp, err := server.App.Test(req)
+		assert.NoError(t, err)
+
+		bodyBytes, _ := io.ReadAll(resp.Body)
+		body := string(bodyBytes)
+
+		assert.Equal(t, fiber.StatusNotFound, resp.StatusCode)
+		assert.Contains(t, body, "404")
+	})
+}
+
+// ---------------------------------------------------------
 // Integration Tests: WWW Redirect
 // ---------------------------------------------------------
 func TestServer_WWWRedirectIntegration(t *testing.T) {
-	server := setupTestServer()
+	server := setupTestServer(false)
 
 	tests := []struct {
 		name           string
@@ -76,7 +135,7 @@ func TestServer_WWWRedirectIntegration(t *testing.T) {
 // Integration Tests: Tenant Context & Region Detection
 // ---------------------------------------------------------
 func TestServer_ContextAndRegionIntegration(t *testing.T) {
-	server := setupTestServer()
+	server := setupTestServer(false)
 
 	// Inject a temporary route to extract Locals injected by SiteContext and RegionMiddleware
 	server.App.Get("/test-locals", func(c fiber.Ctx) error {
@@ -143,7 +202,7 @@ func TestServer_ContextAndRegionIntegration(t *testing.T) {
 // Integration Tests: Rate Limiter
 // ---------------------------------------------------------
 func TestServer_RateLimiterIntegration(t *testing.T) {
-	server := setupTestServer()
+	server := setupTestServer(false)
 
 	// Add a dummy route to hit
 	server.App.Get("/dummy", func(c fiber.Ctx) error {
@@ -190,7 +249,7 @@ func TestServer_RateLimiterIntegration(t *testing.T) {
 // Integration Tests: Static File Routes & Headers
 // ---------------------------------------------------------
 func TestServer_StaticFileRoutingIntegration(t *testing.T) {
-	server := setupTestServer()
+	server := setupTestServer(false)
 
 	tests := []struct {
 		name                 string
