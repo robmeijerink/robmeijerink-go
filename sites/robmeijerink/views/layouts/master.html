@@ -26,41 +26,9 @@
     <link rel="icon" href="/favicon.ico" />
     <link rel="shortcut icon" href="/favicon.ico" />
 
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "name": "Rob Meijerink",
-      "jobTitle": "Senior Software Developer & DevOps Engineer",
-      "url": "https://robmeijerink.nl",
-      "worksFor": {
-        "@type": "Organization",
-        "name": "Solvalutions"
-      },
-      "sameAs": [
-        "https://linkedin.com/in/robm89",
-        "https://github.com/robmeijerink"
-      ],
-      "knowsAbout": [
-        "Software Architecture",
-        "Full Stack Engineer",
-        "Back End Developer",
-        "Web Development",
-        "Go",
-        "Golang",
-        "PHP",
-        "Laravel",
-        "WordPress",
-        "Vue.js",
-        "JavaScript",
-        "TypeScript",
-        "DevOps",
-        "Docker",
-        "Kubernetes",
-        "Domain-Driven Design"
-      ]
-    }
-    </script>
+    {{ if .StructuredData }}
+    {{ .StructuredData }}
+    {{ end }}
 </head>
 <body class="bg-slate-50 text-slate-900 font-sans antialiased selection:bg-brand-blue selection:text-white relative overflow-x-hidden">
 

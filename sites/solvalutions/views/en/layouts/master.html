@@ -3,23 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{or .Title "Solvalutions | Your B2B Tech Partner"}}</title>
-    <meta name="description" content="{{or .MetaDescription "Solvalutions is the technical partner for reliable web solutions and software architecture."}}">
+    <title>{{ or .Title "Solvalutions | Partner in High-Performance Engineering" }}</title>
+    <meta name="description" content="{{ or .MetaDescription "B2B Tech Partner specialized Digital Engineering for real Business Solutions. We build the software and infrastructure that powers your business growth." }}">
 
-    {{if .Keywords}}
-    <meta name="keywords" content="{{.Keywords}}">
-    {{end}}
+    {{ if .Keywords }}
+    <meta name="keywords" content="{{ .Keywords }}">
+    {{ end }}
 
-    {{if .CanonicalHost}}
+    {{ if .CanonicalHost }}
     <link rel="canonical" href="https://{{ .CanonicalHost }}{{ .Path }}">
-    {{end}}
+    {{ end }}
 
     {{ if .IsProd }}
-        <link rel="stylesheet" href="{{ .Vite.Css "src/scripts/app.js" }}">
-        <script type="module" src="{{ .Vite.Asset "src/scripts/app.js" }}"></script>
+    <link rel="stylesheet" href="{{ .Vite.Css "src/scripts/app.js" }}">
+    <script type="module" src="{{ .Vite.Asset "src/scripts/app.js" }}"></script>
     {{ else }}
-        <script type="module" src="http://localhost:5173/assets/dist/@vite/client"></script>
-        <script type="module" src="http://localhost:5173/assets/dist/src/scripts/app.js"></script>
+    <script type="module" src="http://localhost:5173/assets/dist/@vite/client"></script>
+    <script type="module" src="http://localhost:5173/assets/dist/src/scripts/app.js"></script>
+    {{ end }}
+
+    {{ if .StructuredData }}
+    {{ .StructuredData }}
     {{ end }}
 </head>
 <body class="bg-brand-bg text-slate-400 antialiased selection:bg-brand-accent selection:text-brand-bg flex flex-col min-h-screen">

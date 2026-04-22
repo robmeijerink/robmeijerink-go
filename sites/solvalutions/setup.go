@@ -1,6 +1,8 @@
 package solvalutions
 
 import (
+	"html/template"
+
 	"github.com/gofiber/fiber/v3"
 	"github.com/robmeijerink/robmeijerink-go/internal/web"
 )
@@ -10,23 +12,54 @@ func Setup(router *web.DomainRouter) {
 	router.Get("/contact", contact)
 
 	// en
+	router.Get("/about", about)
 	router.Get("/approach", approach)
 }
 
 func home(c fiber.Ctx) error {
 	region, _ := c.Locals("Region").(string)
 
-	title := "Solvalutions | Your B2B Tech Partner"
-	desc := "We engineer high-performance backend systems."
+	title := "Solvalutions | High-Performance B2B Software Engineering"
+	desc := "Specialized B2B tech agency for high-performance digital infrastructure and scalable software solutions. Digital Engineering Solutions."
+	url := "https://solvalutions.com"
 
 	if region == "nl" {
-		title = "Solvalutions | Jouw B2B Tech Partner"
-		desc = "Wij bouwen high-performance backend systemen."
+		title = "Solvalutions | High-Performance B2B Software Engineering"
+		desc = "Gespecialiseerde B2B tech agency voor high-performance digitale infrastructuur en schaalbare software oplossingen. Bewezen Digitale Oplossingen."
+		url = "https://solvalutions.nl"
 	}
+
+	jsonLd := template.HTML(`
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Solvalutions",
+      "url": "` + url + `",
+      "logo": "` + url + `/assets/images/logo.svg",
+      "image": "` + url + `/assets/images/og-home.jpg",
+      "description": "` + desc + `",
+      "founder": {
+        "@type": "Person",
+        "name": "Rob Meijerink",
+        "url": "https://robmeijerink.nl"
+      },
+      "sameAs": [
+        "https://linkedin.com/company/solvalutions",
+        "https://github.com/robmeijerink"
+      ],
+      "address": {
+        "@type": "PostalAddress",
+        "addressCountry": "NL"
+      }
+    }
+    </script>
+    `)
 
 	return web.Render(c, "home", fiber.Map{
 		"Title":           title,
 		"MetaDescription": desc,
+		"StructuredData":  jsonLd,
 	})
 }
 
@@ -35,15 +68,43 @@ func contact(c fiber.Ctx) error {
 
 	title := "Contact | Your Experienced Tech Partner | Solvalutions"
 	desc := "Facing a complex technical challenge or need a scalable application? Contact Solvalutions. Your experienced tech partner for high-performance solutions"
+	url := "https://solvalutions.com"
 
 	if region == "nl" {
 		title = "Contact | Jouw Ervaren Tech Partner | Solvalutions"
 		desc = "Complex technisch vraagstuk of een schaalbare applicatie nodig? Neem contact op met Solvalutions. Dé B2B tech partner voor high-performance oplossingen"
+		url = "https://solvalutions.nl"
 	}
+
+	jsonLd := template.HTML(`
+	<script type="application/ld+json">
+	{
+	  "@context": "https://schema.org",
+	  "@type": "ContactPage",
+	  "name": "Contact Solvalutions",
+	  "description": "` + desc + `",
+	  "url": "` + url + `/contact",
+	  "mainEntity": {
+	    "@type": "Organization",
+	    "name": "Solvalutions",
+	    "url": "` + url + `",
+	    "logo": "` + url + `/assets/images/logo.svg",
+	    "contactPoint": {
+	      "@type": "ContactPoint",
+	      "telephone": "+31-6-49691374",
+	      "contactType": "customer support",
+	      "email": "info@solvalutions.nl",
+	      "availableLanguage": ["English", "Dutch"]
+	    }
+	  }
+	}
+	</script>
+	`)
 
 	return web.Render(c, "contact", fiber.Map{
 		"Title":           title,
 		"MetaDescription": desc,
+		"StructuredData":  jsonLd,
 	})
 }
 
@@ -67,6 +128,49 @@ func contact(c fiber.Ctx) error {
 // 	})
 // }
 
+func about(c fiber.Ctx) error {
+	region, _ := c.Locals("Region").(string)
+
+	title := "B2B Software Engineering Agency | About Solvalutions"
+	desc := "Solvalutions is a specialized B2B software engineering agency. We build lean, high-performance digital infrastructure that scales with your business."
+	url := "https://solvalutions.com"
+
+	if region == "nl" {
+		title = "B2B Software Engineering Agency | Over Solvalutions"
+		desc = "Solvalutions is een gespecialiseerde B2B tech partner. Wij bouwen lean, razendsnelle digitale infrastructuur die schaalt met jouw bedrijfsvoering."
+		url = "https://solvalutions.nl"
+	}
+
+	jsonLd := template.HTML(`
+	{
+      "@context": "https://schema.org",
+      "@type": "AboutPage",
+      "mainEntity": {
+        "@type": "Organization",
+        "name": "Solvalutions",
+        "url": "` + url + `",
+        "logo": "` + url + `/assets/img/solvalutions-logo.svg",
+        "description": "Solvalutions is a specialized B2B software engineering agency focusing on high-performance, scalable digital solutions & infrastructure.",
+        "founder": {
+          "@type": "Person",
+          "name": "Rob Meijerink",
+          "url": "https://robmeijerink.nl"
+        },
+        "sameAs": [
+          "https://linkedin.com/in/robm89"
+        ]
+      }
+    }
+	`)
+
+	// Lekker flexibel via de fiber.Map
+	return web.Render(c, "about", fiber.Map{
+		"Title":           title,
+		"MetaDescription": desc,
+		"StructuredData":  jsonLd,
+	})
+}
+
 func approach(c fiber.Ctx) error {
 	region, _ := c.Locals("Region").(string)
 
@@ -78,8 +182,37 @@ func approach(c fiber.Ctx) error {
 		desc = "Ontdek onze lean werkwijze voor het bouwen van schaalbare, high-performance Go backends en cloud-native systemen. B2B software zonder onnodige overhead."
 	}
 
+	jsonLd := template.HTML(`
+	<script type="application/ld+json">
+	{
+	  "@context": "https://schema.org",
+	  "@type": "HowTo",
+	  "name": "` + title + `",
+	  "description": "` + desc + `",
+	  "step": [
+	    {
+	      "@type": "HowToStep",
+	      "name": "Analysis & Strategy",
+	      "text": "We analyze complex business problems to find the most lean and effective technical solution."
+	    },
+	    {
+	      "@type": "HowToStep",
+	      "name": "Architecture Design",
+	      "text": "Designing solid, scalable foundations using proven technologies like Go and cloud-native principles."
+	    },
+	    {
+	      "@type": "HowToStep",
+	      "name": "High-Performance Engineering",
+	      "text": "Building the solution with a focus on speed, security, and maintainability without unnecessary overhead."
+	    }
+	  ]
+	}
+	</script>
+	`)
+
 	return web.Render(c, "approach", fiber.Map{
 		"Title":           title,
 		"MetaDescription": desc,
+		"StructuredData":  jsonLd,
 	})
 }

@@ -2,6 +2,7 @@ package robmeijerink
 
 import (
 	"fmt"
+	"html/template"
 	"time"
 
 	"github.com/gofiber/fiber/v3"
@@ -19,18 +20,83 @@ func Setup(router *web.DomainRouter) {
 }
 
 func home(c fiber.Ctx) error {
+	jsonLd := template.HTML(`
+	<script type="application/ld+json">
+	{
+      "@context": "https://schema.org",
+      "@type": "AboutPage",
+      "mainEntity": {
+        "@type": "Organization",
+        "name": "Solvalutions",
+        "url": "https://solvalutions.com",
+        "logo": "https://solvalutions.com/assets/img/solvalutions-logo.svg",
+        "description": "Solvalutions is a specialized B2B software engineering agency focusing on high-performance, scalable digital solutions & infrastructure.",
+        "founder": {
+          "@type": "Person",
+          "name": "Rob Meijerink",
+          "url": "https://robmeijerink.nl"
+        },
+        "sameAs": [
+          "https://linkedin.com/in/robm89",
+		  "https://github.com/robmeijerink"
+        ]
+      }
+    }
+	</script>
+	`)
+
 	return web.Render(c, "home", fiber.Map{
 		"Title":           "Rob Meijerink | Software Developer & B2B Tech Partner",
 		"MetaDescription": "Beschikbaar voor freelance projecten (ZZP). Gespecialiseerd in schaalbare backends (Go/PHP), cloud-architectuur en DevOps automatisering (Kubernetes/AWS).",
 		"Keywords":        "Freelance, ZZP, Software Engineer, inhuren, DevOps, Backend Developer, Go, Golang, PHP, Laravel, Kubernetes, Systeem Architectuur, B2B",
+		"StructuredData":  jsonLd,
 	})
 }
 
 func work(c fiber.Ctx) error {
+	jsonLd := template.HTML(`
+	<script type="application/ld+json">
+	{
+	  "@context": "https://schema.org",
+	  "@type": "ProfilePage",
+	  "breadcrumb": {
+	    "@type": "BreadcrumbList",
+	    "itemListElement": [{
+	      "@type": "ListItem",
+	      "position": 1,
+	      "name": "Home",
+	      "item": "https://robmeijerink.nl"
+	    },{
+	      "@type": "ListItem",
+	      "position": 2,
+	      "name": "Expertise"
+	    }]
+	  },
+	  "mainEntity": {
+	    "@type": "Person",
+	    "name": "Rob Meijerink",
+	    "jobTitle": "Senior Software Developer & DevOps Engineer",
+	    "knowsAbout": [
+	      "Software Architecture",
+	      "Go",
+	      "Golang",
+	      "PHP",
+	      "Laravel",
+	      "DevOps",
+	      "Docker",
+	      "Kubernetes",
+	      "Domain-Driven Design"
+	    ]
+	  }
+	}
+	</script>
+	`)
+
 	return web.Render(c, "work", fiber.Map{
 		"Title":           "Rob Meijerink | Go, Laravel, PHP, JavaScript & Cloud Development",
 		"MetaDescription": "Mijn expertise als Freelance Software Developer inhuren (ZZP). Ervaring in schaalbare software (Go/PHP/Laravel) Domain-Driven Design en DevOps (Kubernetes)",
 		"Keywords":        "Developer, inhuren, Backend Development, Ervaring, CV, ZZP, DevOps Engineering, Systeem Architectuur, Domain Driven Design, Event Sourcing, Go, Golang, PHP, Laravel, Kubernetes, CI/CD",
+		"StructuredData":  jsonLd,
 	})
 }
 
