@@ -8,7 +8,7 @@ type SiteConfig struct {
 var SiteRegistry = map[string]SiteConfig{
 	"solvalutions": {
 		IsMultiRegion: true,
-		DefaultRegion: "en",
+		DefaultRegion: "nl", // @todo switch to en later
 	},
 	"robmeijerink": {
 		IsMultiRegion: false,
