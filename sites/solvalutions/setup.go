@@ -1,7 +1,9 @@
 package solvalutions
 
 import (
+	"fmt"
 	"html/template"
+	"time"
 
 	"github.com/gofiber/fiber/v3"
 	"github.com/robmeijerink/robmeijerink-go/internal/web"
@@ -9,6 +11,7 @@ import (
 
 func Setup(router *web.DomainRouter) {
 	router.Get("/", home)
+	router.Get("/cases", cases)
 	router.Get("/contact", contact)
 
 	// en
@@ -142,6 +145,7 @@ func about(c fiber.Ctx) error {
 	}
 
 	jsonLd := template.HTML(`
+	<script type="application/ld+json">
 	{
       "@context": "https://schema.org",
       "@type": "AboutPage",
@@ -150,7 +154,7 @@ func about(c fiber.Ctx) error {
         "name": "Solvalutions",
         "url": "` + url + `",
         "logo": "` + url + `/assets/img/solvalutions-logo.svg",
-        "description": "Solvalutions is a specialized B2B software engineering agency focusing on high-performance, scalable digital solutions & infrastructure.",
+        "description": "` + desc + `",
         "founder": {
           "@type": "Person",
           "name": "Rob Meijerink",
@@ -161,6 +165,7 @@ func about(c fiber.Ctx) error {
         ]
       }
     }
+	</script>
 	`)
 
 	// Lekker flexibel via de fiber.Map
@@ -215,4 +220,87 @@ func approach(c fiber.Ctx) error {
 		"MetaDescription": desc,
 		"StructuredData":  jsonLd,
 	})
+}
+
+func cases(c fiber.Ctx) error {
+	region, _ := c.Locals("Region").(string)
+
+	title := "Case Studies | Proven Engineering Success | Solvalutions"
+	desc := "Explore our portfolio of high-performance B2B software solutions. From cloud-native migrations to custom Go-driven backend architectures."
+	url := "https://solvalutions.nl"
+
+	if region == "nl" {
+		title = "Cases | Bewezen Digitale Successen | Solvalutions"
+		desc = "Bekijk onze portfolio van high-performance B2B softwareoplossingen. Van cloud-native migraties tot schaalbare Go-architecturen."
+		url = "https://solvalutions.com"
+	}
+
+	structuredData := template.HTML(`
+	<script type="application/ld+json">
+	{
+	  "@context": "https://schema.org",
+	  "@type": "CollectionPage",
+	  "name": "` + title + `",
+	  "description": "` + desc + `",
+	  "url": "` + url + `/cases",
+	  "mainEntity": {
+	    "@type": "ItemList",
+	    "itemListElement": [
+	      {
+	        "@type": "ListItem",
+	        "position": 1,
+	        "name": "Cloud Infrastructure Migration",
+	        "description": "Scalable architecture for a logistics partner."
+	      },
+	      {
+	        "@type": "ListItem",
+	        "position": 2,
+	        "name": "WooCommerce to Go API Refactor",
+	        "description": "Transforming a slow legacy store into a high-performance headless commerce engine."
+	      }
+	    ]
+	  }
+	}
+	</script>
+	`)
+
+	return web.Render(c, "cases", fiber.Map{
+		"Title":           title,
+		"MetaDescription": desc,
+		"StructuredData":  structuredData,
+	})
+}
+
+func sitemap(c fiber.Ctx) error {
+	host := c.Hostname()
+	now := time.Now().Format("2006-01-02")
+
+	pages := []struct {
+		loc      string
+		priority string
+	}{
+		{loc: "/", priority: "1.0"},
+		{loc: "/about", priority: "0.8"},
+		{loc: "/approach", priority: "0.8"},
+		{loc: "/cases", priority: "0.8"},
+		{loc: "/contact", priority: "0.8"},
+	}
+
+	xml := `<?xml version="1.0" encoding="UTF-8"?>`
+	xml += `<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">`
+
+	for _, page := range pages {
+		xml += fmt.Sprintf(`
+	<url>
+		<loc>https://%s%s</loc>
+		<lastmod>%s</lastmod>
+		<changefreq>monthly</changefreq>
+		<priority>%s</priority>
+	</url>`, host, page.loc, now, page.priority)
+	}
+
+	xml += `</urlset>`
+
+	c.Type("xml")
+	return c.SendString(xml)
 }
