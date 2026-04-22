@@ -167,36 +167,37 @@ func TestRender_MultiRegion_Success(t *testing.T) {
 
 	// Assert it successfully targeted the "nl" folder
 	assert.Equal(t, "solvalutions/views/nl/pages/home", mockEngine.Template)
-	assert.Equal(t, "solvalutions/views/layouts/master", mockEngine.Layout)
+	// Assert it successfully targeted the isolated layout folder based on SharedMasterTemplate: false
+	assert.Equal(t, "solvalutions/views/nl/layouts/master", mockEngine.Layout)
 	assert.Equal(t, "nl", mockEngine.Data["Region"])
 }
 
-// func TestRender_MultiRegion_Fallback(t *testing.T) {
-// 	mockEngine := &MockViews{
-// 		// Force the engine to fail on the NL template to trigger the fallback
-// 		FailOnTemplate: "solvalutions/views/nl/pages/portfolio",
-// 	}
-// 	app := fiber.New(fiber.Config{Views: mockEngine})
-//
-// 	app.Get("/test-fallback", func(c fiber.Ctx) error {
-// 		c.Locals("Site", "solvalutions")
-// 		c.Locals("Region", "nl") // User wants NL
-// 		c.Locals("IsProd", true)
-// 		c.Locals("CanonicalHost", "solvalutions.nl")
-// 		c.Locals("Path", "/test-fallback")
-//
-// 		return Render(c, "pages/portfolio", nil)
-// 	})
-//
-// 	req := httptest.NewRequest("GET", "/test-fallback", nil)
-// 	resp, err := app.Test(req)
-//
-// 	assert.NoError(t, err)
-// 	assert.Equal(t, fiber.StatusOK, resp.StatusCode)
-//
-// 	// Assert the Render function caught the error and fell back to the DefaultRegion ("en")
-// 	assert.Equal(t, "solvalutions/views/en/pages/portfolio", mockEngine.Template)
-// }
+func TestRender_MultiRegion_Fallback(t *testing.T) {
+	mockEngine := &MockViews{
+		// Force the engine to fail on the NL template to trigger the fallback
+		FailOnTemplate: "solvalutions/views/nl/pages/portfolio",
+	}
+	app := fiber.New(fiber.Config{Views: mockEngine})
+
+	app.Get("/test-fallback", func(c fiber.Ctx) error {
+		c.Locals("Site", "solvalutions")
+		c.Locals("Region", "nl") // User wants NL
+		c.Locals("IsProd", true)
+		c.Locals("CanonicalHost", "solvalutions.nl")
+		c.Locals("Path", "/test-fallback")
+
+		return Render(c, "pages/portfolio", nil)
+	})
+
+	req := httptest.NewRequest("GET", "/test-fallback", nil)
+	resp, err := app.Test(req)
+
+	assert.NoError(t, err)
+	assert.Equal(t, fiber.StatusOK, resp.StatusCode)
+
+	// Assert the Render function caught the error and fell back to the DefaultRegion ("en")
+	assert.Equal(t, "solvalutions/views/en/pages/portfolio", mockEngine.Template)
+}
 
 func TestRender_FlatStructure_Success(t *testing.T) {
 	mockEngine := &MockViews{}
@@ -222,5 +223,7 @@ func TestRender_FlatStructure_Success(t *testing.T) {
 
 	// Assert it used the flat structure (NO region folder in the path)
 	assert.Equal(t, "robmeijerink/views/pages/about", mockEngine.Template)
+	// Assert it loaded the root layout file based on SharedMasterTemplate: true
+	assert.Equal(t, "robmeijerink/views/layouts/master", mockEngine.Layout)
 	assert.Equal(t, "About Rob", mockEngine.Data["PageTitle"])
 }

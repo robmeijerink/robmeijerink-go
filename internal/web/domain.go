@@ -48,14 +48,21 @@ func Render(c fiber.Ctx, template string, data fiber.Map) error {
 		}
 	}
 
-	layoutPath := site + "/views/layouts/master"
-
 	config, exists := config.SiteRegistry[site]
 	if !exists {
 		return fiber.NewError(fiber.StatusInternalServerError, "Site configuration missing for: "+site)
 	}
 
 	var templatePath string
+	var layoutPath string
+
+	if config.SharedMasterTemplate {
+		layoutPath = site + "/views/layouts/master"
+	} else if config.IsMultiRegion {
+		layoutPath = site + "/views/" + region + "/layouts/master"
+	} else {
+		layoutPath = site + "/views/layouts/master"
+	}
 
 	if config.IsMultiRegion {
 		templatePath = site + "/views/" + region + "/" + template
@@ -63,8 +70,14 @@ func Render(c fiber.Ctx, template string, data fiber.Map) error {
 		err := c.Render(templatePath, fullData, layoutPath)
 		if err != nil {
 			if region != config.DefaultRegion {
-				fallbackPath := site + "/views/" + config.DefaultRegion + "/" + template
-				return c.Render(fallbackPath, fullData, layoutPath)
+				fallbackTemplate := site + "/views/" + config.DefaultRegion + "/" + template
+				fallbackLayout := layoutPath
+
+				if !config.SharedMasterTemplate {
+					fallbackLayout = site + "/views/" + config.DefaultRegion + "/layouts/master"
+				}
+
+				return c.Render(fallbackTemplate, fullData, fallbackLayout)
 			}
 			return err
 		}
