@@ -11,6 +11,8 @@
     },
     "type": "module",
     "devDependencies": {
+        "@fontsource/geist-mono": "^5.2.7",
+        "@fontsource/geist-sans": "^5.2.5",
         "@tailwindcss/postcss": "^4.2.2",
         "@tailwindcss/typography": "^0.5.19",
         "postcss": "^8.5.9",
