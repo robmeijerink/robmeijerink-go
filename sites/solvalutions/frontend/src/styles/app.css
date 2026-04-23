@@ -22,8 +22,10 @@
     --font-sans: 'Geist Sans', system-ui, sans-serif;
     --font-mono: 'Geist Mono', ui-monospace, monospace;
 
+    --color-brand-blue: #024b82;
     --color-brand-accent: #38bdf8;
     --color-brand-accent-hover: #7dd3fc;
+    --color-brand-logo: #e0f2fe;
 
     --color-brand-bg: #0f172a;
     --color-brand-surface: #1e293b;
