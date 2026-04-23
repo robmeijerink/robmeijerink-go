@@ -32,20 +32,40 @@
 
     <header class="sticky top-0 z-50 w-full border-b border-slate-800/50 bg-brand-bg/60 backdrop-blur-md">
         <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-            <a href="/" class="text-white font-extrabold text-xl tracking-tight flex items-center gap-2">
-                <div class="w-8 h-8 bg-brand-accent rounded text-brand-bg flex items-center justify-center font-bold">S</div>
-                Solvalutions
+            <a href="/" class="flex items-center gap-3 group">
+                <div class="bg-white p-1 rounded-lg h-12 w-12 flex items-center justify-center shrink-0 shadow-[0_0_15px_rgba(255,255,255,0.1)] group-hover:shadow-brand-accent/20 transition-all">
+                    <picture>
+                        <source srcset="/assets/img/solvalutions-logo.webp" type="image/webP">
+                        <img src="/assets/img/solvalutions-logo.png"
+                             alt="Solvalutions Logo"
+                             class="h-full w-full object-contain"
+                             width="48"
+                             height="48"
+                             fetchpriority="high"
+                             decoding="async">
+                    </picture>
+                </div>
+
+                <span class="text-white font-bold text-lg tracking-tight leading-none transition-colors group-hover:text-white">
+                    Solvalutions
+                </span>
             </a>
 
             <nav class="hidden md:flex gap-8 text-sm font-medium">
-                <a href="/approach" class="hover:text-white transition-colors">Approach</a>
-                <a href="/cases" class="hover:text-white transition-colors">Cases</a>
-                <a href="/about" class="hover:text-white transition-colors">About</a>
+                <a href="/approach" class="transition-colors {{ if eq .Path "/approach" }} text-white {{ else }} hover:text-white {{ end }}">Approach</a>
+                <a href="/cases" class="transition-colors {{ if eq .Path "/cases" }} text-white {{ else }} hover:text-white {{ end }}">Cases</a>
+                <a href="/about" class="transition-colors {{ if eq .Path "/about" }} text-white {{ else }} hover:text-white {{ end }}">About</a>
             </nav>
 
-            <a href="/contact" class="hidden md:inline-flex px-5 py-2.5 text-sm font-bold text-brand-bg bg-white rounded-lg hover:bg-brand-accent transition-all shadow-(--brand-glow) active:scale-95">
+            <a href="/contact" class="hidden md:inline-flex px-5 py-2.5 text-sm font-bold text-brand-bg bg-white rounded-lg hover:bg-brand-accent transition-all shadow-(--brand-accent) active:scale-95">
                 Contact
             </a>
+
+            <button id="mobile-menu-open" class="md:hidden p-2 text-slate-400 hover:text-white transition-colors">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+            </button>
         </div>
     </header>
 
@@ -57,8 +77,19 @@
         <div class="max-w-7xl mx-auto px-6">
             <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
                 <div class="col-span-1 md:col-span-2">
-                    <a href="/" class="text-white font-extrabold text-xl tracking-tight flex items-center gap-2 mb-6">
-                        <div class="w-6 h-6 bg-brand-accent rounded text-brand-bg flex items-center justify-center font-bold text-xs">S</div>
+                    <a href="/" class="text-white font-bold text-lg tracking-tight flex items-center gap-2 mb-6">
+                        <div class="bg-white p-1 rounded-lg h-12 w-12 flex items-center justify-center shrink-0 shadow-[0_0_15px_rgba(255,255,255,0.1)] group-hover:shadow-brand-accent/20 transition-all">
+                            <picture>
+                                <source srcset="/assets/img/solvalutions-logo.webp" type="image/webP">
+                                <img src="/assets/img/solvalutions-logo.png"
+                                     alt="Solvalutions Logo"
+                                     class="h-full w-full object-contain"
+                                     width="48"
+                                     height="48"
+                                     fetchpriority="high"
+                                     decoding="async">
+                            </picture>
+                        </div>
                         Solvalutions
                     </a>
                     <p class="text-sm text-slate-500 max-w-sm">
@@ -70,14 +101,14 @@
                     <ul class="text-sm space-y-4">
                         <li><a href="https://robmeijerink.nl" class="hover:text-brand-accent transition-colors">Rob Meijerink</a></li>
                         <li><a href="/contact" class="hover:text-brand-accent transition-colors">Contact</a></li>
-                        <li><a href="#" class="hover:text-brand-accent transition-colors">Legal</a></li>
+                        <!-- <li><a href="#" class="hover:text-brand-accent transition-colors">Legal</a></li> -->
                     </ul>
                 </div>
             </div>
 
             <div class="pt-8 border-t border-slate-800/50 flex flex-col md:flex-row justify-between items-center gap-6">
                 <div class="font-mono text-[10px] text-slate-500 flex items-center gap-4">
-                    <span>© {{.CurrentYear}} - DESIGN BY SOLVALUTIONS - BUILT WITH <span title="The Go Programming Language - Golang">GO</span></span>
+                    <span>© {{.CurrentYear}} - DESIGN BY SOLVALUTIONS - <span title="The Go Programming Language - Golang">BUILT WITH GO</span></span>
                 </div>
                 <div class="flex items-center gap-6">
                     <div class="font-mono text-[10px] text-slate-500 flex items-center gap-4">
@@ -96,5 +127,31 @@
             </div>
         </div>
     </footer>
+
+    <div id="mobile-menu-backdrop" class="fixed inset-0 z-[90] bg-black/60 opacity-0 pointer-events-none transition-opacity duration-300 md:hidden"></div>
+    <div id="mobile-menu" class="fixed inset-y-0 right-0 z-[100] w-[75%] bg-brand-bg/95 backdrop-blur-xl border-l border-white/10 translate-x-full transition-transform duration-300 ease-in-out md:hidden shadow-[-20px_0_30px_rgba(0,0,0,0.5)]">
+        <div class="flex flex-col h-full p-8">
+            <div class="flex justify-between items-center mb-12">
+                <span class="text-brand-blue font-bold tracking-widest text-xs uppercase">Menu</span>
+                <button id="mobile-menu-close" class="p-2 text-slate-400 hover:text-white transition-colors">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
+            </div>
+
+            <nav class="flex flex-col gap-8 text-xl font-bold">
+                <a href="/approach" class="hover:text-brand-accent transition-colors">Approach</a>
+                <a href="/cases" class="hover:text-brand-accent transition-colors">Cases</a>
+                <a href="/about" class="hover:text-brand-accent transition-colors">About</a>
+                <hr class="border-slate-800/50">
+                <a href="/contact" class="text-brand-accent hover:brightness-125">Contact</a>
+            </nav>
+
+            <div class="mt-auto pt-8 border-t border-slate-800/50">
+                <p class="text-[10px] font-mono text-slate-500 uppercase tracking-widest">Solvalutions Engineering</p>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
