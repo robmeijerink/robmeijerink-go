@@ -39,8 +39,8 @@ func home(c fiber.Ctx) error {
       "@type": "Organization",
       "name": "Solvalutions",
       "url": "` + url + `",
-      "logo": "` + url + `/assets/images/logo.svg",
-      "image": "` + url + `/assets/images/og-home.jpg",
+      "logo": "` + url + `/assets/img/solvalutions-logo.png",
+      "image": "` + url + `/assets/img/solvalutions-og-image.png",
       "description": "` + desc + `",
       "founder": {
         "@type": "Person",
@@ -91,7 +91,7 @@ func contact(c fiber.Ctx) error {
 	    "@type": "Organization",
 	    "name": "Solvalutions",
 	    "url": "` + url + `",
-	    "logo": "` + url + `/assets/images/logo.svg",
+	    "logo": "` + url + `/assets/img/solvalutions-logo.png",
 	    "contactPoint": {
 	      "@type": "ContactPoint",
 	      "telephone": "+31-6-49691374",
@@ -153,7 +153,7 @@ func about(c fiber.Ctx) error {
         "@type": "Organization",
         "name": "Solvalutions",
         "url": "` + url + `",
-        "logo": "` + url + `/assets/img/solvalutions-logo.svg",
+        "logo": "` + url + `/assets/img/solvalutions-logo.png",
         "description": "` + desc + `",
         "founder": {
           "@type": "Person",
