@@ -73,7 +73,7 @@ func NewServer(cfg *config.AppConfig) *Server {
 
 	// Custom Modular Middlewares
 	app.Use(middleware.RateLimiter())
-	app.Use(middleware.RedirectWWW())
+	// app.Use(middleware.RedirectWWW())
 	app.Use(middleware.RequestContext(cfg.IsProd))
 
 	// Routes
@@ -98,7 +98,7 @@ func registerFileRoutes(app *fiber.App) {
 		filePath := fmt.Sprintf("./sites/%s/public/assets/%s", site, c.Params("*"))
 
 		// Immutable cache for long-term storage of hashed assets
-		c.Set("Cache-Control", "public, max-age=31536000, immutable")
+		// c.Set("Cache-Control", "public, max-age=31536000, immutable")
 		return c.SendFile(filePath)
 	})
 
@@ -120,7 +120,7 @@ func registerFileRoutes(app *fiber.App) {
 
 		if rootFiles[file] {
 			site := c.Locals("Site").(string)
-			c.Set("Cache-Control", "public, max-age=3600, must-revalidate")
+			// c.Set("Cache-Control", "public, max-age=3600, must-revalidate")
 			return c.SendFile(fmt.Sprintf("./sites/%s/public/%s", site, file))
 		}
 

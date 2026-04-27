@@ -105,7 +105,7 @@ func work(c fiber.Ctx) error {
 // }
 
 func workstationSetup(c fiber.Ctx) error {
-	c.Set(fiber.HeaderStrictTransportSecurity, "max-age=31536000; includeSubDomains")
+	// c.Set(fiber.HeaderStrictTransportSecurity, "max-age=31536000; includeSubDomains")
 	return c.Redirect().Status(fiber.StatusFound).To("https://raw.githubusercontent.com/robmeijerink/workstation-setup/main/workstation-setup.sh")
 }
 
