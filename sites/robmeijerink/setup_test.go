@@ -12,7 +12,6 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
-// MockViews is een simpele mock om c.Render op te vangen zonder echte HTML-bestanden.
 type MockViews struct{}
 
 func (m *MockViews) Load() error { return nil }
@@ -27,7 +26,6 @@ func TestSetupRoutes(t *testing.T) {
 		Views: &MockViews{},
 	})
 
-	// Injecteer de benodigde Locals die normaal door de SiteContext middleware komen.
 	app.Use(func(c fiber.Ctx) error {
 		c.Locals("Site", "robmeijerink")
 		c.Locals("Region", "nl")
@@ -83,8 +81,6 @@ func TestSetupRoutes(t *testing.T) {
 			checkResponse: func(t *testing.T, resp *http.Response) {
 				expectedURL := "https://raw.githubusercontent.com/robmeijerink/workstation-setup/main/workstation-setup.sh"
 				assert.Equal(t, expectedURL, resp.Header.Get("Location"))
-
-				// HSTS check is hier verwijderd: Cloudflare handelt dit nu af.
 			},
 		},
 		{
