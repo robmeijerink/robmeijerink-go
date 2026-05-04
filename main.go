@@ -9,7 +9,8 @@ import (
 
 	// Domain Specific Sites
 	"github.com/robmeijerink/robmeijerink-go/sites/robmeijerink"
-	"github.com/robmeijerink/robmeijerink-go/sites/solvalutions"
+	"github.com/robmeijerink/robmeijerink-go/sites/solvalutions_com"
+	"github.com/robmeijerink/robmeijerink-go/sites/solvalutions_nl"
 )
 
 func main() {
@@ -22,9 +23,14 @@ func main() {
 		Domain: "robmeijerink",
 	})
 
-	solvalutions.Setup(&web.DomainRouter{
+	solvalutions_com.Setup(&web.DomainRouter{
 		App:    server.App,
-		Domain: "solvalutions",
+		Domain: "solvalutions_com",
+	})
+
+	solvalutions_nl.Setup(&web.DomainRouter{
+		App:    server.App,
+		Domain: "solvalutions_nl",
 	})
 
 	log.Printf("Starting application on port %s (Production: %v)", cfg.Port, cfg.IsProd)

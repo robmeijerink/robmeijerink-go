@@ -1,0 +1,67 @@
+@import 'tailwindcss';
+
+@source '../../../views/';
+
+@font-face {
+  font-family: 'Geist Sans';
+  src: url('../fonts/geist-sans-latin-400-normal.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Geist Mono';
+  src: url('../fonts/geist-mono-latin-400-normal.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@theme {
+  /* Fonts */
+  --font-sans: 'Geist Sans', system-ui, sans-serif;
+  --font-mono: 'Geist Mono', ui-monospace, monospace;
+
+  /* Structural Colors */
+  --color-canvas: #F7F3EC;
+  --color-panel: #FFFFFF;
+  --color-panel-soft: #F1ECE4;
+
+  /* Typography & Content Colors */
+  --color-content-strong: #0B2239;
+  --color-content-base: #3A536B;
+  --color-content-muted: #6B7C8F;
+
+  /* Brand Colors */
+  --color-brand-dark: #0B2239;
+  --color-brand-base: #034980;
+  --color-brand-light: #045594;
+
+  /* Accent Colors (Rust/Terracotta) */
+  --color-accent-dark: #8C3A21;
+  --color-accent-base: #B84A2B;
+  --color-accent-light: #D96A4C;
+
+  /* Shadows */
+  --shadow-soft: 0 20px 60px -20px rgba(11,34,57,0.12);
+  --shadow-medium: 0 30px 80px -20px rgba(11,34,57,0.18);
+}
+
+#flow-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* Zorg dat hij boven de achtergrondkleur zit, maar onder de main content */
+    z-index: 1;
+    pointer-events: none;
+    /* z-index: 9999 !important; */
+}
+
+/* Zorg dat de main content boven het canvas zweeft */
+main {
+    position: relative;
+    z-index: 10;
+}

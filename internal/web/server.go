@@ -27,7 +27,8 @@ func NewServer(cfg *config.AppConfig) *Server {
 
 	if cfg.IsProd {
 		_ = LoadManifest("robmeijerink", "./sites/robmeijerink/public/assets/dist/.vite/manifest.json")
-		_ = LoadManifest("solvalutions", "./sites/solvalutions/public/assets/dist/.vite/manifest.json")
+		_ = LoadManifest("solvalutions_com", "./sites/solvalutions_com/public/assets/dist/.vite/manifest.json")
+		_ = LoadManifest("solvalutions_nl", "./sites/solvalutions_nl/public/assets/dist/.vite/manifest.json")
 	}
 
 	app := fiber.New(fiber.Config{

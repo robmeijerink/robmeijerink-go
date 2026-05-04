@@ -25,7 +25,7 @@ export default defineConfig({
         strictPort: true,
         origin: 'http://localhost:5173',
         cors: true,
-        allowedHosts: ['solvalutions.test'],
+        allowedHosts: ['solvalutions.com.test'],
 
         hmr: {
             host: 'localhost',

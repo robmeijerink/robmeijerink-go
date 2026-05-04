@@ -14,19 +14,20 @@ func TestDomainRouter_StrictIsolation(t *testing.T) {
 	// 1. Setup Fiber App
 	app := fiber.New()
 
-	// 2. Mock the Host/Tenant Middleware exactly as it works in production now
+	// 2. Mock the Host/Tenant Middleware reflecting the new Strict Site Matching
 	app.Use(func(c fiber.Ctx) error {
 		host := c.Hostname()
-		site := "robmeijerink"
-		region := "en"
+		var site string
 
 		if host == "solvalutions.nl" || host == "www.solvalutions.nl" {
-			site = "solvalutions"
-			region = "nl"
+			site = "solvalutions_nl"
+		} else if host == "solvalutions.com" || host == "www.solvalutions.com" {
+			site = "solvalutions_com"
+		} else {
+			site = "robmeijerink"
 		}
 
 		c.Locals("Site", site)
-		c.Locals("Region", region)
 		return c.Next()
 	})
 
@@ -36,9 +37,9 @@ func TestDomainRouter_StrictIsolation(t *testing.T) {
 		Domain: "robmeijerink",
 	}
 
-	solRouter := &DomainRouter{
+	solNlRouter := &DomainRouter{
 		App:    app,
-		Domain: "solvalutions",
+		Domain: "solvalutions_nl",
 	}
 
 	// 4. Register strictly the routes we want to test
@@ -46,8 +47,8 @@ func TestDomainRouter_StrictIsolation(t *testing.T) {
 		return c.SendString("Rob's Expertise Page")
 	})
 
-	solRouter.Get("/services", func(c fiber.Ctx) error {
-		return c.SendString("Solvalutions Services Page")
+	solNlRouter.Get("/services", func(c fiber.Ctx) error {
+		return c.SendString("Solvalutions NL Services Page")
 	})
 
 	// 5. Define exact test scenarios
@@ -67,23 +68,23 @@ func TestDomainRouter_StrictIsolation(t *testing.T) {
 			expectedBody:   "Rob's Expertise Page",
 		},
 		{
-			name:           "Solvalutions can access its own /services route",
+			name:           "Solvalutions NL can access its own /services route",
 			host:           "solvalutions.nl",
 			path:           "/services",
 			expectedStatus: fiber.StatusOK,
-			expectedBody:   "Solvalutions Services Page",
+			expectedBody:   "Solvalutions NL Services Page",
 		},
 
 		// Unauthorized Cross-Tenant Access
 		{
-			name:           "Solvalutions CANNOT access Rob's /expertise route",
+			name:           "Solvalutions NL CANNOT access Rob's /expertise route",
 			host:           "solvalutions.nl",
 			path:           "/expertise",
 			expectedStatus: fiber.StatusNotFound, // Fiber returns 404 because c.Next() falls through
 			expectedBody:   "Not Found",
 		},
 		{
-			name:           "Rob CANNOT access Solvalutions' /services route",
+			name:           "Rob CANNOT access Solvalutions NL's /services route",
 			host:           "robmeijerink.nl",
 			path:           "/services",
 			expectedStatus: fiber.StatusNotFound,
@@ -144,75 +145,26 @@ func (m *MockViews) Render(w io.Writer, template string, data any, layouts ...st
 // Render Function Tests
 // ---------------------------------------------------------
 
-func TestRender_MultiRegion_Success(t *testing.T) {
-	mockEngine := &MockViews{}
-	app := fiber.New(fiber.Config{Views: mockEngine})
-
-	app.Get("/test-nl", func(c fiber.Ctx) error {
-		// Mock locals for a Dutch Solvalutions visitor
-		c.Locals("Site", "solvalutions")
-		c.Locals("Region", "nl")
-		c.Locals("IsProd", true)
-		c.Locals("CanonicalHost", "solvalutions.nl")
-		c.Locals("Path", "/test-nl")
-
-		return Render(c, "pages/home", nil)
-	})
-
-	req := httptest.NewRequest("GET", "/test-nl", nil)
-	resp, err := app.Test(req)
-
-	assert.NoError(t, err)
-	assert.Equal(t, fiber.StatusOK, resp.StatusCode)
-
-	// Assert it successfully targeted the "nl" folder
-	assert.Equal(t, "solvalutions/views/nl/pages/home", mockEngine.Template)
-	// Assert it successfully targeted the isolated layout folder based on SharedMasterTemplate: false
-	assert.Equal(t, "solvalutions/views/nl/layouts/master", mockEngine.Layout)
-	assert.Equal(t, "nl", mockEngine.Data["Region"])
-}
-
-func TestRender_MultiRegion_Fallback(t *testing.T) {
-	mockEngine := &MockViews{
-		// Force the engine to fail on the NL template to trigger the fallback
-		FailOnTemplate: "solvalutions/views/nl/pages/portfolio",
-	}
-	app := fiber.New(fiber.Config{Views: mockEngine})
-
-	app.Get("/test-fallback", func(c fiber.Ctx) error {
-		c.Locals("Site", "solvalutions")
-		c.Locals("Region", "nl") // User wants NL
-		c.Locals("IsProd", true)
-		c.Locals("CanonicalHost", "solvalutions.nl")
-		c.Locals("Path", "/test-fallback")
-
-		return Render(c, "pages/portfolio", nil)
-	})
-
-	req := httptest.NewRequest("GET", "/test-fallback", nil)
-	resp, err := app.Test(req)
-
-	assert.NoError(t, err)
-	assert.Equal(t, fiber.StatusOK, resp.StatusCode)
-
-	// Assert the Render function caught the error and fell back to the DefaultRegion ("en")
-	assert.Equal(t, "solvalutions/views/en/pages/portfolio", mockEngine.Template)
-}
-
 func TestRender_FlatStructure_Success(t *testing.T) {
 	mockEngine := &MockViews{}
 	app := fiber.New(fiber.Config{Views: mockEngine})
 
+	// To effectively test the Render function without relying on the actual config.SiteRegistry
+	// which is parsed in runtime, we override the strict check in a test environment, or we
+	// mock the local config map. Assuming config.SiteRegistry["solvalutions_nl"] is initialized in init() or setup.
+
+	// Note: You must ensure your test runner initializes config.SiteRegistry["solvalutions_nl"]
+	// for this handler not to panic/throw 500 based on the current domain.go logic.
+
 	app.Get("/test-flat", func(c fiber.Ctx) error {
 		// Mock locals for a flat site visitor
-		c.Locals("Site", "robmeijerink")
-		c.Locals("Region", "nl")
+		c.Locals("Site", "solvalutions_nl")
 		c.Locals("IsProd", true)
-		c.Locals("CanonicalHost", "robmeijerink.nl")
+		c.Locals("CanonicalHost", "solvalutions.nl")
 		c.Locals("Path", "/test-flat")
 
-		customData := fiber.Map{"PageTitle": "About Rob"}
-		return Render(c, "pages/about", customData)
+		customData := fiber.Map{"PageTitle": "Engineering Backbone"}
+		return Render(c, "pages/home", customData)
 	})
 
 	req := httptest.NewRequest("GET", "/test-flat", nil)
@@ -221,9 +173,9 @@ func TestRender_FlatStructure_Success(t *testing.T) {
 	assert.NoError(t, err)
 	assert.Equal(t, fiber.StatusOK, resp.StatusCode)
 
-	// Assert it used the flat structure (NO region folder in the path)
-	assert.Equal(t, "robmeijerink/views/pages/about", mockEngine.Template)
-	// Assert it loaded the root layout file based on SharedMasterTemplate: true
-	assert.Equal(t, "robmeijerink/views/layouts/master", mockEngine.Layout)
-	assert.Equal(t, "About Rob", mockEngine.Data["PageTitle"])
+	// Assert it used the flat, isolated structure
+	assert.Equal(t, "solvalutions_nl/views/pages/home", mockEngine.Template)
+	// Assert it loaded the root layout file for this specific site
+	assert.Equal(t, "solvalutions_nl/views/layouts/master", mockEngine.Layout)
+	assert.Equal(t, "Engineering Backbone", mockEngine.Data["PageTitle"])
 }

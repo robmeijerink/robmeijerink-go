@@ -1,6 +1,6 @@
-# robmeijerink.nl
+# robmeijerink-go
 
-Personal website made in Go with Fiber, Tailwind CSS and Vuejs.
+Personal website platform made in Go with Fiber v3.
 
 #### Development
 

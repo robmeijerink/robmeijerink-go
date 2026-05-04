@@ -25,16 +25,13 @@ lerna-debug.log*
 
 .env
 
-README.md
-
 tmp/*
 bin/*
 
 Taskfile.yml
 Taskfile.local.yml
 
-sites/robmeijerink/public/assets/dist/*
-sites/robmeijerink/frontend/node_modules/*
+**/.vite/
 
-sites/solvalutions/public/assets/dist/*
-sites/solvalutions/frontend/node_modules/*
+**/assets/dist/
+**/node_modules/

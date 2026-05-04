@@ -1,4 +1,4 @@
-package solvalutions
+package solvalutions_nl
 
 import (
 	"fmt"
@@ -20,17 +20,9 @@ func Setup(router *web.DomainRouter) {
 }
 
 func home(c fiber.Ctx) error {
-	region, _ := c.Locals("Region").(string)
-
 	title := "Solvalutions | High-Performance B2B Software Engineering"
-	desc := "Specialized B2B tech agency for high-performance digital infrastructure and scalable software solutions. Digital Engineering Solutions."
-	url := "https://solvalutions.com"
-
-	if region == "nl" {
-		title = "Solvalutions | High-Performance B2B Software Engineering"
-		desc = "Gespecialiseerde B2B tech agency voor high-performance digitale infrastructuur en schaalbare software oplossingen. Bewezen Digitale Oplossingen."
-		url = "https://solvalutions.nl"
-	}
+	desc := "Gespecialiseerde B2B tech agency voor high-performance digitale infrastructuur en schaalbare software oplossingen. Bewezen Digitale Oplossingen."
+	url := "https://solvalutions.nl"
 
 	jsonLd := template.HTML(`
     <script type="application/ld+json">
@@ -67,17 +59,9 @@ func home(c fiber.Ctx) error {
 }
 
 func contact(c fiber.Ctx) error {
-	region, _ := c.Locals("Region").(string)
-
-	title := "Contact | Your Experienced Tech Partner | Solvalutions"
-	desc := "Facing a complex technical challenge or need a scalable application? Contact Solvalutions. Your experienced tech partner for high-performance solutions"
-	url := "https://solvalutions.com"
-
-	if region == "nl" {
-		title = "Contact | Jouw Ervaren Tech Partner | Solvalutions"
-		desc = "Complex technisch vraagstuk of een schaalbare applicatie nodig? Neem contact op met Solvalutions. Dé B2B tech partner voor high-performance oplossingen"
-		url = "https://solvalutions.nl"
-	}
+	title := "Contact | Jouw Ervaren Tech Partner | Solvalutions"
+	desc := "Complex technisch vraagstuk of een schaalbare applicatie nodig? Neem contact op met Solvalutions. Dé B2B tech partner voor high-performance oplossingen"
+	url := "https://solvalutions.nl"
 
 	jsonLd := template.HTML(`
 	<script type="application/ld+json">
@@ -111,38 +95,10 @@ func contact(c fiber.Ctx) error {
 	})
 }
 
-// func services(c fiber.Ctx) error {
-// 	region, _ := c.Locals("Region").(string)
-// 	currentPath := c.Path()
-//
-// 	if region == "nl" && currentPath != "/diensten" {
-// 		return c.Redirect("/diensten", fiber.StatusMovedPermanently)
-// 	} else if region == "en" && currentPath != "/services" {
-// 		return c.Redirect("/services", fiber.StatusMovedPermanently)
-// 	}
-//
-// 	title := "Services | Solvalutions"
-// 	if region == "nl" {
-// 		title = "Diensten | Solvalutions"
-// 	}
-//
-// 	return web.Render(c, "services", fiber.Map{
-// 		"Title": title,
-// 	})
-// }
-
 func about(c fiber.Ctx) error {
-	region, _ := c.Locals("Region").(string)
-
-	title := "B2B Software Engineering Agency | About Solvalutions"
-	desc := "Solvalutions is a specialized B2B software engineering agency. We build lean, high-performance digital infrastructure that scales with your business."
-	url := "https://solvalutions.com"
-
-	if region == "nl" {
-		title = "B2B Software Engineering Agency | Over Solvalutions"
-		desc = "Solvalutions is een gespecialiseerde B2B tech partner. Wij bouwen lean, razendsnelle digitale infrastructuur die schaalt met jouw bedrijfsvoering."
-		url = "https://solvalutions.nl"
-	}
+	title := "B2B Software Engineering Agency | Over Solvalutions"
+	desc := "Solvalutions is een gespecialiseerde B2B tech partner. Wij bouwen lean, razendsnelle digitale infrastructuur die schaalt met jouw bedrijfsvoering."
+	url := "https://solvalutions.nl"
 
 	jsonLd := template.HTML(`
 	<script type="application/ld+json">
@@ -177,15 +133,8 @@ func about(c fiber.Ctx) error {
 }
 
 func approach(c fiber.Ctx) error {
-	region, _ := c.Locals("Region").(string)
-
-	title := "Approach | High-Performance Tech Architecture | Solvalutions"
-	desc := "Discover our lean methodology for building scalable, high-performance Go backends and cloud-native systems. Domain-driven design with brutal efficiency."
-
-	if region == "nl" {
-		title = "Werkwijze | High-Performance Tech Architectuur | Solvalutions"
-		desc = "Ontdek onze lean werkwijze voor het bouwen van schaalbare, high-performance Go backends en cloud-native systemen. B2B software zonder onnodige overhead."
-	}
+	title := "Werkwijze | High-Performance Tech Architectuur | Solvalutions"
+	desc := "Ontdek onze lean werkwijze voor het bouwen van schaalbare, high-performance Go backends en cloud-native systemen. B2B software zonder onnodige overhead."
 
 	jsonLd := template.HTML(`
 	<script type="application/ld+json">
@@ -223,17 +172,9 @@ func approach(c fiber.Ctx) error {
 }
 
 func cases(c fiber.Ctx) error {
-	region, _ := c.Locals("Region").(string)
-
-	title := "Case Studies | Proven Engineering Success | Solvalutions"
-	desc := "Explore our portfolio of high-performance B2B software solutions. From cloud-native migrations to custom Go-driven backend architectures."
+	title := "Cases | Bewezen Digitale Successen | Solvalutions"
+	desc := "Bekijk onze portfolio van high-performance B2B softwareoplossingen. Van cloud-native migraties tot schaalbare Go-architecturen."
 	url := "https://solvalutions.nl"
-
-	if region == "nl" {
-		title = "Cases | Bewezen Digitale Successen | Solvalutions"
-		desc = "Bekijk onze portfolio van high-performance B2B softwareoplossingen. Van cloud-native migraties tot schaalbare Go-architecturen."
-		url = "https://solvalutions.com"
-	}
 
 	structuredData := template.HTML(`
 	<script type="application/ld+json">

@@ -27,6 +27,9 @@
     --color-brand-accent-hover: #7dd3fc;
     --color-brand-logo: #e0f2fe;
 
+    /* In dark mode glow works better than shadow */
+    --brand-glow: 0 4px 30px rgba(56, 189, 248, 0.15);
+
     --color-brand-bg: #0f172a;
     --color-brand-surface: #1e293b;
 
@@ -72,9 +75,4 @@
     ::selection {
         @apply bg-brand-accent text-brand-bg;
     }
-}
-
-:root {
-    /* In dark mode glow works better than shadow */
-    --brand-glow: 0 4px 30px rgba(56, 189, 248, 0.15);
 }
