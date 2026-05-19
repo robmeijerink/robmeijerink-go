@@ -1,54 +1,55 @@
 import '../styles/app.css'
 
 /**
- * Solvalutions Combined Engine (Data Highway v6.5)
- * Features: Slower, stable movement. Bouncing collisions (no disappearing). Solid state.
+ * Solvalutions Combined Engine (Data Highway v6.5 & UI Animations)
  */
-document.addEventListener('DOMContentLoaded', () => {
 
+const initNavbar = () => {
     const nav = document.getElementById('main-nav');
-    if (nav) {
-        let lastScrollY = window.scrollY;
-        let isNavVisible = true;
-        let scrollUpAccumulator = 0;
+    if (!nav) return;
 
-        const handleScroll = () => {
-            const currentScrollY = window.scrollY;
-            const delta = currentScrollY - lastScrollY;
+    let lastScrollY = window.scrollY;
+    let isNavVisible = true;
+    let scrollUpAccumulator = 0;
 
-            if (currentScrollY > 50) {
-                nav.classList.remove('bg-transparent', 'border-transparent', 'py-2');
-                nav.classList.add('bg-canvas/10', 'backdrop-blur-sm', 'border-content-strong/5', 'py-0');
-            } else {
-                nav.classList.add('bg-transparent', 'border-transparent', 'py-2');
-                nav.classList.remove('bg-canvas/10', 'backdrop-blur-sm', 'border-content-strong/5', 'py-0');
+    const handleScroll = () => {
+        const currentScrollY = window.scrollY;
+        const delta = currentScrollY - lastScrollY;
+
+        if (currentScrollY > 50) {
+            nav.classList.remove('bg-transparent', 'border-transparent', 'py-2');
+            nav.classList.add('bg-canvas/10', 'backdrop-blur-sm', 'border-content-strong/5', 'py-0');
+        } else {
+            nav.classList.add('bg-transparent', 'border-transparent', 'py-2');
+            nav.classList.remove('bg-canvas/10', 'backdrop-blur-sm', 'border-content-strong/5', 'py-0');
+        }
+
+        if (currentScrollY <= 150) {
+            if (!isNavVisible) {
+                nav.style.transform = 'translateY(0)';
+                isNavVisible = true;
             }
-
-            if (currentScrollY <= 150) {
-                if (!isNavVisible) {
-                    nav.style.transform = 'translateY(0)';
-                    isNavVisible = true;
-                }
-                scrollUpAccumulator = 0;
-            } else if (delta > 0) {
-                if (isNavVisible) {
-                    nav.style.transform = 'translateY(-100%)';
-                    isNavVisible = false;
-                }
-                scrollUpAccumulator = 0;
-            } else if (delta < 0) {
-                scrollUpAccumulator += Math.abs(delta);
-                if (!isNavVisible && scrollUpAccumulator > 80) {
-                    nav.style.transform = 'translateY(0)';
-                    isNavVisible = true;
-                }
+            scrollUpAccumulator = 0;
+        } else if (delta > 0) {
+            if (isNavVisible) {
+                nav.style.transform = 'translateY(-100%)';
+                isNavVisible = false;
             }
-            lastScrollY = currentScrollY;
-        };
+            scrollUpAccumulator = 0;
+        } else if (delta < 0) {
+            scrollUpAccumulator += Math.abs(delta);
+            if (!isNavVisible && scrollUpAccumulator > 80) {
+                nav.style.transform = 'translateY(0)';
+                isNavVisible = true;
+            }
+        }
+        lastScrollY = currentScrollY;
+    };
 
-        window.addEventListener('scroll', handleScroll, { passive: true });
-    }
+    window.addEventListener('scroll', handleScroll, { passive: true });
+};
 
+const initDataHighway = () => {
     const canvas = document.getElementById('flow-canvas');
     if (!canvas) return;
     const ctx = canvas.getContext('2d');
@@ -56,7 +57,9 @@ document.addEventListener('DOMContentLoaded', () => {
     let width, height, dpr, tracers = [], pulses = [];
     let highwayMinY = 0;
     let highwayMaxY = 0;
+
     const accentColor = '#B84A2B';
+    const gridSize = 24;
 
     const resize = () => {
         dpr = window.devicePixelRatio || 1;
@@ -73,18 +76,18 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     const updateHighwayBounds = () => {
-        const heroContent = document.getElementById('hero-content');
-        const casesHeader = document.getElementById('cases-header');
+        // Gebruik de hele hero sectie als referentiepunt
+        const heroSection = document.getElementById('hero-section');
 
-        if (heroContent && casesHeader) {
-            const heroRect = heroContent.getBoundingClientRect();
-            const casesRect = casesHeader.getBoundingClientRect();
-
+        if (heroSection) {
+            const heroRect = heroSection.getBoundingClientRect();
             const heroBottom = heroRect.bottom + window.scrollY;
-            const casesTop = casesRect.top + window.scrollY;
 
-            highwayMinY = heroBottom + 20;
-            highwayMaxY = casesTop - 20;
+            // Start vanaf de absolute top (0), achter je transparante navbar
+            highwayMinY = 0;
+
+            // Stop precies aan de onderkant van de Hero sectie, perfect uitgelijnd op het grid
+            highwayMaxY = Math.floor(heroBottom / gridSize) * gridSize;
         }
     };
 
@@ -93,11 +96,11 @@ document.addEventListener('DOMContentLoaded', () => {
             this.x = x;
             this.y = y;
             this.r = 1;
-            this.opacity = 0.6;
+            this.opacity = 0.5;
         }
         update() {
-            this.r += 1.2;
-            this.opacity -= 0.03;
+            this.r += 1.5;
+            this.opacity -= 0.02;
         }
         draw() {
             const renderY = this.y - window.scrollY;
@@ -106,158 +109,200 @@ document.addEventListener('DOMContentLoaded', () => {
             ctx.beginPath();
             ctx.arc(this.x, renderY, this.r, 0, Math.PI * 2);
             ctx.strokeStyle = accentColor;
-            ctx.lineWidth = 1.5;
+            ctx.lineWidth = 1;
             ctx.globalAlpha = Math.max(0, this.opacity);
-
-            ctx.shadowBlur = 12;
-            ctx.shadowColor = accentColor;
-
             ctx.stroke();
-            ctx.shadowBlur = 0;
         }
     }
 
+    /**
+     * Tracer Class - Handles the movement and drawing of individual data lines.
+     * Strictly enforces grid alignment and 90-degree turns.
+     */
     class Tracer {
-        constructor() { this.reset(); }
+        constructor() {
+            this.reset();
+        }
+
         reset() {
-            const startLeft = Math.random() > 0.5;
-            const speed = 1.2; // Reduced speed by roughly 50% for smooth, calm flow
+            this.speed = 1.2;
+            // Ensure bounds are defined, fallback to window innerHeight
+            const min = typeof highwayMinY !== 'undefined' ? highwayMinY : 0;
+            const max = typeof highwayMaxY !== 'undefined' ? highwayMaxY : window.innerHeight;
 
-            this.y = Math.random() * (highwayMaxY - highwayMinY) + highwayMinY;
+            // Snap initial Y to grid
+            this.y = Math.floor((Math.random() * (max - min) + min) / gridSize) * gridSize;
 
-            if (startLeft) {
-                this.x = -20;
-                this.mainVx = speed;
-            } else {
-                this.x = width + 20;
-                this.mainVx = -speed;
-            }
+            // Start from left or right edge
+            this.x = (Math.random() > 0.5) ? -gridSize : width + gridSize;
 
-            this.vx = this.mainVx;
+            // Initial velocity (horizontal only)
+            this.vx = (this.x < 0) ? this.speed : -this.speed;
             this.vy = 0;
+
             this.history = [];
-            this.maxLength = 40; // Longer tail to accommodate slower speed seamlessly
-            this.turnTimer = 0;
-            this.collisionCooldown = 0; // Prevents multiple pulses during a single collision
+            this.maxLength = 22;
+            this.distMoved = 0;
+            this.turnTarget = this.getRandomTurnDistance();
+            this.pulseCooldown = 0;
+        }
+
+        getRandomTurnDistance() {
+            // Random turn distance between 2 and 7 grid blocks
+            return (Math.floor(Math.random() * 6) + 2) * gridSize;
         }
 
         update() {
+            // Apply velocity
             this.x += this.vx;
             this.y += this.vy;
-            this.turnTimer++;
+            this.distMoved += this.speed;
 
-            if (this.collisionCooldown > 0) {
-                this.collisionCooldown--;
-            }
+            const min = typeof highwayMinY !== 'undefined' ? highwayMinY : 0;
+            const max = typeof highwayMaxY !== 'undefined' ? highwayMaxY : window.innerHeight;
 
-            // Smoother, less erratic turning interval
-            if (this.turnTimer > 25 && Math.random() > 0.60) {
-                if (this.vy === 0) {
+            // 1. Handle Turn Logic (90 degrees only)
+            if (this.distMoved >= this.turnTarget) {
+                // Snap to grid
+                this.x = Math.round(this.x / gridSize) * gridSize;
+                this.y = Math.round(this.y / gridSize) * gridSize;
+
+                // Switch axis
+                if (this.vx !== 0) {
                     this.vx = 0;
-                    this.vy = (Math.random() > 0.5 ? 1.2 : -1.2);
+                    if (this.y <= min) {
+                        this.vy = this.speed;
+                    } else if (this.y >= max) {
+                        this.vy = -this.speed;
+                    } else {
+                        this.vy = (Math.random() > 0.5 ? this.speed : -this.speed);
+                    }
                 } else {
                     this.vy = 0;
-                    this.vx = this.mainVx;
+                    this.vx = (Math.random() > 0.5 ? this.speed : -this.speed);
                 }
-                this.turnTimer = 0;
+
+                this.distMoved = 0;
+                this.turnTarget = this.getRandomTurnDistance();
             }
 
-            if (this.y <= highwayMinY) {
-                this.y = highwayMinY;
+            // 2. Bound checking (Bounce back to stay within area)
+            // Fix: Only trigger if explicitly moving out of bounds
+            if (this.y <= min && this.vy < 0) {
+                this.y = min;
                 this.vy = 0;
-                this.vx = this.mainVx;
-            } else if (this.y >= highwayMaxY) {
-                if (this.vy > 0) {
-                    pulses.push(new Pulse(this.x, this.y));
-                }
-                this.y = highwayMaxY;
+                this.vx = (Math.random() > 0.5 ? this.speed : -this.speed);
+                this.distMoved = 0;
+            } else if (this.y >= max && this.vy > 0) {
+                this.y = max;
                 this.vy = 0;
-                this.vx = this.mainVx;
+                this.vx = (Math.random() > 0.5 ? this.speed : -this.speed);
+                this.distMoved = 0;
             }
 
+            // Update history for tail
             this.history.push({x: this.x, y: this.y});
             if (this.history.length > this.maxLength) this.history.shift();
 
-            if (this.x < -100 || this.x > width + 100) this.reset();
+            // 3. Reset if completely off-screen
+            if (this.x < -200 || this.x > width + 200) this.reset();
         }
 
         draw() {
             if (this.history.length < 2) return;
 
             const renderY = this.y - window.scrollY;
+            // Only draw if within vertical view
             if (renderY < -100 || renderY > height + 100) return;
 
+            // Draw trail
             ctx.beginPath();
             ctx.strokeStyle = accentColor;
             ctx.lineWidth = 1.5;
-            ctx.globalAlpha = 0.35;
+            ctx.globalAlpha = 0.4;
             ctx.moveTo(this.history[0].x, this.history[0].y - window.scrollY);
-            this.history.forEach(p => ctx.lineTo(p.x, p.y - window.scrollY));
+
+            for(let i = 1; i < this.history.length; i++) {
+                ctx.lineTo(this.history[i].x, this.history[i].y - window.scrollY);
+            }
             ctx.stroke();
 
-            // Head without shadowBlur ensures solid, non-flickering drawing
+            // Draw head
             ctx.beginPath();
-            ctx.arc(this.x, renderY, 3, 0, Math.PI * 2);
+            ctx.arc(this.x, renderY, 2.5, 0, Math.PI * 2);
             ctx.fillStyle = accentColor;
-            ctx.globalAlpha = 1;
+            ctx.globalAlpha = 0.8;
             ctx.fill();
         }
     }
 
+    /**
+     * Main animation loop
+     */
     const animate = () => {
         ctx.clearRect(0, 0, width, height);
 
-        const scrollOffset = window.scrollY % 24;
-
+        // 1. Draw background grid
         ctx.beginPath();
         ctx.strokeStyle = accentColor;
-        ctx.globalAlpha = 0.15;
-        ctx.lineWidth = 0.5;
-        for(let i=0; i<width; i+=24) { ctx.moveTo(i, 0); ctx.lineTo(i, height); }
-        for(let j= -scrollOffset; j<height; j+=24) { ctx.moveTo(0, j); ctx.lineTo(width, j); }
+        ctx.globalAlpha = 0.04;
+        ctx.lineWidth = 1;
+
+        // Vertical lines
+        for(let i = 0; i < width; i += gridSize) {
+            ctx.moveTo(i, 0);
+            ctx.lineTo(i, height);
+        }
+
+        // Horizontal lines (scrolled offset)
+        const scrollOffset = window.scrollY % gridSize;
+        for(let j = -scrollOffset; j < height + gridSize; j += gridSize) {
+            ctx.moveTo(0, j);
+            ctx.lineTo(width, j);
+        }
         ctx.stroke();
 
+        // 2. Detect Data Handshakes (collision logic)
         for (let i = 0; i < tracers.length; i++) {
             for (let j = i + 1; j < tracers.length; j++) {
-                const dx = tracers[i].x - tracers[j].x;
-                const dy = tracers[i].y - tracers[j].y;
+                const t1 = tracers[i];
+                const t2 = tracers[j];
 
-                if (dx * dx + dy * dy < 150) {
-                    if (tracers[i].collisionCooldown === 0 && tracers[j].collisionCooldown === 0) {
-                        pulses.push(new Pulse((tracers[i].x + tracers[j].x) / 2, (tracers[i].y + tracers[j].y) / 2));
+                // Check proximity on grid
+                if (Math.abs(t1.x - t2.x) < 10 && Math.abs(t1.y - t2.y) < 10) {
+                    // If cooldown is expired, trigger handshake pulse
+                    if (!t1.pulseCooldown || t1.pulseCooldown <= 0) {
+                        pulses.push(new Pulse(t1.x, t1.y));
 
-                        // Handshake: Bounce off vertically instead of disappearing
-                        tracers[i].vy = tracers[i].vy === 0 ? (Math.random() > 0.5 ? 1.2 : -1.2) : tracers[i].vy * -1;
-                        tracers[j].vy = tracers[j].vy === 0 ? (Math.random() > 0.5 ? 1.2 : -1.2) : tracers[j].vy * -1;
-
-                        // Make sure they resume horizontal movement quickly
-                        tracers[i].vx = 0;
-                        tracers[j].vx = 0;
-
-                        tracers[i].turnTimer = 0;
-                        tracers[j].turnTimer = 0;
-
-                        // Prevent rapid multi-collisions
-                        tracers[i].collisionCooldown = 30;
-                        tracers[j].collisionCooldown = 30;
+                        t1.pulseCooldown = 40;
+                        t2.pulseCooldown = 40;
                     }
                 }
             }
+            // Decrease pulse cooldowns
+            if (tracers[i].pulseCooldown > 0) tracers[i].pulseCooldown--;
         }
 
+        // 3. Update and draw pulses
         pulses.forEach((p, i) => {
             p.update();
             p.draw();
             if (p.opacity <= 0) pulses.splice(i, 1);
         });
 
-        tracers.forEach(t => { t.update(); t.draw(); });
+        // 4. Update and draw tracers
+        tracers.forEach(t => {
+            t.update();
+            t.draw();
+        });
+
         requestAnimationFrame(animate);
     };
 
     const initEngine = () => {
         resize();
-        for (let i = 0; i < 8; i++) {
+        // Reduced from 8 to 6 tracers to prioritize visual hierarchy and breathing room
+        for (let i = 0; i < 6; i++) {
             tracers.push(new Tracer());
         }
         animate();
@@ -267,4 +312,64 @@ document.addEventListener('DOMContentLoaded', () => {
     setTimeout(updateHighwayBounds, 500);
 
     initEngine();
+};
+
+const initBlueprintSteps = () => {
+    // Target the inner container instead of the whole section to delay the start point
+    const container = document.getElementById('blueprint-steps-container');
+    const progressBar = document.getElementById('blueprint-progress-bar');
+    const step1 = document.getElementById('blueprint-step-1');
+    const step2 = document.getElementById('blueprint-step-2');
+    const step3 = document.getElementById('blueprint-step-3');
+
+    if (!container || !progressBar) return;
+
+    let ticking = false;
+
+    const updateSteps = () => {
+        const rect = container.getBoundingClientRect();
+        const vh = window.innerHeight;
+
+        // Start animation when top of the container reaches 80% of viewport height (lower on screen)
+        // End animation when it reaches 30% of viewport height (higher on screen)
+        const startTrigger = vh * 0.8;
+        const endTrigger = vh * 0.3;
+        const scrollRange = startTrigger - endTrigger;
+
+        let progress = (startTrigger - rect.top) / scrollRange;
+
+        // Clamp between 0 and 1
+        progress = Math.max(0, Math.min(1, progress));
+
+        // Update the horizontal connecting line (desktop)
+        progressBar.style.width = `${progress * 100}%`;
+
+        // Sequentially activate the cards based on scroll progress
+        if (progress > 0.05) step1?.classList.add('is-active');
+        else step1?.classList.remove('is-active');
+
+        if (progress > 0.5) step2?.classList.add('is-active');
+        else step2?.classList.remove('is-active');
+
+        if (progress > 0.95) step3?.classList.add('is-active');
+        else step3?.classList.remove('is-active');
+
+        ticking = false;
+    };
+
+    window.addEventListener('scroll', () => {
+        if (!ticking) {
+            window.requestAnimationFrame(updateSteps);
+            ticking = true;
+        }
+    }, { passive: true });
+
+    // Initial check on load
+    updateSteps();
+};
+
+document.addEventListener('DOMContentLoaded', () => {
+    initNavbar();
+    initDataHighway();
+    initBlueprintSteps();
 });

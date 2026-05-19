@@ -51,11 +51,13 @@
 </head>
 <body class="bg-canvas text-content-base font-sans antialiased selection:bg-brand-base selection:text-white flex flex-col min-h-screen overflow-x-hidden">
 
-    <!-- THE SYSTEM CORE: Weer fixed voor maximale performance, fungeert als 'camera' -->
     <canvas id="flow-canvas" class="fixed inset-0 z-0 pointer-events-none"></canvas>
 
-    <!-- SMART NAVBAR -->
-    <header id="main-nav" class="w-full fixed top-0 z-50 transition-all duration-300 bg-transparent border-b border-transparent py-2">
+    <div class="fixed top-0 inset-x-0 h-1 bg-brand-dark z-[60]"></div>
+
+    <div class="fixed top-0 inset-x-0 h-24 bg-gradient-to-b from-canvas/95 via-canvas/40 to-transparent z-40 pointer-events-none"></div>
+
+    <header id="main-nav" class="w-full fixed top-0 z-50 transition-all duration-300 bg-transparent border-b border-transparent py-2 pt-3">
         <div class="max-w-7xl mx-auto px-6 lg:px-8 h-20 flex items-center justify-between">
             <a href="/" class="flex items-center gap-3 group" aria-label="Solvalutions Home">
                 <img src="/assets/img/solvalutions-logo.png" alt="Solvalutions Logo" class="h-6 w-6 transition-transform duration-300 group-hover:scale-105">
@@ -64,47 +66,49 @@
                 </span>
             </a>
 
-            <nav class="hidden md:flex gap-10 text-sm font-bold uppercase tracking-widest">
-                <a href="#cases" class="text-content-strong hover:text-accent-dark transition-colors">Cases</a>
-                <a href="#services" class="text-content-strong hover:text-accent-dark transition-colors">Diensten</a>
-                <a href="#methodology" class="text-content-strong hover:text-accent-dark transition-colors">Aanpak</a>
+            <nav class="hidden md:flex gap-10 text-[15px] font-semibold tracking-wide">
+                <a href="#cases" class="relative text-content-strong transition-colors hover:text-brand-base after:absolute after:-bottom-1 after:left-0 after:h-[2px] after:w-full after:origin-left after:scale-x-0 after:bg-brand-base after:transition-transform after:duration-300 after:ease-out hover:after:scale-x-100">
+                    Cases
+                </a>
+                <a href="#services" class="relative text-content-strong transition-colors hover:text-brand-base after:absolute after:-bottom-1 after:left-0 after:h-[2px] after:w-full after:origin-left after:scale-x-0 after:bg-brand-base after:transition-transform after:duration-300 after:ease-out hover:after:scale-x-100">
+                    Diensten
+                </a>
+                <a href="#methodology" class="relative text-content-strong transition-colors hover:text-brand-base after:absolute after:-bottom-1 after:left-0 after:h-[2px] after:w-full after:origin-left after:scale-x-0 after:bg-brand-base after:transition-transform after:duration-300 after:ease-out hover:after:scale-x-100">
+                    Aanpak
+                </a>
             </nav>
 
-            <a href="#contact" class="hidden md:inline-flex px-8 py-3.5 text-xs font-bold uppercase tracking-widest text-white bg-accent-dark border border-accent-dark shadow-soft hover:from-accent-base hover:to-accent-dark transition-all duration-300">
+            <a href="#contact" class="hidden md:inline-flex px-8 py-3.5 text-[11px] font-bold uppercase tracking-widest text-white bg-accent-dark border border-accent-dark shadow-sm hover:bg-accent-base hover:shadow-[inset_0_3px_6px_rgba(0,0,0,0.15)] transition-all duration-300">
                 Contact
             </a>
         </div>
     </header>
 
     <main class="grow relative z-10 pt-24">
-        <!-- HERO SECTION -->
         <section id="hero-section" class="max-w-7xl mx-auto px-6 lg:px-8 pt-8 pb-24 lg:pt-16 lg:pb-32 relative">
-            <!-- ID toegevoegd voor precieze bounds meting -->
             <div id="hero-content" class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
 
-                <!-- Left: Typography Zone -->
                 <div class="lg:col-span-7 pr-0 lg:pr-12">
-                    <h1 class="text-5xl text-2xl tracking-tight leading-[1.05] mb-6">
-                        Wij bouwen de <span class="font-extrabold text-content-strong text-transparent bg-clip-text bg-brand-dark">digitale transformatie</span>.
+                    <h1 class="text-4xl lg:text-5xl tracking-tight leading-[1.05] mb-6 text-content-strong">
+                        Wij bouwen de <span class="font-extrabold text-brand-dark">digitale transformatie</span>.
                     </h1>
-                    <p class="text-lg lg:text-xl leading-[1.7] text-content-base mb-24 font-medium max-w-xl">
+                    <p class="text-lg lg:text-xl leading-[1.7] text-content-base mb-12 lg:mb-24 font-medium max-w-xl">
                         Stop met het bestrijden van technische schuld. Kies voor infrastructuren te ontwerpen die continuïteit garanderen.
                     </p>
                     <div class="flex flex-col sm:flex-row gap-4">
-                        <a href="#audit" class="inline-flex justify-center items-center px-8 py-4 bg-accent-dark text-white text-[11px] font-bold uppercase tracking-[0.15em] shadow-soft">
+                        <a href="#audit" class="inline-flex justify-center items-center px-6 py-3 bg-accent-dark text-white text-sm font-bold uppercase tracking-[0.1em] shadow-soft hover:bg-accent-base hover:shadow-md hover:-translate-y-px transition-all duration-200">
                             Technische Audit Aanvragen
                         </a>
-                        <a href="#cases" class="inline-flex justify-center items-center px-8 py-4 text-content-strong text-[11px] font-bold uppercase tracking-[0.15em] border border-content-strong/20 hover:border-content-strong hover:bg-content-strong/5 transition-all">
+                        <a href="#cases" class="inline-flex justify-center items-center px-6 py-3 text-content-strong text-sm font-bold uppercase tracking-[0.1em] border border-content-strong/20 hover:border-content-strong hover:bg-content-strong/5 transition-all duration-200">
                             Bekijk Onze Cases
                         </a>
                     </div>
                 </div>
 
-                <!-- Right: Interactive Zone -->
-                <div id="hero-card-zone" class="lg:col-span-5 w-full h-[450px] lg:h-[550px] flex justify-center lg:justify-end relative mt-12 lg:mt-0">
-                    <div class="grid grid-cols-6 grid-rows-6 gap-3 w-full max-w-[480px] aspect-square relative group">
-                        <!-- Card 1 -->
-                        <div class="col-start-1 col-span-4 row-start-1 row-span-4 bg-brand-dark p-6 lg:p-8 shadow-soft border border-white/5 flex flex-col justify-between z-10 transition-all duration-300 hover:z-50 hover:-translate-y-2 hover:shadow-2xl overflow-hidden relative">
+                <div id="hero-card-zone" class="lg:col-span-5 w-full h-[450px] lg:h-[550px] flex justify-center lg:justify-end relative mt-12 lg:mt-0 group">
+                    <div class="grid grid-cols-6 grid-rows-6 gap-3 w-full max-w-[480px] aspect-square relative">
+
+                        <div class="col-start-1 col-span-4 row-start-1 row-span-4 bg-brand-dark p-6 lg:p-8 shadow-soft border border-white/5 flex flex-col justify-between z-10 transition-all duration-500 ease-out group-hover:-translate-x-5 group-hover:-translate-y-5 group-hover:shadow-xl overflow-hidden relative">
                             <div class="absolute top-0 right-0 -mt-10 -mr-10 w-32 h-32 bg-brand-light/20 rounded-full blur-2xl"></div>
                             <div class="text-[10px] font-bold text-white/50 uppercase tracking-widest mb-4">Business Continuity</div>
                             <div class="relative z-10">
@@ -112,14 +116,14 @@
                                 <p class="text-white/70 text-sm leading-relaxed border-t border-white/10 pt-4 mt-2">Geen single points of failure. Ontworpen om kritieke bedrijfsprocessen altijd online te houden.</p>
                             </div>
                         </div>
-                        <!-- Card 2 -->
-                        <div class="col-start-4 col-span-3 row-start-2 row-span-3 bg-panel p-5 lg:p-6 shadow-float border border-content-strong/5 flex flex-col justify-center z-20 transition-all duration-300 hover:z-50">
+
+                        <div class="col-start-4 col-span-3 row-start-2 row-span-3 bg-panel p-5 lg:p-6 shadow-medium border border-content-strong/5 flex flex-col justify-center z-20 transition-all duration-500 ease-out group-hover:translate-x-6 group-hover:shadow-2xl">
                             <div class="text-[10px] font-bold text-content-muted uppercase tracking-widest mb-2">Schaalbaarheid</div>
                             <h3 class="text-xl font-bold text-content-strong mb-2">Elastische Capaciteit.</h3>
                             <p class="text-content-base text-xs leading-relaxed">Klaar voor exponentiële groei en piekbelastingen zonder prestatieverlies.</p>
                         </div>
-                        <!-- Card 3 -->
-                        <div class="col-start-2 col-span-5 row-start-4 row-span-3 bg-panel-soft p-6 lg:p-8 shadow-medium border border-content-strong/10 flex flex-col justify-center z-30 transition-all duration-300 hover:z-50">
+
+                        <div class="col-start-2 col-span-5 row-start-4 row-span-3 bg-panel-soft p-6 lg:p-8 shadow-medium border border-content-strong/10 flex flex-col justify-center z-30 transition-all duration-500 ease-out group-hover:translate-x-3 group-hover:translate-y-6 group-hover:shadow-xl">
                             <div class="flex items-center gap-2 mb-2"><span class="w-1.5 h-1.5 rounded-full bg-accent-base"></span><div class="text-[10px] font-bold text-content-muted uppercase tracking-widest">Systeemintegratie</div></div>
                             <h3 class="text-xl lg:text-2xl font-bold text-content-strong mb-2 leading-tight">Naadloze verbindingen.</h3>
                             <p class="text-content-base text-sm leading-relaxed">Complexe legacy-systemen, third-party API's en nieuwe applicaties feilloos aan elkaar gekoppeld.</p>
@@ -129,9 +133,109 @@
             </div>
         </section>
 
-        <!-- CASES SECTION -->
+        <section id="methodology-section" class="relative z-20 w-full mt-12 md:mt-24">
+
+            <div class="w-full h-[40px] md:h-[80px] relative">
+                <svg viewBox="0 0 1440 100" class="w-full h-full block text-content-strong/20" preserveAspectRatio="none">
+                    <path d="M0,0 Q720,200 1440,0 L1440,100 L0,100 Z" fill="var(--color-panel)" />
+                    <path d="M0,0 Q720,200 1440,0" fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke" />
+                </svg>
+            </div>
+
+            <div class="bg-panel w-full relative pb-24 pt-12 md:pt-20 md:pb-32">
+                <div class="max-w-7xl mx-auto px-6 lg:px-8 relative">
+
+                    <div class="mb-16">
+                        <span class="inline-block px-3 py-1 bg-accent-dark/10 text-accent-dark text-[10px] font-bold uppercase tracking-widest mb-4 border border-accent-dark/20">
+                            De Blueprint
+                        </span>
+                        <h2 class="text-3xl md:text-4xl font-extrabold text-content-strong tracking-tight max-w-2xl">
+                            Van operationele bottleneck naar geautomatiseerde flow.
+                        </h2>
+                        <p class="mt-4 text-content-base text-lg max-w-2xl">
+                            Wij hanteren een strikte engineering-aanpak om legacy-systemen te transformeren naar een robuuste infrastructuur. Voorspelbaar, transparant en gebouwd voor de industrie.
+                        </p>
+                    </div>
+
+                    <div class="relative" id="blueprint-steps-container">
+
+                        <div class="hidden md:block absolute top-12 left-12 w-[calc(66.666%+2rem)] h-[1px] bg-content-strong/20 z-0">
+                            <div id="blueprint-progress-bar" class="h-full bg-accent-base w-0 transition-all duration-300 ease-out relative">
+                                <div class="absolute right-0 top-1/2 -translate-y-1/2 w-2 h-2 bg-accent-base rounded-full shadow-[0_0_10px_rgba(184,74,43,0.8)]"></div>
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-12 relative z-10">
+
+                            <div id="blueprint-step-1" class="group/step relative opacity-30 blur-[2px] transition-all duration-700 ease-out [&.is-active]:opacity-100 [&.is-active]:blur-none">
+                                <div class="w-24 h-24 bg-panel border-2 border-content-strong/10 text-content-strong shadow-soft flex items-center justify-center mb-6 relative z-20 transition-all duration-500 ease-out group-[.is-active]/step:bg-brand-dark group-[.is-active]/step:border-brand-dark group-[.is-active]/step:text-white group-[.is-active]/step:shadow-medium">
+                                    <span class="text-3xl font-extrabold transition-colors duration-500">01</span>
+                                </div>
+                                <h3 class="text-xl font-bold text-content-strong mb-3">Systeem Audit & Analyse</h3>
+                                <p class="text-content-base text-sm leading-relaxed min-h-[80px]">
+                                    We brengen de huidige technische schuld in kaart, identificeren datasilo's en lokaliseren bottlenecks in de operatie.
+                                </p>
+                                <ul class="mt-4 space-y-2">
+                                    <li class="text-xs font-bold text-content-muted flex items-center gap-2">
+                                        <span class="w-1.5 h-1.5 bg-brand-base rounded-full"></span> Infrastructuur Scan
+                                    </li>
+                                    <li class="text-xs font-bold text-content-muted flex items-center gap-2">
+                                        <span class="w-1.5 h-1.5 bg-brand-base rounded-full"></span> Risicoanalyse
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <div id="blueprint-step-2" class="group/step relative opacity-30 blur-[2px] transition-all duration-700 ease-out [&.is-active]:opacity-100 [&.is-active]:blur-none">
+                                <div class="w-24 h-24 bg-panel border-2 border-content-strong/10 text-content-strong shadow-soft flex items-center justify-center mb-6 relative z-20 transition-all duration-500 ease-out group-[.is-active]/step:bg-brand-dark group-[.is-active]/step:border-brand-dark group-[.is-active]/step:text-white group-[.is-active]/step:shadow-medium">
+                                    <span class="text-3xl font-extrabold transition-colors duration-500">02</span>
+                                </div>
+                                <h3 class="text-xl font-bold text-content-strong mb-3">Architectuur Ontwerp</h3>
+                                <p class="text-content-base text-sm leading-relaxed min-h-[80px]">
+                                    Het ontwerpen van de nieuwe standaard. We bouwen schaalbare microservices en integraties die IT en OT naadloos verbinden.
+                                </p>
+                                <ul class="mt-4 space-y-2">
+                                    <li class="text-xs font-bold text-content-muted flex items-center gap-2">
+                                        <span class="w-1.5 h-1.5 bg-brand-base rounded-full"></span> API Gateway Ontwikkeling
+                                    </li>
+                                    <li class="text-xs font-bold text-content-muted flex items-center gap-2">
+                                        <span class="w-1.5 h-1.5 bg-brand-base rounded-full"></span> Cloud Infrastructuur
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <div id="blueprint-step-3" class="group/step relative opacity-30 blur-[2px] transition-all duration-700 ease-out [&.is-active]:opacity-100 [&.is-active]:blur-none">
+                                <div class="w-24 h-24 bg-panel border-2 border-content-strong/10 text-content-strong shadow-soft flex items-center justify-center mb-6 relative z-20 transition-all duration-500 ease-out group-[.is-active]/step:bg-brand-dark group-[.is-active]/step:border-brand-dark group-[.is-active]/step:text-white group-[.is-active]/step:shadow-medium">
+                                    <span class="text-3xl font-extrabold transition-colors duration-500">03</span>
+                                </div>
+                                <h3 class="text-xl font-bold text-content-strong mb-3">Implementatie & Schaalbaarheid</h3>
+                                <p class="text-content-base text-sm leading-relaxed min-h-[80px]">
+                                    Zero-downtime executie. We rollen de automatisering uit en garanderen dat bedrijfsprocessen doordraaien tijdens de transitie.
+                                </p>
+                                <ul class="mt-4 space-y-2">
+                                    <li class="text-xs font-bold text-content-muted flex items-center gap-2">
+                                        <span class="w-1.5 h-1.5 bg-brand-base rounded-full"></span> CI/CD Pipelines
+                                    </li>
+                                    <li class="text-xs font-bold text-content-muted flex items-center gap-2">
+                                        <span class="w-1.5 h-1.5 bg-brand-base rounded-full"></span> 24/7 Monitoring
+                                    </li>
+                                </ul>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="w-full h-[40px] md:h-[80px] relative rotate-180">
+                <svg viewBox="0 0 1440 100" class="w-full h-full block text-content-strong/20" preserveAspectRatio="none">
+                    <path d="M0,0 Q720,200 1440,0 L1440,100 L0,100 Z" fill="var(--color-panel)" />
+                    <path d="M0,0 Q720,200 1440,0" fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke" />
+                </svg>
+            </div>
+
+        </section>
+
         <section id="cases-section" class="max-w-7xl mx-auto px-6 lg:px-8 pb-32 pt-16 relative z-10">
-            <!-- ID toegevoegd voor precieze bounds meting -->
             <div id="cases-header" class="flex items-end justify-between mb-10 border-b border-content-strong/10 pb-4">
                 <h2 class="text-[2rem] font-bold text-content-strong tracking-tight">Recente Operaties</h2>
                 <a href="/cases" class="text-sm font-bold text-brand-base hover:text-accent-dark transition-colors flex items-center gap-1 group">
@@ -154,7 +258,87 @@
                 </a>
             </div>
         </section>
+
+        <section id="cta-section" class="relative z-20 w-full mt-12 md:mt-24">
+
+            <div class="w-full h-[40px] md:h-[80px] relative">
+                <svg viewBox="0 0 1440 100" class="w-full h-full block text-content-strong/20" preserveAspectRatio="none">
+                    <path d="M0,100 Q720,-100 1440,100 Z" fill="var(--color-panel)" />
+                    <path d="M0,100 Q720,-100 1440,100" fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke" />
+                </svg>
+            </div>
+
+            <div class="bg-panel w-full relative pb-24 pt-10 md:pt-16">
+                <div class="max-w-4xl mx-auto px-6 lg:px-8 relative text-center">
+
+                    <span class="inline-block px-3 py-1 bg-accent-dark/10 text-accent-dark text-[10px] font-bold uppercase tracking-widest mb-6 border border-accent-dark/20">
+                        Systeem Optimalisatie
+                    </span>
+
+                    <h2 class="text-4xl md:text-5xl font-extrabold text-content-strong tracking-tight mb-6">
+                        Klaar om technische schuld te elimineren?
+                    </h2>
+
+                    <p class="text-content-base text-lg md:text-xl leading-relaxed mb-10 max-w-2xl mx-auto">
+                        Boek een vrijblijvende technische audit. We analyseren de huidige infrastructuur en schetsen direct de eerste stappen naar een robuuste, geautomatiseerde setup.
+                    </p>
+
+                    <a href="#audit" class="inline-flex justify-center items-center px-10 py-4 bg-accent-dark text-white text-sm font-bold uppercase tracking-[0.1em] shadow-medium hover:-translate-y-1 hover:shadow-xl hover:bg-accent-base transition-all duration-300">
+                        Plan Een Audit
+                    </a>
+
+                </div>
+            </div>
+        </section>
+
     </main>
+
+    <footer id="main-footer" class="w-full relative z-10 border-t border-content-strong/10 bg-canvas pt-16 pb-8">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 md:gap-8 mb-16">
+
+                <div class="md:col-span-2">
+                    <a href="/" class="flex items-center gap-3 mb-6" aria-label="Solvalutions Home">
+                        <img src="/assets/img/solvalutions-logo.png" alt="Solvalutions Logo" class="h-6 w-6 grayscale opacity-80">
+                        <span class="font-extrabold text-2xl tracking-tight text-content-strong">Solvalutions.</span>
+                    </a>
+                    <p class="text-content-base text-sm max-w-md leading-relaxed">
+                        Premium B2B partner in software development en DevOps. Wij ontwerpen, bouwen en optimaliseren de digitale transformatie voor de maakindustrie.
+                    </p>
+                </div>
+
+                <div>
+                    <h4 class="text-xs font-bold text-content-strong uppercase tracking-widest mb-6">Navigatie</h4>
+                    <ul class="space-y-3 text-sm font-medium text-content-muted">
+                        <li><a href="#cases" class="hover:text-accent-dark transition-colors">Cases</a></li>
+                        <li><a href="#services" class="hover:text-accent-dark transition-colors">Diensten</a></li>
+                        <li><a href="#methodology" class="hover:text-accent-dark transition-colors">Aanpak</a></li>
+                        <li><a href="#contact" class="hover:text-accent-dark transition-colors">Contact</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-xs font-bold text-content-strong uppercase tracking-widest mb-6">Bedrijfsgegevens</h4>
+                    <ul class="space-y-3 text-sm font-medium text-content-muted">
+                        <li>Stokebrand 511</li>
+                        <li>7206 EZ, Zutphen</li>
+                        <li class="pt-2">KVK: 98238175</li>
+                        <li>BTW: NL005319604B24</li>
+                    </ul>
+                </div>
+
+            </div>
+
+            <div class="flex flex-col md:flex-row items-center justify-between pt-8 border-t border-content-strong/10 text-[10px] font-bold text-content-muted uppercase tracking-wider">
+                <p>&copy; 2026 Solvalutions. Alle rechten voorbehouden.</p>
+                <div class="flex gap-6 mt-4 md:mt-0">
+                    <a href="#" class="hover:text-content-strong transition-colors">Privacy Policy</a>
+                    <a href="#" class="hover:text-content-strong transition-colors">Algemene Voorwaarden</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
 </body>
 
 </html>
