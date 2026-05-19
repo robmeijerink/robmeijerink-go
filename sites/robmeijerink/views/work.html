@@ -1,13 +1,15 @@
 <div class="w-full space-y-24">
     <section class="animate-fade-in-up">
-        <div class="mb-6 flex flex-col items-start justify-between gap-4">
-            <div class="w-full">
+        <div class="mb-8 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 sm:gap-8">
+
+            <div class="w-full sm:w-auto shrink-0 order-first sm:order-last">
                 {{ template "components/availability-alert" . }}
             </div>
 
-            <div class="bg-brand-blue/3 ring-brand-blue/30 gap-2.5 rounded-full px-3 py-1 ring-1">
+            <div class="bg-brand-blue/3 ring-brand-blue/30 inline-flex items-center gap-2.5 rounded-full px-3 py-1 ring-1">
                 <span class="text-brand-blue text-[11px] font-bold tracking-[0.15em] uppercase">Expertise</span>
             </div>
+
         </div>
 
         <div class="flex flex-col items-start gap-4">
@@ -24,99 +26,98 @@
     </section>
 
     <section class="grid grid-cols-1 gap-6 md:grid-cols-12 items-stretch">
-
-    <div class="group relative md:col-span-7 flex flex-col h-full overflow-hidden rounded-3xl bg-white p-8 shadow-sm ring-1 ring-slate-200 transition-all duration-300 hover:shadow-xl sm:p-10">
-        <div class="relative z-10 flex flex-col h-full">
-            <div class="flex flex-col gap-4">
-                <div class="flex items-center gap-4">
-                    <div class="shrink-0 flex h-10 w-10 items-center justify-center rounded-xl bg-cyan-50 text-cyan-600 ring-1 ring-cyan-200/50">
-                        <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 00-2 2z"></path></svg>
+        <div class="group relative md:col-span-7 flex flex-col h-full overflow-hidden rounded-3xl bg-white p-8 shadow-sm ring-1 ring-slate-200 transition-all duration-300 hover:shadow-xl sm:p-10">
+            <div class="relative z-10 flex flex-col h-full">
+                <div class="flex flex-col gap-4">
+                    <div class="flex items-center gap-4">
+                        <div class="shrink-0 flex h-10 w-10 items-center justify-center rounded-xl bg-cyan-50 text-cyan-600 ring-1 ring-cyan-200/50">
+                            <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 00-2 2z"></path></svg>
+                        </div>
+                        <h2 class="text-xl font-bold text-slate-900 group-hover:text-brand-blue transition-colors">Backend & API Development</h2>
                     </div>
-                    <h2 class="text-xl font-bold text-slate-900 group-hover:text-brand-blue transition-colors">Backend & API Development</h2>
+                    <p class="text-sm leading-relaxed text-slate-600 sm:text-base">
+                        Gespecialiseerd in hoogwaardige, <strong class="text-brand-blue whitespace-nowrap">schaalbare systemen</strong>. Van complexe business logica in PHP/Laravel tot <strong class="text-brand-blue whitespace-nowrap">high-performance</strong> microservices in Go. Altijd gericht op type-safety en performance.
+                    </p>
+                    <p class="mt-2 text-[11px] text-slate-600">
+                        Weetje: Deze website is volledig ontwikkeld met Go en Tailwind CSS.
+                    </p>
+                </div>
+
+                <div class="mt-auto pt-8 flex flex-wrap gap-2">
+                    <span class="rounded-lg bg-slate-100 px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-slate-600">Go (Golang)</span>
+                    <span class="rounded-lg bg-slate-100 px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-slate-600">PHP</span>
+                    <span class="rounded-lg bg-slate-100 px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-slate-600">Laravel</span>
+                    <span class="rounded-lg bg-slate-100 px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-slate-600">MySQL / PostgreSQL</span>
+                    <span class="rounded-lg bg-slate-100 px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-slate-600">Python</span>
+                    <span class="rounded-lg bg-slate-100 px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-slate-600">SaaS</span>
+                    <span class="rounded-lg bg-slate-100 px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-slate-600">Cloud applications</span>
+                    <span class="rounded-lg bg-slate-100 px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-slate-600">Unit & Integration Testing</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="group relative md:col-span-5 flex flex-col h-full overflow-hidden rounded-3xl bg-brand-blue p-8 shadow-md transition-all duration-300 hover:shadow-xl hover:-translate-y-1 sm:p-10">
+            <div class="absolute -right-10 -top-10 h-40 w-40 bg-brand-blue/20 blur-3xl transition-opacity group-hover:opacity-100 opacity-50"></div>
+            <div class="relative z-10 flex flex-col h-full text-white">
+                <div class="flex items-center gap-4 mb-5">
+                    <div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-white/10 text-white ring-1 ring-white/20">
+                        <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                    </div>
+                    <h3 class="text-xl font-bold">Cloud & DevOps</h3>
+                </div>
+                <p class="text-sm leading-relaxed text-slate-300 sm:text-base">
+                    <strong class="whitespace-nowrap">Infrastructure as Code</strong> is mijn standaard. Docker, Kubernetes en geautomatiseerde CI/CD pipelines op AWS of Bare Metal omgevingen.
+                </p>
+                <div class="mt-auto pt-8">
+                    <div class="text-white/70 text-[10px] font-bold uppercase tracking-[0.2em]">Reliability First</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="group relative md:col-span-5 flex flex-col h-full overflow-hidden rounded-3xl bg-white p-8 shadow-sm ring-1 ring-slate-200 transition-all duration-300 hover:shadow-xl sm:p-10">
+            <div class="relative z-10 flex flex-col h-full">
+                <div class="flex items-center gap-4 mb-5">
+                    <div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-violet-50 text-violet-600 ring-1 ring-violet-200/50">
+                        <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 group-hover:text-brand-blue transition-colors">Modern Frontend</h3>
                 </div>
                 <p class="text-sm leading-relaxed text-slate-600 sm:text-base">
-                    Gespecialiseerd in hoogwaardige, <strong class="text-brand-blue whitespace-nowrap">schaalbare systemen</strong>. Van complexe business logica in PHP/Laravel tot <strong class="text-brand-blue whitespace-nowrap">high-performance</strong> microservices in Go. Altijd gericht op type-safety en performance.
+                    Strakke interfaces met JavaScript, TypeScript, Tailwind CSS en React/Vue. Focus op Developer Experience en web-vitals voor <strong class="text-brand-blue whitespace-nowrap">snelle, responsive websites.</strong>
                 </p>
-                <p class="mt-2 text-[11px] text-slate-600">
-                    Weetje: Deze website is volledig ontwikkeld met Go en Tailwind CSS.
-                </p>
-            </div>
 
-            <div class="mt-auto pt-8 flex flex-wrap gap-2">
-                <span class="rounded-lg bg-slate-100 px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-slate-600">Go (Golang)</span>
-                <span class="rounded-lg bg-slate-100 px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-slate-600">PHP</span>
-                <span class="rounded-lg bg-slate-100 px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-slate-600">Laravel</span>
-                <span class="rounded-lg bg-slate-100 px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-slate-600">MySQL / PostgreSQL</span>
-                <span class="rounded-lg bg-slate-100 px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-slate-600">Python</span>
-                <span class="rounded-lg bg-slate-100 px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-slate-600">SaaS</span>
-                <span class="rounded-lg bg-slate-100 px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-slate-600">Cloud applications</span>
-                <span class="rounded-lg bg-slate-100 px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-slate-600">Unit & Integration Testing</span>
-            </div>
-        </div>
-    </div>
-
-    <div class="group relative md:col-span-5 flex flex-col h-full overflow-hidden rounded-3xl bg-brand-blue p-8 shadow-md transition-all duration-300 hover:shadow-xl hover:-translate-y-1 sm:p-10">
-        <div class="absolute -right-10 -top-10 h-40 w-40 bg-brand-blue/20 blur-3xl transition-opacity group-hover:opacity-100 opacity-50"></div>
-        <div class="relative z-10 flex flex-col h-full text-white">
-            <div class="flex items-center gap-4 mb-5">
-                <div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-white/10 text-white ring-1 ring-white/20">
-                    <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                <div class="mt-auto pt-8 flex flex-wrap gap-2">
+                    <span class="rounded-lg bg-slate-100 px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-slate-600">JavaScript</span>
+                    <span class="rounded-lg bg-slate-100 px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-slate-600">TypeScript</span>
+                    <span class="rounded-lg bg-slate-100 px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-slate-600">Vue.js</span>
+                    <span class="rounded-lg bg-slate-100 px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-slate-600">Integration Testing</span>
+                    <span class="rounded-lg bg-slate-100 px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-slate-600">State Management</span>
                 </div>
-                <h3 class="text-xl font-bold">Cloud & DevOps</h3>
-            </div>
-            <p class="text-sm leading-relaxed text-slate-300 sm:text-base">
-                <strong class="whitespace-nowrap">Infrastructure as Code</strong> is mijn standaard. Docker, Kubernetes en geautomatiseerde CI/CD pipelines op AWS of Bare Metal omgevingen.
-            </p>
-            <div class="mt-auto pt-8">
-                <div class="text-white/70 text-[10px] font-bold uppercase tracking-[0.2em]">Reliability First</div>
             </div>
         </div>
-    </div>
 
-    <div class="group relative md:col-span-5 flex flex-col h-full overflow-hidden rounded-3xl bg-white p-8 shadow-sm ring-1 ring-slate-200 transition-all duration-300 hover:shadow-xl sm:p-10">
-        <div class="relative z-10 flex flex-col h-full">
-            <div class="flex items-center gap-4 mb-5">
-                <div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-violet-50 text-violet-600 ring-1 ring-violet-200/50">
-                    <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
-                </div>
-                <h3 class="text-xl font-bold text-slate-900 group-hover:text-brand-blue transition-colors">Modern Frontend</h3>
-            </div>
-            <p class="text-sm leading-relaxed text-slate-600 sm:text-base">
-                Strakke interfaces met JavaScript, TypeScript, Tailwind CSS en React/Vue. Focus op Developer Experience en web-vitals voor <strong class="text-brand-blue whitespace-nowrap">snelle, responsive websites.</strong>
-            </p>
-
-            <div class="mt-auto pt-8 flex flex-wrap gap-2">
-                <span class="rounded-lg bg-slate-100 px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-slate-600">JavaScript</span>
-                <span class="rounded-lg bg-slate-100 px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-slate-600">TypeScript</span>
-                <span class="rounded-lg bg-slate-100 px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-slate-600">Vue.js</span>
-                <span class="rounded-lg bg-slate-100 px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-slate-600">Integration Testing</span>
-                <span class="rounded-lg bg-slate-100 px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-slate-600">State Management</span>
-            </div>
-        </div>
-    </div>
-
-    <div class="group relative md:col-span-7 flex flex-col h-full overflow-hidden rounded-3xl bg-blue-50/50 p-8 shadow-sm ring-1 ring-brand-blue/20 transition-all duration-300 hover:shadow-xl sm:p-10 border-l-4 border-brand-blue">
-        <div class="relative z-10 flex flex-col h-full">
-            <div class="flex flex-col gap-4">
-                <div class="flex items-center gap-4">
-                    <div class="shrink-0 flex h-10 w-10 items-center justify-center rounded-xl bg-brand-blue text-white shadow-sm shadow-brand-blue/30">
-                        <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path></svg>
+        <div class="group relative md:col-span-7 flex flex-col h-full overflow-hidden rounded-3xl bg-blue-50/50 p-8 shadow-sm ring-1 ring-brand-blue/20 transition-all duration-300 hover:shadow-xl sm:p-10 border-l-4 border-brand-blue">
+            <div class="relative z-10 flex flex-col h-full">
+                <div class="flex flex-col gap-4">
+                    <div class="flex items-center gap-4">
+                        <div class="shrink-0 flex h-10 w-10 items-center justify-center rounded-xl bg-brand-blue text-white shadow-sm shadow-brand-blue/30">
+                            <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path></svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900">Systeem Architectuur</h3>
                     </div>
-                    <h3 class="text-xl font-bold text-slate-900">Systeem Architectuur</h3>
+                    <p class="text-sm leading-relaxed text-slate-600 sm:text-base">
+                        Complexe business-logica vertalen naar heldere architecturen middels <strong class="text-brand-blue whitespace-nowrap">Domain Driven Design</strong> en <strong class="text-brand-blue whitespace-nowrap">Event Sourcing</strong>. Betrouwbare funderingen waar je op kunt bouwen. Geen korte-termijn fixes, maar een robuust fundament dat moeiteloos met je ambities meeschaalt — nu én over vijf jaar.
+                    </p>
                 </div>
-                <p class="text-sm leading-relaxed text-slate-600 sm:text-base">
-                    Complexe business-logica vertalen naar heldere architecturen middels <strong class="text-brand-blue whitespace-nowrap">Domain Driven Design</strong> en <strong class="text-brand-blue whitespace-nowrap">Event Sourcing</strong>. Betrouwbare funderingen waar je op kunt bouwen. Geen korte-termijn fixes, maar een robuust fundament dat moeiteloos met je ambities meeschaalt — nu én over vijf jaar.
-                </p>
-            </div>
 
-            <div class="mt-auto pt-8">
-                <div class="text-brand-blue text-[10px] font-bold uppercase tracking-[0.2em]">
-                    Scalable by design
+                <div class="mt-auto pt-8">
+                    <div class="text-brand-blue text-[10px] font-bold uppercase tracking-[0.2em]">
+                        Scalable by design
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
 
     <section class="space-y-12">
         <div class="flex flex-col items-start gap-4">
