@@ -263,9 +263,10 @@ func sitemap(c fiber.Ctx) error {
 		priority string
 	}{
 		{loc: "/", priority: "1.0"},
-		{loc: "/diensten", priority: "0.8"},
 		{loc: "/aanpak", priority: "0.8"},
+		{loc: "/diensten", priority: "0.8"},
 		{loc: "/cases", priority: "0.8"},
+		{loc: "/over", priority: "0.8"},
 		{loc: "/contact", priority: "0.8"},
 	}
 
