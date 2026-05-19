@@ -15,8 +15,9 @@ func Setup(router *web.DomainRouter) {
 	router.Get("/contact", contact)
 
 	// en
-	router.Get("/about", about)
-	router.Get("/approach", approach)
+	router.Get("/diensten", services)
+	router.Get("/over", about)
+	router.Get("/aanpak", approach)
 }
 
 func home(c fiber.Ctx) error {
@@ -212,6 +213,47 @@ func cases(c fiber.Ctx) error {
 	})
 }
 
+func services(c fiber.Ctx) error {
+	title := "Cases | Bewezen Digitale Successen | Solvalutions"
+	desc := "Bekijk onze portfolio van high-performance B2B softwareoplossingen. Van cloud-native migraties tot schaalbare Go-architecturen."
+	url := "https://solvalutions.nl"
+
+	structuredData := template.HTML(`
+	<script type="application/ld+json">
+	{
+	  "@context": "https://schema.org",
+	  "@type": "CollectionPage",
+	  "name": "` + title + `",
+	  "description": "` + desc + `",
+	  "url": "` + url + `/cases",
+	  "mainEntity": {
+	    "@type": "ItemList",
+	    "itemListElement": [
+	      {
+	        "@type": "ListItem",
+	        "position": 1,
+	        "name": "Cloud Infrastructure Migration",
+	        "description": "Scalable architecture for a logistics partner."
+	      },
+	      {
+	        "@type": "ListItem",
+	        "position": 2,
+	        "name": "WooCommerce to Go API Refactor",
+	        "description": "Transforming a slow legacy store into a high-performance headless commerce engine."
+	      }
+	    ]
+	  }
+	}
+	</script>
+	`)
+
+	return web.Render(c, "services", fiber.Map{
+		"Title":           title,
+		"MetaDescription": desc,
+		"StructuredData":  structuredData,
+	})
+}
+
 func sitemap(c fiber.Ctx) error {
 	host := c.Hostname()
 	now := time.Now().Format("2006-01-02")
@@ -221,8 +263,8 @@ func sitemap(c fiber.Ctx) error {
 		priority string
 	}{
 		{loc: "/", priority: "1.0"},
-		{loc: "/about", priority: "0.8"},
-		{loc: "/approach", priority: "0.8"},
+		{loc: "/diensten", priority: "0.8"},
+		{loc: "/aanpak", priority: "0.8"},
 		{loc: "/cases", priority: "0.8"},
 		{loc: "/contact", priority: "0.8"},
 	}
