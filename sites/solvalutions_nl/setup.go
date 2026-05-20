@@ -3,6 +3,7 @@ package solvalutions_nl
 import (
 	"fmt"
 	"html/template"
+	"strings"
 	"time"
 
 	"github.com/gofiber/fiber/v3"
@@ -14,15 +15,16 @@ func Setup(router *web.DomainRouter) {
 	router.Get("/cases", cases)
 	router.Get("/contact", contact)
 
-	// en
 	router.Get("/diensten", services)
 	router.Get("/over", about)
 	router.Get("/aanpak", approach)
+
+	router.Get("/sitemap.xml", sitemap)
 }
 
 func home(c fiber.Ctx) error {
 	title := "Software moderniseren & Development | Solvalutions"
-	desc := "Ik moderniseer trage of vastgelopen PHP- en Go-software voor MKB en maakindustrie in Oost-Nederland. Minder handwerk, minder fouten, vaste prijs per fase."
+	desc := "Modernisering van trage of vastgelopen PHP- en Go-software voor MKB en maakindustrie in Oost-Nederland. Minder handwerk, minder fouten, vaste prijs per fase."
 	url := "https://solvalutions.nl"
 
 	jsonLd := template.HTML(`
@@ -401,33 +403,91 @@ func sitemap(c fiber.Ctx) error {
 	host := c.Hostname()
 	now := time.Now().Format("2006-01-02")
 
-	pages := []struct {
-		loc      string
-		priority string
-	}{
-		{loc: "/", priority: "1.0"},
-		{loc: "/aanpak", priority: "0.8"},
-		{loc: "/diensten", priority: "0.8"},
-		{loc: "/cases", priority: "0.8"},
-		{loc: "/over", priority: "0.8"},
-		{loc: "/contact", priority: "0.8"},
+	domainNL := "https://www.solvalutions.nl"
+	domainCOM := "https://www.solvalutions.com"
+
+	type translation struct {
+		lang string
+		url  string
 	}
 
-	xml := `<?xml version="1.0" encoding="UTF-8"?>`
-	xml += `<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">`
+	pages := []struct {
+		loc          string
+		priority     string
+		translations []translation
+	}{
+		{
+			loc:      "/",
+			priority: "1.0",
+			translations: []translation{
+				{lang: "nl-NL", url: domainNL + "/"},
+				{lang: "en", url: domainCOM + "/"},
+				{lang: "x-default", url: domainCOM + "/"},
+			},
+		},
+		{
+			loc:      "/aanpak",
+			priority: "0.8",
+			translations: []translation{
+				{lang: "nl-NL", url: domainNL + "/aanpak"},
+				{lang: "en", url: domainCOM + "/approach"},
+				{lang: "x-default", url: domainCOM + "/approach"},
+			},
+		},
+		{
+			loc:          "/diensten",
+			priority:     "0.8",
+			translations: nil,
+		},
+		{
+			loc:      "/cases",
+			priority: "0.8",
+			translations: []translation{
+				{lang: "nl-NL", url: domainNL + "/cases"},
+				{lang: "en", url: domainCOM + "/cases"},
+				{lang: "x-default", url: domainCOM + "/cases"},
+			},
+		},
+		{
+			loc:      "/over",
+			priority: "0.8",
+			translations: []translation{
+				{lang: "nl-NL", url: domainNL + "/over"},
+				{lang: "en", url: domainCOM + "/about"},
+				{lang: "x-default", url: domainCOM + "/about"},
+			},
+		},
+		{
+			loc:      "/contact",
+			priority: "0.8",
+			translations: []translation{
+				{lang: "nl-NL", url: domainNL + "/contact"},
+				{lang: "en", url: domainCOM + "/contact"},
+				{lang: "x-default", url: domainCOM + "/contact"},
+			},
+		},
+	}
+
+	var xml strings.Builder
+
+	xml.WriteString(`<?xml version="1.0" encoding="UTF-8"?>` + "\n")
+	xml.WriteString(`<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">` + "\n")
 
 	for _, page := range pages {
-		xml += fmt.Sprintf(`
-	<url>
-		<loc>https://%s%s</loc>
-		<lastmod>%s</lastmod>
-		<changefreq>monthly</changefreq>
-		<priority>%s</priority>
-	</url>`, host, page.loc, now, page.priority)
+		xml.WriteString(fmt.Sprintf("\t<url>\n\t\t<loc>https://%s%s</loc>\n\t\t<lastmod>%s</lastmod>\n\t\t<changefreq>monthly</changefreq>\n\t\t<priority>%s</priority>\n", host, page.loc, now, page.priority))
+
+		if page.translations != nil {
+			for _, t := range page.translations {
+				xml.WriteString(fmt.Sprintf("\t\t<xhtml:link rel=\"alternate\" hreflang=\"%s\" href=\"%s\" />\n", t.lang, t.url))
+			}
+		}
+
+		xml.WriteString("\t</url>\n")
 	}
 
-	xml += `</urlset>`
+	xml.WriteString(`</urlset>`)
 
-	c.Type("xml")
-	return c.SendString(xml)
+	c.Set("Content-Type", "application/xml; charset=utf-8")
+
+	return c.SendString(xml.String())
 }
