@@ -45,17 +45,29 @@ tasks:
   # ==========================================
   # 🚀 SOLVALUTIONS
   # ==========================================
-  sol:dev:
-    desc: Start DEV server for Solvalutions
+  solcom:dev:
+    desc: Start DEV server for Solvalutions.com
     cmds:
       - task: _dev
-        vars: { SITE: "solvalutions" }
+        vars: { SITE: "solvalutions_com" }
 
-  sol:build:
-    desc: Build frontend & backend for Solvalutions
+  solcom:build:
+    desc: Build frontend & backend for Solvalutions.com
     cmds:
       - task: _build
-        vars: { SITE: "solvalutions" }
+        vars: { SITE: "solvalutions_com" }
+
+  solnl:dev:
+    desc: Start DEV server for Solvalutions.nl
+    cmds:
+      - task: _dev
+        vars: { SITE: "solvalutions_nl" }
+
+  solnl:build:
+    desc: Build frontend & backend for Solvalutions.nl
+    cmds:
+      - task: _build
+        vars: { SITE: "solvalutions_nl" }
 
   # ==========================================
   # ⚙️ INTERNAL TASKS
