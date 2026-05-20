@@ -1,0 +1,78 @@
+@import 'tailwindcss';
+
+@source '../../../views/';
+
+@font-face {
+  font-family: 'Geist Sans';
+  src: url('../fonts/geist-sans-latin-400-normal.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Geist Mono';
+  src: url('../fonts/geist-mono-latin-400-normal.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@theme {
+    --font-sans: 'Geist Sans', system-ui, sans-serif;
+    --font-mono: 'Geist Mono', ui-monospace, monospace;
+
+    --color-brand-blue: #024b82;
+    --color-brand-accent: #38bdf8;
+    --color-brand-accent-hover: #7dd3fc;
+    --color-brand-logo: #e0f2fe;
+
+    /* In dark mode glow works better than shadow */
+    --brand-glow: 0 4px 30px rgba(56, 189, 248, 0.15);
+
+    --color-brand-bg: #0f172a;
+    --color-brand-surface: #1e293b;
+
+    --animate-neon-flicker: neon-flicker 2.5s linear forwards;
+}
+
+@keyframes neon-flicker {
+  /* Muted / 'Off' State: Targeting both border and text color */
+  0%, 9%, 13%, 24%, 28%, 44%, 54%, 74%, 78%, 80%, 84%, 86% {
+    border-color: color-mix(in srgb, var(--color-brand-accent), transparent 70%);
+  }
+
+  /* Bright / 'On' State: Full emerald glow */
+  10%, 12%, 45%, 47%, 51%, 53%, 81%, 83%, 90%, 100% {
+    border-color: var(--color-emerald-500);
+    color: var(--color-emerald-500);
+  }
+
+  /* Stuttering / Dim States: Varying intensity for a 'broken' effect */
+  25%, 27% {
+    border-color: var(--color-emerald-800);
+    color: var(--color-emerald-800);
+  }
+  75%, 77% {
+    border-color: var(--color-emerald-400);
+    color: var(--color-emerald-400);
+  }
+  87%, 89% {
+    border-color: var(--color-emerald-700);
+    color: var(--color-emerald-700);
+  }
+}
+
+@layer base {
+    body {
+        @apply bg-brand-bg text-slate-400 antialiased;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+        @apply text-white font-extrabold tracking-tight;
+    }
+
+    ::selection {
+        @apply bg-brand-accent text-brand-bg;
+    }
+}

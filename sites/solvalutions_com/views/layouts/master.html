@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ or .Title "Solvalutions | Partner in High-Performance Engineering" }}</title>
+    <meta name="description" content="{{ or .MetaDescription "B2B Tech Partner specialized Digital Engineering for real Business Solutions. We build the software and infrastructure that powers your business growth." }}">
+
+    {{ if .Keywords }}
+    <meta name="keywords" content="{{ .Keywords }}">
+    {{ end }}
+
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://solvalutions.com{{ .Path }}">
+    <meta property="og:title" content="Solvalutions | High-Performance B2B Software Engineering">
+    <meta property="og:description" content="Engineering the foundation for ambitious digital growth. We replace bloated legacy systems with reliable, cloud-native architecture.">
+    <meta property="og:image" content="https://solvalutions.com/assets/img/solvalutions-og-image.png">
+
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:url" content="https://solvalutions.com{{ .Path }}">
+    <meta name="twitter:title" content="Solvalutions | High-Performance B2B Software Engineering">
+    <meta name="twitter:description" content="Engineering the foundation for ambitious digital growth. We replace bloated legacy systems with reliable, cloud-native architecture.">
+    <meta name="twitter:image" content="https://solvalutions.com/assets/img/solvalutions-og-image.png">
+
+    <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+
+    {{ if .CanonicalHost }}
+    <link rel="canonical" href="https://{{ .CanonicalHost }}{{ .Path }}">
+    {{ end }}
+
+    {{ if .IsProd }}
+    <link rel="stylesheet" href="{{ .Vite.Css "src/scripts/app.js" }}">
+    <script type="module" src="{{ .Vite.Asset "src/scripts/app.js" }}"></script>
+    {{ else }}
+    <script type="module" src="http://localhost:5173/assets/dist/@vite/client"></script>
+    <script type="module" src="http://localhost:5173/assets/dist/src/scripts/app.js"></script>
+    {{ end }}
+
+    {{ if .StructuredData }}
+    {{ .StructuredData }}
+    {{ end }}
+</head>
+<body class="bg-brand-bg text-slate-400 antialiased selection:bg-brand-accent selection:text-brand-bg flex flex-col min-h-screen">
+
+    <div class="fixed inset-0 z-[-1] bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]"></div>
+
+    <header class="sticky top-0 z-50 w-full border-b border-slate-800/50 bg-brand-bg/60 backdrop-blur-md">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+
+            <a href="/" class="flex items-center gap-2.5 group">
+                <div class="bg-white overflow-hidden rounded-md h-12 w-12 flex items-center justify-center shrink-0">
+                    <picture>
+                        <source srcset="/assets/img/solvalutions-logo.webp" type="image/webP">
+                        <img src="/assets/img/solvalutions-logo.png"
+                             alt="Solvalutions Logo"
+                             class="h-full w-full object-contain  scale-125"
+                             width="60"
+                             height="60"
+                             fetchpriority="high">
+                    </picture>
+                </div>
+
+                <span class="text-brand-logo font-bold text-lg tracking-tight leading-none [text-shadow:_0_0_12px_rgba(56,189,248,0.25)] transition-all group-hover:text-white group-hover:[text-shadow:_0_0_15px_rgba(255,255,255,0.4)]">
+                    Solvalutions
+                </span>
+            </a>
+
+            <nav class="hidden md:flex gap-8 text-sm font-medium">
+                <a href="/approach" class="transition-colors {{ if eq .Path "/approach" }} text-white {{ else }} hover:text-white {{ end }}">Approach</a>
+                <a href="/cases" class="transition-colors {{ if eq .Path "/cases" }} text-white {{ else }} hover:text-white {{ end }}">Cases</a>
+                <a href="/about" class="transition-colors {{ if eq .Path "/about" }} text-white {{ else }} hover:text-white {{ end }}">About</a>
+            </nav>
+
+            <div class="hidden md:flex items-center gap-4">
+                <a href="https://solvalutions.nl" title="Visit Solvalutions.nl (Dutch)" class="flex items-center gap-2 px-3 py-1.5 rounded-full border border-slate-700/50 bg-slate-800/30 hover:border-slate-600 hover:bg-slate-700/50 transition-all duration-300 group">
+                    <svg class="w-3.5 h-3.5 text-slate-400 group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"></path>
+                    </svg>
+                    <span class="text-[10px] font-bold uppercase tracking-widest text-slate-300 group-hover:text-white transition-colors">
+                        NL
+                    </span>
+                </a>
+
+                <a href="/contact" class="inline-flex px-5 py-2.5 text-sm font-bold text-brand-bg bg-white rounded-lg hover:bg-brand-accent transition-all shadow-(--brand-accent) active:scale-95">
+                    Contact
+                </a>
+            </div>
+
+            <div class="flex items-center gap-4 md:hidden">
+                <a href="https://solvalutions.nl" title="Visit Solvalutions.nl (Dutch)" class="flex items-center gap-1.5 text-slate-300 hover:text-white transition-colors group mt-0.5">
+                    <svg class="w-4 h-4 text-slate-400 group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"></path>
+                    </svg>
+                    <span class="text-[10px] font-bold uppercase tracking-widest text-slate-400 group-hover:text-white transition-colors">
+                        NL
+                    </span>
+                </a>
+
+                <button id="mobile-menu-open" aria-label="Open navigation menu" class="p-2 text-slate-400 hover:text-white transition-colors">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                    </svg>
+                </button>
+            </div>
+
+        </div>
+    </header>
+
+    <main class="grow">
+        {{embed}}
+    </main>
+
+    <footer class="border-t border-slate-800/50 mt-auto py-12 bg-slate-900/10">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+                <div class="col-span-1 md:col-span-2">
+                    <a href="/" class="group flex items-center gap-3 mb-6">
+                        <div class="bg-white overflow-hidden rounded-lg h-12 w-12 flex items-center justify-center shrink-0 transition-transform duration-300 group-hover:scale-105">
+                            <picture>
+                                <source srcset="/assets/img/solvalutions-logo.webp" type="image/webP">
+                                <img src="/assets/img/solvalutions-logo.png" alt="Solvalutions Logo" class="h-full w-full object-contain scale-125" width="48" height="48" fetchpriority="high" decoding="async">
+                            </picture>
+                        </div>
+                        <span class="text-brand-logo font-bold text-lg tracking-tight leading-none [text-shadow:_0_0_12px_rgba(56,189,248,0.25)] transition-all duration-300 group-hover:text-white group-hover:[text-shadow:_0_0_15px_rgba(255,255,255,0.4)]">
+                            Solvalutions
+                        </span>
+                    </a>
+                    <p class="text-sm text-slate-400 max-w-sm">
+                        High-performance software engineering for B2B partners. We build the infrastructure that powers your growth.
+                    </p>
+                </div>
+
+                <div class="md:col-span-2 flex gap-12 sm:gap-20 justify-between md:justify-end">
+                    <div>
+                        <h3 class="text-brand-logo font-bold mb-6 text-sm">Expertise</h3>
+                        <ul class="text-sm space-y-4">
+                            <li><a href="/approach" class="hover:text-brand-accent transition-colors">Approach</a></li>
+                            <li><a href="/cases" class="hover:text-brand-accent transition-colors">Cases</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="text-brand-logo font-bold mb-6 text-sm">Company</h3>
+                        <ul class="text-sm space-y-4">
+                            <li><a href="/contact" class="hover:text-brand-accent transition-colors">Contact</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pt-8 border-t border-slate-800/50 flex flex-col md:flex-row justify-between items-center gap-6">
+                <div class="font-mono text-[10px] text-slate-400 flex items-center gap-4">
+                    <span>© {{.CurrentYear}} - DESIGN BY SOLVALUTIONS - <span title="The Go Programming Language - Golang">BUILT WITH GO</span></span>
+                </div>
+                <div class="flex items-center gap-6">
+                    <div class="font-mono text-[10px] text-slate-400 flex items-center gap-4">
+                        <span class="flex items-center gap-2">
+                            <span class="text-brand-accent">STATUS:</span>
+                            <span class="flex items-center gap-1.5 text-emerald-400 font-medium">
+                                <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse shadow-[0_0_8px_rgba(52,211,153,0.6)]"></span>
+                                200 OK
+                            </span>
+                        </span>
+                    </div>
+                    <a href="https://linkedin.com/in/robm89" target="_blank" rel="noopener noreferrer" aria-label="Visit Rob Meijerink's LinkedIn profile" class="text-slate-400 hover:text-white transition-colors">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <div id="mobile-menu-backdrop" class="fixed inset-0 z-[90] bg-black/60 opacity-0 pointer-events-none transition-opacity duration-300 md:hidden"></div>
+    <div id="mobile-menu" class="fixed inset-y-0 right-0 z-[100] w-[75%] bg-brand-bg/95 backdrop-blur-xl border-l border-white/10 translate-x-full transition-transform duration-300 ease-in-out md:hidden shadow-[-20px_0_30px_rgba(0,0,0,0.5)]">
+        <div class="flex flex-col h-full p-8">
+            <div class="flex justify-between items-center mb-12">
+                <span class="text-brand-logo font-bold tracking-widest text-xs uppercase">Menu</span>
+                <button id="mobile-menu-close" aria-label="Close navigation menu" class="p-2 text-slate-400 hover:text-white transition-colors">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
+            </div>
+
+            <nav class="flex flex-col gap-8 text-xl font-bold">
+                <a href="/approach" class="hover:text-brand-accent transition-colors {{ if eq .Path "/approach" }} text-white {{ end }}">Approach</a>
+                <a href="/cases" class="hover:text-brand-accent transition-colors {{ if eq .Path "/cases" }} text-white {{ end }}">Cases</a>
+                <a href="/about" class="hover:text-brand-accent transition-colors {{ if eq .Path "/about" }} text-white {{ end }}">About</a>
+                <hr class="border-slate-800/50">
+                <a href="/contact" class="text-brand-accent hover:brightness-125">Contact</a>
+            </nav>
+
+            <div class="mt-auto pt-8 border-t border-slate-800/50">
+                <a href="/" class="text-[10px] font-mono text-slate-400 uppercase tracking-widest">Solvalutions Engineering</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="nl" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{or .Title "Solvalutions | Jouw B2B Tech Partner"}}</title>
+    <meta name="description" content="{{or .MetaDescription "Modernisering van trage of vastgelopen PHP- en Go-software voor MKB en maakindustrie in Oost-Nederland. Minder handwerk, minder fouten, vaste prijs per fase."}}">
+    {{if .Keywords}}
+    <meta name="keywords" content="{{.Keywords}}">
+    {{end}}
+
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://solvalutions.nl{{ .Path }}">
+    <meta property="og:title" content="Solvalutions | High-Performance B2B Software Engineering">
+    <meta property="og:description" content="Modernisering van trage of vastgelopen PHP- en Go-software voor MKB en maakindustrie in Oost-Nederland. Minder handwerk, minder fouten, vaste prijs per fase.">
+    <meta property="og:image" content="https://solvalutions.nl/assets/img/solvalutions-og-image.png">
+
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:url" content="https://solvalutions.com{{ .Path }}">
+    <meta name="twitter:title" content="Solvalutions | High-Performance B2B Software Engineering">
+    <meta name="twitter:description" content="Modernisering van trage of vastgelopen PHP- en Go-software voor MKB en maakindustrie in Oost-Nederland. Minder handwerk, minder fouten, vaste prijs per fase.">
+    <meta name="twitter:image" content="https://solvalutions.com/assets/img/solvalutions-og-image.png">
+
+    {{if .CanonicalHost}}
+    <link rel="canonical" href="https://{{ .CanonicalHost }}{{ .Path }}">
+    {{end}}
+    <meta name="robots" content="index, follow">
+
+    {{ if .IsProd }}
+    <link rel="stylesheet" href="{{ .Vite.Css "src/scripts/app.js" }}">
+    <script type="module" src="{{ .Vite.Asset "src/scripts/app.js" }}"></script>
+    {{ else }}
+    <script type="module" src="http://localhost:5173/assets/dist/@vite/client"></script>
+    <script type="module" src="http://localhost:5173/assets/dist/src/scripts/app.js"></script>
+    {{ end }}
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ProfessionalService",
+      "name": "Solvalutions",
+      "url": "https://solvalutions.nl",
+      "logo": "https://solvalutions.nl/assets/img/logo-solvalutions-email.png",
+      "telephone": "+31649691374",
+      "taxID": "NL005319604B24",
+      "founder": {
+        "@type": "Person",
+        "name": "Rob Meijerink",
+        "url": "https://robmeijerink.nl",
+        "sameAs": [
+          "https://www.linkedin.com/in/robm89/"
+        ]
+      },
+      "sameAs": [
+        "https://www.linkedin.com/in/robm89/"
+      ]
+    }
+    </script>
+</head>
+<body class="bg-canvas text-content-base font-sans antialiased selection:bg-brand-base selection:text-white flex flex-col min-h-screen overflow-x-hidden">
+
+    <canvas id="flow-canvas" class="fixed inset-0 z-0 pointer-events-none"></canvas>
+
+    <div class="fixed top-0 inset-x-0 h-1 bg-brand-dark z-[60]"></div>
+
+    <div class="fixed top-0 inset-x-0 h-24 bg-gradient-to-b from-canvas/95 via-canvas/40 to-transparent z-40 pointer-events-none"></div>
+
+    <header id="main-nav" class="w-full fixed top-0 z-50 transition-all duration-300 bg-transparent border-b border-transparent py-2 pt-3">
+        <div class="max-w-7xl mx-auto px-4 md:px-6 lg:px-8 h-20 flex items-center justify-between">
+
+            <a href="/" class="flex items-center gap-2 md:gap-3 group shrink-0" aria-label="Solvalutions Home">
+                <picture class="flex items-center justify-center shrink-0">
+                    <source srcset="/assets/img/solvalutions-logo.webp" type="image/webp">
+                    <img src="/assets/img/solvalutions-logo.png"
+                         alt="Solvalutions Logo"
+                         class="h-12 w-12 md:h-16 md:w-16 object-contain shrink-0 transition-transform duration-500 group-hover:scale-110"
+                         width="64"
+                         height="64"
+                         fetchpriority="high">
+                </picture>
+                <span class="font-extrabold text-xl md:text-2xl tracking-tight text-brand-dark">
+                    Solvalutions
+                </span>
+            </a>
+
+            <nav class="hidden md:flex gap-10 text-[14px] font-semibold tracking-wide">
+                <a href="/aanpak" class="{{ if eq .Path "/aanpak" }} text-accent-dark {{ else }} text-content-strong {{ end }} relative transition-colors hover:text-brand-base after:absolute after:-bottom-1 after:left-0 after:h-[2px] after:w-full after:origin-left after:scale-x-0 after:bg-brand-base after:transition-transform after:duration-300 after:ease-out hover:after:scale-x-100">
+                    Aanpak
+                </a>
+                <a href="/diensten" class="{{ if eq .Path "/diensten" }} text-accent-dark {{ else }} text-content-strong {{ end }} relative transition-colors hover:text-brand-base after:absolute after:-bottom-1 after:left-0 after:h-[2px] after:w-full after:origin-left after:scale-x-0 after:bg-brand-base after:transition-transform after:duration-300 after:ease-out hover:after:scale-x-100">
+                    Diensten
+                </a>
+                <a href="/cases" class="{{ if eq .Path "/cases" }} text-accent-dark {{ else }} text-content-strong {{ end }} relative transition-colors hover:text-brand-base after:absolute after:-bottom-1 after:left-0 after:h-[2px] after:w-full after:origin-left after:scale-x-0 after:bg-brand-base after:transition-transform after:duration-300 after:ease-out hover:after:scale-x-100">
+                    Cases
+                </a>
+            </nav>
+
+            <div class="hidden md:flex items-center gap-4">
+                <a href="https://solvalutions.com" title="Visit Solvalutions.com (English)" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 px-3 py-1.5 rounded-full border border-content-strong/10 bg-panel/50 hover:border-accent-base/50 hover:bg-accent-base/5 transition-all duration-300 group">
+                    <svg class="w-3.5 h-3.5 text-content-muted group-hover:text-accent-base transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"></path>
+                    </svg>
+                    <span class="text-[10px] font-bold uppercase tracking-widest text-content-strong group-hover:text-accent-base transition-colors">
+                        ENG
+                    </span>
+                </a>
+
+                <a href="/contact" class="inline-flex px-8 py-3.5 text-[11px] font-bold uppercase tracking-widest text-white bg-accent-dark border border-accent-dark shadow-sm hover:bg-accent-base hover:shadow-[inset_0_3px_6px_rgba(0,0,0,0.15)] transition-all duration-300">
+                    Contact
+                </a>
+            </div>
+
+            <div class="flex items-center gap-4 md:hidden">
+                <a href="https://solvalutions.com" title="Visit Solvalutions.com (English)" target="_blank" rel="noopener noreferrer" class="flex items-center gap-1.5 text-content-strong hover:text-accent-base transition-colors group mt-1">
+                    <svg class="w-4 h-4 text-content-muted group-hover:text-accent-base transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"></path>
+                    </svg>
+                    <span class="text-[10px] font-bold uppercase tracking-widest text-content-muted group-hover:text-accent-base transition-colors">
+                        ENG
+                    </span>
+                </a>
+
+                <button id="mobile-menu-btn" class="relative z-[60] flex flex-col justify-center items-center gap-[6px] w-11 h-11 p-2 text-brand-dark [&.is-open>span:first-child]:translate-y-[8px] [&.is-open>span:first-child]:rotate-45 [&.is-open>span:nth-child(2)]:opacity-0 [&.is-open>span:last-child]:-translate-y-[8px] [&.is-open>span:last-child]:-rotate-45" aria-label="Toggle menu">
+                    <span class="w-6 h-[2px] bg-current rounded-full transition-all duration-300 origin-center"></span>
+                    <span class="w-6 h-[2px] bg-current rounded-full transition-all duration-300 origin-center"></span>
+                    <span class="w-6 h-[2px] bg-current rounded-full transition-all duration-300 origin-center"></span>
+                </button>
+            </div>
+        </div>
+
+        <div id="mobile-overlay" class="md:hidden fixed inset-0 bg-brand-dark/20 backdrop-blur-sm z-[40] opacity-0 pointer-events-none transition-opacity duration-500 [&.is-open]:opacity-100 [&.is-open]:pointer-events-auto"></div>
+
+        <div id="mobile-drawer" class="md:hidden fixed top-0 right-0 w-[85%] max-w-sm h-[100dvh] bg-canvas bg-[linear-gradient(to_right,rgba(184,74,43,0.04)_1px,transparent_1px),linear-gradient(to_bottom,rgba(184,74,43,0.04)_1px,transparent_1px)] bg-[size:24px_24px] shadow-2xl z-[50] translate-x-full transition-transform duration-700 ease-[cubic-bezier(0.34,1.56,0.64,1)] flex flex-col [&.is-open]:translate-x-0">
+
+            <div class="h-24 w-full shrink-0"></div>
+
+            <nav class="flex flex-col gap-2 px-8 py-4 text-lg font-semibold tracking-wide overflow-y-auto">
+                <a href="/aanpak" class="{{ if eq .Path "/aanpak" }} text-accent-dark {{ else }} text-content-strong {{ end }} block py-3 hover:text-brand-base transition-colors">
+                    Aanpak
+                </a>
+                <a href="/diensten" class="{{ if eq .Path "/diensten" }} text-accent-dark {{ else }} text-content-strong {{ end }} block py-3 hover:text-brand-base transition-colors">
+                    Diensten
+                </a>
+                <a href="/cases" class="{{ if eq .Path "/cases" }} text-accent-dark {{ else }} text-content-strong {{ end }} block py-3 hover:text-brand-base transition-colors">
+                    Cases
+                </a>
+
+                <div class="pt-8 mt-4 border-t border-content-strong/10 flex flex-col gap-5">
+                    <a href="/contact" class="flex justify-center px-8 py-4 text-[11px] font-bold uppercase tracking-widest text-white bg-accent-dark shadow-sm hover:bg-accent-base transition-all duration-300">
+                        Contact
+                    </a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main class="grow relative z-10 pt-24">
+        {{embed}}
+    </main>
+
+    <footer id="main-footer" class="w-full relative z-10 border-t border-content-strong/10 bg-brand-dark text-white pt-12 md:pt-20 pb-8">
+        <div class="max-w-7xl mx-auto px-4 md:px-6 lg:px-8">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-8 mb-8 md:mb-12">
+
+                <div class="col-span-2 md:col-span-2">
+                    <a href="/" class="flex items-center gap-3 md:gap-4 mb-6 md:mb-8 group shrink-0" aria-label="Solvalutions Home">
+                        <div class="bg-white p-1 shrink-0">
+                            <picture>
+                                <source srcset="/assets/img/solvalutions-logo.webp" type="image/webp">
+                                <img src="/assets/img/solvalutions-logo.png"
+                                     alt="Solvalutions Logo"
+                                     class="h-12 w-12 md:h-16 md:w-16 object-contain transition-transform duration-500 group-hover:scale-110"
+                                     width="64"
+                                     height="64"
+                                     loading="lazy">
+                            </picture>
+                        </div>
+                        <span class="font-extrabold text-xl md:text-2xl tracking-tight text-white">Solvalutions</span>
+                    </a>
+                    <p class="text-white/70 text-sm max-w-sm leading-relaxed">
+                        B2B Tech Partner in software development en DevOps. Solvalutions ontwerpt, bouwt en optimaliseert de digitale transformatie voor de maakindustrie.
+                    </p>
+                </div>
+
+                <div class="col-span-1">
+                    <h4 class="text-xs font-bold text-white/50 uppercase tracking-widest mb-4 md:mb-6">Website</h4>
+                    <ul class="space-y-3 md:space-y-4 text-sm font-medium text-white/80">
+                        <li><a href="/aanpak" class="hover:text-brand-light transition-colors">Aanpak</a></li>
+                        <li><a href="/diensten" class="hover:text-brand-light transition-colors">Diensten</a></li>
+                        <li><a href="/cases" class="hover:text-brand-light transition-colors">Cases</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-span-1">
+                    <h4 class="text-xs font-bold text-white/50 uppercase tracking-widest mb-4 md:mb-6">Solvalutions</h4>
+                    <ul class="space-y-3 md:space-y-4 text-sm font-medium text-white/80">
+                        <li><a href="/over" class="hover:text-brand-light transition-colors">Over</a></li>
+                        <li><a href="/contact" class="hover:text-brand-light transition-colors">Contact</a></li>
+                    </ul>
+                </div>
+
+            </div>
+
+            <div class="flex flex-wrap justify-start gap-6 md:gap-8 mb-6 md:mb-8">
+                <div class="flex items-center gap-2 text-[11px] font-medium text-white/80">
+                    <span class="text-white/30 text-[10px] tracking-wider">KVK</span>
+                    <span>98238175</span>
+                </div>
+                <div class="flex items-center gap-2 text-[11px] font-medium text-white/80">
+                    <span class="text-white/30 text-[10px] tracking-wider">BTW</span>
+                    <span>NL005319604B24</span>
+                </div>
+            </div>
+
+            <div class="flex flex-col md:flex-row items-center justify-between pt-8 border-t border-white/10 text-[10px] font-bold text-white/50 uppercase tracking-wider gap-4 md:gap-0 text-center md:text-left">
+                <p>&copy; {{.CurrentYear}} | Design by Solvalutions - Alle rechten voorbehouden.</p>
+                <div class="flex flex-wrap justify-center gap-4 md:gap-8">
+                    <a href="/assets/2026_PRIVACYVERKLARING_SOLVALUTIONS.pdf" class="hover:text-white transition-colors">Privacy</a>
+                    <a href="/assets/2026_ALGEMENE_VOORWAARDEN_SOLVALUTIONS.pdf" class="hover:text-white transition-colors">Algemene Voorwaarden</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <a href="https://wa.me/+31649691374"
+       target="_blank"
+       rel="noopener noreferrer"
+       title="Contact via WhatsApp"
+       class="fixed bottom-4 right-4 md:bottom-8 md:right-8 z-40 flex h-12 w-12 md:h-14 md:w-14 items-center justify-center rounded-full bg-[#25D366] text-white shadow-lg transition-all duration-300 hover:-translate-y-1 hover:bg-[#20ba5a] hover:shadow-xl focus:outline-hidden focus:ring-2 focus:ring-[#25D366] focus:ring-offset-2"
+       aria-label="Contact via WhatsApp">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 md:w-8 md:h-8" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+        </svg>
+    </a>
+</body>
+
+</html>
