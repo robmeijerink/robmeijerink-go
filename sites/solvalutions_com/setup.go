@@ -316,7 +316,8 @@ func sitemap(c fiber.Ctx) error {
 
 	xml.WriteString(`</urlset>`)
 
-	c.Set("Content-Type", "application/xml; charset=utf-8")
+	c.Type("xml")
+	c.Set("X-Content-Type-Options", "nosniff")
 
 	return c.SendString(xml.String())
 }
