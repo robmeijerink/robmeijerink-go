@@ -23,8 +23,8 @@ func Setup(router *web.DomainRouter) {
 }
 
 func home(c fiber.Ctx) error {
-	title := "Software moderniseren & Development | Solvalutions"
-	desc := "Modernisering van trage of vastgelopen PHP- en Go-software voor MKB en maakindustrie in Oost-Nederland. Minder handwerk, minder fouten, vaste prijs per fase."
+	title := "Solvalutions | Software Development & Automatisering"
+	desc := "Modernisering van verouderde B2B software voor MKB en maakindustrie in Oost-Nederland. Minder handwerk, minder fouten, vaste prijs per fase."
 	url := "https://solvalutions.nl"
 
 	jsonLd := template.HTML(`
@@ -38,7 +38,7 @@ func home(c fiber.Ctx) error {
       "image": "` + url + `/assets/img/solvalutions-og-image.png",
       "description": "` + desc + `",
       "telephone": "+31649691374",
-      "email": "rob.meijerink@gmail.com",
+      "email": "info@solvalutions.nl",
       "priceRange": "€€€",
       "founder": {
         "@type": "Person",
