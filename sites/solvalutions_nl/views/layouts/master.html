@@ -60,12 +60,17 @@
     <header id="main-nav" class="w-full fixed top-0 z-50 transition-all duration-300 bg-transparent border-b border-transparent py-2 pt-3">
         <div class="max-w-7xl mx-auto px-4 md:px-6 lg:px-8 h-20 flex items-center justify-between">
 
-            <a href="/" class="flex items-center gap-2 md:gap-3 group" aria-label="Solvalutions Home">
-                <picture>
+            <a href="/" class="flex items-center gap-2 md:gap-3 group shrink-0" aria-label="Solvalutions Home">
+                <picture class="flex items-center justify-center shrink-0">
                     <source srcset="/assets/img/solvalutions-logo.webp" type="image/webp">
-                    <img src="/assets/img/solvalutions-logo.png" alt="Solvalutions Logo" class="h-10 w-10 md:h-14 md:w-14 transition-transform duration-500 group-hover:scale-105">
+                    <img src="/assets/img/solvalutions-logo.png"
+                         alt="Solvalutions Logo"
+                         class="h-12 w-12 md:h-16 md:w-16 object-contain shrink-0 transition-transform duration-500 group-hover:scale-110"
+                         width="64"
+                         height="64"
+                         fetchpriority="high">
                 </picture>
-                <span class="font-extrabold text-lg md:text-xl tracking-tight text-brand-dark">
+                <span class="font-extrabold text-xl md:text-2xl tracking-tight text-brand-dark">
                     Solvalutions
                 </span>
             </a>
@@ -82,14 +87,37 @@
                 </a>
             </nav>
 
-            <a href="/contact" class="hidden md:inline-flex px-8 py-3.5 text-[11px] font-bold uppercase tracking-widest text-white bg-accent-dark border border-accent-dark shadow-sm hover:bg-accent-base hover:shadow-[inset_0_3px_6px_rgba(0,0,0,0.15)] transition-all duration-300">
-                Contact
-            </a>
+            <div class="hidden md:flex items-center gap-4">
+                <a href="https://solvalutions.com" title="Visit Solvalutions.com (English)" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 px-3 py-1.5 rounded-full border border-content-strong/10 bg-panel/50 hover:border-accent-base/50 hover:bg-accent-base/5 transition-all duration-300 group">
+                    <svg class="w-3.5 h-3.5 text-content-muted group-hover:text-accent-base transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"></path>
+                    </svg>
+                    <span class="text-[10px] font-bold uppercase tracking-widest text-content-strong group-hover:text-accent-base transition-colors">
+                        ENG
+                    </span>
+                </a>
 
-            <button id="mobile-menu-btn" class="md:hidden relative z-[60] flex flex-col justify-center items-end gap-[6px] w-10 h-10 p-2 -mr-2 text-brand-dark" aria-label="Toggle menu">
-                <span class="w-6 h-[2px] bg-current rounded-full"></span>
-                <span class="w-5 h-[2px] bg-current rounded-full transition-all duration-300"></span>
-            </button>
+                <a href="/contact" class="inline-flex px-8 py-3.5 text-[11px] font-bold uppercase tracking-widest text-white bg-accent-dark border border-accent-dark shadow-sm hover:bg-accent-base hover:shadow-[inset_0_3px_6px_rgba(0,0,0,0.15)] transition-all duration-300">
+                    Contact
+                </a>
+            </div>
+
+            <div class="flex items-center gap-4 md:hidden">
+                <a href="https://solvalutions.com" title="Visit Solvalutions.com (English)" target="_blank" rel="noopener noreferrer" class="flex items-center gap-1.5 text-content-strong hover:text-accent-base transition-colors group mt-1">
+                    <svg class="w-4 h-4 text-content-muted group-hover:text-accent-base transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"></path>
+                    </svg>
+                    <span class="text-[10px] font-bold uppercase tracking-widest text-content-muted group-hover:text-accent-base transition-colors">
+                        ENG
+                    </span>
+                </a>
+
+                <button id="mobile-menu-btn" class="relative z-[60] flex flex-col justify-center items-center gap-[6px] w-11 h-11 p-2 text-brand-dark [&.is-open>span:first-child]:translate-y-[8px] [&.is-open>span:first-child]:rotate-45 [&.is-open>span:nth-child(2)]:opacity-0 [&.is-open>span:last-child]:-translate-y-[8px] [&.is-open>span:last-child]:-rotate-45" aria-label="Toggle menu">
+                    <span class="w-6 h-[2px] bg-current rounded-full transition-all duration-300 origin-center"></span>
+                    <span class="w-6 h-[2px] bg-current rounded-full transition-all duration-300 origin-center"></span>
+                    <span class="w-6 h-[2px] bg-current rounded-full transition-all duration-300 origin-center"></span>
+                </button>
+            </div>
         </div>
 
         <div id="mobile-overlay" class="md:hidden fixed inset-0 bg-brand-dark/20 backdrop-blur-sm z-[40] opacity-0 pointer-events-none transition-opacity duration-500 [&.is-open]:opacity-100 [&.is-open]:pointer-events-auto"></div>
@@ -109,7 +137,7 @@
                     Cases
                 </a>
 
-                <div class="pt-8 mt-4 border-t border-content-strong/10">
+                <div class="pt-8 mt-4 border-t border-content-strong/10 flex flex-col gap-5">
                     <a href="/contact" class="flex justify-center px-8 py-4 text-[11px] font-bold uppercase tracking-widest text-white bg-accent-dark shadow-sm hover:bg-accent-base transition-all duration-300">
                         Contact
                     </a>
@@ -127,11 +155,16 @@
             <div class="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-8 mb-8 md:mb-12">
 
                 <div class="col-span-2 md:col-span-2">
-                    <a href="/" class="flex items-center gap-3 md:gap-4 mb-6 md:mb-8" aria-label="Solvalutions Home">
-                        <div class="bg-white p-1">
+                    <a href="/" class="flex items-center gap-3 md:gap-4 mb-6 md:mb-8 group shrink-0" aria-label="Solvalutions Home">
+                        <div class="bg-white p-1 shrink-0">
                             <picture>
                                 <source srcset="/assets/img/solvalutions-logo.webp" type="image/webp">
-                                <img src="/assets/img/solvalutions-logo.png" alt="Solvalutions Logo" class="h-10 w-10 md:h-14 md:w-14">
+                                <img src="/assets/img/solvalutions-logo.png"
+                                     alt="Solvalutions Logo"
+                                     class="h-12 w-12 md:h-16 md:w-16 object-contain transition-transform duration-500 group-hover:scale-110"
+                                     width="64"
+                                     height="64"
+                                     loading="lazy">
                             </picture>
                         </div>
                         <span class="font-extrabold text-xl md:text-2xl tracking-tight text-white">Solvalutions</span>
@@ -174,7 +207,7 @@
             <div class="flex flex-col md:flex-row items-center justify-between pt-8 border-t border-white/10 text-[10px] font-bold text-white/50 uppercase tracking-wider gap-4 md:gap-0 text-center md:text-left">
                 <p>&copy; {{.CurrentYear}} | Design by Solvalutions - Alle rechten voorbehouden.</p>
                 <div class="flex flex-wrap justify-center gap-4 md:gap-8">
-                    <a href="#" class="hover:text-white transition-colors">Privacy Policy</a>
+                    <a href="#" class="hover:text-white transition-colors">Privacy</a>
                     <a href="#" class="hover:text-white transition-colors">Algemene Voorwaarden</a>
                 </div>
             </div>

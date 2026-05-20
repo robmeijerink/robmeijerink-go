@@ -51,11 +51,17 @@ export const initNavigation = () => {
     if (btn && overlay && drawer) {
         const toggleMenu = () => {
             const isCurrentlyOpen = overlay.classList.contains('is-open');
+
+            // Toggle classes for animations
+            btn.classList.toggle('is-open');
             overlay.classList.toggle('is-open');
             drawer.classList.toggle('is-open');
 
             // A11y update
             btn.setAttribute('aria-expanded', !isCurrentlyOpen);
+
+            // Premium UX: Voorkom dat de achtergrond scrolt als het menu open is
+            document.body.style.overflow = isCurrentlyOpen ? '' : 'hidden';
         };
 
         btn.addEventListener('click', toggleMenu);

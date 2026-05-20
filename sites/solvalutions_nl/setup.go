@@ -21,33 +21,53 @@ func Setup(router *web.DomainRouter) {
 }
 
 func home(c fiber.Ctx) error {
-	title := "Solvalutions | High-Performance B2B Software Engineering"
-	desc := "Gespecialiseerde B2B tech agency voor high-performance digitale infrastructuur en schaalbare software oplossingen. Bewezen Digitale Oplossingen."
+	title := "Software moderniseren & Development | Solvalutions"
+	desc := "Ik moderniseer trage of vastgelopen PHP- en Go-software voor MKB en maakindustrie in Oost-Nederland. Minder handwerk, minder fouten, vaste prijs per fase."
 	url := "https://solvalutions.nl"
 
 	jsonLd := template.HTML(`
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "Organization",
+      "@type": "ProfessionalService",
       "name": "Solvalutions",
       "url": "` + url + `",
       "logo": "` + url + `/assets/img/solvalutions-logo.png",
       "image": "` + url + `/assets/img/solvalutions-og-image.png",
       "description": "` + desc + `",
+      "telephone": "+31649691374",
+      "email": "rob.meijerink@gmail.com",
+      "priceRange": "€€€",
       "founder": {
         "@type": "Person",
         "name": "Rob Meijerink",
         "url": "https://robmeijerink.nl"
       },
-      "sameAs": [
-        "https://linkedin.com/company/solvalutions",
-        "https://github.com/robmeijerink"
-      ],
       "address": {
         "@type": "PostalAddress",
+        "addressLocality": "Zutphen",
+        "addressRegion": "Gelderland",
         "addressCountry": "NL"
-      }
+      },
+      "areaServed": [
+        { "@type": "AdministrativeArea", "name": "Oost-Nederland" },
+        { "@type": "Country", "name": "Nederland" }
+      ],
+      "knowsAbout": [
+        "Legacy modernisering",
+        "Go",
+        "Fiber",
+        "Laravel",
+        "PHP",
+        "Systeemintegratie",
+        "API-ontwikkeling",
+        "DevOps",
+        "Cloud-infrastructuur"
+      ],
+      "sameAs": [
+        "https://linkedin.com/in/robm89",
+        "https://github.com/robmeijerink"
+      ]
     }
     </script>
     `)
@@ -60,8 +80,8 @@ func home(c fiber.Ctx) error {
 }
 
 func contact(c fiber.Ctx) error {
-	title := "Contact | Jouw Ervaren Tech Partner | Solvalutions"
-	desc := "Complex technisch vraagstuk of een schaalbare applicatie nodig? Neem contact op met Solvalutions. Dé B2B tech partner voor high-performance oplossingen"
+	title := "Contact — Even sparren over je ICT vraagstuk | Solvalutions"
+	desc := "Loopt er iets vast in je software? Stuur een mail of bel even — rechtstreeks met Rob, geen accountmanager. Geen verplichtingen."
 	url := "https://solvalutions.nl"
 
 	jsonLd := template.HTML(`
@@ -69,20 +89,37 @@ func contact(c fiber.Ctx) error {
 	{
 	  "@context": "https://schema.org",
 	  "@type": "ContactPage",
-	  "name": "Contact Solvalutions",
+	  "name": "` + title + `",
 	  "description": "` + desc + `",
 	  "url": "` + url + `/contact",
+	  "isPartOf": {
+	    "@type": "WebSite",
+	    "name": "Solvalutions",
+	    "url": "` + url + `"
+	  },
 	  "mainEntity": {
 	    "@type": "Organization",
 	    "name": "Solvalutions",
 	    "url": "` + url + `",
 	    "logo": "` + url + `/assets/img/solvalutions-logo.png",
+	    "founder": {
+	      "@type": "Person",
+	      "name": "Rob Meijerink",
+	      "url": "https://robmeijerink.nl"
+	    },
+	    "address": {
+	      "@type": "PostalAddress",
+	      "addressLocality": "Zutphen",
+	      "addressRegion": "Gelderland",
+	      "addressCountry": "NL"
+	    },
 	    "contactPoint": {
 	      "@type": "ContactPoint",
-	      "telephone": "+31-6-49691374",
-	      "contactType": "customer support",
-	      "email": "info@solvalutions.nl",
-	      "availableLanguage": ["English", "Dutch"]
+	      "telephone": "+31649691374",
+	      "email": "rob@solvalutions.nl",
+	      "contactType": "customer service",
+	      "areaServed": "NL",
+	      "availableLanguage": ["nl", "en"]
 	    }
 	  }
 	}
@@ -97,8 +134,8 @@ func contact(c fiber.Ctx) error {
 }
 
 func about(c fiber.Ctx) error {
-	title := "B2B Software Engineering Agency | Over Solvalutions"
-	desc := "Solvalutions is een gespecialiseerde B2B tech partner. Wij bouwen lean, razendsnelle digitale infrastructuur die schaalt met jouw bedrijfsvoering."
+	title := "Over Rob Meijerink — engineer achter Solvalutions"
+	desc := "Tien jaar full-stack developer, nu zelfstandig vanuit Zutphen. Eén engineer, geen tussenlagen — je werkt rechtstreeks met de persoon die het bouwt."
 	url := "https://solvalutions.nl"
 
 	jsonLd := template.HTML(`
@@ -106,19 +143,51 @@ func about(c fiber.Ctx) error {
 	{
       "@context": "https://schema.org",
       "@type": "AboutPage",
-      "mainEntity": {
-        "@type": "Organization",
+      "name": "` + title + `",
+      "description": "` + desc + `",
+      "url": "` + url + `/over",
+      "isPartOf": {
+        "@type": "WebSite",
         "name": "Solvalutions",
-        "url": "` + url + `",
-        "logo": "` + url + `/assets/img/solvalutions-logo.png",
-        "description": "` + desc + `",
-        "founder": {
-          "@type": "Person",
-          "name": "Rob Meijerink",
-          "url": "https://robmeijerink.nl"
+        "url": "` + url + `"
+      },
+      "mainEntity": {
+        "@type": "Person",
+        "name": "Rob Meijerink",
+        "jobTitle": "Software Engineer",
+        "description": "Senior full-stack en backend engineer met ruim 10 jaar ervaring in legacy-modernisering, systeemintegratie en maatwerksoftware.",
+        "url": "https://robmeijerink.nl",
+        "image": "` + url + `/assets/img/foto-rob-meijerink-solvalutions-avatar-320.jpg",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Zutphen",
+          "addressRegion": "Gelderland",
+          "addressCountry": "NL"
+        },
+        "knowsLanguage": ["nl", "en", "de", "es"],
+        "knowsAbout": [
+          "Go",
+          "Fiber",
+          "Laravel",
+          "PHP",
+          "Legacy modernisering",
+          "Systeemintegratie",
+          "API-ontwikkeling",
+          "Cloud-infrastructuur",
+          "DevOps"
+        ],
+        "alumniOf": {
+          "@type": "EducationalOrganization",
+          "name": "Saxion Hogescholen"
+        },
+        "worksFor": {
+          "@type": "Organization",
+          "name": "Solvalutions",
+          "url": "` + url + `"
         },
         "sameAs": [
-          "https://linkedin.com/in/robm89"
+          "https://linkedin.com/in/robm89",
+          "https://github.com/robmeijerink"
         ]
       }
     }
@@ -134,33 +203,33 @@ func about(c fiber.Ctx) error {
 }
 
 func approach(c fiber.Ctx) error {
-	title := "Werkwijze | High-Performance Tech Architectuur | Solvalutions"
-	desc := "Ontdek onze lean werkwijze voor het bouwen van schaalbare, high-performance Go backends en cloud-native systemen. B2B software zonder onnodige overhead."
+	title := "Aanpak — Eerst begrijpen, dan software ontwikkelen | Solvalutions"
+	desc := "Klein beginnen, vaste prijs per fase, naast je systeem bouwen. Geen open eindjes — zo werk ik aan modernisering, koppelingen en maatwerk."
+	url := "https://solvalutions.nl"
 
 	jsonLd := template.HTML(`
 	<script type="application/ld+json">
 	{
 	  "@context": "https://schema.org",
-	  "@type": "HowTo",
+	  "@type": "WebPage",
 	  "name": "` + title + `",
 	  "description": "` + desc + `",
-	  "step": [
-	    {
-	      "@type": "HowToStep",
-	      "name": "Analysis & Strategy",
-	      "text": "We analyze complex business problems to find the most lean and effective technical solution."
-	    },
-	    {
-	      "@type": "HowToStep",
-	      "name": "Architecture Design",
-	      "text": "Designing solid, scalable foundations using proven technologies like Go and cloud-native principles."
-	    },
-	    {
-	      "@type": "HowToStep",
-	      "name": "High-Performance Engineering",
-	      "text": "Building the solution with a focus on speed, security, and maintainability without unnecessary overhead."
-	    }
-	  ]
+	  "url": "` + url + `/aanpak",
+	  "isPartOf": {
+	    "@type": "WebSite",
+	    "name": "Solvalutions",
+	    "url": "` + url + `"
+	  },
+	  "about": {
+	    "@type": "Thing",
+	    "name": "Werkwijze bij softwaremodernisering en systeemintegratie"
+	  },
+	  "publisher": {
+	    "@type": "Organization",
+	    "name": "Solvalutions",
+	    "url": "` + url + `",
+	    "logo": "` + url + `/assets/img/solvalutions-logo.png"
+	  }
 	}
 	</script>
 	`)
@@ -173,8 +242,8 @@ func approach(c fiber.Ctx) error {
 }
 
 func cases(c fiber.Ctx) error {
-	title := "Cases | Bewezen Digitale Successen | Solvalutions"
-	desc := "Bekijk onze portfolio van high-performance B2B softwareoplossingen. Van cloud-native migraties tot schaalbare Go-architecturen."
+	title := "Cases — Zakelijke ICT Oplossingen | Solvalutions"
+	desc := "Een selectie van trajecten: legacy-modernisering, maatwerk dat handwerk wegnam, security-aanscherping en systeemkoppelingen. Referentie op aanvraag."
 	url := "https://solvalutions.nl"
 
 	structuredData := template.HTML(`
@@ -185,20 +254,37 @@ func cases(c fiber.Ctx) error {
 	  "name": "` + title + `",
 	  "description": "` + desc + `",
 	  "url": "` + url + `/cases",
+	  "isPartOf": {
+	    "@type": "WebSite",
+	    "name": "Solvalutions",
+	    "url": "` + url + `"
+	  },
 	  "mainEntity": {
 	    "@type": "ItemList",
 	    "itemListElement": [
 	      {
 	        "@type": "ListItem",
 	        "position": 1,
-	        "name": "Cloud Infrastructure Migration",
-	        "description": "Scalable architecture for a logistics partner."
+	        "name": "Vastgelopen kernsysteem stap voor stap herbouwd, zonder dat het bedrijf stillag",
+	        "description": "Legacy-modernisering: herbouw naar gestructureerde, geteste architectuur draaiend naast de bestaande omgeving."
 	      },
 	      {
 	        "@type": "ListItem",
 	        "position": 2,
-	        "name": "WooCommerce to Go API Refactor",
-	        "description": "Transforming a slow legacy store into a high-performance headless commerce engine."
+	        "name": "Handmatig terugkerend werk vervangen door een maatwerkapplicatie",
+	        "description": "Procesoptimalisatie: een proces dat op losse documenten en overtypen draaide, omgezet naar één applicatie."
+	      },
+	      {
+	        "@type": "ListItem",
+	        "position": 3,
+	        "name": "Datasecurity aangescherpt en interne infrastructuur gemoderniseerd",
+	        "description": "Verouderde, kwetsbare onderdelen vervangen en gevoelige data beter afgeschermd zonder verstoring van de werkprocessen."
+	      },
+	      {
+	        "@type": "ListItem",
+	        "position": 4,
+	        "name": "Losse systemen aan elkaar gekoppeld zodat data niet meer overgetypt hoeft",
+	        "description": "Systeemkoppelingen en API's tussen bestaande applicaties en third-party diensten."
 	      }
 	    ]
 	  }
@@ -214,32 +300,89 @@ func cases(c fiber.Ctx) error {
 }
 
 func services(c fiber.Ctx) error {
-	title := "Cases | Bewezen Digitale Successen | Solvalutions"
-	desc := "Bekijk onze portfolio van high-performance B2B softwareoplossingen. Van cloud-native migraties tot schaalbare Go-architecturen."
+	title := "Diensten — Wat ik voor je oplos | Solvalutions"
+	desc := "Legacy-modernisering, systeemkoppelingen en API's, maatwerkapplicaties en performance. Concrete uitkomsten met vaste prijs per fase."
 	url := "https://solvalutions.nl"
 
 	structuredData := template.HTML(`
 	<script type="application/ld+json">
 	{
 	  "@context": "https://schema.org",
-	  "@type": "CollectionPage",
+	  "@type": "WebPage",
 	  "name": "` + title + `",
 	  "description": "` + desc + `",
-	  "url": "` + url + `/cases",
+	  "url": "` + url + `/diensten",
+	  "isPartOf": {
+	    "@type": "WebSite",
+	    "name": "Solvalutions",
+	    "url": "` + url + `"
+	  },
 	  "mainEntity": {
 	    "@type": "ItemList",
 	    "itemListElement": [
 	      {
 	        "@type": "ListItem",
 	        "position": 1,
-	        "name": "Cloud Infrastructure Migration",
-	        "description": "Scalable architecture for a logistics partner."
+	        "item": {
+	          "@type": "Service",
+	          "name": "Legacy-modernisering",
+	          "description": "Verouderde systemen stap voor stap herbouwen naar gestructureerde, geteste techniek — draaiend naast de bestaande omgeving, zodat de operatie niet stillegt.",
+	          "serviceType": "Softwaremodernisering",
+	          "provider": {
+	            "@type": "Organization",
+	            "name": "Solvalutions",
+	            "url": "` + url + `"
+	          },
+	          "areaServed": [
+	            { "@type": "AdministrativeArea", "name": "Oost-Nederland" },
+	            { "@type": "Country", "name": "Nederland" }
+	          ]
+	        }
 	      },
 	      {
 	        "@type": "ListItem",
 	        "position": 2,
-	        "name": "WooCommerce to Go API Refactor",
-	        "description": "Transforming a slow legacy store into a high-performance headless commerce engine."
+	        "item": {
+	          "@type": "Service",
+	          "name": "Systeemkoppelingen en API's",
+	          "description": "Bestaande applicaties en third-party diensten via betrouwbare koppelingen en API's met elkaar laten samenwerken, zodat informatie automatisch doorstroomt.",
+	          "serviceType": "Systeemintegratie",
+	          "provider": {
+	            "@type": "Organization",
+	            "name": "Solvalutions",
+	            "url": "` + url + `"
+	          }
+	        }
+	      },
+	      {
+	        "@type": "ListItem",
+	        "position": 3,
+	        "item": {
+	          "@type": "Service",
+	          "name": "Procesoptimalisatie en maatwerksoftware",
+	          "description": "Handmatig terugkerend werk omzetten naar één maatwerkapplicatie die het werk wegneemt in plaats van verplaatst.",
+	          "serviceType": "Maatwerkontwikkeling",
+	          "provider": {
+	            "@type": "Organization",
+	            "name": "Solvalutions",
+	            "url": "` + url + `"
+	          }
+	        }
+	      },
+	      {
+	        "@type": "ListItem",
+	        "position": 4,
+	        "item": {
+	          "@type": "Service",
+	          "name": "Performance en betrouwbaar draaien",
+	          "description": "Performance-kritische onderdelen herbouwen (onder andere in Go) en zorgen dat software blijft draaien met geautomatiseerde uitrol, monitoring en doordachte infrastructuur.",
+	          "serviceType": "Performance engineering en DevOps",
+	          "provider": {
+	            "@type": "Organization",
+	            "name": "Solvalutions",
+	            "url": "` + url + `"
+	          }
+	        }
 	      }
 	    ]
 	  }
