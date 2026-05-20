@@ -75,16 +75,15 @@ func TestServer_ErrorHandlingIntegration(t *testing.T) {
 }
 
 // ---------------------------------------------------------
-// Integration Tests: Tenant Context & Region Detection
+// Integration Tests: Tenant Context
 // ---------------------------------------------------------
-func TestServer_ContextAndRegionIntegration(t *testing.T) {
+func TestServer_ContextAndIntegration(t *testing.T) {
 	server := setupTestServer(false)
 
 	server.App.Get("/test-locals", func(c fiber.Ctx) error {
 		return c.JSON(fiber.Map{
 			"Site":          c.Locals("Site"),
 			"CanonicalHost": c.Locals("CanonicalHost"),
-			"Region":        c.Locals("Region"),
 			"Path":          c.Locals("Path"),
 		})
 	})
@@ -94,28 +93,24 @@ func TestServer_ContextAndRegionIntegration(t *testing.T) {
 		requestHost           string
 		expectedSite          string
 		expectedCanonicalHost string
-		expectedRegion        string
 	}{
 		{
 			name:                  "Resolves primary domain and defaults to Dutch based on .nl",
 			requestHost:           "robmeijerink.nl",
 			expectedSite:          "robmeijerink",
 			expectedCanonicalHost: "robmeijerink.nl",
-			expectedRegion:        "nl",
 		},
 		{
 			name:                  "Resolves tenant domain and defaults to Dutch based on .nl",
 			requestHost:           "solvalutions.nl",
-			expectedSite:          "solvalutions",
+			expectedSite:          "solvalutions_nl",
 			expectedCanonicalHost: "solvalutions.nl",
-			expectedRegion:        "nl",
 		},
 		{
 			name:                  "Resolves tenant domain and defaults to English based on .com",
 			requestHost:           "solvalutions.com",
-			expectedSite:          "solvalutions",
+			expectedSite:          "solvalutions_com",
 			expectedCanonicalHost: "solvalutions.com",
-			expectedRegion:        "en",
 		},
 	}
 
@@ -134,7 +129,6 @@ func TestServer_ContextAndRegionIntegration(t *testing.T) {
 
 			assert.Equal(t, tt.expectedSite, body["Site"])
 			assert.Equal(t, tt.expectedCanonicalHost, body["CanonicalHost"])
-			assert.Equal(t, tt.expectedRegion, body["Region"])
 			assert.Equal(t, "/test-locals", body["Path"])
 		})
 	}
