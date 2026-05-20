@@ -49,11 +49,20 @@ jobs:
           npm ci
           npm run build
 
-      # --- BUILD SITE: Solvalutions ---
-      - name: Install & Build Solvalutions
+      # --- BUILD SITE: Solvalutions.com ---
+      - name: Install & Build Solvalutions.com
         run: |
-          if [ -d "sites/solvalutions/frontend" ]; then
-            cd sites/solvalutions/frontend
+          if [ -d "sites/solvalutions_com/frontend" ]; then
+            cd sites/solvalutions_com/frontend
+            npm ci
+            npm run build
+          fi
+
+      # --- BUILD SITE: Solvalutions.nl ---
+      - name: Install & Build Solvalutions.nl
+        run: |
+          if [ -d "sites/solvalutions_nl/frontend" ]; then
+            cd sites/solvalutions_nl/frontend
             npm ci
             npm run build
           fi
