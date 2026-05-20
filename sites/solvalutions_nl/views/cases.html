@@ -30,7 +30,7 @@
 
                     <div class="relative z-10">
                         <span class="text-xs font-bold uppercase tracking-[0.2em] text-accent-dark mb-5 block">Uitgelicht &mdash; Legacy-modernisering</span>
-                        <h2 class="text-brand-dark text-4xl md:text-5xl font-extrabold mb-10 leading-[1.1] tracking-tighter">
+                        <h2 class="text-brand-dark text-2xl md:text-3xl font-extrabold mb-10 leading-[1.1] tracking-tighter">
                             Een vastgelopen kernsysteem herbouwd, zonder een seconde stilstand.
                         </h2>
                     </div>
@@ -65,40 +65,51 @@
 
                             <div class="flex items-center justify-between mb-8">
                                 <div>
-                                    <span class="text-[10px] font-bold uppercase tracking-widest text-content-muted">Productie Intelligentie</span>
-                                    <h3 class="text-xl font-extrabold text-brand-dark mt-1">Procesoptimalisatie</h3>
+                                    <span class="text-[10px] font-bold uppercase tracking-widest text-content-muted">Productie Data</span>
+                                    <h3 class="text-xl font-extrabold text-brand-dark mt-1">Systeem Status</h3>
                                 </div>
                                 <span class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-[11px] font-bold bg-green-500/10 text-green-400 border border-green-500/20 shadow-[inset_0_0_10px_rgba(74,222,128,0.1)]">
-                                    <span class="w-2 h-2 rounded-full bg-green-400 animate-pulse"></span> Live Actief
+                                    <span class="relative flex h-2 w-2">
+                                        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                                        <span class="relative inline-flex rounded-full h-2 w-2 bg-green-400"></span>
+                                    </span>
+                                    Live Sync
                                 </span>
                             </div>
 
-                            <div class="grid grid-cols-3 gap-3 md:gap-4 mb-8">
+                            <div class="grid grid-cols-2 gap-3 md:gap-4 mb-8">
                                 <div class="bg-brand-dark/20 border border-content-strong/5 p-4 rounded-xl">
-                                    <span class="text-[10px] font-bold uppercase tracking-widest text-content-muted block mb-1">OEE Rendement</span>
-                                    <div class="flex flex-col md:flex-row md:items-baseline gap-1 md:gap-2 mt-1">
+                                    <span class="text-[10px] font-bold uppercase tracking-widest text-content-muted block mb-1">OEE Score</span>
+                                    <div class="flex flex-col xl:flex-row xl:items-baseline gap-1 xl:gap-2 mt-1">
                                         <span class="text-2xl font-extrabold text-brand-dark tracking-tight">89.4%</span>
                                         <span class="text-[10px] font-bold text-green-400">+2.3%</span>
                                     </div>
                                 </div>
                                 <div class="bg-brand-dark/20 border border-content-strong/5 p-4 rounded-xl">
-                                    <span class="text-[10px] font-bold uppercase tracking-widest text-content-muted block mb-1">Doorvoersnelheid</span>
-                                    <div class="flex flex-col md:flex-row md:items-baseline gap-1 md:gap-2 mt-1">
+                                    <span class="text-[10px] font-bold uppercase tracking-widest text-content-muted block mb-1">Data Doorvoer</span>
+                                    <div class="flex flex-col xl:flex-row xl:items-baseline gap-1 xl:gap-2 mt-1">
                                         <span class="text-2xl font-extrabold text-brand-dark tracking-tight">4.2k<span class="text-xs font-normal text-content-muted">/s</span></span>
                                     </div>
                                 </div>
-                                <div class="bg-brand-dark/20 border border-content-strong/5 p-4 rounded-xl relative overflow-hidden">
-                                    <span class="text-[10px] font-bold uppercase tracking-widest text-content-muted block mb-1">API Responstijd</span>
-                                    <div class="flex flex-col md:flex-row md:items-baseline gap-1 md:gap-2 mt-1 relative z-10">
+                                <div class="bg-brand-dark/20 border border-content-strong/5 p-4 rounded-xl">
+                                    <span class="text-[10px] font-bold uppercase tracking-widest text-content-muted block mb-1">Responstijd</span>
+                                    <div class="flex flex-col xl:flex-row xl:items-baseline gap-1 xl:gap-2 mt-1">
                                         <span class="text-2xl font-extrabold text-brand-dark tracking-tight">12<span class="text-xs font-normal text-content-muted">ms</span></span>
                                         <span class="text-[10px] font-bold text-green-400">Optimaal</span>
+                                    </div>
+                                </div>
+                                <div class="bg-brand-dark/20 border border-content-strong/5 p-4 rounded-xl">
+                                    <span class="text-[10px] font-bold uppercase tracking-widest text-content-muted block mb-1">Systeembelasting</span>
+                                    <div class="flex flex-col xl:flex-row xl:items-baseline gap-1 xl:gap-2 mt-1">
+                                        <span class="text-2xl font-extrabold text-brand-dark tracking-tight">42%</span>
+                                        <span class="text-[10px] font-bold text-content-muted">Stabiel</span>
                                     </div>
                                 </div>
                             </div>
 
                             <div class="mb-8">
                                 <div class="flex justify-between items-end mb-3">
-                                    <span class="text-[10px] font-bold uppercase tracking-widest text-content-muted">Real-time Dataverwerking</span>
+                                    <span class="text-[10px] font-bold uppercase tracking-widest text-content-muted">Live Verwerking</span>
                                     <span class="text-[10px] font-mono text-content-muted">Laatste 60s</span>
                                 </div>
                                 <div class="h-24 w-full relative">
@@ -116,20 +127,30 @@
                                         </defs>
                                         <path d="M0 80 C 40 80, 60 30, 100 40 C 140 50, 160 90, 200 70 C 240 50, 260 20, 300 30 C 340 40, 360 80, 400 60 L 400 100 L 0 100 Z" fill="url(#chartGradient)"></path>
                                         <path d="M0 80 C 40 80, 60 30, 100 40 C 140 50, 160 90, 200 70 C 240 50, 260 20, 300 30 C 340 40, 360 80, 400 60" fill="none" stroke="currentColor" stroke-width="3" class="text-accent-base"></path>
-                                        <circle cx="300" cy="30" r="4" fill="currentColor" class="text-accent-base"></circle>
-                                        <circle cx="300" cy="30" r="10" fill="currentColor" class="text-accent-base/30 animate-ping"></circle>
+
+                                        <circle cx="300" cy="30" r="4.5" fill="currentColor" class="text-accent-base"></circle>
+
+                                        <circle cx="300" cy="30" r="4.5" fill="none" stroke="currentColor" stroke-width="1.5" class="text-accent-base">
+                                            <animate attributeName="r" begin="0s" dur="4s" values="4.5; 24" repeatCount="indefinite" />
+                                            <animate attributeName="opacity" begin="0s" dur="4s" values="0.6; 0" repeatCount="indefinite" />
+                                        </circle>
+
+                                        <circle cx="300" cy="30" r="4.5" fill="none" stroke="currentColor" stroke-width="1.5" class="text-accent-base">
+                                            <animate attributeName="r" begin="2s" dur="4s" values="4.5; 24" repeatCount="indefinite" />
+                                            <animate attributeName="opacity" begin="2s" dur="4s" values="0.6; 0" repeatCount="indefinite" />
+                                        </circle>
                                     </svg>
                                 </div>
                             </div>
 
                             <div class="pt-6 border-t border-content-strong/10">
-                                <span class="text-[10px] font-bold uppercase tracking-widest text-content-muted block mb-4">Actieve Systeemkoppelingen</span>
+                                <span class="text-[10px] font-bold uppercase tracking-widest text-content-muted block mb-4">Actieve Connecties</span>
 
                                 <div class="space-y-3">
                                     <div class="flex items-center justify-between p-3 rounded-lg bg-content-strong/5 border border-content-strong/5">
                                         <div class="flex items-center gap-3">
                                             <svg class="w-4 h-4 text-content-muted" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01"></path></svg>
-                                            <span class="text-xs font-bold text-content-strong">Legacy ERP Koppeling</span>
+                                            <span class="text-xs font-bold text-content-strong">REST API Koppeling</span>
                                         </div>
                                         <span class="text-[10px] font-bold uppercase text-green-400">Stabiel</span>
                                     </div>
@@ -143,7 +164,7 @@
                                             <div class="w-16 h-1.5 bg-content-strong/10 rounded-full overflow-hidden">
                                                 <div class="w-[85%] h-full bg-accent-base rounded-full"></div>
                                             </div>
-                                            <span class="text-[10px] font-bold uppercase text-accent-base">Verwerken</span>
+                                            <span class="text-[10px] font-bold uppercase text-accent-base hidden xs:inline-block">Sync</span>
                                         </div>
                                     </div>
                                 </div>
@@ -156,14 +177,17 @@
                                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
                             </div>
                             <div>
-                                <div class="text-[10px] font-bold uppercase tracking-widest text-white/50">Systeem Infrastructuur</div>
-                                <div class="text-xs font-bold text-white mt-0.5">99.98% Beschikbaarheid</div>
+                                <div class="text-[10px] font-bold uppercase tracking-widest text-white/50">Infrastructuur</div>
+                                <div class="text-xs font-bold text-white mt-0.5">99.98% Uptime</div>
                             </div>
                         </div>
 
                         <div class="absolute -top-4 -right-4 bg-brand-dark/95 border border-content-strong/10 py-2.5 px-4 rounded-xl shadow-xl z-20 flex items-center gap-3 backdrop-blur-md hidden sm:flex transform rotate-2 hover:rotate-0 transition-transform duration-500">
-                            <div class="w-2 h-2 rounded-full bg-accent-base animate-pulse"></div>
-                            <span class="text-[10px] font-bold uppercase tracking-widest text-white">AI Anomalie Detectie</span>
+                            <span class="relative flex h-2 w-2">
+                                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent-base opacity-75"></span>
+                                <span class="relative inline-flex rounded-full h-2 w-2 bg-accent-base"></span>
+                            </span>
+                            <span class="text-[10px] font-bold uppercase tracking-widest text-white">AI Datacontrole</span>
                         </div>
 
                     </div>
