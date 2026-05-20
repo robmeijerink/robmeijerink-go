@@ -61,7 +61,10 @@
         <div class="max-w-7xl mx-auto px-4 md:px-6 lg:px-8 h-20 flex items-center justify-between">
 
             <a href="/" class="flex items-center gap-2 md:gap-3 group" aria-label="Solvalutions Home">
-                <img src="/assets/img/solvalutions-logo.png" alt="Solvalutions Logo" class="h-10 w-10 md:h-14 md:w-14 transition-transform duration-500 group-hover:scale-105">
+                <picture>
+                    <source srcset="/assets/img/solvalutions-logo.webp" type="image/webp">
+                    <img src="/assets/img/solvalutions-logo.png" alt="Solvalutions Logo" class="h-10 w-10 md:h-14 md:w-14 transition-transform duration-500 group-hover:scale-105">
+                </picture>
                 <span class="font-extrabold text-lg md:text-xl tracking-tight text-brand-dark">
                     Solvalutions
                 </span>
@@ -82,6 +85,36 @@
             <a href="/contact" class="hidden md:inline-flex px-8 py-3.5 text-[11px] font-bold uppercase tracking-widest text-white bg-accent-dark border border-accent-dark shadow-sm hover:bg-accent-base hover:shadow-[inset_0_3px_6px_rgba(0,0,0,0.15)] transition-all duration-300">
                 Contact
             </a>
+
+            <button id="mobile-menu-btn" class="md:hidden relative z-[60] flex flex-col justify-center items-end gap-[6px] w-10 h-10 p-2 -mr-2 text-brand-dark" aria-label="Toggle menu">
+                <span class="w-6 h-[2px] bg-current rounded-full"></span>
+                <span class="w-5 h-[2px] bg-current rounded-full transition-all duration-300"></span>
+            </button>
+        </div>
+
+        <div id="mobile-overlay" class="md:hidden fixed inset-0 bg-brand-dark/20 backdrop-blur-sm z-[40] opacity-0 pointer-events-none transition-opacity duration-500 [&.is-open]:opacity-100 [&.is-open]:pointer-events-auto"></div>
+
+        <div id="mobile-drawer" class="md:hidden fixed top-0 right-0 w-[85%] max-w-sm h-[100dvh] bg-canvas bg-[linear-gradient(to_right,rgba(184,74,43,0.04)_1px,transparent_1px),linear-gradient(to_bottom,rgba(184,74,43,0.04)_1px,transparent_1px)] bg-[size:24px_24px] shadow-2xl z-[50] translate-x-full transition-transform duration-700 ease-[cubic-bezier(0.34,1.56,0.64,1)] flex flex-col [&.is-open]:translate-x-0">
+
+            <div class="h-24 w-full shrink-0"></div>
+
+            <nav class="flex flex-col gap-2 px-8 py-4 text-lg font-semibold tracking-wide overflow-y-auto">
+                <a href="/aanpak" class="{{ if eq .Path "/aanpak" }} text-accent-dark {{ else }} text-content-strong {{ end }} block py-3 hover:text-brand-base transition-colors">
+                    Aanpak
+                </a>
+                <a href="/diensten" class="{{ if eq .Path "/diensten" }} text-accent-dark {{ else }} text-content-strong {{ end }} block py-3 hover:text-brand-base transition-colors">
+                    Diensten
+                </a>
+                <a href="/cases" class="{{ if eq .Path "/cases" }} text-accent-dark {{ else }} text-content-strong {{ end }} block py-3 hover:text-brand-base transition-colors">
+                    Cases
+                </a>
+
+                <div class="pt-8 mt-4 border-t border-content-strong/10">
+                    <a href="/contact" class="flex justify-center px-8 py-4 text-[11px] font-bold uppercase tracking-widest text-white bg-accent-dark shadow-sm hover:bg-accent-base transition-all duration-300">
+                        Contact
+                    </a>
+                </div>
+            </nav>
         </div>
     </header>
 
@@ -96,7 +129,10 @@
                 <div class="col-span-2 md:col-span-2">
                     <a href="/" class="flex items-center gap-3 md:gap-4 mb-6 md:mb-8" aria-label="Solvalutions Home">
                         <div class="bg-white p-1">
-                            <img src="/assets/img/solvalutions-logo.png" alt="Solvalutions Logo" class="h-10 w-10 md:h-14 md:w-14">
+                            <picture>
+                                <source srcset="/assets/img/solvalutions-logo.webp" type="image/webp">
+                                <img src="/assets/img/solvalutions-logo.png" alt="Solvalutions Logo" class="h-10 w-10 md:h-14 md:w-14">
+                            </picture>
                         </div>
                         <span class="font-extrabold text-xl md:text-2xl tracking-tight text-white">Solvalutions</span>
                     </a>
