@@ -17,20 +17,22 @@
     </div>
 </section>
 
-<div class="w-full h-[40px] md:h-[80px] relative">
-    <svg viewBox="0 0 1440 100" class="w-full h-full block text-content-strong/20" preserveAspectRatio="none">
-        <path d="M0,0 Q720,200 1440,0 L1440,100 L0,100 Z" fill="var(--color-panel)" />
-        <path d="M0,0 Q720,200 1440,0" fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke" />
-    </svg>
-</div>
+<section class="relative w-full pt-32 !bg-white [background-image:linear-gradient(to_right,rgba(11,34,57,0.08)_1px,transparent_1px),linear-gradient(to_bottom,rgba(11,34,57,0.08)_1px,transparent_1px)] [background-size:40px_40px] [mask-image:linear-gradient(to_bottom,transparent,black_10%,black_90%,transparent)]">
 
-<section class="w-full relative py-32 z-10 bg-gradient-to-b from-background via-background via-75% to-white">
-
-    <div class="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.9)_0%,rgba(255,255,255,0.65)_35%,rgba(255,255,255,0.15)_70%,transparent_100%)] pointer-events-none"></div>
+    <div class="absolute inset-0 z-0 bg-[radial-gradient(circle_at_50%_50%,rgba(11,34,57,0.03)_0%,transparent_70%)] pointer-events-none"></div>
 
     <div class="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
 
-        <article class="group bg-panel border border-content-strong/10 shadow-soft p-8 md:p-12 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 my-6">
+        <article class="group relative
+                bg-white
+                border border-brand-dark/10
+                shadow-[0_20px_50px_-12px_rgba(0,0,0,0.1)]
+                p-8 md:p-12
+                grid grid-cols-1 lg:grid-cols-12 gap-8 my-6
+                transition-all duration-500
+                hover:-translate-y-2
+                hover:shadow-[0_30px_60px_-12px_rgba(184,74,43,0.15)]
+                hover:border-accent-base/30">
             <div class="lg:col-span-5 relative">
                 <div class="absolute -top-6 -left-4 text-[6rem] font-extrabold text-content-strong/[0.03] pointer-events-none leading-none">01</div>
                 <div class="relative z-10">
@@ -39,14 +41,23 @@
                 </div>
             </div>
             <div class="lg:col-span-7 space-y-8 pt-2">
-                <p class="text-content-base text-lg leading-relaxed"><span class="font-bold text-content-strong">Herken je dit?</span> Een applicatie die door de jaren heen is gegroeid, waar niemand meer graag aankomt, en die elke verandering traag en risicovol maakt.</p>
+                <p class="text-content-base text-lg leading-relaxed"><span class="font-bold text-brand-dark block mb-2">Herken je dit?</span> Een applicatie die door de jaren heen is gegroeid, waar niemand meer graag aankomt, en die elke verandering traag en risicovol maakt.</p>
                 <div class="border-l-2 border-brand-base pl-6 py-2 bg-content-strong/[0.02]">
-                    <p class="text-content-strong font-medium leading-relaxed">Wat het je oplevert: wijzigingen worden weer voorspelbaar in plaats van eng, en je bent niet langer afhankelijk van &eacute;&eacute;n systeem of &eacute;&eacute;n persoon.</p>
+                    <p class="text-content-strong font-medium leading-relaxed"><span class="font-bold text-brand-dark">Wat het je oplevert:</span> wijzigingen worden weer voorspelbaar in plaats van eng, en je bent niet langer afhankelijk van &eacute;&eacute;n systeem of &eacute;&eacute;n persoon.</p>
                 </div>
             </div>
         </article>
 
-        <article class="group bg-panel border border-content-strong/10 shadow-soft p-8 md:p-12 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 my-6">
+        <article class="group relative
+                bg-white
+                border border-brand-dark/10
+                shadow-[0_20px_50px_-12px_rgba(0,0,0,0.1)]
+                p-8 md:p-12
+                grid grid-cols-1 lg:grid-cols-12 gap-8 my-6
+                transition-all duration-500
+                hover:-translate-y-2
+                hover:shadow-[0_30px_60px_-12px_rgba(184,74,43,0.15)]
+                hover:border-accent-base/30">
             <div class="lg:col-span-5 relative">
                 <div class="absolute -top-6 -left-4 text-[6rem] font-extrabold text-content-strong/[0.03] pointer-events-none leading-none">02</div>
                 <div class="relative z-10">
@@ -55,14 +66,23 @@
                 </div>
             </div>
             <div class="lg:col-span-7 space-y-8 pt-2">
-                <p class="text-content-base text-lg leading-relaxed"><span class="font-bold text-content-strong">Herken je dit?</span> Gegevens die handmatig van het ene programma naar het andere gaan, of systemen die los van elkaar staan.</p>
+                <p class="text-content-base text-lg leading-relaxed"><span class="font-bold text-brand-dark block mb-2">Herken je dit?</span> Gegevens die handmatig van het ene programma naar het andere gaan, of systemen die los van elkaar staan.</p>
                 <div class="border-l-2 border-brand-base pl-6 py-2 bg-content-strong/[0.02]">
-                    <p class="text-content-strong font-medium leading-relaxed">Wat het je oplevert: minder dubbel werk, minder overtypfouten, en actuele informatie waar je op kunt sturen.</p>
+                    <p class="text-content-strong font-medium leading-relaxed"><span class="font-bold text-brand-dark">Wat het je oplevert:</span> minder dubbel werk, minder overtypfouten, en actuele informatie waar je op kunt sturen.</p>
                 </div>
             </div>
         </article>
 
-        <article class="group bg-panel border border-content-strong/10 shadow-soft p-8 md:p-12 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 my-6">
+        <article class="group relative
+                bg-white
+                border border-brand-dark/10
+                shadow-[0_20px_50px_-12px_rgba(0,0,0,0.1)]
+                p-8 md:p-12
+                grid grid-cols-1 lg:grid-cols-12 gap-8 my-6
+                transition-all duration-500
+                hover:-translate-y-2
+                hover:shadow-[0_30px_60px_-12px_rgba(184,74,43,0.15)]
+                hover:border-accent-base/30">
             <div class="lg:col-span-5 relative">
                 <div class="absolute -top-6 -left-4 text-[6rem] font-extrabold text-content-strong/[0.03] pointer-events-none leading-none">03</div>
                 <div class="relative z-10">
@@ -71,14 +91,23 @@
                 </div>
             </div>
             <div class="lg:col-span-7 space-y-8 pt-2">
-                <p class="text-content-base text-lg leading-relaxed"><span class="font-bold text-content-strong">Herken je dit?</span> Een belangrijk proces op losse Excel-bestanden of een tool die niemand durft aan te raken.</p>
+                <p class="text-content-base text-lg leading-relaxed"><span class="font-bold text-brand-dark block mb-2">Herken je dit?</span> Een belangrijk proces op losse Excel-bestanden of een tool die niemand durft aan te raken.</p>
                 <div class="border-l-2 border-brand-base pl-6 py-2 bg-content-strong/[0.02]">
-                    <p class="text-content-strong font-medium leading-relaxed">Wat het je oplevert: minder handwerk, minder fouten, en een proces dat blijft werken ook als die ene collega er even niet is.</p>
+                    <p class="text-content-strong font-medium leading-relaxed"><span class="font-bold text-brand-dark">Wat het je oplevert:</span> minder handwerk, minder fouten, en een proces dat blijft werken ook als die ene collega er even niet is.</p>
                 </div>
             </div>
         </article>
 
-        <article class="group bg-panel border border-content-strong/10 shadow-soft p-8 md:p-12 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 my-6">
+        <article class="group relative
+                bg-white
+                border border-brand-dark/10
+                shadow-[0_20px_50px_-12px_rgba(0,0,0,0.1)]
+                p-8 md:p-12
+                grid grid-cols-1 lg:grid-cols-12 gap-8 my-6
+                transition-all duration-500
+                hover:-translate-y-2
+                hover:shadow-[0_30px_60px_-12px_rgba(184,74,43,0.15)]
+                hover:border-accent-base/30">
             <div class="lg:col-span-5 relative">
                 <div class="absolute -top-6 -left-4 text-[6rem] font-extrabold text-content-strong/[0.03] pointer-events-none leading-none">04</div>
                 <div class="relative z-10">
@@ -87,26 +116,26 @@
                 </div>
             </div>
             <div class="lg:col-span-7 space-y-8 pt-2">
-                <p class="text-content-base text-lg leading-relaxed"><span class="font-bold text-content-strong">Herken je dit?</span> Een applicatie die traag wordt onder druk, releases die spannend zijn, of cloudkosten die oplopen.</p>
+                <p class="text-content-base text-lg leading-relaxed"><span class="font-bold text-brand-dark block mb-2">Herken je dit?</span> Een applicatie die traag wordt onder druk, releases die spannend zijn, of cloudkosten die oplopen.</p>
                 <div class="border-l-2 border-brand-base pl-6 py-2 bg-content-strong/[0.02]">
-                    <p class="text-content-strong font-medium leading-relaxed">Wat het je oplevert: software die piekbelasting aankan, voorspelbaar uitrolt en minder kost om te beheren.</p>
+                    <p class="text-content-strong font-medium leading-relaxed"><span class="font-bold text-brand-dark">Wat het je oplevert:</span> software die piekbelasting aankan, voorspelbaar uitrolt en minder kost om te beheren.</p>
                 </div>
             </div>
         </article>
 
     </div>
+        <div class="w-full h-[40px] md:h-[80px] relative mt-20">
+        <svg viewBox="0 0 1440 100" class="w-full h-full block text-content-strong/20" preserveAspectRatio="none">
+            <path d="M0,0 Q720,100 1440,0 L1440,100 L0,100 Z" fill="var(--color-panel)" />
+        </svg>
+    </div>
 </section>
-
-<div class="w-full h-[40px] md:h-[80px] relative rotate-180">
-    <svg viewBox="0 0 1440 100" class="w-full h-full block text-content-strong/20" preserveAspectRatio="none">
-        <path d="M0,0 Q720,200 1440,0 L1440,100 L0,100 Z" fill="var(--color-panel)" />
-        <path d="M0,0 Q720,200 1440,0" fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke" />
-    </svg>
-</div>
 
 <section class="max-w-7xl mx-auto px-6 lg:px-8 py-24 md:py-32 relative z-10">
     <div class="bg-brand-dark relative overflow-hidden shadow-medium border border-content-strong/5 p-10 md:p-16 lg:p-20">
-        <div class="absolute top-0 right-0 -mt-20 -mr-20 w-80 h-80 bg-brand-light/20 rounded-full blur-3xl pointer-events-none"></div>
+
+        <div class="absolute top-0 right-0 -mt-20 -mr-20 w-80 h-80 bg-white/5 rounded-full blur-3xl pointer-events-none"></div>
+
         <div class="absolute inset-0 opacity-[0.04]" style="background-image:linear-gradient(to right,#fff 1px,transparent 1px),linear-gradient(to bottom,#fff 1px,transparent 1px);background-size:44px 44px; pointer-events: none;"></div>
 
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start relative z-10">
@@ -128,7 +157,13 @@
                         <div class="pt-1"><h3 class="text-white text-xl font-bold mb-2">Voorstel met vaste prijs</h3><p class="text-white/60 text-sm md:text-base leading-relaxed">Een helder plan per fase: wat ik doe, wat het oplevert en wat het kost. Geen verrassingen achteraf.</p></div>
                     </div>
                     <div class="relative flex gap-6">
-                        <div class="relative z-10 w-7 h-7 shrink-0 bg-accent-base border-2 border-accent-base rounded-full flex items-center justify-center shadow-[0_0_15px_rgba(184,74,43,0.5)]"><span class="text-[10px] font-bold text-white">3</span></div>
+                        <div class="relative z-10 w-7 h-7 shrink-0 flex items-center justify-center">
+                            <span class="absolute inline-flex h-full w-full bg-accent-base rounded-full animate-ping opacity-30"></span>
+
+                            <div class="relative z-10 w-7 h-7 bg-accent-base border-2 border-accent-base rounded-full flex items-center justify-center shadow-[0_0_15px_rgba(184,74,43,0.5)]">
+                                <span class="text-[10px] font-bold text-white">3</span>
+                            </div>
+                        </div>
                         <div class="pt-1"><h3 class="text-white text-xl font-bold mb-2">Bouw, oplevering &amp; onderhoud</h3><p class="text-white/60 text-sm md:text-base leading-relaxed">Ik bouw naast je bestaande omgeving zodat je doordraait, en blijf na oplevering beschikbaar voor onderhoud.</p></div>
                     </div>
                 </div>
@@ -140,9 +175,21 @@
 <section class="max-w-7xl mx-auto px-6 lg:px-8 pb-24 md:pb-32 relative z-10">
     <h2 class="text-brand-dark text-2xl md:text-3xl font-extrabold tracking-tight mb-10">Voor wie ik werk</h2>
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
-        <div class="bg-panel border border-content-strong/5 p-8 lg:p-10 shadow-sm transition-all duration-300"><div class="w-10 h-1 bg-accent-base mb-6"></div><h3 class="text-xl font-bold text-brand-dark mb-4">MKB met verouderde software</h3><p class="text-content-base text-sm leading-relaxed">Bedrijven die vastlopen op een systeem dat hun groei in de weg zit.</p></div>
-        <div class="bg-panel border border-content-strong/5 p-8 lg:p-10 shadow-sm transition-all duration-300"><div class="w-10 h-1 bg-accent-base mb-6"></div><h3 class="text-xl font-bold text-brand-dark mb-4">Maakindustrie</h3><p class="text-content-base text-sm leading-relaxed">Maakbedrijven die hun systemen willen koppelen en handwerk eruit willen halen.</p></div>
-        <div class="bg-panel border border-content-strong/5 p-8 lg:p-10 shadow-sm transition-all duration-300"><div class="w-10 h-1 bg-accent-base mb-6"></div><h3 class="text-xl font-bold text-brand-dark mb-4">Bureaus &amp; teams</h3><p class="text-content-base text-sm leading-relaxed">Als onderaannemer op resultaatbasis, wanneer er meer werk is dan capaciteit of specifieke backend-kennis nodig is.</p></div>
+        <div class="bg-white border border-brand-dark/10 p-8 lg:p-10 shadow-[0_20px_50px_-12px_rgba(0,0,0,0.1)] transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_30px_60px_-12px_rgba(184,74,43,0.15)] hover:border-accent-base/30">
+            <div class="w-10 h-1 bg-accent-base mb-6"></div>
+            <h3 class="text-xl font-bold text-brand-dark mb-4">MKB met verouderde software</h3>
+            <p class="text-content-base text-sm leading-relaxed">Bedrijven die vastlopen op een systeem dat hun groei in de weg zit.</p>
+        </div>
+        <div class="bg-white border border-brand-dark/10 p-8 lg:p-10 shadow-[0_20px_50px_-12px_rgba(0,0,0,0.1)] transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_30px_60px_-12px_rgba(184,74,43,0.15)] hover:border-accent-base/30">
+            <div class="w-10 h-1 bg-accent-base mb-6"></div>
+            <h3 class="text-xl font-bold text-brand-dark mb-4">Maakindustrie</h3>
+            <p class="text-content-base text-sm leading-relaxed">Maakbedrijven die hun systemen willen koppelen en handwerk eruit willen halen.</p>
+        </div>
+        <div class="bg-white border border-brand-dark/10 p-8 lg:p-10 shadow-[0_20px_50px_-12px_rgba(0,0,0,0.1)] transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_30px_60px_-12px_rgba(184,74,43,0.15)] hover:border-accent-base/30">
+            <div class="w-10 h-1 bg-accent-base mb-6"></div>
+            <h3 class="text-xl font-bold text-brand-dark mb-4">Bureaus &amp; teams</h3>
+            <p class="text-content-base text-sm leading-relaxed">Als onderaannemer op resultaatbasis, wanneer er meer werk is dan capaciteit of specifieke backend-kennis nodig is.</p>
+        </div>
     </div>
 </section>
 
