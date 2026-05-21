@@ -268,6 +268,28 @@ export const initBlueprintSteps = () => {
     const step2 = document.getElementById('blueprint-step-2');
     const step3 = document.getElementById('blueprint-step-3');
 
+    const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting && entry.intersectionRatio < 0.6) {
+                entry.target.classList.remove('opacity-0');
+                entry.target.classList.add('opacity-20');
+            }
+
+            if (entry.intersectionRatio >= 0.2) {
+                entry.target.classList.remove('opacity-0', 'opacity-20');
+                entry.target.classList.add('is-active');
+
+                observer.unobserve(entry.target);
+            }
+        });
+    }, {
+        threshold: 0.2
+    });
+
+    document.querySelectorAll('.group\\/step').forEach((element) => {
+        observer.observe(element);
+    });
+
     if (!container || !progressBar) return;
 
     let ticking = false;
