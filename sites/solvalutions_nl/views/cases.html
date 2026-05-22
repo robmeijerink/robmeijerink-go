@@ -66,16 +66,14 @@
                 <div class="lg:col-span-7">
                     <div class="relative w-full max-w-lg lg:max-w-xl mx-auto lg:ml-auto xl:mr-0 mt-12 lg:mt-0 perspective-1000">
 
-                        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-accent-base/10 rounded-full blur-[80px] z-0 pointer-events-none"></div>
+                        <div class="relative z-10 w-full bg-panel/80 backdrop-blur-xl rounded-2xl border border-content-strong/10 shadow-[0_25px_50px_-12px_rgba(0,0,0,0.25),0_0_80px_rgba(184,74,43,0.15)] p-4 sm:p-6 md:p-8 transform transition-transform duration-700 hover:scale-[1.02]">
 
-                        <div class="relative z-10 w-full bg-panel/80 backdrop-blur-xl rounded-2xl border border-content-strong/10 shadow-2xl p-6 md:p-8 transform transition-transform duration-700 hover:scale-[1.02]">
-
-                            <div class="flex items-center justify-between mb-8">
-                                <div>
-                                    <span class="text-[10px] font-bold uppercase tracking-widest text-brand-dark">Productie Data</span>
-                                    <h3 class="text-xl font-extrabold text-brand-dark mt-1">Systeem Status</h3>
+                            <div class="flex items-center justify-between mb-8 gap-2">
+                                <div class="min-w-0">
+                                    <span class="text-[10px] font-bold uppercase tracking-widest text-brand-dark block truncate">Productie Data</span>
+                                    <h3 class="text-xl font-extrabold text-brand-dark mt-1 truncate">Systeem Status</h3>
                                 </div>
-                                <span class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-[11px] font-bold bg-green-500/10 text-green-800 border border-green-500/20 shadow-[inset_0_0_10px_rgba(74,222,128,0.1)]">
+                                <span class="shrink-0 inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-[11px] font-bold bg-green-500/10 text-green-800 border border-green-500/20 shadow-[inset_0_0_10px_rgba(74,222,128,0.1)]">
                                     <span class="relative flex h-2 w-2">
                                         <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-800 opacity-75"></span>
                                         <span class="relative inline-flex rounded-full h-2 w-2 bg-green-800"></span>
@@ -85,42 +83,42 @@
                             </div>
 
                             <div class="grid grid-cols-2 gap-3 md:gap-4 mb-8">
-                                <div class="bg-transparent border border-content-strong/10 p-4 rounded-xl">
-                                    <span class="text-[10px] font-bold uppercase tracking-widest text-brand-dark block mb-1">OEE Score</span>
+                                <div class="bg-transparent border border-content-strong/10 p-3 sm:p-4 rounded-xl min-w-0">
+                                    <span class="text-[10px] font-bold uppercase tracking-widest text-brand-dark block mb-1 truncate" title="OEE Score">OEE Score</span>
                                     <div class="flex flex-col xl:flex-row xl:items-baseline gap-1 xl:gap-2 mt-1">
-                                        <span class="text-2xl font-extrabold text-brand-dark tracking-tight">89.4%</span>
+                                        <span class="text-xl sm:text-2xl font-extrabold text-brand-dark tracking-tight">89.4%</span>
                                         <span class="text-[10px] font-bold text-green-800">+2.3%</span>
                                     </div>
                                 </div>
 
-                                <div class="bg-transparent border border-content-strong/10 p-4 rounded-xl">
-                                    <span class="text-[10px] font-bold uppercase tracking-widest text-brand-dark block mb-1">Data Doorvoer</span>
+                                <div class="bg-transparent border border-content-strong/10 p-3 sm:p-4 rounded-xl min-w-0">
+                                    <span class="text-[10px] font-bold uppercase tracking-widest text-brand-dark block mb-1 truncate" title="Data Doorvoer">Data Doorvoer</span>
                                     <div class="flex flex-col xl:flex-row xl:items-baseline gap-1 xl:gap-2 mt-1">
-                                        <span class="text-2xl font-extrabold text-brand-dark tracking-tight">4.2k<span class="text-xs font-normal text-brand-dark">/s</span></span>
+                                        <span class="text-xl sm:text-2xl font-extrabold text-brand-dark tracking-tight">4.2k<span class="text-xs font-normal text-brand-dark">/s</span></span>
                                     </div>
                                 </div>
 
-                                <div class="bg-transparent border border-content-strong/10 p-4 rounded-xl">
-                                    <span class="text-[10px] font-bold uppercase tracking-widest text-brand-dark block mb-1">Responstijd</span>
+                                <div class="bg-transparent border border-content-strong/10 p-3 sm:p-4 rounded-xl min-w-0">
+                                    <span class="text-[10px] font-bold uppercase tracking-widest text-brand-dark block mb-1 truncate" title="Responstijd">Responstijd</span>
                                     <div class="flex flex-col xl:flex-row xl:items-baseline gap-1 xl:gap-2 mt-1">
-                                        <span class="text-2xl font-extrabold text-brand-dark tracking-tight">12<span class="text-xs font-normal text-brand-dark">ms</span></span>
-                                        <span class="text-[10px] font-bold text-green-800">Optimaal</span>
+                                        <span class="text-xl sm:text-2xl font-extrabold text-brand-dark tracking-tight">12<span class="text-xs font-normal text-brand-dark">ms</span></span>
+                                        <span class="text-[10px] font-bold text-green-800 truncate">Optimaal</span>
                                     </div>
                                 </div>
 
-                                <div class="bg-transparent border border-content-strong/10 p-4 rounded-xl">
-                                    <span class="text-[10px] font-bold uppercase tracking-widest text-brand-dark block mb-1">Systeembelasting</span>
+                                <div class="bg-transparent border border-content-strong/10 p-3 sm:p-4 rounded-xl min-w-0">
+                                    <span class="text-[10px] font-bold uppercase tracking-widest text-brand-dark block mb-1 truncate" title="Systeembelasting">Systeembelasting</span>
                                     <div class="flex flex-col xl:flex-row xl:items-baseline gap-1 xl:gap-2 mt-1">
-                                        <span class="text-2xl font-extrabold text-brand-dark tracking-tight">42%</span>
-                                        <span class="text-[10px] font-bold text-brand-dark">Stabiel</span>
+                                        <span class="text-xl sm:text-2xl font-extrabold text-brand-dark tracking-tight">42%</span>
+                                        <span class="text-[10px] font-bold text-brand-dark truncate">Stabiel</span>
                                     </div>
                                 </div>
                             </div>
 
                             <div class="mb-8">
-                                <div class="flex justify-between items-end mb-3">
-                                    <span class="text-[10px] font-bold uppercase tracking-widest text-brand-dark">Live Verwerking</span>
-                                    <span class="text-[10px] font-mono text-brand-dark">Laatste 60s</span>
+                                <div class="flex justify-between items-end mb-3 gap-2">
+                                    <span class="text-[10px] font-bold uppercase tracking-widest text-brand-dark truncate">Live Verwerking</span>
+                                    <span class="text-[10px] font-mono text-brand-dark shrink-0">Laatste 60s</span>
                                 </div>
                                 <div class="h-24 w-full relative">
                                     <div class="absolute inset-0 flex flex-col justify-between">
@@ -137,14 +135,11 @@
                                         </defs>
                                         <path d="M0 80 C 40 80, 60 30, 100 40 C 140 50, 160 90, 200 70 C 240 50, 260 20, 300 30 C 340 40, 360 80, 400 60 L 400 100 L 0 100 Z" fill="url(#chartGradient)"></path>
                                         <path d="M0 80 C 40 80, 60 30, 100 40 C 140 50, 160 90, 200 70 C 240 50, 260 20, 300 30 C 340 40, 360 80, 400 60" fill="none" stroke="currentColor" stroke-width="3" class="text-accent-base"></path>
-
                                         <circle cx="300" cy="30" r="4.5" fill="currentColor" class="text-accent-base"></circle>
-
                                         <circle cx="300" cy="30" r="4.5" fill="none" stroke="currentColor" stroke-width="1.5" class="text-accent-base">
                                             <animate attributeName="r" begin="0s" dur="4s" values="4.5; 24" repeatCount="indefinite" />
                                             <animate attributeName="opacity" begin="0s" dur="4s" values="0.6; 0" repeatCount="indefinite" />
                                         </circle>
-
                                         <circle cx="300" cy="30" r="4.5" fill="none" stroke="currentColor" stroke-width="1.5" class="text-accent-base">
                                             <animate attributeName="r" begin="2s" dur="4s" values="4.5; 24" repeatCount="indefinite" />
                                             <animate attributeName="opacity" begin="2s" dur="4s" values="0.6; 0" repeatCount="indefinite" />
@@ -154,23 +149,23 @@
                             </div>
 
                             <div class="pt-6 border-t border-content-strong/10">
-                                <span class="text-[10px] font-bold uppercase tracking-widest text-brand-dark block mb-4">Actieve Connecties</span>
+                                <span class="text-[10px] font-bold uppercase tracking-widest text-brand-dark block mb-4 truncate">Actieve Connecties</span>
 
                                 <div class="space-y-3">
-                                    <div class="flex items-center justify-between p-3 rounded-lg bg-content-strong/5 border border-content-strong/5">
-                                        <div class="flex items-center gap-3">
-                                            <svg class="w-4 h-4 text-brand-dark" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01"></path></svg>
-                                            <span class="text-xs font-bold text-content-strong">REST API Koppeling</span>
+                                    <div class="flex items-center justify-between p-3 rounded-lg bg-content-strong/5 border border-content-strong/5 gap-2">
+                                        <div class="flex items-center gap-3 min-w-0">
+                                            <svg class="w-4 h-4 text-brand-dark shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01"></path></svg>
+                                            <span class="text-xs font-bold text-content-strong truncate">REST API Koppeling</span>
                                         </div>
-                                        <span class="text-[10px] font-bold uppercase text-green-800">Stabiel</span>
+                                        <span class="text-[10px] font-bold uppercase text-green-800 shrink-0">Stabiel</span>
                                     </div>
 
-                                    <div class="flex items-center justify-between p-3 rounded-lg bg-content-strong/5 border border-content-strong/5">
-                                        <div class="flex items-center gap-3">
-                                            <svg class="w-4 h-4 text-accent-base" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
-                                            <span class="text-xs font-bold text-content-strong">Productielijn API</span>
+                                    <div class="flex items-center justify-between p-3 rounded-lg bg-content-strong/5 border border-content-strong/5 gap-2">
+                                        <div class="flex items-center gap-3 min-w-0">
+                                            <svg class="w-4 h-4 text-accent-base shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                                            <span class="text-xs font-bold text-content-strong truncate">Productielijn API</span>
                                         </div>
-                                        <div class="flex items-center gap-2">
+                                        <div class="flex items-center gap-2 shrink-0">
                                             <div class="w-16 h-1.5 bg-content-strong/10 rounded-full overflow-hidden">
                                                 <div class="w-[85%] h-full bg-accent-base rounded-full"></div>
                                             </div>
@@ -179,7 +174,6 @@
                                     </div>
                                 </div>
                             </div>
-
                         </div>
 
                         <div class="absolute -bottom-10 -left-4 md:-left-8 bg-brand-dark/95 border border-content-strong/10 p-4 rounded-xl shadow-xl z-20 flex items-center gap-4 backdrop-blur-md hidden sm:flex transform -rotate-2 hover:rotate-0 transition-transform duration-500">
@@ -271,8 +265,8 @@
             <div class="relative z-10">
                 <h2 class="text-brand-dark text-3xl md:text-5xl font-extrabold tracking-tighter leading-[1] mb-6">Zit een van deze dingen jou dwars?</h2>
                 <p class="text-lg text-content-base leading-relaxed mb-10 max-w-2xl mx-auto font-light">Begin met een korte knelpunt-analyse: ik kijk mee op het echte vraagstuk en geef je een helder plan met scope, resultaat en vaste prijs.</p>
-                <a href="mailto:info@solvalutions.nl?subject=Knelpunt-analyse%20aanvragen" class="w-full sm:w-auto inline-flex justify-center items-center gap-3 bg-brand-dark text-white px-8 py-4 text-xs font-bold uppercase tracking-[0.16em] shadow-soft hover:-translate-y-1 hover:shadow-xl hover:bg-accent-dark transition-all duration-300">
-                    Plan een <span class="whitespace-nowrap">knelpunt-analyse &rarr;</span>
+                <a href="mailto:info@solvalutions.nl?subject=Knelpunt-analyse%20aanvragen" class="w-full sm:w-auto inline-flex justify-center items-center bg-brand-dark text-white px-4 sm:px-8 py-4 text-xs font-bold uppercase tracking-widest sm:tracking-[0.16em] shadow-soft hover:-translate-y-1 hover:shadow-xl hover:bg-accent-dark transition-all duration-300 text-center leading-relaxed">
+                    <span>Plan een <span class="whitespace-nowrap">knelpunt-analyse&nbsp;&rarr;</span></span>
                 </a>
             </div>
         </div>

@@ -1,8 +1,8 @@
 export const initNavigation = () => {
     const nav = document.getElementById('main-nav');
-    if (!nav) return;
+    const navBackground = document.getElementById('nav-background');
+    if (!nav || !navBackground) return;
 
-    // --- 1. Original Scroll Behavior ---
     let lastScrollY = window.scrollY;
     let isNavVisible = true;
     let scrollUpAccumulator = 0;
@@ -12,16 +12,16 @@ export const initNavigation = () => {
         const delta = currentScrollY - lastScrollY;
 
         if (currentScrollY > 50) {
-            nav.classList.remove('bg-transparent', 'border-transparent', 'py-2');
-            nav.classList.add('bg-canvas/10', 'backdrop-blur-sm', 'border-content-strong/5', 'py-0');
+            navBackground.classList.remove('bg-transparent', 'border-transparent');
+            navBackground.classList.add('bg-canvas/10', 'backdrop-blur-sm', 'border-content-strong/5');
         } else {
-            nav.classList.add('bg-transparent', 'border-transparent', 'py-2');
-            nav.classList.remove('bg-canvas/10', 'backdrop-blur-sm', 'border-content-strong/5', 'py-0');
+            navBackground.classList.remove('bg-canvas/10', 'backdrop-blur-sm', 'border-content-strong/5');
+            navBackground.classList.add('bg-transparent', 'border-transparent');
         }
 
         if (currentScrollY <= 150) {
             if (!isNavVisible) {
-                nav.style.transform = 'translateY(0)';
+                nav.style.transform = '';
                 isNavVisible = true;
             }
             scrollUpAccumulator = 0;
@@ -34,7 +34,7 @@ export const initNavigation = () => {
         } else if (delta < 0) {
             scrollUpAccumulator += Math.abs(delta);
             if (!isNavVisible && scrollUpAccumulator > 80) {
-                nav.style.transform = 'translateY(0)';
+                nav.style.transform = '';
                 isNavVisible = true;
             }
         }
@@ -43,7 +43,6 @@ export const initNavigation = () => {
 
     window.addEventListener('scroll', handleScroll, { passive: true });
 
-    // --- 2. New Mobile Drawer Toggle ---
     const btn = document.getElementById('mobile-menu-btn');
     const overlay = document.getElementById('mobile-overlay');
     const drawer = document.getElementById('mobile-drawer');
@@ -52,19 +51,26 @@ export const initNavigation = () => {
         const toggleMenu = () => {
             const isCurrentlyOpen = overlay.classList.contains('is-open');
 
-            // Toggle classes for animations
+            nav.classList.toggle('is-open');
             btn.classList.toggle('is-open');
             overlay.classList.toggle('is-open');
             drawer.classList.toggle('is-open');
 
-            // A11y update
             btn.setAttribute('aria-expanded', !isCurrentlyOpen);
 
-            // Premium UX: Voorkom dat de achtergrond scrolt als het menu open is
             document.body.style.overflow = isCurrentlyOpen ? '' : 'hidden';
         };
 
         btn.addEventListener('click', toggleMenu);
         overlay.addEventListener('click', toggleMenu);
+
+        nav.addEventListener('click', (e) => {
+            if (nav.classList.contains('is-open') && !e.target.closest('button, a')) {
+                const drawerLeft = drawer.getBoundingClientRect().left;
+                if (e.clientX < drawerLeft) {
+                    toggleMenu();
+                }
+            }
+        });
     }
 };
