@@ -57,14 +57,104 @@
     left: 0;
     width: 100%;
     height: 100%;
-    /* Zorg dat hij boven de achtergrondkleur zit, maar onder de main content */
     z-index: 1;
     pointer-events: none;
-    /* z-index: 9999 !important; */
 }
 
-/* Zorg dat de main content boven het canvas zweeft */
 main {
     position: relative;
     z-index: 10;
 }
+
+/* START: Whatsapp button transition */
+@keyframes luxury-whatsapp-entry {
+    0% {
+        opacity: 0;
+        transform: translateY(180px) scale(.65);
+    }
+
+    50% {
+        opacity: 1;
+        transform: translateY(-22px) scale(1.08);
+    }
+
+    65% {
+        transform: translateY(8px) scale(.97);
+    }
+
+    78% {
+        transform: translateY(-7px) scale(1.03);
+    }
+
+    88% {
+        transform: translateY(3px) scale(.99);
+    }
+
+    95% {
+        transform: translateY(-1px) scale(1.01);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+@keyframes luxury-glow {
+  0% {
+    box-shadow:
+      0 0 0 rgba(37,211,102,0);
+  }
+
+  50% {
+    box-shadow:
+      0 12px 35px rgba(37,211,102,0.35);
+  }
+
+  100% {
+    box-shadow:
+      0 8px 24px rgba(37,211,102,0.18);
+  }
+}
+
+@keyframes whatsapp-pulse {
+    0% {
+        opacity: 0;
+        transform: scale(0.9);
+        box-shadow: 0 0 0 0 rgba(37,211,102,.35);
+    }
+
+    70% {
+        opacity: 1;
+        transform: scale(1.15);
+        box-shadow: 0 0 0 14px rgba(37,211,102,0);
+    }
+
+    100% {
+        opacity: 0;
+        transform: scale(1.2);
+        box-shadow: 0 0 0 18px rgba(37,211,102,0);
+    }
+}
+
+@keyframes whatsapp-float {
+    0%,100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-4px);
+    }
+}
+
+.animate-whatsapp-pulse {
+    animation: whatsapp-pulse 3s ease-out infinite;
+}
+
+.animate-whatsapp-bounce-in {
+     animation:
+        luxury-whatsapp-entry 1s cubic-bezier(.22,1.4,.36,1) forwards,
+        luxury-glow 1s ease-out forwards,
+        whatsapp-float 4s ease-in-out 1.2s infinite;
+}
+/* END: Whatsapp button transition */
