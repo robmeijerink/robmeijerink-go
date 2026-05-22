@@ -1,6 +1,7 @@
 @import 'tailwindcss';
 @import './transitions.css';
 @import './typed-cursor.css';
+@import './whatsapp-btn.css';
 
 @source '../../../views/';
 
