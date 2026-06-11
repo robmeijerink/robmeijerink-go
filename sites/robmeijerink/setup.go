@@ -24,21 +24,32 @@ func home(c fiber.Ctx) error {
 	<script type="application/ld+json">
 	{
       "@context": "https://schema.org",
-      "@type": "AboutPage",
+      "@type": "ProfilePage",
       "mainEntity": {
-        "@type": "Organization",
-        "name": "Solvalutions",
-        "url": "https://solvalutions.com",
-        "logo": "https://solvalutions.com/assets/img/solvalutions-logo.svg",
-        "description": "Solvalutions is a specialized B2B software engineering agency focusing on high-performance, scalable digital solutions & infrastructure.",
-        "founder": {
-          "@type": "Person",
-          "name": "Rob Meijerink",
-          "url": "https://robmeijerink.nl"
+        "@type": "Person",
+        "name": "Rob Meijerink",
+        "jobTitle": "Freelance Senior Software & DevOps Engineer",
+        "url": "https://robmeijerink.nl",
+        "image": "https://robmeijerink.nl/assets/img/foto-rob-meijerink-solvalutions-avatar-320.jpg",
+        "knowsAbout": [
+          "PHP",
+          "Laravel",
+          "Go",
+          "Legacy modernisering",
+          "Systeemintegratie",
+          "DevOps",
+          "Cloud-infrastructuur"
+        ],
+        "worksFor": {
+          "@type": "Organization",
+          "name": "Solvalutions",
+          "url": "https://solvalutions.nl"
         },
         "sameAs": [
           "https://linkedin.com/in/robm89",
-		  "https://github.com/robmeijerink"
+          "https://github.com/robmeijerink",
+          "https://solvalutions.nl",
+          "https://solvalutions.com"
         ]
       }
     }
@@ -76,16 +87,27 @@ func work(c fiber.Ctx) error {
 	    "@type": "Person",
 	    "name": "Rob Meijerink",
 	    "jobTitle": "Senior Software Developer & DevOps Engineer",
+	    "url": "https://robmeijerink.nl",
 	    "knowsAbout": [
-	      "Software Architecture",
-	      "Go",
-	      "Golang",
 	      "PHP",
 	      "Laravel",
+	      "Go",
+	      "Software Architecture",
 	      "DevOps",
 	      "Docker",
 	      "Kubernetes",
 	      "Domain-Driven Design"
+	    ],
+	    "worksFor": {
+	      "@type": "Organization",
+	      "name": "Solvalutions",
+	      "url": "https://solvalutions.nl"
+	    },
+	    "sameAs": [
+	      "https://linkedin.com/in/robm89",
+	      "https://github.com/robmeijerink",
+	      "https://solvalutions.nl",
+	      "https://solvalutions.com"
 	    ]
 	  }
 	}

@@ -237,80 +237,26 @@ func sitemap(c fiber.Ctx) error {
 	host := c.Hostname()
 	now := time.Now().Format("2006-01-02")
 
-	domainNL := "https://www.solvalutions.nl"
-	domainCOM := "https://www.solvalutions.com"
-
-	type translation struct {
-		lang string
-		url  string
-	}
-
+	// No hreflang alternates: .com (EN showcase) and .nl (NL commercial) are
+	// distinct content, not translations of each other. Each domain self-canonicals.
 	pages := []struct {
-		loc          string
-		priority     string
-		translations []translation
+		loc      string
+		priority string
 	}{
-		{
-			loc:      "/",
-			priority: "1.0",
-			translations: []translation{
-				{lang: "nl-NL", url: domainNL + "/"},
-				{lang: "en", url: domainCOM + "/"},
-				{lang: "x-default", url: domainCOM + "/"},
-			},
-		},
-		{
-			loc:      "/about",
-			priority: "0.8",
-			translations: []translation{
-				{lang: "nl-NL", url: domainNL + "/over"},
-				{lang: "en", url: domainCOM + "/about"},
-				{lang: "x-default", url: domainCOM + "/about"},
-			},
-		},
-		{
-			loc:      "/approach",
-			priority: "0.8",
-			translations: []translation{
-				{lang: "nl-NL", url: domainNL + "/aanpak"},
-				{lang: "en", url: domainCOM + "/approach"},
-				{lang: "x-default", url: domainCOM + "/approach"},
-			},
-		},
-		{
-			loc:      "/cases",
-			priority: "0.8",
-			translations: []translation{
-				{lang: "nl-NL", url: domainNL + "/cases"},
-				{lang: "en", url: domainCOM + "/cases"},
-				{lang: "x-default", url: domainCOM + "/cases"},
-			},
-		},
-		{
-			loc:      "/contact",
-			priority: "0.8",
-			translations: []translation{
-				{lang: "nl-NL", url: domainNL + "/contact"},
-				{lang: "en", url: domainCOM + "/contact"},
-				{lang: "x-default", url: domainCOM + "/contact"},
-			},
-		},
+		{loc: "/", priority: "1.0"},
+		{loc: "/about", priority: "0.8"},
+		{loc: "/approach", priority: "0.8"},
+		{loc: "/cases", priority: "0.8"},
+		{loc: "/contact", priority: "0.8"},
 	}
 
 	var xml strings.Builder
 
 	xml.WriteString(`<?xml version="1.0" encoding="UTF-8"?>` + "\n")
-	xml.WriteString(`<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">` + "\n")
+	xml.WriteString(`<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">` + "\n")
 
 	for _, page := range pages {
 		xml.WriteString(fmt.Sprintf("\t<url>\n\t\t<loc>https://%s%s</loc>\n\t\t<lastmod>%s</lastmod>\n\t\t<changefreq>monthly</changefreq>\n\t\t<priority>%s</priority>\n", host, page.loc, now, page.priority))
-
-		if page.translations != nil {
-			for _, t := range page.translations {
-				xml.WriteString(fmt.Sprintf("\t\t<xhtml:link rel=\"alternate\" hreflang=\"%s\" href=\"%s\" />\n", t.lang, t.url))
-			}
-		}
-
 		xml.WriteString("\t</url>\n")
 	}
 

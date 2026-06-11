@@ -23,7 +23,7 @@ func Setup(router *web.DomainRouter) {
 }
 
 func home(c fiber.Ctx) error {
-	title := "Solvalutions | Software Development & Automatisering"
+	title := "Software moderniseren – MKB Oost-Nederland | Solvalutions"
 	desc := "Modernisering van verouderde B2B software voor MKB en maakindustrie in Oost-Nederland. Minder handwerk, minder fouten, vaste prijs per fase."
 	url := "https://solvalutions.nl"
 
@@ -39,6 +39,7 @@ func home(c fiber.Ctx) error {
       "description": "` + desc + `",
       "telephone": "+31649691374",
       "email": "info@solvalutions.nl",
+      "taxID": "NL005319604B24",
       "priceRange": "€€€",
       "founder": {
         "@type": "Person",
@@ -56,11 +57,10 @@ func home(c fiber.Ctx) error {
         { "@type": "Country", "name": "Nederland" }
       ],
       "knowsAbout": [
-        "Legacy modernisering",
-        "Go",
-        "Fiber",
-        "Laravel",
         "PHP",
+        "Laravel",
+        "Go",
+        "Legacy modernisering",
         "Systeemintegratie",
         "API-ontwikkeling",
         "DevOps",
@@ -118,7 +118,7 @@ func contact(c fiber.Ctx) error {
 	    "contactPoint": {
 	      "@type": "ContactPoint",
 	      "telephone": "+31649691374",
-	      "email": "rob@solvalutions.nl",
+	      "email": "info@solvalutions.nl",
 	      "contactType": "customer service",
 	      "areaServed": "NL",
 	      "availableLanguage": ["nl", "en"]
@@ -136,7 +136,7 @@ func contact(c fiber.Ctx) error {
 }
 
 func about(c fiber.Ctx) error {
-	title := "Over Rob Meijerink — engineer achter Solvalutions"
+	title := "Senior PHP developer Zutphen, Gelderland | Rob Meijerink"
 	desc := "Tien jaar full-stack developer, nu zelfstandig vanuit Zutphen. Eén engineer, geen tussenlagen — je werkt rechtstreeks met de persoon die het bouwt."
 	url := "https://solvalutions.nl"
 
@@ -168,10 +168,9 @@ func about(c fiber.Ctx) error {
         },
         "knowsLanguage": ["nl", "en", "de", "es"],
         "knowsAbout": [
-          "Go",
-          "Fiber",
-          "Laravel",
           "PHP",
+          "Laravel",
+          "Go",
           "Legacy modernisering",
           "Systeemintegratie",
           "API-ontwikkeling",
@@ -205,7 +204,7 @@ func about(c fiber.Ctx) error {
 }
 
 func approach(c fiber.Ctx) error {
-	title := "Aanpak — Eerst begrijpen, dan software ontwikkelen | Solvalutions"
+	title := "Aanpak – vaste prijs per fase | Solvalutions"
 	desc := "Klein beginnen, vaste prijs per fase, naast je systeem bouwen. Geen open eindjes — zo werk ik aan modernisering, koppelingen en maatwerk."
 	url := "https://solvalutions.nl"
 
@@ -244,7 +243,7 @@ func approach(c fiber.Ctx) error {
 }
 
 func cases(c fiber.Ctx) error {
-	title := "Cases — Zakelijke ICT Oplossingen | Solvalutions"
+	title := "Opgeloste ICT vraagstukken voor MKB | Solvalutions"
 	desc := "Een selectie van trajecten: legacy-modernisering, maatwerk dat handwerk wegnam, security-aanscherping en systeemkoppelingen. Referentie op aanvraag."
 	url := "https://solvalutions.nl"
 
@@ -302,8 +301,8 @@ func cases(c fiber.Ctx) error {
 }
 
 func services(c fiber.Ctx) error {
-	title := "Diensten — Wat ik voor je oplos | Solvalutions"
-	desc := "Legacy-modernisering, systeemkoppelingen en API's, maatwerkapplicaties en performance. Concrete uitkomsten met vaste prijs per fase."
+	title := "PHP/Laravel moderniseren & systemen koppelen | Solvalutions"
+	desc := "Laravel applicatie traag of vastgelopen? PHP/Laravel modernisering, API-koppelingen en maatwerksoftware voor MKB. Vaste prijs per fase, Oost-Nederland."
 	url := "https://solvalutions.nl"
 
 	structuredData := template.HTML(`
@@ -403,85 +402,27 @@ func sitemap(c fiber.Ctx) error {
 	host := c.Hostname()
 	now := time.Now().Format("2006-01-02")
 
-	domainNL := "https://www.solvalutions.nl"
-	domainCOM := "https://www.solvalutions.com"
-
-	type translation struct {
-		lang string
-		url  string
-	}
-
+	// No hreflang alternates: .nl and .com are distinct content (NL commercial vs
+	// EN showcase), not translations of each other. Each domain self-canonicals.
 	pages := []struct {
-		loc          string
-		priority     string
-		translations []translation
+		loc      string
+		priority string
 	}{
-		{
-			loc:      "/",
-			priority: "1.0",
-			translations: []translation{
-				{lang: "nl-NL", url: domainNL + "/"},
-				{lang: "en", url: domainCOM + "/"},
-				{lang: "x-default", url: domainCOM + "/"},
-			},
-		},
-		{
-			loc:      "/aanpak",
-			priority: "0.8",
-			translations: []translation{
-				{lang: "nl-NL", url: domainNL + "/aanpak"},
-				{lang: "en", url: domainCOM + "/approach"},
-				{lang: "x-default", url: domainCOM + "/approach"},
-			},
-		},
-		{
-			loc:          "/diensten",
-			priority:     "0.8",
-			translations: nil,
-		},
-		{
-			loc:      "/cases",
-			priority: "0.8",
-			translations: []translation{
-				{lang: "nl-NL", url: domainNL + "/cases"},
-				{lang: "en", url: domainCOM + "/cases"},
-				{lang: "x-default", url: domainCOM + "/cases"},
-			},
-		},
-		{
-			loc:      "/over",
-			priority: "0.8",
-			translations: []translation{
-				{lang: "nl-NL", url: domainNL + "/over"},
-				{lang: "en", url: domainCOM + "/about"},
-				{lang: "x-default", url: domainCOM + "/about"},
-			},
-		},
-		{
-			loc:      "/contact",
-			priority: "0.8",
-			translations: []translation{
-				{lang: "nl-NL", url: domainNL + "/contact"},
-				{lang: "en", url: domainCOM + "/contact"},
-				{lang: "x-default", url: domainCOM + "/contact"},
-			},
-		},
+		{loc: "/", priority: "1.0"},
+		{loc: "/aanpak", priority: "0.8"},
+		{loc: "/diensten", priority: "0.8"},
+		{loc: "/cases", priority: "0.8"},
+		{loc: "/over", priority: "0.8"},
+		{loc: "/contact", priority: "0.8"},
 	}
 
 	var xml strings.Builder
 
 	xml.WriteString(`<?xml version="1.0" encoding="UTF-8"?>` + "\n")
-	xml.WriteString(`<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">` + "\n")
+	xml.WriteString(`<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">` + "\n")
 
 	for _, page := range pages {
 		xml.WriteString(fmt.Sprintf("\t<url>\n\t\t<loc>https://%s%s</loc>\n\t\t<lastmod>%s</lastmod>\n\t\t<changefreq>monthly</changefreq>\n\t\t<priority>%s</priority>\n", host, page.loc, now, page.priority))
-
-		if page.translations != nil {
-			for _, t := range page.translations {
-				xml.WriteString(fmt.Sprintf("\t\t<xhtml:link rel=\"alternate\" hreflang=\"%s\" href=\"%s\" />\n", t.lang, t.url))
-			}
-		}
-
 		xml.WriteString("\t</url>\n")
 	}
 

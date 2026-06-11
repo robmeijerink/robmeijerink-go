@@ -11,15 +11,17 @@
     {{ end }}
 
     <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Solvalutions">
+    <meta property="og:locale" content="en_US">
     <meta property="og:url" content="https://solvalutions.com{{ .Path }}">
-    <meta property="og:title" content="Solvalutions | High-Performance B2B Software Engineering">
-    <meta property="og:description" content="Engineering the foundation for ambitious digital growth. We replace bloated legacy systems with reliable, cloud-native architecture.">
+    <meta property="og:title" content="{{or .Title "Solvalutions | High-Performance B2B Software Engineering"}}">
+    <meta property="og:description" content="{{or .MetaDescription "Engineering the foundation for ambitious digital growth. We replace bloated legacy systems with reliable, cloud-native architecture."}}">
     <meta property="og:image" content="https://solvalutions.com/assets/img/solvalutions-og-image.png">
 
-    <meta name="twitter:card" content="summary">
+    <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:url" content="https://solvalutions.com{{ .Path }}">
-    <meta name="twitter:title" content="Solvalutions | High-Performance B2B Software Engineering">
-    <meta name="twitter:description" content="Engineering the foundation for ambitious digital growth. We replace bloated legacy systems with reliable, cloud-native architecture.">
+    <meta name="twitter:title" content="{{or .Title "Solvalutions | High-Performance B2B Software Engineering"}}">
+    <meta name="twitter:description" content="{{or .MetaDescription "Engineering the foundation for ambitious digital growth. We replace bloated legacy systems with reliable, cloud-native architecture."}}">
     <meta name="twitter:image" content="https://solvalutions.com/assets/img/solvalutions-og-image.png">
 
     <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
