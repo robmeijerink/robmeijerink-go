@@ -22,7 +22,7 @@ func Setup(router *web.DomainRouter) {
 
 func home(c fiber.Ctx) error {
 	title := "Solvalutions | High-Performance B2B Software Engineering"
-	desc := "Specialized B2B tech agency for high-performance digital infrastructure and scalable software solutions. Digital Engineering Solutions."
+	desc := "Specialized B2B tech agency for high-performance digital infrastructure, systems software in Rust and Go, and scalable software solutions."
 	url := "https://solvalutions.com"
 
 	jsonLd := template.HTML(`
@@ -155,7 +155,7 @@ func about(c fiber.Ctx) error {
 
 func approach(c fiber.Ctx) error {
 	title := "Approach | High-Performance Tech Architecture | Solvalutions"
-	desc := "Discover our lean methodology for building scalable, high-performance Go backends and cloud-native systems. Domain-driven design with brutal efficiency."
+	desc := "Discover our lean methodology for building scalable, high-performance Rust and Go backends and cloud-native systems. Domain-driven design with brutal efficiency."
 
 	jsonLd := template.HTML(`
 	<script type="application/ld+json">
@@ -173,7 +173,7 @@ func approach(c fiber.Ctx) error {
 	    {
 	      "@type": "HowToStep",
 	      "name": "Architecture Design",
-	      "text": "Designing solid, scalable foundations using proven technologies like Go and cloud-native principles."
+	      "text": "Designing solid, scalable foundations using proven technologies like Rust, Go and cloud-native principles."
 	    },
 	    {
 	      "@type": "HowToStep",
@@ -194,7 +194,7 @@ func approach(c fiber.Ctx) error {
 
 func cases(c fiber.Ctx) error {
 	title := "Case Studies | Proven Engineering Success | Solvalutions"
-	desc := "Explore our portfolio of high-performance B2B software solutions. From cloud-native migrations to custom Go-driven backend architectures."
+	desc := "Explore our portfolio of high-performance B2B software solutions. From cloud-native migrations to custom Rust and Go backend architectures."
 	url := "https://solvalutions.com"
 
 	structuredData := template.HTML(`
@@ -211,12 +211,36 @@ func cases(c fiber.Ctx) error {
 	      {
 	        "@type": "ListItem",
 	        "position": 1,
+	        "name": "Data Aggregation Engine in Rust",
+	        "description": "Data from many sources merged per request in a concurrent Rust service with predictable latency."
+	      },
+	      {
+	        "@type": "ListItem",
+	        "position": 2,
+	        "name": "Batch Processing Rewrite in Rust",
+	        "description": "A PHP nightly import rewritten in Rust, with identical output and a fraction of the runtime."
+	      },
+	      {
+	        "@type": "ListItem",
+	        "position": 3,
+	        "name": "Shared Rust Core via FFI and WebAssembly",
+	        "description": "Business-critical calculation logic extracted into one Rust library used by PHP and the browser."
+	      },
+	      {
+	        "@type": "ListItem",
+	        "position": 4,
+	        "name": "High-Throughput API Layer in Rust",
+	        "description": "A public API rebuilt in Rust with async I/O and caching for stable tail latency under load."
+	      },
+	      {
+	        "@type": "ListItem",
+	        "position": 5,
 	        "name": "Cloud Infrastructure Migration",
 	        "description": "Scalable architecture for a logistics partner."
 	      },
 	      {
 	        "@type": "ListItem",
-	        "position": 2,
+	        "position": 6,
 	        "name": "WooCommerce to Go API Refactor",
 	        "description": "Transforming a slow legacy store into a high-performance headless commerce engine."
 	      }

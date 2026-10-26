@@ -24,7 +24,7 @@ func Setup(router *web.DomainRouter) {
 
 func home(c fiber.Ctx) error {
 	title := "Software moderniseren – MKB Oost-Nederland | Solvalutions"
-	desc := "Modernisering van verouderde B2B software voor MKB en maakindustrie in Oost-Nederland. Minder handwerk, minder fouten, vaste prijs per fase."
+	desc := "Modernisering van verouderde B2B software voor MKB en maakindustrie in Oost-Nederland, met Rust en Go waar snelheid telt. Minder handwerk, minder fouten, vaste prijs per fase."
 	url := "https://solvalutions.nl"
 
 	jsonLd := template.HTML(`
@@ -57,9 +57,10 @@ func home(c fiber.Ctx) error {
         { "@type": "Country", "name": "Nederland" }
       ],
       "knowsAbout": [
+        "Rust",
+        "Go",
         "PHP",
         "Laravel",
-        "Go",
         "Legacy modernisering",
         "Systeemintegratie",
         "API-ontwikkeling",
@@ -168,9 +169,10 @@ func about(c fiber.Ctx) error {
         },
         "knowsLanguage": ["nl", "en", "de", "es"],
         "knowsAbout": [
+          "Rust",
+          "Go",
           "PHP",
           "Laravel",
-          "Go",
           "Legacy modernisering",
           "Systeemintegratie",
           "API-ontwikkeling",
@@ -244,7 +246,7 @@ func approach(c fiber.Ctx) error {
 
 func cases(c fiber.Ctx) error {
 	title := "Opgeloste ICT vraagstukken voor MKB | Solvalutions"
-	desc := "Een selectie van trajecten: legacy-modernisering, maatwerk dat handwerk wegnam, security-aanscherping en systeemkoppelingen. Referentie op aanvraag."
+	desc := "Een selectie van trajecten: legacy-modernisering, Rust-onderdelen voor snelle dataverwerking, maatwerk dat handwerk wegnam, security-aanscherping en systeemkoppelingen. Referentie op aanvraag."
 	url := "https://solvalutions.nl"
 
 	structuredData := template.HTML(`
@@ -376,8 +378,23 @@ func services(c fiber.Ctx) error {
 	        "item": {
 	          "@type": "Service",
 	          "name": "Performance en betrouwbaar draaien",
-	          "description": "Performance-kritische onderdelen herbouwen (onder andere in Go) en zorgen dat software blijft draaien met geautomatiseerde uitrol, monitoring en doordachte infrastructuur.",
+	          "description": "Performance-kritische onderdelen herbouwen (onder andere in Rust en Go) en zorgen dat software blijft draaien met geautomatiseerde uitrol, monitoring en doordachte infrastructuur.",
 	          "serviceType": "Performance engineering en DevOps",
+	          "provider": {
+	            "@type": "Organization",
+	            "name": "Solvalutions",
+	            "url": "` + url + `"
+	          }
+	        }
+	      },
+	      {
+	        "@type": "ListItem",
+	        "position": 5,
+	        "item": {
+	          "@type": "Service",
+	          "name": "Rust en systeemsoftware",
+	          "description": "Kritische onderdelen in Rust bouwen of herschrijven voor snelle, voorspelbare verwerking van grote hoeveelheden data, zonder de rest van het systeem te vervangen.",
+	          "serviceType": "Systeemsoftware en performance engineering",
 	          "provider": {
 	            "@type": "Organization",
 	            "name": "Solvalutions",
