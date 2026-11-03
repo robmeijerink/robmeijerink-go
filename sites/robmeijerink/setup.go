@@ -28,7 +28,7 @@ func home(c fiber.Ctx) error {
       "mainEntity": {
         "@type": "Person",
         "name": "Rob Meijerink",
-        "jobTitle": "Freelance Senior Software & DevOps Engineer",
+        "jobTitle": "Freelance Software Developer & DevOps Engineer",
         "url": "https://robmeijerink.nl",
         "image": "https://robmeijerink.nl/assets/img/foto-rob-meijerink-solvalutions-avatar-320.jpg",
         "knowsAbout": [
@@ -61,7 +61,7 @@ func home(c fiber.Ctx) error {
 	`)
 
 	return web.Render(c, "home", fiber.Map{
-		"Title":           "Rob Meijerink | Freelance Senior Software & DevOps Engineer",
+		"Title":           "Rob Meijerink | Freelance Software Developer & DevOps Engineer",
 		"MetaDescription": "Beschikbaar voor freelance projecten. Senior developer voor schaalbare backends in Rust, Go en PHP/Laravel, plus DevOps en cloud-architectuur.",
 		"Keywords":        "Freelance, ZZP, Software Engineer, inhuren, DevOps, Backend Developer, Rust, Rust developer, Go, Golang, PHP, Laravel, Kubernetes, Systeem Architectuur, B2B",
 		"StructuredData":  jsonLd,
@@ -90,7 +90,7 @@ func work(c fiber.Ctx) error {
 	  "mainEntity": {
 	    "@type": "Person",
 	    "name": "Rob Meijerink",
-	    "jobTitle": "Freelance Senior Software & DevOps Engineer",
+	    "jobTitle": "Freelance Software Developer & DevOps Engineer",
 	    "url": "https://robmeijerink.nl",
 	    "knowsAbout": [
 	      "Rust",

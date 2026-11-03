@@ -28,4 +28,36 @@ export function initStackSections() {
         const observer = new ResizeObserver(apply)
         sheets.forEach((sheet) => observer.observe(sheet))
     }
+
+    function flowTop(sheet) {
+        const container = sheet.parentElement
+        let top = container.getBoundingClientRect().top + window.scrollY
+
+        for (let node = container.firstElementChild; node && node !== sheet; node = node.nextElementSibling) {
+            top += node.offsetHeight
+        }
+
+        return top
+    }
+
+    document.addEventListener('click', (event) => {
+        if (!query.matches || event.defaultPrevented || event.button !== 0) return
+        if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return
+
+        const link = event.target.closest('a[href^="#"]')
+
+        if (!link) return
+
+        const id = link.getAttribute('href').slice(1)
+        const target = id ? document.getElementById(id) : null
+
+        if (!target || !target.hasAttribute('data-sheet')) return
+
+        event.preventDefault()
+
+        const offset = parseFloat(getComputedStyle(target).scrollMarginTop) || 0
+
+        window.scrollTo({ top: flowTop(target) - offset, behavior: 'smooth' })
+        history.pushState(null, '', `#${id}`)
+    })
 }

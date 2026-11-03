@@ -1,5 +1,5 @@
 <section data-sheet class="bg-ink relative overflow-x-clip pt-8 sm:pt-12">
-    <div class="wrap grid items-end gap-12 lg:grid-cols-12 lg:gap-8">
+    <div class="wrap grid items-end gap-6 sm:gap-12 lg:grid-cols-12 lg:gap-8">
 
         <div class="space-y-8 pb-12 lg:col-span-7 lg:pb-24">
             {{ template "components/availability-alert" . }}
@@ -16,7 +16,7 @@
 
             <div class="max-w-xl space-y-5">
                 <p class="text-base leading-relaxed text-slate-300 sm:text-lg">
-                Specialist in toekomstbestendige backend-systemen en schaalbare API's. Rust en Go voor systemen waar performance, betrouwbaarheid en voorspelbaar gedrag onder druk tellen, PHP/Laravel voor snelle bedrijfsapplicaties.
+                Schaalbare backend-systemen en API's die blijven werken als het drukker wordt. Ik bouw ze in Rust en Go waar performance en voorspelbaar gedrag onder druk tellen, en in PHP/Laravel voor snelle en gebruiksvriendelijke bedrijfsapplicaties.
                 </p>
                 <p class="text-brand-sky flex min-h-[1.5em] items-center font-mono text-sm sm:text-base">
                 <span id="typed-manifesto"></span>
@@ -53,15 +53,15 @@
                         </svg>
                     </div>
                     <p class="text-sm font-medium tracking-tight text-slate-400">
-                        Al <span class="font-bold text-white">15+ jaar</span> software-oplossingen die écht <span class="font-bold text-white whitespace-nowrap">het verschil maken</span>
+                        Al <span class="font-bold text-white">15+ jaar</span> lever ik <span class="font-bold text-white">betrouwbare software</span> en digitale oplossingen
                     </p>
                 </div>
             </div>
         </div>
 
-        <div class="relative -mb-12 sm:-mb-16 lg:col-span-5">
+        <div class="relative order-first lg:order-none lg:-mb-16 lg:col-span-5">
             <div class="hero-glow" aria-hidden="true"></div>
-            <div class="hero-photo mx-auto w-80 sm:w-[26rem] lg:ml-auto lg:w-[32rem] lg:max-w-none">
+            <div class="hero-photo hero-crop mx-auto w-80 sm:w-[26rem] lg:ml-auto lg:w-[32rem] lg:max-w-none">
                 <img src="/assets/img/rob-staand.webp"
                      alt="Profielfoto Rob Meijerink - Solvalutions"
                      title="Laten we samenwerken!"
@@ -87,14 +87,30 @@
         <div class="border-ink-line bg-ink space-y-5 self-start rounded-3xl border p-8 sm:p-10 lg:sticky lg:top-28 lg:col-span-5" data-reveal>
             <p class="text-sm font-semibold tracking-widest text-ink-muted uppercase">Werkwijze</p>
             <h2 class="text-balance text-4xl font-extrabold tracking-tighter text-white sm:text-5xl">
-                <span>Gedreven</span>
-                <span class="text-brand-sky">door vooruitgang</span><span>.</span>
+                <span>Zo werk ik in</span>
+                <span class="text-brand-sky">jouw team</span><span>.</span>
             </h2>
             <p class="text-base leading-relaxed sm:text-lg">
-                Als freelance senior developer overbrug ik de kloof tussen complexe business-eisen en schaalbare techniek. Van betrouwbare <strong class="font-semibold text-white">backend architecturen</strong> in <strong class="font-semibold text-white">Rust en Go</strong> tot geautomatiseerde <strong class="font-semibold text-white">DevOps pipelines</strong>: ik bouw de fundering waarmee jouw applicaties én team veilig kunnen versnellen.</p>
+                Zit je development team vast, of is er meer werk dan handen? Je krijgt een freelance software developer die zelfstandig doorpakt, rustig blijft als het druk wordt en je team sterker maakt. Ingewikkelde vraagstukken zijn voor mij een uitdaging waar ik energie van krijg, geen obstakel waar we niet uit komen.
+            </p>
         </div>
 
         <div class="divide-y divide-ink-line border-y border-ink-line lg:col-span-7">
+            <div data-reveal class="group py-10 transition-colors">
+                <div class="mb-5 flex items-center gap-4">
+                    <div class="bg-brand-blue text-white flex h-11 w-11 shrink-0 items-center justify-center rounded-xl transition-transform duration-300 group-hover:scale-110">
+                        <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold tracking-tight text-white sm:text-2xl">
+                        Van meekijken naar aanpakken
+                    </h3>
+                </div>
+                <p class="text-base leading-relaxed">
+                    Je krijgt eerst een collega die meekijkt en leert hoe jullie werken. Samen bepalen we de kern van het probleem en wat als eerste moet. Daarna pak ik het zelfstandig op, ook als er veel tegelijk op je team afkomt: rustig en stap voor stap. Onderweg groeien je developers mee en blijven ze gemotiveerd.
+                </p>
+            </div>
             <div data-reveal class="group py-10 transition-colors">
                 <div class="mb-5 flex items-center gap-4">
                     <div class="bg-brand-blue text-white flex h-11 w-11 shrink-0 items-center justify-center rounded-xl transition-transform duration-300 group-hover:scale-110">
@@ -103,16 +119,13 @@
                         </svg>
                     </div>
                     <h3 class="text-xl font-bold tracking-tight text-white sm:text-2xl">
-                        Business-Driven Software Architectuur
+                        Van business-eis naar techniek
                     </h3>
                 </div>
                 <p class="text-base leading-relaxed">
-                    Geen hypes of over-engineering. Ik ontwerp de architectuur die past bij de fase van jouw product. We starten vaak
-                    met een <strong class="text-brand-sky">modulaire monoliet</strong> voor maximale wendbaarheid. Zodra het platform écht schaalt of teams groeien, evolueren
-                    we dit gecontroleerd naar <strong class="text-brand-sky">microservices</strong>. De techniek volgt altijd de <strong class="text-brand-sky">businesscase</strong>.
+                    Techniek hoort begrijpelijk te zijn, voor je team en voor wie minder technisch is. Wat je bedrijf nodig heeft, vertaal ik naar schaalbare techniek die past bij de fase van je product: vaak een <strong class="text-brand-sky">modulaire monoliet</strong>, zodat je snel kunt bewegen. Groeit het platform of het team, dan splitsen we gecontroleerd op naar <strong class="text-brand-sky">microservices</strong>.
                 </p>
             </div>
-
             <div data-reveal class="group py-10 transition-colors">
                 <div class="mb-5 flex items-center gap-4">
                     <div class="bg-brand-blue text-white flex h-11 w-11 shrink-0 items-center justify-center rounded-xl transition-transform duration-300 group-hover:scale-110">
@@ -121,15 +134,19 @@
                         </svg>
                     </div>
                     <h3 class="text-xl font-bold tracking-tight text-white sm:text-2xl">
-                        Automatisering & DevOps
+                        Uit de praktijk: terug naar de basis.
                     </h3>
                 </div>
                 <p class="text-base leading-relaxed">
-                    Code levert pas waarde als het betrouwbaar live staat. Ik behandel infrastructuur daarom exact zoals software:
-                    <strong class="text-brand-sky">Infrastructure as Code</strong>. Door handmatig beheer te elimineren met Docker en
-                    <strong class="text-brand-sky">CI/CD pipelines</strong>, optimaliseer ik jouw workflow.
+                    Een team van 6 tot 10 developers kwam niet meer vooruit: de ontwikkeling zat vast op technische complexiteit. We brachten de architectuur terug naar de basis, trokken de <strong class="text-brand-sky">CI/CD-pipelines</strong> recht en maakten de code testbaar, onder duidelijke leiding en in overzichtelijke stappen. Daarna gingen we van wekelijks naar meerdere keren per week live, met aanzienlijk minder fouten in productie en beter schaalbare applicaties. Het project rondden we af zoals gepland, met een team dat weer rustig en voorspelbaar werkte.
                 </p>
             </div>
+            <div data-reveal class="py-10">
+                <p class="border-brand-sky border-l-2 pl-6 text-lg leading-relaxed text-slate-200 sm:text-xl">
+                    Je bedrijfskritische systemen blijven draaien terwijl we ze verbeteren. Na mijn opdracht staat je team sterker.
+                </p>
+            </div>
+            <p class="py-6 font-mono text-sm text-slate-300">Hands-on inzetbaar: remote, hybride of op locatie.</p>
         </div>
     </div>
 </section>
