@@ -47,6 +47,17 @@
     color: var(--color-slate-100);
 }
 
+@media (max-width: 63.99rem) {
+    .tap {
+        padding: 0.5rem 0.45rem;
+        margin: -0.5rem -0.45rem;
+    }
+
+    .pipeline .nav-link {
+        padding-block: 0.45rem;
+    }
+}
+
 .pipeline-scroll {
     overflow-x: auto;
     scrollbar-width: none;
@@ -58,7 +69,7 @@
 
 @media (max-width: 63.99rem) {
     .pipeline-scroll {
-        padding-block: 0.15rem 0.35rem;
+        padding-block: 0;
         mask-image: linear-gradient(to right, transparent, #000 4%, #000 92%, transparent);
     }
 }
