@@ -8,6 +8,7 @@ import { initTimelineProgress } from './timeline-progress.js'
 import { initTopbar } from './topbar.js'
 import { initScrollWords } from './scroll-words.js'
 import { initStackSections } from './stack-sections.js'
+import { initPhotoMorph } from './photo-morph.js'
 
 document.addEventListener('DOMContentLoaded', () => {
     initTypedCursor('Geen hypes, gewoon betrouwbare en stabiele software.')
@@ -17,4 +18,9 @@ document.addEventListener('DOMContentLoaded', () => {
     initTopbar()
     initScrollWords()
     initStackSections()
+    if ('requestIdleCallback' in window) {
+        requestIdleCallback(initPhotoMorph, { timeout: 2000 })
+    } else {
+        setTimeout(initPhotoMorph, 500)
+    }
 })
