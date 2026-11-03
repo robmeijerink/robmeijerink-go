@@ -64,7 +64,8 @@ func home(c fiber.Ctx) error {
 		"Title":           "Rob Meijerink | Freelance Software Developer & DevOps Engineer",
 		"MetaDescription": "Beschikbaar voor freelance projecten. Senior developer voor schaalbare backends in Rust, Go en PHP/Laravel, plus DevOps en cloud-architectuur.",
 		"Keywords":        "Freelance, ZZP, Software Engineer, inhuren, DevOps, Backend Developer, Rust, Rust developer, Go, Golang, PHP, Laravel, Kubernetes, Systeem Architectuur, B2B",
-		"StructuredData":  jsonLd,
+		"StructuredData":  jsonLd + faqStructuredData(faqItems),
+		"FAQ":             faqItems,
 	})
 }
 

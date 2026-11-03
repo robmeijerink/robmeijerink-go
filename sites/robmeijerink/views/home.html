@@ -160,7 +160,7 @@
                 <span class="text-brand-blue">voor inzet</span><span>.</span>
             </h2>
             <p class="text-base leading-relaxed text-slate-600 sm:text-lg">
-                Van backend en DevOps tot effectief werken met AI. Per situatie een oplossing op maat, met de techniek of tool die bij jouw project past.
+                Van full stack en DevOps tot effectief werken met AI. Per situatie een oplossing op maat, met de techniek of tool die bij jouw project past.
             </p>
             <a href="/expertise" class="focus-ring text-brand-blue inline-flex items-center gap-2 text-sm font-bold transition-opacity hover:opacity-80">
                 Alle specialisaties
@@ -307,44 +307,28 @@
         <div class="border-ink-line bg-ink-raised self-start rounded-3xl border p-8 sm:p-10 lg:sticky lg:top-28 lg:col-span-5" data-reveal>
             <p class="text-sm font-semibold tracking-widest text-ink-muted uppercase">FAQ</p>
             <h2 class="mt-5 text-4xl font-extrabold tracking-tighter text-white sm:text-5xl">Veelgestelde <span class="text-brand-sky">vragen</span>.</h2>
+            <div class="bg-brand-blue/25 border-ink-line -mx-8 mt-10 -mb-8 rounded-b-3xl border-t p-8 sm:-mx-10 sm:-mb-10 sm:p-10">
+                <div class="flex items-center gap-4">
+                    <span class="bg-brand-blue text-brand-mist ring-brand-sky/30 flex h-11 w-11 shrink-0 items-center justify-center rounded-full ring-1"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path><path d="M9.5 9a2.5 2.5 0 1 1 3.5 2.3c-.6.3-1 .8-1 1.5"></path><path d="M12 15.5h.01"></path></svg></span>
+                    <p class="text-balance text-lg font-bold tracking-tight text-white sm:text-xl">Staat je vraag er niet tussen?</p>
+                </div>
+                <a href="mailto:rob@solvalutions.nl?subject=Vraag%20via%20robmeijerink.nl" class="group focus-ring text-ink hover:bg-brand-vivid mt-6 inline-flex items-center justify-center gap-2 rounded-full bg-white px-6 py-3 text-sm font-bold transition-all hover:-translate-y-0.5 hover:text-white active:scale-95">
+                    Stel je vraag direct
+                    <span class="transition-transform group-hover:translate-x-1" aria-hidden="true">&rarr;</span>
+                </a>
+            </div>
         </div>
 
         <div class="divide-y divide-ink-line border-y border-ink-line lg:col-span-7" data-reveal>
+            {{ range .FAQ }}
             <details class="faq group py-2">
                 <summary class="focus-ring flex cursor-pointer items-center justify-between gap-6 py-5 text-lg font-semibold text-white sm:text-xl">
-                    <span>Dit is een dummyvraag over beschikbaarheid?</span>
+                    <span>{{ .Question }}</span>
                     <svg class="faq-icon h-5 w-5 shrink-0 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 5v14M5 12h14"></path></svg>
                 </summary>
-                <p class="faq-body max-w-2xl pb-6 text-base leading-relaxed">Dit is dummytekst voor het antwoord. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                <p class="faq-body max-w-2xl pb-6 text-base leading-relaxed">{{ .Answer }}</p>
             </details>
-            <details class="faq group py-2">
-                <summary class="focus-ring flex cursor-pointer items-center justify-between gap-6 py-5 text-lg font-semibold text-white sm:text-xl">
-                    <span>Dit is een dummyvraag over werkwijze?</span>
-                    <svg class="faq-icon h-5 w-5 shrink-0 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 5v14M5 12h14"></path></svg>
-                </summary>
-                <p class="faq-body max-w-2xl pb-6 text-base leading-relaxed">Dit is dummytekst voor het antwoord. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-            </details>
-            <details class="faq group py-2">
-                <summary class="focus-ring flex cursor-pointer items-center justify-between gap-6 py-5 text-lg font-semibold text-white sm:text-xl">
-                    <span>Dit is een dummyvraag over technologie?</span>
-                    <svg class="faq-icon h-5 w-5 shrink-0 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 5v14M5 12h14"></path></svg>
-                </summary>
-                <p class="faq-body max-w-2xl pb-6 text-base leading-relaxed">Dit is dummytekst voor het antwoord. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
-            </details>
-            <details class="faq group py-2">
-                <summary class="focus-ring flex cursor-pointer items-center justify-between gap-6 py-5 text-lg font-semibold text-white sm:text-xl">
-                    <span>Dit is een dummyvraag over samenwerking?</span>
-                    <svg class="faq-icon h-5 w-5 shrink-0 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 5v14M5 12h14"></path></svg>
-                </summary>
-                <p class="faq-body max-w-2xl pb-6 text-base leading-relaxed">Dit is dummytekst voor het antwoord. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-            </details>
-            <details class="faq group py-2">
-                <summary class="focus-ring flex cursor-pointer items-center justify-between gap-6 py-5 text-lg font-semibold text-white sm:text-xl">
-                    <span>Dit is een dummyvraag over tarieven?</span>
-                    <svg class="faq-icon h-5 w-5 shrink-0 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 5v14M5 12h14"></path></svg>
-                </summary>
-                <p class="faq-body max-w-2xl pb-6 text-base leading-relaxed">Dit is dummytekst voor het antwoord. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium.</p>
-            </details>
+            {{ end }}
         </div>
     </div>
 </section>
