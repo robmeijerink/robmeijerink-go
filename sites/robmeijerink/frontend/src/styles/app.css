@@ -22,6 +22,7 @@
 
     --color-ink: #0e121b;
     --color-ink-raised: #171d2c;
+    --color-ink-lift: #1d2740;
     --color-ink-line: #283148;
 
     --color-brand-blue: #003d73;
@@ -29,6 +30,8 @@
     --color-brand-sky: #7ba6d6;
     --color-brand-vivid: #3b86f2;
     --color-brand-mist: #a9c6e8;
+    --color-rust: #e2804d;
+    --color-rust-ink: #4a1a06;
     --color-ink-muted: #8a9bb3;
     --color-paper: #e8edf4;
 }

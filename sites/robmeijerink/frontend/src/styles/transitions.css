@@ -378,3 +378,11 @@
         transparent 74%
     );
 }
+
+.panel-glow {
+    background-image: radial-gradient(
+        75% 130% at var(--gx, 100%) 0%,
+        rgb(var(--glow) / 0.13),
+        transparent 72%
+    );
+}

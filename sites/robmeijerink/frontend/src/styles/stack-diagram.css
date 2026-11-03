@@ -73,7 +73,8 @@
     transition: background-color 0.4s ease;
 }
 
-.spec-row:target {
+.spec-row:target,
+.spec-row.is-target {
     background-color: color-mix(in srgb, var(--color-brand-blue) 28%, transparent);
 }
 
@@ -111,4 +112,11 @@
     .spec-tag:hover {
         transform: none;
     }
+}
+
+.spec-tag-light:hover {
+    color: var(--color-ink);
+    border-color: var(--color-brand-vivid);
+    background-color: rgb(59 134 242 / 0.12);
+    box-shadow: 0 0 1rem rgb(59 134 242 / 0.25);
 }
