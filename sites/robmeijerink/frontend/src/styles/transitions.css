@@ -19,3 +19,259 @@
 .fill-mode-backwards {
     animation-fill-mode: backwards;
 }
+
+.js [data-reveal] {
+    opacity: 0;
+    transform: translateY(1.25rem);
+    transition:
+        opacity 0.7s ease,
+        transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+    transition-delay: var(--reveal-delay, 0ms);
+}
+
+.js [data-reveal].is-visible {
+    opacity: 1;
+    transform: none;
+}
+
+.nav-link {
+    position: relative;
+    color: var(--color-slate-400);
+    transition: color 0.2s ease;
+}
+
+.nav-link:hover,
+.nav-link:focus-visible,
+.nav-link[aria-current="true"],
+.nav-link[aria-current="page"] {
+    color: var(--color-slate-100);
+}
+
+.pipeline {
+    display: flex;
+    align-items: center;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+}
+
+.pipeline .nav-link {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    white-space: nowrap;
+}
+
+.pipeline .nav-link::before {
+    content: '';
+    width: 0.4rem;
+    height: 0.4rem;
+    border-radius: 9999px;
+    border: 1px solid var(--color-slate-500);
+    transition:
+        background-color 0.3s ease,
+        border-color 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+.pipeline .nav-link + .nav-link {
+    margin-left: 1.75rem;
+}
+
+.pipeline .nav-link + .nav-link::after {
+    content: '';
+    position: absolute;
+    right: calc(100% + 0.35rem);
+    top: 50%;
+    width: 1.05rem;
+    height: 1px;
+    background-color: var(--color-ink-line);
+    transition: background-color 0.3s ease;
+}
+
+.pipeline .nav-link[data-passed="true"]::before,
+.pipeline .nav-link[aria-current="true"]::before {
+    border-color: var(--color-brand-vivid);
+    background-color: var(--color-brand-vivid);
+}
+
+.pipeline .nav-link[aria-current="true"]::before {
+    box-shadow: 0 0 0 3px rgba(59, 134, 242, 0.3);
+}
+
+.pipeline .nav-link[data-passed="true"]::after,
+.pipeline .nav-link[aria-current="true"]::after {
+    background-color: var(--color-brand-vivid);
+}
+
+.faq summary {
+    list-style: none;
+}
+
+.faq summary::-webkit-details-marker {
+    display: none;
+}
+
+.faq-icon {
+    transition: transform 0.3s ease;
+}
+
+.faq[open] .faq-icon {
+    transform: rotate(45deg);
+}
+
+.faq[open] .faq-body {
+    animation: faq-in 0.35s ease;
+}
+
+@keyframes faq-in {
+    from {
+        opacity: 0;
+        transform: translateY(-0.5rem);
+    }
+}
+
+.hero-glow {
+    pointer-events: none;
+    position: absolute;
+    inset: 5% -35% -15%;
+    background: radial-gradient(closest-side, rgba(52, 128, 225, 0.8), rgba(0, 61, 115, 0.45) 50%, transparent 90%);
+}
+
+.hero-photo {
+    position: relative;
+    height: auto;
+    mask-image: linear-gradient(to left, transparent 0, #000 8%);
+}
+
+.section-glow {
+    isolation: isolate;
+}
+
+.section-glow::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    border-radius: inherit;
+    pointer-events: none;
+    background:
+        radial-gradient(48rem 26rem at 12% 0%, rgba(59, 134, 242, 0.16), transparent 70%),
+        radial-gradient(40rem 24rem at 95% 100%, rgba(0, 61, 115, 0.35), transparent 70%);
+}
+
+.is-sheet {
+    position: sticky;
+}
+
+.sheet-diagonal {
+    --cut: clamp(1.5rem, 4.5vw, 4.5rem);
+    padding-top: calc(var(--cut) + 6rem);
+    clip-path: polygon(0 0, 100% var(--cut), 100% 100%, 0 100%);
+}
+
+.sheet-top {
+    border-top-left-radius: 2rem;
+    border-top-right-radius: 2rem;
+    box-shadow: 0 -24px 60px rgba(0, 0, 0, 0.5);
+}
+
+.diff-line::before {
+    content: '+';
+    margin-right: 0.75rem;
+    color: var(--color-emerald-400);
+}
+
+.timeline-track {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 1px;
+    background-color: var(--color-ink-line);
+}
+
+.timeline-fill {
+    position: absolute;
+    inset: 0;
+    background-color: var(--color-brand-vivid);
+    transform-origin: top;
+    transform: scaleY(var(--timeline-progress, 0));
+}
+
+.timeline-dot {
+    transition:
+        background-color 0.4s ease,
+        box-shadow 0.4s ease;
+}
+
+.is-visible .timeline-dot {
+    background-color: var(--color-brand-vivid);
+    box-shadow: 0 0 0 4px rgba(59, 134, 242, 0.25);
+}
+
+.topbar {
+    transition:
+        background-color 0.3s ease,
+        border-color 0.3s ease,
+        backdrop-filter 0.3s ease;
+    border-bottom: 1px solid transparent;
+}
+
+.topbar.is-scrolled {
+    background-color: rgba(14, 18, 27, 0.94);
+    border-bottom-color: var(--color-ink-line);
+    backdrop-filter: blur(12px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .js [data-reveal] {
+        opacity: 1;
+        transform: none;
+        transition: none;
+    }
+
+    .timeline-fill {
+        transform: scaleY(1);
+    }
+
+    .animate-pop-in,
+    .faq[open] .faq-body {
+        animation: none;
+    }
+}
+
+@view-transition {
+    navigation: auto;
+}
+
+.topbar {
+    view-transition-name: topbar;
+}
+
+::view-transition-old(root) {
+    animation: page-out 0.22s ease both;
+}
+
+::view-transition-new(root) {
+    animation: page-in 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes page-out {
+    to {
+        opacity: 0;
+        transform: translateY(-0.5rem);
+    }
+}
+
+@keyframes page-in {
+    from {
+        opacity: 0;
+        transform: translateY(1rem);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    @view-transition {
+        navigation: none;
+    }
+}
