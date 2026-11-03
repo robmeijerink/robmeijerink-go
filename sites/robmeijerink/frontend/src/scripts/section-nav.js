@@ -27,6 +27,15 @@ export function initSectionNav() {
             item.link.dataset.passed = index < current ? 'true' : 'false'
         })
 
+        const active = items[current]
+        const scroller = active && active.link.closest('.pipeline-scroll')
+
+        if (scroller && scroller.scrollWidth > scroller.clientWidth) {
+            const target = active.link.offsetLeft - (scroller.clientWidth - active.link.clientWidth) / 2
+
+            scroller.scrollTo({ left: target, behavior: 'smooth' })
+        }
+
         frame = null
     }
 

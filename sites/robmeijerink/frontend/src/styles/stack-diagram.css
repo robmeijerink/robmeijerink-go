@@ -1,0 +1,114 @@
+.stack-diagram {
+    overflow: visible;
+    font-family: var(--font-mono);
+    font-size: 13.5px;
+}
+
+.stack-diagram .node {
+    cursor: pointer;
+    outline: none;
+}
+
+.stack-diagram .node rect {
+    fill: var(--color-ink-raised);
+    stroke: var(--color-ink-line);
+    stroke-width: 1;
+    transition:
+        stroke 0.25s ease,
+        fill 0.25s ease;
+}
+
+.stack-diagram text {
+    fill: var(--color-slate-200);
+    pointer-events: none;
+}
+
+.stack-diagram .caption {
+    fill: var(--color-slate-300);
+    font-size: 12.5px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+
+.stack-diagram .frame {
+    fill: none;
+    stroke: var(--color-ink-line);
+    stroke-dasharray: 3 6;
+}
+
+.stack-diagram .wire {
+    stroke: var(--color-brand-sky);
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-dasharray: 0.5 9;
+    opacity: 0.85;
+    animation: wire-flow 1.4s linear infinite;
+}
+
+.stack-diagram [data-spec],
+.stack-diagram .wires {
+    transition: opacity 0.3s ease;
+}
+
+.stack-diagram .node:hover rect,
+.stack-diagram .node:focus-visible rect {
+    stroke: var(--color-brand-vivid);
+    fill: color-mix(in srgb, var(--color-brand-blue) 55%, var(--color-ink-raised));
+}
+
+.stack-diagram:has([data-spec="frontend"]:hover) [data-spec]:not([data-spec="frontend"]),
+.stack-diagram:has([data-spec="backend"]:hover) [data-spec]:not([data-spec="backend"]),
+.stack-diagram:has([data-spec="architectuur"]:hover) [data-spec]:not([data-spec="architectuur"]),
+.stack-diagram:has([data-spec="cloud"]:hover) [data-spec]:not([data-spec="cloud"]) {
+    opacity: 0.35;
+}
+
+@keyframes wire-flow {
+    to {
+        stroke-dashoffset: -20;
+    }
+}
+
+.spec-row {
+    transition: background-color 0.4s ease;
+}
+
+.spec-row:target {
+    background-color: color-mix(in srgb, var(--color-brand-blue) 28%, transparent);
+}
+
+.spec-tag {
+    cursor: default;
+    transition:
+        color 0.25s ease,
+        border-color 0.25s ease,
+        background-color 0.25s ease,
+        box-shadow 0.25s ease,
+        transform 0.25s ease;
+}
+
+.spec-tag:hover {
+    color: var(--color-white);
+    border-color: var(--color-brand-vivid);
+    background-color: color-mix(in srgb, var(--color-brand-vivid) 18%, transparent);
+    box-shadow: 0 0 1.25rem color-mix(in srgb, var(--color-brand-vivid) 35%, transparent);
+    transform: translateY(-1px);
+}
+
+.period-label {
+    transition: color 0.3s ease;
+}
+
+.period-label.is-live {
+    color: var(--color-brand-sky);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .stack-diagram .wire {
+        animation: none;
+    }
+
+    .spec-tag:hover {
+        transform: none;
+    }
+}

@@ -47,6 +47,22 @@
     color: var(--color-slate-100);
 }
 
+.pipeline-scroll {
+    overflow-x: auto;
+    scrollbar-width: none;
+}
+
+.pipeline-scroll::-webkit-scrollbar {
+    display: none;
+}
+
+@media (max-width: 63.99rem) {
+    .pipeline-scroll {
+        padding-block: 0.15rem 0.35rem;
+        mask-image: linear-gradient(to right, transparent, #000 4%, #000 92%, transparent);
+    }
+}
+
 .pipeline {
     display: flex;
     align-items: center;
@@ -207,7 +223,7 @@
 
 .sheet-diagonal {
     --cut: clamp(1.5rem, 4.5vw, 4.5rem);
-    padding-top: calc(var(--cut) + 6rem);
+    padding-top: calc(var(--cut) + var(--sheet-pad, 6rem));
     clip-path: polygon(0 0, 100% var(--cut), 100% 100%, 0 100%);
 }
 
@@ -316,4 +332,20 @@
     @view-transition {
         navigation: none;
     }
+}
+
+@property --spot {
+    syntax: '<number>';
+    inherits: true;
+    initial-value: 0;
+}
+
+[data-spotlight] {
+    transition: --spot 0.45s ease;
+    background-image: radial-gradient(
+        22rem circle at var(--mx, 50%) var(--my, 50%),
+        rgb(123 166 214 / calc(var(--spot) * 0.34)),
+        rgb(59 134 242 / calc(var(--spot) * 0.14)) 42%,
+        transparent 74%
+    );
 }

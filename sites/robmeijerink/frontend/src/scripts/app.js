@@ -9,6 +9,7 @@ import { initTopbar } from './topbar.js'
 import { initScrollWords } from './scroll-words.js'
 import { initStackSections } from './stack-sections.js'
 import { initPhotoMorph } from './photo-morph.js'
+import { initCardSpotlight } from './card-spotlight.js'
 
 document.addEventListener('DOMContentLoaded', () => {
     initTypedCursor('Geen hypes, gewoon betrouwbare en stabiele software.')
@@ -18,6 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initTopbar()
     initScrollWords()
     initStackSections()
+    initCardSpotlight()
     if ('requestIdleCallback' in window) {
         requestIdleCallback(initPhotoMorph, { timeout: 2000 })
     } else {

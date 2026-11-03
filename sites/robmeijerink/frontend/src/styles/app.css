@@ -3,6 +3,7 @@
 @import './typed-cursor.css';
 @import './marquee.css';
 @import './mesh.css';
+@import './stack-diagram.css';
 @import './whatsapp-btn.css';
 
 @source '../../../views/';
@@ -27,6 +28,8 @@
     --color-brand-blue-hover: #002f59;
     --color-brand-sky: #7ba6d6;
     --color-brand-vivid: #3b86f2;
+    --color-brand-mist: #a9c6e8;
+    --color-ink-muted: #8a9bb3;
     --color-paper: #e8edf4;
 }
 
