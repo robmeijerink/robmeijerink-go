@@ -386,3 +386,7 @@
         transparent 72%
     );
 }
+
+footer .nav-link {
+    color: var(--color-slate-300);
+}
