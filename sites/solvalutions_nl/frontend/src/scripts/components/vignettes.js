@@ -8,7 +8,16 @@ export const initVignettes = () => {
     const visible = new Set();
     let frame = null;
 
+    let lastTick = 0;
+
     const loop = (time) => {
+        if (time - lastTick < 33) {
+            frame = requestAnimationFrame(loop);
+            return;
+        }
+
+        lastTick = time;
+
         visible.forEach((gear) => {
             const angle = Number(gear.dataset.ph) + (Number(gear.dataset.vd) * time) / (28 + Number(gear.dataset.n) * 2);
 

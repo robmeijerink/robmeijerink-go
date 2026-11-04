@@ -48,8 +48,15 @@ export const initLine = () => {
         }
     };
 
+    const compact = window.matchMedia('(max-width: 63.99rem)');
+    let lastUpdate = 0;
+
     const loop = (time) => {
-        update(time);
+        if (!compact.matches || time - lastUpdate >= 33) {
+            lastUpdate = time;
+            update(time);
+        }
+
         frame = requestAnimationFrame(loop);
     };
 

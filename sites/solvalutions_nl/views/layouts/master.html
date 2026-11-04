@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{or .Title "Solvalutions | Jouw B2B Tech Partner"}}</title>
-    <meta name="description" content="{{or .MetaDescription "Modernisering van verouderde B2B software voor MKB en maakindustrie in Oost-Nederland, met Rust en Go waar snelheid telt. Minder handwerk, minder fouten, vaste prijs per fase."}}">
+    <meta name="description" content="{{or .MetaDescription "Software op maat, automatisering met AI, koppelingen en websites voor MKB en logistiek. Gevestigd in Zutphen. Direct met de engineer, vaste prijs per fase."}}">
     {{if .Keywords}}
     <meta name="keywords" content="{{.Keywords}}">
     {{end}}
@@ -13,14 +13,14 @@
     <meta property="og:site_name" content="Solvalutions">
     <meta property="og:locale" content="nl_NL">
     <meta property="og:url" content="https://solvalutions.nl{{ .Path }}">
-    <meta property="og:title" content="{{or .Title "Solvalutions | Software moderniseren voor MKB Oost-Nederland"}}">
-    <meta property="og:description" content="{{or .MetaDescription "Modernisering van verouderde B2B software voor MKB en maakindustrie in Oost-Nederland, met Rust en Go waar snelheid telt. Minder handwerk, minder fouten, vaste prijs per fase."}}">
+    <meta property="og:title" content="{{or .Title "Solvalutions | Software op maat &amp; koppelingen voor MKB en logistiek"}}">
+    <meta property="og:description" content="{{or .MetaDescription "Software op maat, automatisering met AI, koppelingen en websites voor MKB en logistiek. Gevestigd in Zutphen. Direct met de engineer, vaste prijs per fase."}}">
     <meta property="og:image" content="https://solvalutions.nl/assets/img/solvalutions-og-image.png">
 
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:url" content="https://solvalutions.nl{{ .Path }}">
-    <meta name="twitter:title" content="{{or .Title "Solvalutions | Software moderniseren voor MKB Oost-Nederland"}}">
-    <meta name="twitter:description" content="{{or .MetaDescription "Modernisering van verouderde B2B software voor MKB en maakindustrie in Oost-Nederland, met Rust en Go waar snelheid telt. Minder handwerk, minder fouten, vaste prijs per fase."}}">
+    <meta name="twitter:title" content="{{or .Title "Solvalutions | Software op maat &amp; koppelingen voor MKB en logistiek"}}">
+    <meta name="twitter:description" content="{{or .MetaDescription "Software op maat, automatisering met AI, koppelingen en websites voor MKB en logistiek. Gevestigd in Zutphen. Direct met de engineer, vaste prijs per fase."}}">
     <meta name="twitter:image" content="https://solvalutions.nl/assets/img/solvalutions-og-image.png">
 
     <script>document.documentElement.classList.add('js')</script>
@@ -63,7 +63,7 @@
                     <source srcset="/assets/img/solvalutions-logo.webp" type="image/webp">
                     <img src="/assets/img/solvalutions-logo.png" alt="Solvalutions Logo" class="h-9 w-9 object-contain" width="36" height="36" fetchpriority="high">
                 </picture>
-                <span class="text-lg font-extrabold tracking-tight text-brand-dark">Solvalutions</span>
+                <span class="text-lg font-extrabold tracking-tight text-brand-base">Solvalutions</span>
             </a>
 
             <nav class="hidden lg:flex items-center gap-1 text-[15px] font-medium" aria-label="Hoofdmenu">
@@ -76,12 +76,12 @@
             </nav>
 
             <div class="hidden lg:flex items-center gap-3">
-                <a href="https://solvalutions.com" title="Visit Solvalutions.com (English)" target="_blank" rel="noopener noreferrer" class="focus-ring rounded-lg px-3 py-2 text-xs font-bold tracking-wider text-content-muted transition-colors hover:text-accent-dark">ENG</a>
+                <a href="https://solvalutions.com" title="Solvalutions.com in English" hreflang="en" lang="en" aria-label="Solvalutions.com in English" target="_blank" rel="noopener noreferrer" class="focus-ring rounded-lg px-3 py-2 text-[13px] font-bold tracking-wider text-content-strong transition-colors hover:text-accent-dark inline-flex items-center gap-1.5"><svg class="h-[1.05rem] w-[1.05rem] shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path stroke-linecap="round" d="M3 12h18M12 3c2.6 2.4 4 5.6 4 9s-1.4 6.6-4 9c-2.6-2.4-4-5.6-4-9s1.4-6.6 4-9Z"/></svg>EN</a>
                 <a href="/contact" class="btn btn-primary focus-ring !py-2.5">Contact</a>
             </div>
 
             <div class="flex items-center gap-1 lg:hidden">
-                <a href="https://solvalutions.com" title="Visit Solvalutions.com (English)" target="_blank" rel="noopener noreferrer" class="focus-ring px-2 py-2 text-xs font-bold tracking-wider text-content-muted">ENG</a>
+                <a href="https://solvalutions.com" title="Solvalutions.com in English" hreflang="en" lang="en" aria-label="Solvalutions.com in English" target="_blank" rel="noopener noreferrer" class="focus-ring px-2 py-2 text-[13px] font-bold tracking-wider text-content-strong inline-flex items-center gap-1.5"><svg class="h-[1.05rem] w-[1.05rem] shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path stroke-linecap="round" d="M3 12h18M12 3c2.6 2.4 4 5.6 4 9s-1.4 6.6-4 9c-2.6-2.4-4-5.6-4-9s1.4-6.6 4-9Z"/></svg>EN</a>
 
                 <button id="mobile-menu-btn" class="relative z-[60] flex h-11 w-11 flex-col items-center justify-center gap-[6px] p-2 text-brand-dark [&.is-open>span:first-child]:translate-y-[8px] [&.is-open>span:first-child]:rotate-45 [&.is-open>span:nth-child(2)]:opacity-0 [&.is-open>span:last-child]:-translate-y-[8px] [&.is-open>span:last-child]:-rotate-45" aria-label="Menu" aria-expanded="false" aria-controls="mobile-drawer">
                     <span class="h-[2px] w-6 origin-center rounded-full bg-current transition-all duration-300"></span>
@@ -126,7 +126,7 @@
                             </span>
                             <span class="text-xl font-extrabold tracking-tight">Solvalutions</span>
                         </a>
-                        <p class="max-w-sm text-sm leading-relaxed text-white/70">B2B Tech Partner in software development en DevOps. Solvalutions ontwerpt, bouwt en optimaliseert de digitale transformatie voor de maakindustrie.</p>
+                        <p class="max-w-sm text-sm leading-relaxed text-white/70">Solvalutions bouwt software, koppelingen en websites voor MKB, logistiek en industrie. Gevestigd in Zutphen. Je werkt direct met de engineer en betaalt per fase een vaste prijs.</p>
                     </div>
 
                     <div class="tb-cell tb-nav">

@@ -34,8 +34,15 @@ export const initScene = () => {
         });
     };
 
+    const compact = window.matchMedia('(max-width: 63.99rem)');
+    let lastDraw = 0;
+
     const loop = (time) => {
-        draw(time);
+        if (!compact.matches || time - lastDraw >= 33) {
+            lastDraw = time;
+            draw(time);
+        }
+
         frame = requestAnimationFrame(loop);
     };
 
@@ -60,17 +67,62 @@ export const initSceneFocus = () => {
 
     if (!stage) return;
 
+    const pins = Array.from(stage.querySelectorAll('.sc-dot'));
+    const first = pins[0];
+    const desktop = window.matchMedia('(min-width: 64rem)');
+    let touched = false;
+
     const set = (value) => {
         if (value) stage.setAttribute('data-focus', value);
         else stage.removeAttribute('data-focus');
     };
 
-    stage.querySelectorAll('[data-focus]').forEach((callout) => {
-        const value = callout.getAttribute('data-focus');
+    const close = () => pins.forEach((pin) => pin.classList.remove('is-open'));
 
-        callout.addEventListener('pointerenter', () => set(value));
-        callout.addEventListener('pointerleave', () => set(null));
-        callout.addEventListener('focus', () => set(value));
-        callout.addEventListener('blur', () => set(null));
+    const settle = () => {
+        if (touched || !desktop.matches || !first) return;
+
+        first.classList.add('is-open');
+        set(first.getAttribute('data-focus'));
+    };
+
+    pins.forEach((pin) => {
+        const value = pin.getAttribute('data-focus');
+
+        pin.addEventListener('pointerenter', () => {
+            touched = true;
+            close();
+            set(value);
+        });
+        pin.addEventListener('pointerleave', () => set(null));
+        pin.addEventListener('focus', () => {
+            touched = true;
+            close();
+            set(value);
+        });
+        pin.addEventListener('blur', () => set(null));
+        pin.addEventListener('click', () => {
+            touched = true;
+            close();
+            pin.classList.add('is-open');
+            set(value);
+        });
     });
+
+    document.addEventListener('click', (event) => {
+        if (!event.target.closest('.sc-dot')) {
+            close();
+            set(null);
+        }
+    });
+
+    document.querySelectorAll('#hero-section .pil').forEach((item) => {
+        const value = item.getAttribute('data-focus');
+
+        item.addEventListener('pointerenter', () => set(value));
+        item.addEventListener('pointerleave', () => set(null));
+    });
+
+    if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) setTimeout(settle, 1200);
+    else settle();
 };

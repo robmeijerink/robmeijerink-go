@@ -186,7 +186,17 @@ export const initDataHighway = () => {
     /**
      * Main animation loop
      */
-    const animate = () => {
+    const compact = window.matchMedia('(max-width: 63.99rem)');
+    let lastFrame = 0;
+
+    const animate = (now = 0) => {
+        if (compact.matches && now - lastFrame < 33) {
+            requestAnimationFrame(animate);
+            return;
+        }
+
+        lastFrame = now;
+
         if (window.scrollY > highwayMaxY + gridSize * 4) {
             if (!cleared) {
                 ctx.clearRect(0, 0, width, height);
@@ -240,7 +250,9 @@ export const initDataHighway = () => {
     const initEngine = () => {
         resize();
         // Reduced from 8 to 6 tracers to prioritize visual hierarchy and breathing room
-        for (let i = 0; i < 6; i++) {
+        const count = compact.matches ? 3 : 6;
+
+        for (let i = 0; i < count; i++) {
             tracers.push(new Tracer());
         }
         animate();

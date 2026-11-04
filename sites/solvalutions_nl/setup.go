@@ -25,8 +25,8 @@ func Setup(router *web.DomainRouter) {
 }
 
 func home(c fiber.Ctx) error {
-	title := "Software moderniseren – MKB Oost-Nederland | Solvalutions"
-	desc := "Modernisering van verouderde B2B software voor MKB en maakindustrie in Oost-Nederland, met Rust en Go waar snelheid telt. Minder handwerk, minder fouten, vaste prijs per fase."
+	title := "Software op maat & koppelingen voor MKB en logistiek | Solvalutions"
+	desc := "Software op maat, automatisering met AI, koppelingen en websites voor MKB en logistiek. Gevestigd in Zutphen. Direct met de engineer, vaste prijs per fase."
 	url := "https://solvalutions.nl"
 
 	jsonLd := template.HTML(`
@@ -85,8 +85,8 @@ func home(c fiber.Ctx) error {
 }
 
 func contact(c fiber.Ctx) error {
-	title := "Contact — Even sparren over je ICT vraagstuk | Solvalutions"
-	desc := "Loopt er iets vast in je software? Stuur een mail of bel even — rechtstreeks met Rob, geen accountmanager. Geen verplichtingen."
+	title := "Contact: even sparren over je ICT-vraagstuk | Solvalutions"
+	desc := "Loopt er iets vast in je software? Stuur een mail of bel even. Je spreekt rechtstreeks met Rob, zonder accountmanager. Vrijblijvend."
 	url := "https://solvalutions.nl"
 
 	jsonLd := template.HTML(`
@@ -140,7 +140,7 @@ func contact(c fiber.Ctx) error {
 
 func about(c fiber.Ctx) error {
 	title := "Senior PHP developer Zutphen, Gelderland | Rob Meijerink"
-	desc := "Tien jaar full-stack developer, nu zelfstandig vanuit Zutphen. Eén engineer, geen tussenlagen — je werkt rechtstreeks met de persoon die het bouwt."
+	desc := "Tien jaar full-stack developer, nu zelfstandig vanuit Zutphen. Eén engineer, zonder tussenlagen. Je werkt rechtstreeks met de persoon die het bouwt."
 	url := "https://solvalutions.nl"
 
 	jsonLd := template.HTML(`
@@ -208,8 +208,8 @@ func about(c fiber.Ctx) error {
 }
 
 func approach(c fiber.Ctx) error {
-	title := "Aanpak – vaste prijs per fase | Solvalutions"
-	desc := "Klein beginnen, vaste prijs per fase, naast je systeem bouwen. Geen open eindjes — zo werk ik aan modernisering, koppelingen en maatwerk."
+	title := "Aanpak: vaste prijs per fase | Solvalutions"
+	desc := "Klein beginnen, vaste prijs per fase, naast je systeem bouwen. Zo werk ik aan modernisering, koppelingen en maatwerk."
 	url := "https://solvalutions.nl"
 
 	jsonLd := template.HTML(`
@@ -270,7 +270,7 @@ func cases(c fiber.Ctx) error {
 	      {
 	        "@type": "ListItem",
 	        "position": 1,
-	        "name": "Vastgelopen kernsysteem stap voor stap herbouwd, zonder dat het bedrijf stillag",
+	        "name": "Kernsysteem dat niet meer efficiënt werkte stap voor stap herbouwd, zonder dat het bedrijf stillag",
 	        "description": "Legacy-modernisering: herbouw naar gestructureerde, geteste architectuur draaiend naast de bestaande omgeving."
 	      },
 	      {
@@ -306,7 +306,7 @@ func cases(c fiber.Ctx) error {
 
 func services(c fiber.Ctx) error {
 	title := "PHP/Laravel moderniseren & systemen koppelen | Solvalutions"
-	desc := "Laravel applicatie traag of vastgelopen? PHP/Laravel modernisering, API-koppelingen en maatwerksoftware voor MKB. Vaste prijs per fase, Oost-Nederland."
+	desc := "Laravel applicatie traag of niet meer efficiënt? PHP/Laravel modernisering, API-koppelingen en maatwerksoftware voor MKB. Vaste prijs per fase, Oost-Nederland."
 	url := "https://solvalutions.nl"
 
 	structuredData := template.HTML(`
@@ -331,7 +331,7 @@ func services(c fiber.Ctx) error {
 	        "item": {
 	          "@type": "Service",
 	          "name": "Legacy-modernisering",
-	          "description": "Verouderde systemen stap voor stap herbouwen naar gestructureerde, geteste techniek — draaiend naast de bestaande omgeving, zodat de operatie niet stillegt.",
+	          "description": "Verouderde systemen stap voor stap herbouwen naar gestructureerde, geteste techniek. Het draait naast de bestaande omgeving, zodat de operatie niet stilvalt.",
 	          "serviceType": "Softwaremodernisering",
 	          "provider": {
 	            "@type": "Organization",
@@ -456,7 +456,7 @@ func sitemap(c fiber.Ctx) error {
 }
 
 func websites(c fiber.Ctx) error {
-	title := "Moderne websites – snel, onderhoudsarm en goed vindbaar | Solvalutions"
+	title := "Website laten maken: modern, snel en onderhoudsarm | Solvalutions"
 	desc := "Moderne websites die snel zijn, weinig onderhoud vragen en goed vindbaar en toegankelijk zijn. Met een vaste prijs per fase."
 	url := "https://solvalutions.nl"
 
@@ -492,8 +492,8 @@ func websites(c fiber.Ctx) error {
 }
 
 func integrations(c fiber.Ctx) error {
-	title := "API, Systeem & ERP Integraties – maatwerk, snel en betrouwbaar | Solvalutions"
-	desc := "Maatwerk koppelingen tussen elk systeem, API en ERP. Snel en betrouwbaar met Rust en Go, direct met de engineer en met een vaste prijs per fase."
+	title := "ERP-, API- en systeemkoppelingen op maat | Solvalutions"
+	desc := "Maatwerk koppelingen tussen elk systeem, API en ERP. Snel en betrouwbaar, direct met de engineer en met een vaste prijs per fase."
 	url := "https://solvalutions.nl"
 
 	jsonLd := template.HTML(`
