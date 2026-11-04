@@ -130,6 +130,13 @@
     background-color: var(--color-brand-vivid);
 }
 
+@media (max-width: 63.99rem) {
+    .pipeline {
+        width: max-content;
+        padding-right: 3rem;
+    }
+}
+
 .faq summary {
     list-style: none;
 }

@@ -13,11 +13,11 @@ type faqItem struct {
 var faqItems = []faqItem{
 	{
 		Question: "Wat voor opdrachten pak je op?",
-		Answer:   "Development teams die vastlopen, op techniek of op de hoeveelheid werk. Daarnaast extra capaciteit in een bestaand team, complexe business cases die ik zelfstandig oppak en werk als onderaannemer voor bureaus.",
+		Answer:   "Van development teams die vastlopen, op techniek of op de hoeveelheid werk, tot extra capaciteit in een bestaand team. Ook pak ik complexe business cases zelfstandig op en werk ik als onderaannemer voor bureaus.",
 	},
 	{
 		Question: "Adviseer je alleen, of bouw je ook zelf?",
-		Answer:   "Beide. Architectuuradvies én hands-on meewerken in je team, van full stack tot DevOps.",
+		Answer:   "Beide: ik adviseer over architectuur en werk hands-on mee in je team, van full stack tot DevOps.",
 	},
 	{
 		Question: "Kun je meewerken aan bestaande projecten?",
@@ -25,7 +25,7 @@ var faqItems = []faqItem{
 	},
 	{
 		Question: "Hoe borg je de kwaliteit van de code?",
-		Answer:   "Met automatische tests, zowel unit- als integratietests, die via CI/CD-pipelines bij elke wijziging draaien voordat iets live gaat. Zo komen er minder fouten in productie.",
+		Answer:   "Met automatische unit- en integratietests die via CI/CD-pipelines bij elke wijziging draaien voordat iets live gaat. Zo komen er minder fouten in productie.",
 	},
 	{
 		Question: "Hoe werk je met AI, en wie controleert de code?",
@@ -33,19 +33,19 @@ var faqItems = []faqItem{
 	},
 	{
 		Question: "Hoe functioneer je in een team?",
-		Answer:   "Zelfstandig, met afstemming waar dat nodig is. Samen met het team bepaal ik de kern van het probleem en wat als eerste moet. Onderweg houd ik developers gemotiveerd en help ik ze groeien.",
+		Answer:   "Zelfstandig en met afstemming waar nodig. Samen met het team bepaal ik de kern van het probleem en wat als eerste moet. Onderweg houd ik developers gemotiveerd en help ik ze groeien.",
 	},
 	{
 		Question: "Hoe ga je om met verschillen van inzicht?",
-		Answer:   "Eerst luisteren, daarna leg ik mijn afweging uit. Open voor beargumenteerd andere inzichten. Samen werken we de use case uit en zoeken we de beste optie.",
+		Answer:   "Eerst luisteren, daarna mijn afweging uitleggen. Beargumenteerde andere inzichten zijn welkom. Samen werken we de use case uit en zoeken we de beste optie.",
 	},
 	{
 		Question: "Hoe kan mijn team zonder jou verder?",
-		Answer:   "Duidelijke, geteste code met complete documentatie. Daarnaast leg ik in een gesprek uit hoe het in elkaar zit, en ben ik daarna beschikbaar voor vragen.",
+		Answer:   "Ik lever duidelijke, geteste code met complete documentatie. Daarnaast leg ik in een gesprek uit hoe het in elkaar zit en ben ik daarna beschikbaar voor vragen.",
 	},
 	{
 		Question: "Wanneer kun je starten, en hoe werken we samen?",
-		Answer:   "Dat verschilt per opdracht en er is geen vast minimum. Ik werk remote, hybride of op locatie. Als zelfstandige leggen we de afspraken vooraf schriftelijk vast.",
+		Answer:   "Dat verschilt per opdracht en er is geen vast minimum. Ik werk remote, hybride of op locatie. Samen leggen we de afspraken vooraf schriftelijk vast.",
 	},
 	{
 		Question: "Voldoe je aan de Wet DBA?",
