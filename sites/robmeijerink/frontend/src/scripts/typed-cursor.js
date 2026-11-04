@@ -18,6 +18,5 @@ export function initTypedCursor(text) {
         }
     }
 
-    // Start animation
     setTimeout(typeWriter, 1250)
 }

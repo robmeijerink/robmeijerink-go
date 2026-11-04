@@ -30,7 +30,7 @@ func home(c fiber.Ctx) error {
         "name": "Rob Meijerink",
         "jobTitle": "Freelance Software Developer & DevOps Engineer",
         "url": "https://robmeijerink.nl",
-        "image": "https://robmeijerink.nl/assets/img/foto-rob-meijerink-solvalutions-avatar-320.jpg",
+        "image": "https://robmeijerink.nl/assets/img/og-rob-meijerink.jpg",
         "knowsAbout": [
           "Rust",
           "Go",

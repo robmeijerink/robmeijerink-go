@@ -75,12 +75,28 @@ function createTexture(gl, image, unit) {
     return texture
 }
 
+function addAlternate(root) {
+    const image = document.createElement('img')
+
+    image.src = root.dataset.alt
+    image.alt = ''
+    image.width = 1000
+    image.height = 1144
+    image.decoding = 'async'
+    image.className = 'hero-photo-alt'
+    image.setAttribute('aria-hidden', 'true')
+    root.append(image)
+}
+
 export async function initPhotoMorph() {
     const root = document.querySelector('.hero-photo')
 
-    if (!root) return
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
+    if (!root || !root.dataset.alt) return
     if (!window.matchMedia('(hover: hover)').matches) return
+
+    addAlternate(root)
+
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
 
     const images = root.querySelectorAll('img')
 

@@ -16,7 +16,7 @@
         </nav>
         {{ end }}
 
-        <nav class="flex items-center gap-7 text-sm font-medium {{ if eq .Path "/" }}lg:border-l lg:border-ink-line lg:pl-7{{ end }}" aria-label="Pagina's">
+        <nav class="ml-auto flex items-center gap-7 text-sm font-medium {{ if eq .Path "/" }}lg:border-l lg:border-ink-line lg:pl-7{{ end }}" aria-label="Pagina's">
             {{ template "components/page-links" . }}
         </nav>
     </div>

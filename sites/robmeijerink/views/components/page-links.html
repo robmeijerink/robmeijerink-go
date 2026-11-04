@@ -1,5 +1,5 @@
 {{define "components/page-links"}}
-{{ if ne .Path "/" }}<a href="/" class="tap nav-link focus-ring" title="Bekijk mijn ICT diensten op de Home">Home</a>{{ end }}
+{{ if ne .Path "/" }}<a href="/" data-home class="tap nav-link focus-ring" title="Bekijk mijn ICT diensten op de Home">Home</a>{{ end }}
 <a href="/expertise" class="tap nav-link focus-ring" {{ if eq .Path "/expertise" }}aria-current="page"{{ end }} title="Bekijk een overzicht van mijn expertise">Expertise</a>
 <a href="https://cv.robmeijerink.nl" class="tap nav-link focus-ring" title="Bekijk mijn CV">CV</a>
 {{end}}

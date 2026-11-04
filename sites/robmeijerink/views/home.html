@@ -1,5 +1,5 @@
 <section data-sheet class="bg-ink relative overflow-x-clip pt-8 sm:pt-12">
-    <div class="wrap grid items-end gap-6 sm:gap-12 lg:grid-cols-12 lg:gap-8">
+    <div class="wrap grid grid-cols-1 items-end gap-6 sm:gap-12 lg:grid-cols-12 lg:gap-8">
 
         <div class="space-y-8 pb-12 lg:col-span-7 lg:pb-24">
             {{ template "components/availability-alert" . }}
@@ -61,7 +61,7 @@
 
         <div class="relative order-first lg:order-none lg:-mb-16 lg:col-span-5">
             <div class="hero-glow" aria-hidden="true"></div>
-            <div class="hero-photo hero-crop mx-auto w-80 sm:w-[26rem] lg:ml-auto lg:w-[32rem] lg:max-w-none">
+            <div title="Laten we samenwerken!" data-alt="/assets/img/rob-staand-2.webp" class="hero-photo hero-crop mx-auto w-full max-w-80 sm:w-[26rem] sm:max-w-none lg:ml-auto lg:w-full lg:max-w-[28rem] xl:w-[32rem] xl:max-w-none">
                 <img src="/assets/img/rob-staand.webp"
                      alt="Profielfoto Rob Meijerink - Solvalutions"
                      title="Laten we samenwerken!"
@@ -69,14 +69,6 @@
                      width="1000"
                      height="1144"
                      fetchpriority="high" />
-                <img src="/assets/img/rob-staand-2.webp"
-                     alt=""
-                     aria-hidden="true"
-                     class="hero-photo-alt"
-                     width="1000"
-                     height="1144"
-                     decoding="async"
-                     fetchpriority="low" />
             </div>
         </div>
     </div>
@@ -162,7 +154,7 @@
             <p class="text-base leading-relaxed text-slate-600 sm:text-lg">
                 Van full stack en DevOps tot effectief werken met AI. Per situatie een oplossing op maat, met de techniek of tool die bij jouw project past.
             </p>
-            <a href="/expertise" class="focus-ring text-brand-blue inline-flex items-center gap-2 text-sm font-bold transition-opacity hover:opacity-80">
+            <a href="/expertise" class="tap focus-ring text-brand-blue inline-flex items-center gap-2 text-sm font-bold transition-opacity hover:opacity-80">
                 Alle specialisaties
                 <span aria-hidden="true">&rarr;</span>
             </a>
@@ -273,7 +265,7 @@
                     </a>
                 </li>
                 </ul>
-                <a href="https://github.com/robmeijerink" target="_blank" rel="noopener noreferrer" class="focus-ring text-brand-blue mt-5 inline-flex items-center gap-2 text-sm font-bold transition-opacity hover:opacity-80">
+                <a href="https://github.com/robmeijerink" target="_blank" rel="noopener noreferrer" class="tap focus-ring text-brand-blue mt-5 inline-flex items-center gap-2 text-sm font-bold transition-opacity hover:opacity-80">
                     Alle projecten op GitHub
                     <span aria-hidden="true">&rarr;</span>
                 </a>
