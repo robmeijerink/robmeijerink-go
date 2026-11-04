@@ -6,6 +6,7 @@ export const initDataHighway = () => {
     let width, height, dpr, tracers = [], pulses = [];
     let highwayMinY = 0;
     let highwayMaxY = 0;
+    let cleared = false;
 
     const accentColor = '#B84A2B';
     const gridSize = 24;
@@ -186,27 +187,18 @@ export const initDataHighway = () => {
      * Main animation loop
      */
     const animate = () => {
+        if (window.scrollY > highwayMaxY + gridSize * 4) {
+            if (!cleared) {
+                ctx.clearRect(0, 0, width, height);
+                cleared = true;
+            }
+
+            requestAnimationFrame(animate);
+            return;
+        }
+
+        cleared = false;
         ctx.clearRect(0, 0, width, height);
-
-        // 1. Draw background grid
-        ctx.beginPath();
-        ctx.strokeStyle = accentColor;
-        ctx.globalAlpha = 0.04;
-        ctx.lineWidth = 1;
-
-        // Vertical lines
-        for(let i = 0; i < width; i += gridSize) {
-            ctx.moveTo(i, 0);
-            ctx.lineTo(i, height);
-        }
-
-        // Horizontal lines (scrolled offset)
-        const scrollOffset = window.scrollY % gridSize;
-        for(let j = -scrollOffset; j < height + gridSize; j += gridSize) {
-            ctx.moveTo(0, j);
-            ctx.lineTo(width, j);
-        }
-        ctx.stroke();
 
         // 2. Detect Data Handshakes (collision logic)
         for (let i = 0; i < tracers.length; i++) {
@@ -257,82 +249,7 @@ export const initDataHighway = () => {
     window.addEventListener('resize', resize);
     setTimeout(updateHighwayBounds, 500);
 
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
     initEngine();
-};
-
-export const initBlueprintSteps = () => {
-   // Target the inner container instead of the whole section to delay the start point
-    const container = document.getElementById('blueprint-steps-container');
-    const progressBar = document.getElementById('blueprint-progress-bar');
-    const step1 = document.getElementById('blueprint-step-1');
-    const step2 = document.getElementById('blueprint-step-2');
-    const step3 = document.getElementById('blueprint-step-3');
-
-    const observer = new IntersectionObserver((entries, observer) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting && entry.intersectionRatio < 0.6) {
-                entry.target.classList.remove('opacity-0');
-                entry.target.classList.add('opacity-20');
-            }
-
-            if (entry.intersectionRatio >= 0.2) {
-                entry.target.classList.remove('opacity-0', 'opacity-20');
-                entry.target.classList.add('is-active');
-
-                observer.unobserve(entry.target);
-            }
-        });
-    }, {
-        threshold: 0.2
-    });
-
-    document.querySelectorAll('.group\\/step').forEach((element) => {
-        observer.observe(element);
-    });
-
-    if (!container || !progressBar) return;
-
-    let ticking = false;
-
-    const updateSteps = () => {
-        const rect = container.getBoundingClientRect();
-        const vh = window.innerHeight;
-
-        // Start animation when top of the container reaches 80% of viewport height (lower on screen)
-        // End animation when it reaches 30% of viewport height (higher on screen)
-        const startTrigger = vh * 0.8;
-        const endTrigger = vh * 0.3;
-        const scrollRange = startTrigger - endTrigger;
-
-        let progress = (startTrigger - rect.top) / scrollRange;
-
-        // Clamp between 0 and 1
-        progress = Math.max(0, Math.min(1, progress));
-
-        // Update the horizontal connecting line (desktop)
-        progressBar.style.width = `${progress * 100}%`;
-
-        // Sequentially activate the cards based on scroll progress
-        if (progress > 0.05) step1?.classList.add('is-active');
-        else step1?.classList.remove('is-active');
-
-        if (progress > 0.5) step2?.classList.add('is-active');
-        else step2?.classList.remove('is-active');
-
-        if (progress > 0.95) step3?.classList.add('is-active');
-        else step3?.classList.remove('is-active');
-
-        ticking = false;
-    };
-
-    window.addEventListener('scroll', () => {
-        if (!ticking) {
-            window.requestAnimationFrame(updateSteps);
-            ticking = true;
-        }
-    }, { passive: true });
-
-    // Initial check on load
-    updateSteps();
-
 };

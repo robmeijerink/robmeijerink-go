@@ -16,6 +16,8 @@ func Setup(router *web.DomainRouter) {
 	router.Get("/contact", contact)
 
 	router.Get("/diensten", services)
+	router.Get("/integraties", integrations)
+	router.Get("/websites", websites)
 	router.Get("/over", about)
 	router.Get("/aanpak", approach)
 
@@ -428,6 +430,8 @@ func sitemap(c fiber.Ctx) error {
 		{loc: "/", priority: "1.0"},
 		{loc: "/aanpak", priority: "0.8"},
 		{loc: "/diensten", priority: "0.8"},
+		{loc: "/integraties", priority: "0.8"},
+		{loc: "/websites", priority: "0.8"},
 		{loc: "/cases", priority: "0.8"},
 		{loc: "/over", priority: "0.8"},
 		{loc: "/contact", priority: "0.8"},
@@ -449,4 +453,76 @@ func sitemap(c fiber.Ctx) error {
 	c.Set("X-Content-Type-Options", "nosniff")
 
 	return c.SendString(xml.String())
+}
+
+func websites(c fiber.Ctx) error {
+	title := "Moderne websites – snel, onderhoudsarm en goed vindbaar | Solvalutions"
+	desc := "Moderne websites die snel zijn, weinig onderhoud vragen en goed vindbaar en toegankelijk zijn. Met een vaste prijs per fase."
+	url := "https://solvalutions.nl"
+
+	jsonLd := template.HTML(`
+	<script type="application/ld+json">
+	{
+	  "@context": "https://schema.org",
+	  "@type": "WebPage",
+	  "name": "` + title + `",
+	  "description": "` + desc + `",
+	  "url": "` + url + `/websites",
+	  "isPartOf": {
+	    "@type": "WebSite",
+	    "name": "Solvalutions",
+	    "url": "` + url + `"
+	  },
+	  "publisher": {
+	    "@type": "Organization",
+	    "name": "Solvalutions",
+	    "url": "` + url + `",
+	    "logo": "` + url + `/assets/img/solvalutions-logo.png"
+	  }
+	}
+	</script>
+	`)
+
+	return web.Render(c, "websites", fiber.Map{
+		"CTATitle":        "Een nieuwe website nodig?",
+		"Title":           title,
+		"MetaDescription": desc,
+		"StructuredData":  jsonLd,
+	})
+}
+
+func integrations(c fiber.Ctx) error {
+	title := "API, Systeem & ERP Integraties – maatwerk, snel en betrouwbaar | Solvalutions"
+	desc := "Maatwerk koppelingen tussen elk systeem, API en ERP. Snel en betrouwbaar met Rust en Go, direct met de engineer en met een vaste prijs per fase."
+	url := "https://solvalutions.nl"
+
+	jsonLd := template.HTML(`
+	<script type="application/ld+json">
+	{
+	  "@context": "https://schema.org",
+	  "@type": "WebPage",
+	  "name": "` + title + `",
+	  "description": "` + desc + `",
+	  "url": "` + url + `/integraties",
+	  "isPartOf": {
+	    "@type": "WebSite",
+	    "name": "Solvalutions",
+	    "url": "` + url + `"
+	  },
+	  "publisher": {
+	    "@type": "Organization",
+	    "name": "Solvalutions",
+	    "url": "` + url + `",
+	    "logo": "` + url + `/assets/img/solvalutions-logo.png"
+	  }
+	}
+	</script>
+	`)
+
+	return web.Render(c, "integrations", fiber.Map{
+		"CTATitle":        "Praten je systemen nog niet met elkaar?",
+		"Title":           title,
+		"MetaDescription": desc,
+		"StructuredData":  jsonLd,
+	})
 }
