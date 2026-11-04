@@ -1,0 +1,25 @@
+{{define "components/topbar"}}
+<header class="topbar sticky top-0 z-40" data-topbar>
+    <div class="wrap flex flex-wrap items-center gap-x-7 gap-y-2 py-3 sm:py-4">
+        <a href="/" class="tap focus-ring mr-auto flex items-baseline gap-0.5 text-lg font-extrabold tracking-tighter text-slate-100" title="Rob Meijerink | Software Developer & B2B Tech Partner">
+            Rob<span class="text-brand-sky">Meijerink</span>. <span class="text-xs font-medium text-ink-muted">NL</span>
+        </a>
+
+        {{ if eq .Path "/" }}
+        <nav class="pipeline-scroll order-last w-full lg:order-none lg:w-auto" aria-label="Op deze pagina">
+            <div class="pipeline">
+                <a href="#werkwijze" class="nav-link focus-ring" data-section-link="werkwijze">Werkwijze</a>
+                <a href="#inzet" class="nav-link focus-ring" data-section-link="inzet">Specialisaties</a>
+                <a href="#faq" class="nav-link focus-ring" data-section-link="faq">FAQ</a>
+                <a href="#samenwerking" class="nav-link focus-ring" data-section-link="samenwerking">Samenwerking</a>
+            </div>
+        </nav>
+        {{ end }}
+
+        <nav class="ml-auto flex items-center gap-7 text-sm font-medium {{ if eq .Path "/" }}lg:border-l lg:border-ink-line lg:pl-7{{ end }}" aria-label="Pagina's">
+            {{ template "components/page-links" . }}
+        </nav>
+    </div>
+    <div class="scroll-progress" aria-hidden="true"></div>
+</header>
+{{end}}

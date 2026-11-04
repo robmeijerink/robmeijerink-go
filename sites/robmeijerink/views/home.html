@@ -1,58 +1,36 @@
-<div class="w-full relative">
+<section data-sheet class="bg-ink relative overflow-x-clip pt-8 sm:pt-12">
+    <div class="wrap grid grid-cols-1 items-end gap-6 sm:gap-12 lg:grid-cols-12 lg:gap-8">
 
-    <div class="pointer-events-none absolute inset-0 z-0 overflow-hidden">
-        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-brand-blue/5 h-[40rem] w-[40rem] rounded-full blur-3xl lg:h-[60rem] lg:w-[60rem]"></div>
-    </div>
-
-    <section class="relative z-10 pb-16 sm:pb-20">
-
-        <div class="animate-fade-in-up w-full max-w-5xl mx-auto space-y-6 sm:space-y-8">
-
+        <div class="space-y-8 pb-12 lg:col-span-7 lg:pb-24">
             {{ template "components/availability-alert" . }}
 
-            <div class="flex flex-col items-start gap-8 sm:flex-row sm:items-start sm:justify-between sm:gap-12">
-
-                <picture class="shrink-0 self-center sm:self-auto sm:order-last sm:mt-2">
-                    <source srcset="/assets/img/foto-rob-meijerink-solvalutions-avatar-320.webp" type="image/webp">
-                    <img src="/assets/img/foto-rob-meijerink-solvalutions-avatar-320.png"
-                         alt="Profielfoto Rob Meijerink - Solvalutions"
-                         title="Laten we samenwerken!"
-                         class="h-32 w-32 rounded-full border-4 border-slate-100 object-cover sm:h-40 sm:w-40 shadow-lg transition-all duration-500 ease-out hover:-translate-y-1 hover:border-brand-blue/50 hover:shadow-[0_0_30px_var(--color-brand-blue)]"
-                         width="160"
-                         height="160" />
-                </picture>
-
-                <div class="flex-1 space-y-6">
-                    <div class="space-y-4">
-                        <span class="flex flex-wrap items-center text-4xl font-extrabold tracking-tight text-slate-900 sm:text-5xl lg:text-6xl">
-                            <span>Rob</span>
-                            <span class="text-brand-blue ml-2.5">Meijerink</span>
-                            <span>.</span>
-                        </span>
-                        <h1 class="text-sm font-normal tracking-tight text-slate-600 sm:text-base max-w-2xl m-0">
-                            Senior Software Developer & DevOps Engineer
-                        </h1>
-                    </div>
-
-                    <div class="max-w-2xl space-y-5">
-                        <p class="text-base leading-relaxed font-medium text-slate-600 sm:text-lg">
-                        Specialist in toekomstbestendige backend-systemen en schaalbare API's. Rust en Go voor systemen waar performance, betrouwbaarheid en voorspelbaar gedrag onder druk tellen, PHP/Laravel voor snelle bedrijfsapplicaties.
-                        </p>
-                        <p class="text-brand-blue flex min-h-[1.5em] items-center text-base font-bold tracking-tight sm:text-lg">
-                        <span id="typed-manifesto"></span>
-                        <span id="cursor" class="typed-cursor"></span>
-                        </p>
-                    </div>
-                </div>
+            <div class="space-y-4">
+                <span class="flex flex-wrap items-baseline text-5xl font-extrabold tracking-tighter text-white sm:text-6xl lg:text-7xl">
+                    <span>Rob</span>
+                    <span class="ml-3 whitespace-nowrap"><span class="text-brand-sky">Meijerink</span>.</span>
+                </span>
+                <h1 class="m-0 max-w-2xl text-sm font-medium tracking-tight text-slate-400 sm:text-base">
+                    Senior Software Developer & DevOps Engineer
+                </h1>
             </div>
 
-            <div class="space-y-10">
-                <div class="flex flex-col sm:flex-row items-center gap-4 w-full max-w-md sm:max-w-none">
+            <div class="max-w-xl space-y-5">
+                <p class="text-base leading-relaxed text-slate-300 sm:text-lg">
+                Schaalbare backend-systemen en API's die blijven werken als het drukker wordt. Ik bouw ze in Rust en Go waar performance en voorspelbaar gedrag onder druk tellen, en in PHP/Laravel voor snelle en gebruiksvriendelijke bedrijfsapplicaties.
+                </p>
+                <p class="text-brand-sky flex min-h-[1.5em] items-center font-mono text-sm sm:text-base">
+                <span id="typed-manifesto"></span>
+                <span id="cursor" class="typed-cursor"></span>
+                </p>
+            </div>
+
+            <div class="space-y-8">
+                <div class="flex w-full max-w-md flex-col items-center gap-4 sm:max-w-none sm:flex-row">
                     <a
                         href="mailto:rob@solvalutions.nl?subject=Contactaanvraag%20via%20robmeijerink.nl"
                         title="Stuur een e-mail"
-                        class="focus-ring bg-brand-blue shadow-brand-blue hover:shadow-brand-blue hover:bg-brand-home inline-flex items-center justify-center rounded-xl px-7 py-3.5 text-sm font-bold text-white transition-all hover:-translate-y-1 active:scale-95 gap-3 w-full sm:w-auto">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        class="focus-ring inline-flex w-full items-center justify-center gap-3 rounded-full bg-white px-7 py-3.5 text-sm font-bold text-ink transition-all hover:-translate-y-0.5 hover:bg-brand-vivid hover:text-white active:scale-95 sm:w-auto">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                             <rect width="20" height="16" x="2" y="4" rx="2"></rect>
                             <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
                         </svg>
@@ -60,249 +38,291 @@
                     </a>
 
                     <a
-                        href="#expertise-skills"
+                        href="#werkwijze"
                         title="Werken aan de toekomst"
-                        class="group focus-ring ring-brand-blue hover:ring-brand-blue-hover relative inline-flex items-center justify-center overflow-hidden rounded-xl bg-white px-7 py-3.5 text-sm font-bold shadow-sm ring-2 transition-all hover:shadow-md active:scale-95 w-full sm:w-auto">
-                        <div class="from-brand-blue/15 via-brand-blue/3 absolute inset-0 bg-linear-to-br to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100"></div>
-                        <span class="text-brand-blue group-hover:text-brand-blue-hover relative z-10 flex items-center gap-1 transition-colors">
-                            Mijn werkwijze &rarr;
-                        </span>
+                        class="group focus-ring border-ink-line hover:border-brand-vivid inline-flex w-full items-center justify-center rounded-full border px-7 py-3.5 text-sm font-bold text-slate-200 transition-all active:scale-95 sm:w-auto">
+                        Mijn werkwijze
+                        <span class="ml-1.5 transition-transform group-hover:translate-x-1" aria-hidden="true">&rarr;</span>
                     </a>
                 </div>
 
-                <div class="flex items-center gap-3 pl-1">
-                    <div class="text-amber-500">
-                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" class="h-5 w-5" stroke-width="2.5">
+                <div class="flex items-center gap-3">
+                    <div class="text-amber-400">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" class="h-5 w-5" stroke-width="2.5" aria-hidden="true">
                             <path d="M8.25 18.75a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m3 0h6m-9 0H3.375a1.125 1.125 0 0 1-1.125-1.125V14.25m17.25 4.5a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m3 0h1.125c.621 0 1.129-.504 1.09-1.124a17.902 17.902 0 0 0-3.213-9.193 2.056 2.056 0 0 0-1.58-.86H14.25M16.5 18.75h-2.25m0-11.177v-.958c0-.568-.422-1.048-.987-1.106a48.554 48.554 0 0 0-10.026 0 1.106 1.106 0 0 0-.987 1.106v7.635m12-6.677v6.677m0 4.5v-4.5m0 0h-12"></path>
                         </svg>
                     </div>
-                    <p class="text-sm font-medium tracking-tight text-slate-500">
-                        Al <span class="text-brand-blue font-bold">15+ jaar</span> software-oplossingen die écht <span class="text-brand-blue font-bold whitespace-nowrap">het verschil maken</span>
+                    <p class="text-sm font-medium tracking-tight text-slate-400">
+                        Al <span class="font-bold text-white">15+ jaar</span> lever ik <span class="font-bold text-white">betrouwbare software</span> en digitale oplossingen
                     </p>
                 </div>
             </div>
         </div>
-    </section>
 
-    <section id="expertise-skills" class="pt-2 pb-10 scroll-mt-4">
-        <div class="max-w-5xl">
-            <p class="mb-6 text-[11px] font-bold tracking-[0.2em] text-slate-600 uppercase">Expertise & Skills</p>
-            <div class="flex flex-wrap items-center gap-3">
-                <span class="inline-flex items-center gap-2 rounded-lg border border-cyan-100 bg-cyan-50 px-3 py-1.5 text-xs font-bold text-cyan-700 shadow-sm shadow-cyan-200/50 transition-transform hover:-translate-y-0.5">
-                    <span class="h-1.5 w-1.5 rounded-full bg-cyan-500"></span> Rust, Go & Cloud
-                </span>
-                <span class="inline-flex items-center gap-2 rounded-lg border border-rose-100 bg-rose-50 px-3 py-1.5 text-xs font-bold text-rose-700 shadow-sm shadow-rose-200/50 transition-transform hover:-translate-y-0.5">
-                    <span class="h-1.5 w-1.5 rounded-full bg-rose-500"></span> PHP & Laravel
-                </span>
-                <span class="inline-flex items-center gap-2 rounded-lg border border-blue-100 bg-blue-50 px-3 py-1.5 text-xs font-bold text-blue-700 shadow-sm shadow-blue-200/50 transition-transform hover:-translate-y-0.5">
-                    <span class="h-1.5 w-1.5 rounded-full bg-blue-500"></span> Docker & DevOps
-                </span>
-                <span class="inline-flex items-center gap-2 rounded-lg border border-slate-200 bg-slate-100 px-3 py-1.5 text-xs font-bold text-slate-700 shadow-sm shadow-slate-200/50 transition-transform hover:-translate-y-0.5">
-                    <span class="h-1.5 w-1.5 rounded-full bg-slate-400"></span> Linux & Kubernetes
-                </span>
-                <span class="inline-flex items-center gap-2 rounded-lg border border-cyan-100 bg-green-50 px-3 py-1.5 text-xs font-bold text-green-700 shadow-sm shadow-green-200/50 transition-transform hover:-translate-y-0.5">
-                    <span class="h-1.5 w-1.5 rounded-full bg-green-500"></span> Node.js & TypeScript
-                </span>
-                <span class="inline-flex items-center gap-2 rounded-lg border border-amber-100 bg-rose-50 px-3 py-1.5 text-xs font-bold text-amber-700 shadow-sm shadow-amber-200/50 transition-transform hover:-translate-y-0.5">
-                    <span class="h-1.5 w-1.5 rounded-full bg-amber-500"></span> Agile & Scrum
-                </span>
+        <div class="relative order-first lg:order-none lg:-mb-16 lg:col-span-5">
+            <div class="hero-glow" aria-hidden="true"></div>
+            <div title="Laten we samenwerken!" data-alt="/assets/img/rob-staand-2.webp" class="hero-photo hero-crop mx-auto w-full max-w-80 sm:w-[26rem] sm:max-w-none lg:ml-auto lg:w-full lg:max-w-[28rem] xl:w-[32rem] xl:max-w-none">
+                <img src="/assets/img/rob-staand.webp"
+                     alt="Profielfoto Rob Meijerink - Solvalutions"
+                     title="Laten we samenwerken!"
+                     class="hero-photo-base block h-auto w-full"
+                     width="1000"
+                     height="1144"
+                     fetchpriority="high" />
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <section id="werkwijze" class="mt-4 scroll-mt-10 sm:scroll-mt-60">
-        <div class="mb-12 flex flex-col items-start gap-4">
-            <div class="bg-brand-blue/3 ring-brand-blue/30 mb-5 inline-flex items-center gap-2.5 rounded-full px-3 py-1 ring-1">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="text-brand-blue/70 h-3.5 w-3.5">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M14.25 9.75L16.5 12l-8.25 8.25-2.25-2.25L14.25 9.75zM14.25 9.75L12 7.5 15.75 3.75 20.25 8.25 16.5 12l-2.25-2.25z" />
-                </svg>
-                <span class="text-brand-blue text-[11px] font-bold tracking-[0.15em] uppercase">Werkwijze</span>
-            </div>
-
-            <h2 class="flex flex-wrap items-baseline text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl">
-                <span class="mr-2">Gedreven</span>
-                <span class="text-brand-blue">door vooruitgang</span>
-                <span>.</span>
+<section id="werkwijze" data-sheet class="sheet-diagonal section-glow bg-ink-raised relative scroll-mt-16 pb-24 sm:pb-32">
+    <div class="wrap grid gap-12 lg:grid-cols-12 lg:gap-16">
+        <div class="border-ink-line bg-ink space-y-5 self-start rounded-3xl border p-8 sm:p-10 lg:sticky lg:top-28 lg:col-span-5" data-reveal>
+            <p class="text-sm font-semibold tracking-widest text-ink-muted uppercase">Werkwijze</p>
+            <h2 class="text-balance text-4xl font-extrabold tracking-tighter text-white sm:text-5xl">
+                <span>Zo werk ik in</span>
+                <span class="text-brand-sky">jouw team</span><span>.</span>
             </h2>
-
-            <p class="max-w-2xl text-base leading-relaxed text-slate-600 sm:text-lg">
-                Als freelance senior developer overbrug ik de kloof tussen complexe business-eisen en schaalbare techniek. Van betrouwbare <strong class="font-semibold text-slate-900">backend architecturen</strong> in <strong class="font-semibold text-slate-900">Rust en Go</strong> tot geautomatiseerde <strong class="font-semibold text-slate-900">DevOps pipelines</strong>: ik bouw de fundering waarmee jouw applicaties én team veilig kunnen versnellen.</p>
-        </div>
-
-        <div class="grid grid-cols-1 gap-6 md:grid-cols-12">
-            <div class="group hover:shadow-brand-blue/15 hover:ring-brand-blue/30 relative overflow-hidden rounded-2xl bg-white p-8 shadow-sm ring-1 ring-slate-200 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl sm:p-10 md:col-span-7">
-                <div class="from-brand-blue/10 pointer-events-none absolute inset-0 bg-linear-to-br via-transparent to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100"></div>
-
-                <div class="relative z-10">
-                    <div class="mb-5 flex items-center gap-4">
-                        <div class="shrink-0 bg-brand-blue/5 text-brand-blue ring-brand-blue/20 group-hover:bg-brand-blue/10 flex h-12 w-12 items-center justify-center rounded-xl ring-1 transition-all duration-300 ring-inset group-hover:scale-110">
-                            <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path>
-                            </svg>
-                        </div>
-                        <h3 class="group-hover:text-brand-blue text-xl font-bold tracking-tight text-slate-900 transition-colors">
-                            Business-Driven Software Architectuur
-                        </h3>
-                    </div>
-                    <p class="text-sm leading-relaxed text-slate-600 sm:text-base">
-                        Geen hypes of over-engineering. Ik ontwerp de architectuur die past bij de fase van jouw product. We starten vaak
-                        met een <strong class="text-brand-blue">modulaire monoliet</strong> voor maximale wendbaarheid. Zodra het platform écht schaalt of teams groeien, evolueren
-                        we dit gecontroleerd naar <strong class="text-brand-blue">microservices</strong>. De techniek volgt altijd de <strong class="text-brand-blue">businesscase</strong>.
-                    </p>
-                </div>
-            </div>
-
-            <div class="group hover:shadow-brand-blue/15 hover:ring-brand-blue/30 relative overflow-hidden rounded-2xl bg-slate-50/50 p-8 shadow-sm ring-1 ring-slate-200 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl sm:p-10 md:col-span-5">
-                <div class="from-brand-blue/10 pointer-events-none absolute inset-0 bg-linear-to-br via-transparent to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100"></div>
-
-                <div class="relative z-10">
-                    <div class="mb-5 flex items-center gap-4">
-                        <div class="shrink-0 text-brand-blue group-hover:ring-brand-blue/30 flex h-12 w-12 items-center justify-center rounded-xl bg-white shadow-sm ring-1 ring-slate-200 transition-all duration-300 ring-inset group-hover:scale-110">
-                            <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01"></path>
-                            </svg>
-                        </div>
-                        <h3 class="group-hover:text-brand-blue text-xl font-bold tracking-tight text-slate-900 transition-colors">
-                            Automatisering & DevOps
-                        </h3>
-                    </div>
-                    <p class="text-sm leading-relaxed text-slate-600 sm:text-base">
-                        Code levert pas waarde als het betrouwbaar live staat. Ik behandel infrastructuur daarom exact zoals software:
-                        <strong class="text-brand-blue">Infrastructure as Code</strong>. Door handmatig beheer te elimineren met Docker en
-                        <strong class="text-brand-blue">CI/CD pipelines</strong>, optimaliseren wij onze workflow.
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="mt-24 sm:mt-32">
-        <div class="mb-10 flex flex-col items-start gap-4">
-            <div class="bg-brand-blue/3 ring-brand-blue/30 mb-3 inline-flex items-center gap-2.5 rounded-full px-3 py-1 ring-1">
-                <span class="text-brand-blue text-[11px] font-bold tracking-[0.15em] uppercase">Rust &amp; Go</span>
-            </div>
-            <h2 class="flex flex-wrap items-baseline text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl">
-                <span class="mr-2">De juiste taal</span>
-                <span class="text-brand-blue">voor het probleem</span>
-                <span>.</span>
-            </h2>
-            <p class="max-w-2xl text-base leading-relaxed text-slate-600 sm:text-lg">
-                Voor de meeste backends is Go een uitstekende keuze: simpel, snel op te leveren en makkelijk over te dragen. Waar de eisen scherper worden kies ik voor <strong class="font-semibold text-slate-900">Rust</strong>. Je kiest dan niet voor de nieuwste hype, maar voor minder productie-incidenten en voorspelbaar gedrag.
+            <p class="text-base leading-relaxed sm:text-lg">
+                Zit je development team vast, of is er meer werk dan handen? Je krijgt een freelance software developer die zelfstandig doorpakt, rustig blijft als het druk wordt en je team sterker maakt. Ingewikkelde vraagstukken zijn voor mij een uitdaging waar ik energie van krijg, geen obstakel waar we niet uit komen.
             </p>
         </div>
 
-        <div class="grid grid-cols-1 gap-6 md:grid-cols-2">
-            <div class="rounded-2xl bg-white p-8 shadow-sm ring-1 ring-slate-200 sm:p-10">
-                <p class="text-brand-blue text-xs font-semibold tracking-wider uppercase">Rust</p>
-                <h3 class="mt-1 text-xl font-bold tracking-tight text-slate-900">Als fouten en vertraging duur zijn</h3>
-                <ul class="mt-4 space-y-2 text-sm leading-relaxed text-slate-600 sm:text-base">
-                    <li>Voorspelbare latency zonder garbage-collection pauzes</li>
-                    <li>Geheugenveiligheid en data-races vangen bij het compileren</li>
-                    <li>CPU-zware verwerking, parsers en high-throughput pipelines</li>
-                    <li>Snelle API's en data-aggregatie, plus FFI en WebAssembly voor gedeelde logica</li>
-                </ul>
+        <div class="divide-y divide-ink-line border-y border-ink-line lg:col-span-7">
+            <div data-reveal class="group py-10 transition-colors">
+                <div class="mb-5 flex items-center gap-4">
+                    <div class="bg-brand-blue text-white flex h-11 w-11 shrink-0 items-center justify-center rounded-xl transition-transform duration-300 group-hover:scale-110">
+                        <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold tracking-tight text-white sm:text-2xl">
+                        Van meekijken naar aanpakken
+                    </h3>
+                </div>
+                <p class="text-base leading-relaxed">
+                    Je krijgt eerst een collega die meekijkt en leert hoe jullie werken. Samen bepalen we de kern van het probleem en wat als eerste moet. Daarna pak ik het zelfstandig op, ook als er veel tegelijk op je team afkomt: rustig en stap voor stap. Onderweg groeien je developers mee en blijven ze gemotiveerd.
+                </p>
             </div>
-            <div class="rounded-2xl bg-slate-50/50 p-8 shadow-sm ring-1 ring-slate-200 sm:p-10">
-                <p class="text-xs font-semibold tracking-wider text-slate-600 uppercase">Go</p>
-                <h3 class="mt-1 text-xl font-bold tracking-tight text-slate-900">Als snelheid van opleveren telt</h3>
-                <ul class="mt-4 space-y-2 text-sm leading-relaxed text-slate-600 sm:text-base">
-                    <li>API's en microservices met een korte time-to-market</li>
-                    <li>Cloud-tooling, integraties en concurrency zonder gedoe</li>
-                    <li>Code die ook een ander team snel kan overnemen</li>
-                    <li>Eenvoudig te deployen en te beheren</li>
-                </ul>
+            <div data-reveal class="group py-10 transition-colors">
+                <div class="mb-5 flex items-center gap-4">
+                    <div class="bg-brand-blue text-white flex h-11 w-11 shrink-0 items-center justify-center rounded-xl transition-transform duration-300 group-hover:scale-110">
+                        <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold tracking-tight text-white sm:text-2xl">
+                        Van business-eis naar techniek
+                    </h3>
+                </div>
+                <p class="text-base leading-relaxed">
+                    Techniek hoort begrijpelijk te zijn, voor je team en voor wie minder technisch is. Wat je bedrijf nodig heeft, vertaal ik naar schaalbare techniek die past bij de fase van je product: vaak een <strong class="text-brand-sky">modulaire monoliet</strong>, zodat je snel kunt bewegen. Groeit het platform of het team, dan splitsen we gecontroleerd op naar <strong class="text-brand-sky">microservices</strong>.
+                </p>
             </div>
+            <div data-reveal class="group py-10 transition-colors">
+                <div class="mb-5 flex items-center gap-4">
+                    <div class="bg-brand-blue text-white flex h-11 w-11 shrink-0 items-center justify-center rounded-xl transition-transform duration-300 group-hover:scale-110">
+                        <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold tracking-tight text-white sm:text-2xl">
+                        Uit de praktijk: terug naar de basis.
+                    </h3>
+                </div>
+                <p class="text-base leading-relaxed">
+                    Een team van 6 tot 10 developers kwam niet meer vooruit: de ontwikkeling zat vast op technische complexiteit. We brachten de architectuur terug naar de basis, trokken de <strong class="text-brand-sky">CI/CD-pipelines</strong> recht en maakten de code testbaar, onder duidelijke leiding en in overzichtelijke stappen. Daarna gingen we van wekelijks naar meerdere keren per week live, met aanzienlijk minder fouten in productie en beter schaalbare applicaties. Het project rondden we af zoals gepland, met een team dat weer rustig en voorspelbaar werkte.
+                </p>
+            </div>
+            <div data-reveal class="py-10">
+                <p class="border-brand-sky border-l-2 pl-6 text-lg leading-relaxed text-slate-200 sm:text-xl">
+                    Je bedrijfskritische systemen blijven draaien terwijl we ze verbeteren. Na mijn opdracht staat je team sterker.
+                </p>
+            </div>
+            <p class="py-6 font-mono text-sm text-slate-300">Hands-on inzetbaar: remote, hybride of op locatie.</p>
         </div>
-    </section>
+    </div>
+</section>
 
-    <section class="mt-32">
-        <div class="mb-12 flex flex-col items-start gap-4">
-            <div class="bg-brand-blue/3 ring-brand-blue/30 mb-5 inline-flex items-center gap-2.5 rounded-full px-3 py-1 ring-1">
-                <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="14"
-                    height="14"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2.5"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    class="text-brand-blue/70">
-                    <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
-                    <circle cx="9" cy="7" r="4" />
-                    <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
-                    <path d="M16 3.13a4 4 0 0 1 0 7.75" />
-                </svg>
-
-                <span class="text-brand-blue text-[11px] font-bold tracking-[0.15em] uppercase">Samenwerking</span>
-            </div>
-
-            <h2 class="flex flex-wrap items-baseline text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl">
-                <span class="mr-2">Een keer</span>
-                <span class="text-brand-blue">koffie drinken</span>
-                <span>?</span>
+<section id="inzet" data-sheet class="sheet-top bg-paper relative scroll-mt-16 py-24 sm:py-32">
+    <div class="wrap grid gap-12 lg:grid-cols-12 lg:gap-16">
+        <div class="border-slate-200 bg-white space-y-5 self-start rounded-3xl border p-8 sm:p-10 lg:sticky lg:top-28 lg:col-span-5" data-reveal>
+            <p class="text-sm font-semibold tracking-widest text-slate-500 uppercase">Specialisaties</p>
+            <h2 class="text-balance text-4xl font-extrabold tracking-tighter text-ink sm:text-5xl">
+                <span>Waar je me</span>
+                <span class="text-brand-blue">voor inzet</span><span>.</span>
             </h2>
-
-            <p class="max-w-2xl text-base leading-relaxed text-slate-600 sm:text-lg">
-                Of je nu een <strong class="font-semibold text-slate-900">freelance software engineer</strong> zoekt voor tijdelijke versterking, of een strategische <strong class="font-semibold text-slate-900">B2B tech partner</strong> voor complexe architectuur: ik denk graag vrijblijvend met je mee over de juiste technische koers.
+            <p class="text-base leading-relaxed text-slate-600 sm:text-lg">
+                Van full stack en DevOps tot effectief werken met AI. Per situatie een oplossing op maat, met de techniek of tool die bij jouw project past.
             </p>
+            <a href="/expertise" class="tap focus-ring text-brand-blue inline-flex items-center gap-2 text-sm font-bold transition-opacity hover:opacity-80">
+                Alle specialisaties
+                <span aria-hidden="true">&rarr;</span>
+            </a>
         </div>
 
-        <div class="grid gap-6 md:grid-cols-2">
-            <div class="group relative flex flex-col overflow-hidden rounded-3xl bg-white p-8 shadow-md ring-1 ring-slate-200 transition-all hover:shadow-xl sm:p-10">
-                <div class="flex items-start gap-5">
-                    <div class="bg-white overflow-hidden rounded-lg h-12 w-12 flex items-center justify-center shrink-0 transition-transform duration-300 group-hover:scale-105">
-                        <picture>
-                            <source srcset="/assets/img/solvalutions-logo.webp" type="image/webP">
-                            <img src="/assets/img/solvalutions-logo.png" alt="Solvalutions B2B Tech Partner Logo" class="h-full w-full object-contain scale-125" width="48" height="48" fetchpriority="high" decoding="async">
-                        </picture>
-                    </div>
-                    <div>
-                        <p class="text-xs font-semibold tracking-wider text-slate-600 uppercase">Voor Teams & Organisaties</p>
-                        <h3 class="mt-1 text-xl font-bold text-slate-900">Bedrijf met een missie?</h3>
-                        <p class="mt-3 text-sm leading-relaxed text-slate-600">
-                            Zoek je een hands-on, ervaren en complete technische partner voor de ontwikkeling of schaalbaarheid van je platform?
-                        </p>
-                    </div>
+        <div class="space-y-5 lg:col-span-7">
+            <a href="/expertise#spec-backend" data-reveal style="--glow: 34 211 238; --gx: 100%" class="panel-glow group focus-ring border-ink-line bg-ink hover:border-cyan-400/50 block overflow-hidden rounded-2xl border transition-colors duration-300">
+                <div class="border-ink-line flex items-center gap-2 border-b px-5 py-3">
+                    <span class="h-2.5 w-2.5 rounded-full bg-cyan-400"></span>
+                    <span class="h-2.5 w-2.5 rounded-full bg-slate-600"></span>
+                    <span class="h-2.5 w-2.5 rounded-full bg-slate-600"></span>
+                    <span class="text-cyan-300 ml-3 font-mono text-xs font-semibold">backend</span>
+                    <span class="ml-auto text-slate-400 transition-transform duration-300 group-hover:translate-x-1 group-hover:text-white" aria-hidden="true">&rarr;</span>
                 </div>
-                <div class="mt-auto pt-8 ml-16">
-                    <a href="https://solvalutions.nl" title="Jouw B2B Tech Partner" class="focus-ring hover:text-brand-blue inline-flex items-center gap-2 text-sm font-bold text-slate-600 transition-colors">
-                        Bekijk Solvalutions
-                        <svg class="h-4 w-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
-                        </svg>
+                <div class="p-6">
+                    <h3 class="text-lg font-bold tracking-tight text-white sm:text-xl">Backends die schalen</h3>
+                    <p class="mt-3 text-sm leading-relaxed text-slate-300 sm:text-base">Schaalbare API's, backend-systemen en bedrijfsapplicaties, afgestemd op de eis: snel opgeleverd, nauwkeurig gebouwd of prettig en gebruiksvriendelijk in gebruik.</p>
+                    <ul class="mt-4 flex flex-wrap gap-2"><li class="spec-tag border-ink-line rounded-md border px-2.5 py-1 font-mono text-xs text-slate-300">PHP / Laravel</li><li class="spec-tag border-ink-line rounded-md border px-2.5 py-1 font-mono text-xs text-slate-300">Rust</li><li class="spec-tag border-ink-line rounded-md border px-2.5 py-1 font-mono text-xs text-slate-300">Go</li></ul>
+                </div>
+            </a>
+            <a href="/expertise#spec-cloud" data-reveal style="--glow: 52 211 153; --gx: 0%; --reveal-delay: 70ms" class="group focus-ring border-slate-300 bg-white hover:border-emerald-500/60 block overflow-hidden rounded-2xl border transition-colors duration-300">
+                <div class="flex items-center gap-2 border-b border-slate-200 px-5 py-3">
+                    <span class="h-2.5 w-2.5 rounded-full bg-emerald-500"></span>
+                    <span class="h-2.5 w-2.5 rounded-full bg-slate-300"></span>
+                    <span class="h-2.5 w-2.5 rounded-full bg-slate-300"></span>
+                    <span class="text-emerald-700 ml-3 font-mono text-xs font-semibold">devops</span>
+                    <span class="ml-auto text-slate-500 transition-transform duration-300 group-hover:translate-x-1 group-hover:text-slate-900" aria-hidden="true">&rarr;</span>
+                </div>
+                <div class="p-6">
+                    <h3 class="text-lg font-bold tracking-tight text-ink sm:text-xl">Releases die betrouwbaar live gaan</h3>
+                    <p class="mt-3 text-sm leading-relaxed text-slate-600 sm:text-base">Herhaalbaar uitrollen met CI/CD en Infrastructure as Code, op de omgeving die het best past. Handmatig beheer maakt plaats voor automatisering, zodat uitrollen voorspelbaar wordt.</p>
+                    <ul class="mt-4 flex flex-wrap gap-2"><li class="spec-tag spec-tag-light rounded-md border border-slate-300 bg-slate-50 px-2.5 py-1 font-mono text-xs text-slate-700">Docker</li><li class="spec-tag spec-tag-light rounded-md border border-slate-300 bg-slate-50 px-2.5 py-1 font-mono text-xs text-slate-700">Kubernetes</li><li class="spec-tag spec-tag-light rounded-md border border-slate-300 bg-slate-50 px-2.5 py-1 font-mono text-xs text-slate-700">Google Cloud</li><li class="spec-tag spec-tag-light rounded-md border border-slate-300 bg-slate-50 px-2.5 py-1 font-mono text-xs text-slate-700">AWS</li><li class="spec-tag spec-tag-light rounded-md border border-slate-300 bg-slate-50 px-2.5 py-1 font-mono text-xs text-slate-700">Bare metal op Linux</li></ul>
+                </div>
+            </a>
+            <a href="/expertise#spec-architectuur" data-reveal style="--glow: 123 166 214; --gx: 100%; --reveal-delay: 140ms" class="panel-glow group focus-ring border-ink-line bg-ink hover:border-brand-sky/50 block overflow-hidden rounded-2xl border transition-colors duration-300">
+                <div class="border-ink-line flex items-center gap-2 border-b px-5 py-3">
+                    <span class="h-2.5 w-2.5 rounded-full bg-brand-sky"></span>
+                    <span class="h-2.5 w-2.5 rounded-full bg-slate-600"></span>
+                    <span class="h-2.5 w-2.5 rounded-full bg-slate-600"></span>
+                    <span class="text-brand-sky ml-3 font-mono text-xs font-semibold">architectuur</span>
+                    <span class="ml-auto text-slate-400 transition-transform duration-300 group-hover:translate-x-1 group-hover:text-white" aria-hidden="true">&rarr;</span>
+                </div>
+                <div class="p-6">
+                    <h3 class="text-lg font-bold tracking-tight text-white sm:text-xl">Architectuur die helder blijft</h3>
+                    <p class="mt-3 text-sm leading-relaxed text-slate-300 sm:text-base">Complexe business-logica vertaald naar een onderhoudbare architectuur. Een betrouwbaar fundament dat meegroeit met je ambities, nu en ook nog steeds over vijf jaar.</p>
+                    <ul class="mt-4 flex flex-wrap gap-2"><li class="spec-tag border-ink-line rounded-md border px-2.5 py-1 font-mono text-xs text-slate-300">Domain Driven Design</li><li class="spec-tag border-ink-line rounded-md border px-2.5 py-1 font-mono text-xs text-slate-300">Event Sourcing</li></ul>
+                </div>
+            </a>
+            <a href="/expertise#spec-frontend" data-reveal style="--glow: 167 139 250; --gx: 0%; --reveal-delay: 210ms" class="group focus-ring border-slate-300 bg-white hover:border-violet-500/60 block overflow-hidden rounded-2xl border transition-colors duration-300">
+                <div class="flex items-center gap-2 border-b border-slate-200 px-5 py-3">
+                    <span class="h-2.5 w-2.5 rounded-full bg-violet-500"></span>
+                    <span class="h-2.5 w-2.5 rounded-full bg-slate-300"></span>
+                    <span class="h-2.5 w-2.5 rounded-full bg-slate-300"></span>
+                    <span class="text-violet-700 ml-3 font-mono text-xs font-semibold">frontend</span>
+                    <span class="ml-auto text-slate-500 transition-transform duration-300 group-hover:translate-x-1 group-hover:text-slate-900" aria-hidden="true">&rarr;</span>
+                </div>
+                <div class="p-6">
+                    <h3 class="text-lg font-bold tracking-tight text-ink sm:text-xl">Frontends die prettig werken</h3>
+                    <p class="mt-3 text-sm leading-relaxed text-slate-600 sm:text-base">Strakke, snelle en responsive interfaces, met oog voor Developer Experience en web-vitals, zodat websites en applicaties soepel aanvoelen.</p>
+                    <ul class="mt-4 flex flex-wrap gap-2"><li class="spec-tag spec-tag-light rounded-md border border-slate-300 bg-slate-50 px-2.5 py-1 font-mono text-xs text-slate-700">TypeScript</li><li class="spec-tag spec-tag-light rounded-md border border-slate-300 bg-slate-50 px-2.5 py-1 font-mono text-xs text-slate-700">Vue.js</li><li class="spec-tag spec-tag-light rounded-md border border-slate-300 bg-slate-50 px-2.5 py-1 font-mono text-xs text-slate-700">React.js</li></ul>
+                </div>
+            </a>
+            <a href="/expertise#spec-ai" data-reveal style="--glow: 251 191 36; --gx: 100%; --reveal-delay: 280ms" class="panel-glow group focus-ring border-ink-line bg-ink hover:border-amber-400/50 block overflow-hidden rounded-2xl border transition-colors duration-300">
+                <div class="border-ink-line flex items-center gap-2 border-b px-5 py-3">
+                    <span class="h-2.5 w-2.5 rounded-full bg-amber-400"></span>
+                    <span class="h-2.5 w-2.5 rounded-full bg-slate-600"></span>
+                    <span class="h-2.5 w-2.5 rounded-full bg-slate-600"></span>
+                    <span class="text-amber-300 ml-3 font-mono text-xs font-semibold">ai</span>
+                    <span class="ml-auto text-slate-400 transition-transform duration-300 group-hover:translate-x-1 group-hover:text-white" aria-hidden="true">&rarr;</span>
+                </div>
+                <div class="p-6">
+                    <h3 class="text-lg font-bold tracking-tight text-white sm:text-xl">Effectief met AI werken</h3>
+                    <p class="mt-3 text-sm leading-relaxed text-slate-300 sm:text-base">AI beheerst ingezet, zodat je sneller oplevert zonder risico's te nemen. Geen vibe coding, maar stap voor stap met agentic development, nauwkeurig met eigen code reviews en bijbehorende tests.</p>
+                    <ul class="mt-4 flex flex-wrap gap-2"><li class="spec-tag border-ink-line rounded-md border px-2.5 py-1 font-mono text-xs text-slate-300">AI-assisted development</li><li class="spec-tag border-ink-line rounded-md border px-2.5 py-1 font-mono text-xs text-slate-300">Agentic development</li></ul>
+                </div>
+            </a>
+            <div data-reveal class="pt-6">
+                <p class="mb-2 flex items-center gap-3 text-sm font-semibold tracking-widest text-slate-600 uppercase"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg><span>Open source</span><span class="h-px flex-1 bg-slate-300"></span></p>
+                <ul class="divide-y divide-slate-300 border-b border-slate-300">
+                <li>
+                    <a href="https://github.com/robmeijerink/snelstart-b2b" target="_blank" rel="noopener noreferrer" class="group focus-ring flex items-start gap-4 py-4">
+                        <span class="bg-rust text-rust-ink mt-0.5 shrink-0 rounded-md px-2 py-0.5 font-mono text-[11px] font-bold">Rust</span>
+                        <span class="min-w-0 flex-1">
+                            <span class="group-hover:text-brand-blue text-ink block font-mono text-sm font-semibold transition-colors">snelstart-b2b</span>
+                            <span class="mt-1 block text-sm leading-relaxed text-slate-600">Eenvoudige Rust-client voor de Snelstart B2B API (v2).</span>
+                        </span>
+                        <span class="text-slate-500 transition-transform duration-300 group-hover:translate-x-1" aria-hidden="true">&nearr;</span>
                     </a>
-                </div>
-            </div>
-
-            <div class="group ring-brand-blue/20 relative flex flex-col overflow-hidden rounded-3xl bg-blue-50/40 p-8 shadow-md ring-1 transition-all hover:bg-blue-50/80 hover:shadow-xl sm:p-10">
-                <div class="bg-brand-blue/10 group-hover:bg-brand-blue/20 absolute -top-12 -right-12 h-40 w-40 rounded-full blur-2xl transition-all duration-500"></div>
-
-                <div class="relative z-10 flex items-start gap-5">
-                    <div class="shrink-0 bg-brand-blue/10 text-brand-blue ring-brand-blue/20 flex h-12 w-12 items-center justify-center rounded-xl ring-1 ring-inset">
-                        <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
-                        </svg>
-                    </div>
-                    <div>
-                        <p class="text-brand-blue text-xs font-semibold tracking-wider uppercase">Voor Projecten</p>
-                        <h3 class="mt-1 text-xl font-bold text-slate-900">Freelance opdracht?</h3>
-                        <p class="mt-3 text-sm leading-relaxed text-slate-600">
-                            Op zoek naar een ervaren en autonome Software Engineer of B2B Tech Partner om jouw huidige team direct <strong class="text-brand-blue">te versterken?</strong>
-                        </p>
-                    </div>
-                </div>
-                <div class="relative z-10 mt-auto pt-8 ml-16">
-                    <a href="mailto:rob@solvalutions.nl?subject=Contactaanvraag%20via%20robmeijerink.nl" title="Stuur een e-mail" class="focus-ring bg-brand-blue shadow-brand-blue hover:bg-brand-blue inline-flex items-center justify-center rounded-lg px-6 py-3 text-sm font-bold text-white transition-all hover:-translate-y-0.5 gap-3">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <rect width="20" height="16" x="2" y="4" rx="2"></rect>
-                            <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
-                        </svg>
-                        Stuur een bericht
+                </li>
+                <li>
+                    <a href="https://github.com/robmeijerink/xaf-auditfile" target="_blank" rel="noopener noreferrer" class="group focus-ring flex items-start gap-4 py-4">
+                        <span class="bg-rust text-rust-ink mt-0.5 shrink-0 rounded-md px-2 py-0.5 font-mono text-[11px] font-bold">Rust</span>
+                        <span class="min-w-0 flex-1">
+                            <span class="group-hover:text-brand-blue text-ink block font-mono text-sm font-semibold transition-colors">xaf-auditfile</span>
+                            <span class="mt-1 block text-sm leading-relaxed text-slate-600">Snelle, geheugenzuinige streaming-parser voor Nederlandse XAF-auditbestanden (XAF 4.0).</span>
+                        </span>
+                        <span class="text-slate-500 transition-transform duration-300 group-hover:translate-x-1" aria-hidden="true">&nearr;</span>
                     </a>
-                </div>
+                </li>
+                <li>
+                    <a href="https://github.com/robmeijerink/laposta-rs" target="_blank" rel="noopener noreferrer" class="group focus-ring flex items-start gap-4 py-4">
+                        <span class="bg-rust text-rust-ink mt-0.5 shrink-0 rounded-md px-2 py-0.5 font-mono text-[11px] font-bold">Rust</span>
+                        <span class="min-w-0 flex-1">
+                            <span class="group-hover:text-brand-blue text-ink block font-mono text-sm font-semibold transition-colors">laposta-rs</span>
+                            <span class="mt-1 block text-sm leading-relaxed text-slate-600">Eenvoudige Rust-wrapper voor de Laposta API voor e-mailmarketing.</span>
+                        </span>
+                        <span class="text-slate-500 transition-transform duration-300 group-hover:translate-x-1" aria-hidden="true">&nearr;</span>
+                    </a>
+                </li>
+                </ul>
+                <a href="https://github.com/robmeijerink" target="_blank" rel="noopener noreferrer" class="tap focus-ring text-brand-blue mt-5 inline-flex items-center gap-2 text-sm font-bold transition-opacity hover:opacity-80">
+                    Alle projecten op GitHub
+                    <span aria-hidden="true">&rarr;</span>
+                </a>
             </div>
         </div>
-    </section>
-</div>
+    </div>
+</section>
+
+<section id="faq" data-sheet class="sheet-top section-glow bg-ink relative scroll-mt-16 pt-16 pb-24 sm:pt-20 sm:pb-32">
+    <div class="marquee border-ink-line mb-20 border-y py-4 text-xs font-medium tracking-[0.2em] text-ink-muted uppercase sm:mb-24">
+        <p class="sr-only">Expertise &amp; Skills</p>
+        <ul class="marquee-track">
+                <li class="flex items-center gap-2.5 whitespace-nowrap"><span class="h-1.5 w-1.5 rounded-full bg-cyan-400"></span>Rust, Go & Cloud</li>
+                <li class="flex items-center gap-2.5 whitespace-nowrap"><span class="h-1.5 w-1.5 rounded-full bg-rose-400"></span>PHP & Laravel</li>
+                <li class="flex items-center gap-2.5 whitespace-nowrap"><span class="h-1.5 w-1.5 rounded-full bg-blue-400"></span>Docker & DevOps</li>
+                <li class="flex items-center gap-2.5 whitespace-nowrap"><span class="h-1.5 w-1.5 rounded-full bg-slate-400"></span>Linux & Kubernetes</li>
+                <li class="flex items-center gap-2.5 whitespace-nowrap"><span class="h-1.5 w-1.5 rounded-full bg-green-400"></span>Node.js & TypeScript</li>
+                <li class="flex items-center gap-2.5 whitespace-nowrap"><span class="h-1.5 w-1.5 rounded-full bg-amber-400"></span>Agile & Scrum</li>
+        </ul>
+        <ul class="marquee-track" aria-hidden="true">
+                <li class="flex items-center gap-2.5 whitespace-nowrap"><span class="h-1.5 w-1.5 rounded-full bg-cyan-400"></span>Rust, Go & Cloud</li>
+                <li class="flex items-center gap-2.5 whitespace-nowrap"><span class="h-1.5 w-1.5 rounded-full bg-rose-400"></span>PHP & Laravel</li>
+                <li class="flex items-center gap-2.5 whitespace-nowrap"><span class="h-1.5 w-1.5 rounded-full bg-blue-400"></span>Docker & DevOps</li>
+                <li class="flex items-center gap-2.5 whitespace-nowrap"><span class="h-1.5 w-1.5 rounded-full bg-slate-400"></span>Linux & Kubernetes</li>
+                <li class="flex items-center gap-2.5 whitespace-nowrap"><span class="h-1.5 w-1.5 rounded-full bg-green-400"></span>Node.js & TypeScript</li>
+                <li class="flex items-center gap-2.5 whitespace-nowrap"><span class="h-1.5 w-1.5 rounded-full bg-amber-400"></span>Agile & Scrum</li>
+        </ul>
+    </div>
+
+    <div class="wrap grid gap-12 lg:grid-cols-12 lg:gap-16">
+        <div class="border-ink-line bg-ink-raised self-start rounded-3xl border p-8 sm:p-10 lg:sticky lg:top-28 lg:col-span-5" data-reveal>
+            <p class="text-sm font-semibold tracking-widest text-ink-muted uppercase">FAQ</p>
+            <h2 class="mt-5 text-4xl font-extrabold tracking-tighter text-white sm:text-5xl">Veelgestelde <span class="text-brand-sky">vragen</span>.</h2>
+            <div class="bg-brand-blue/25 border-ink-line -mx-8 mt-10 -mb-8 rounded-b-3xl border-t p-8 sm:-mx-10 sm:-mb-10 sm:p-10">
+                <div class="flex items-center gap-4">
+                    <span class="bg-brand-blue text-brand-mist ring-brand-sky/30 flex h-11 w-11 shrink-0 items-center justify-center rounded-full ring-1"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path><path d="M9.5 9a2.5 2.5 0 1 1 3.5 2.3c-.6.3-1 .8-1 1.5"></path><path d="M12 15.5h.01"></path></svg></span>
+                    <p class="text-balance text-lg font-bold tracking-tight text-white sm:text-xl">Staat je vraag er niet tussen?</p>
+                </div>
+                <a href="mailto:rob@solvalutions.nl?subject=Vraag%20via%20robmeijerink.nl" class="group focus-ring text-ink hover:bg-brand-vivid mt-6 inline-flex items-center justify-center gap-2 rounded-full bg-white px-6 py-3 text-sm font-bold transition-all hover:-translate-y-0.5 hover:text-white active:scale-95">
+                    Stel je vraag direct
+                    <span class="transition-transform group-hover:translate-x-1" aria-hidden="true">&rarr;</span>
+                </a>
+            </div>
+        </div>
+
+        <div class="divide-y divide-ink-line border-y border-ink-line lg:col-span-7" data-reveal>
+            {{ range .FAQ }}
+            <details class="faq group py-2">
+                <summary class="focus-ring flex cursor-pointer items-center justify-between gap-6 py-5 text-lg font-semibold text-white sm:text-xl">
+                    <span>{{ .Question }}</span>
+                    <svg class="faq-icon h-5 w-5 shrink-0 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 5v14M5 12h14"></path></svg>
+                </summary>
+                <p class="faq-body max-w-2xl pb-6 text-base leading-relaxed">{{ .Answer }}</p>
+            </details>
+            {{ end }}
+        </div>
+    </div>
+</section>
+
+{{ template "components/samenwerking" . }}

@@ -28,18 +28,21 @@ func home(c fiber.Ctx) error {
       "mainEntity": {
         "@type": "Person",
         "name": "Rob Meijerink",
-        "jobTitle": "Freelance Senior Software & DevOps Engineer",
+        "jobTitle": "Freelance Software Developer & DevOps Engineer",
         "url": "https://robmeijerink.nl",
-        "image": "https://robmeijerink.nl/assets/img/foto-rob-meijerink-solvalutions-avatar-320.jpg",
+        "image": "https://robmeijerink.nl/assets/img/og-rob-meijerink.jpg",
         "knowsAbout": [
           "Rust",
           "Go",
           "PHP",
           "Laravel",
-          "Legacy modernisering",
-          "Systeemintegratie",
+          "Software architectuur",
+          "Microservices",
           "DevOps",
-          "Cloud-infrastructuur"
+          "Infrastructure as Code",
+          "CI/CD",
+          "Docker",
+          "Kubernetes"
         ],
         "worksFor": {
           "@type": "Organization",
@@ -58,10 +61,11 @@ func home(c fiber.Ctx) error {
 	`)
 
 	return web.Render(c, "home", fiber.Map{
-		"Title":           "Rob Meijerink | Software Developer & B2B Tech Partner",
-		"MetaDescription": "Beschikbaar voor freelance projecten (ZZP). Gespecialiseerd in schaalbare backends en systeemsoftware (Rust/Go/PHP), cloud-architectuur en DevOps automatisering (Kubernetes/AWS).",
+		"Title":           "Rob Meijerink | Freelance Software Developer & DevOps Engineer",
+		"MetaDescription": "Beschikbaar voor freelance projecten. Senior developer voor schaalbare backends in Rust, Go en PHP/Laravel, plus DevOps en cloud-architectuur.",
 		"Keywords":        "Freelance, ZZP, Software Engineer, inhuren, DevOps, Backend Developer, Rust, Rust developer, Go, Golang, PHP, Laravel, Kubernetes, Systeem Architectuur, B2B",
-		"StructuredData":  jsonLd,
+		"StructuredData":  jsonLd + faqStructuredData(faqItems),
+		"FAQ":             faqItems,
 	})
 }
 
@@ -87,18 +91,23 @@ func work(c fiber.Ctx) error {
 	  "mainEntity": {
 	    "@type": "Person",
 	    "name": "Rob Meijerink",
-	    "jobTitle": "Senior Software Developer & DevOps Engineer",
+	    "jobTitle": "Freelance Software Developer & DevOps Engineer",
 	    "url": "https://robmeijerink.nl",
 	    "knowsAbout": [
 	      "Rust",
 	      "Go",
 	      "PHP",
 	      "Laravel",
-	      "Software Architecture",
+	      "Systeem architectuur",
 	      "DevOps",
 	      "Docker",
 	      "Kubernetes",
-	      "Domain-Driven Design"
+	      "CI/CD",
+	      "Domain Driven Design",
+	      "Event Sourcing",
+	      "TypeScript",
+	      "Vue.js",
+	      "React"
 	    ],
 	    "worksFor": {
 	      "@type": "Organization",
@@ -118,7 +127,7 @@ func work(c fiber.Ctx) error {
 
 	return web.Render(c, "work", fiber.Map{
 		"Title":           "Rob Meijerink | Rust, Go, Laravel, PHP & Cloud Development",
-		"MetaDescription": "Mijn expertise als Freelance Software Developer inhuren (ZZP). Ervaring in schaalbare software en systeemsoftware (Rust/Go/PHP/Laravel) Domain-Driven Design en DevOps (Kubernetes)",
+		"MetaDescription": "Freelance Software Developer inhuren: schaalbare backends in PHP, Rust en Go, Domain Driven Design, Event Sourcing en DevOps met Docker en Kubernetes.",
 		"Keywords":        "Developer, inhuren, Backend Development, Ervaring, CV, ZZP, DevOps Engineering, Systeem Architectuur, Domain Driven Design, Event Sourcing, Rust, Go, Golang, PHP, Laravel, Kubernetes, CI/CD",
 		"StructuredData":  jsonLd,
 	})
