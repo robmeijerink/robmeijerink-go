@@ -116,7 +116,7 @@
 }
 
 .btn-shine::after {
-  animation: shine-once 2.2s ease-in-out 1.6s 1 both;
+  animation: shine-once 2.2s ease-in-out 1.6s 1 backwards;
 }
 
 @media (prefers-reduced-motion: reduce) {

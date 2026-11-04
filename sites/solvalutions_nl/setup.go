@@ -55,17 +55,29 @@ func home(c fiber.Ctx) error {
         "addressCountry": "NL"
       },
       "areaServed": [
-        { "@type": "AdministrativeArea", "name": "Oost-Nederland" },
+        { "@type": "AdministrativeArea", "name": "Gelderland" },
+        { "@type": "AdministrativeArea", "name": "Overijssel" },
+        { "@type": "AdministrativeArea", "name": "Utrecht" },
+        { "@type": "AdministrativeArea", "name": "Drenthe" },
+        { "@type": "AdministrativeArea", "name": "Flevoland" },
+        { "@type": "City", "name": "Zutphen" },
+        { "@type": "City", "name": "Apeldoorn" },
+        { "@type": "City", "name": "Deventer" },
+        { "@type": "City", "name": "Arnhem" },
+        { "@type": "City", "name": "Nijmegen" },
+        { "@type": "City", "name": "Enschede" },
+        { "@type": "City", "name": "Zwolle" },
+        { "@type": "City", "name": "Amersfoort" },
+        { "@type": "City", "name": "Utrecht" },
         { "@type": "Country", "name": "Nederland" }
       ],
       "knowsAbout": [
-        "Rust",
-        "Go",
-        "PHP",
-        "Laravel",
-        "Legacy modernisering",
-        "Systeemintegratie",
+        "Softwaremodernisering",
+        "Systeem- en ERP-integraties",
         "API-ontwikkeling",
+        "Automatisering met AI",
+        "Backend-ontwikkeling",
+        "Websites",
         "DevOps",
         "Cloud-infrastructuur"
       ],
@@ -139,8 +151,8 @@ func contact(c fiber.Ctx) error {
 }
 
 func about(c fiber.Ctx) error {
-	title := "Senior PHP developer Zutphen, Gelderland | Rob Meijerink"
-	desc := "Tien jaar full-stack developer, nu zelfstandig vanuit Zutphen. Eén engineer, zonder tussenlagen. Je werkt rechtstreeks met de persoon die het bouwt."
+	title := "Over Solvalutions: Rob Meijerink, software architect in Zutphen"
+	desc := "Sinds 2011 actief als developer en architect, nu zelfstandig vanuit Zutphen. Eén engineer, zonder tussenlagen: je werkt rechtstreeks met de persoon die het bouwt."
 	url := "https://solvalutions.nl"
 
 	jsonLd := template.HTML(`
@@ -159,8 +171,8 @@ func about(c fiber.Ctx) error {
       "mainEntity": {
         "@type": "Person",
         "name": "Rob Meijerink",
-        "jobTitle": "Software Engineer",
-        "description": "Senior full-stack en backend engineer met ruim 10 jaar ervaring in legacy-modernisering, systeemintegratie en maatwerksoftware.",
+        "jobTitle": "Software architect",
+        "description": "Software architect en developer, actief sinds 2011, gespecialiseerd in softwaremodernisering, systeemkoppelingen, automatisering en maatwerksoftware.",
         "url": "https://robmeijerink.nl",
         "image": "` + url + `/assets/img/foto-rob-meijerink-solvalutions-avatar-320.jpg",
         "address": {
@@ -171,15 +183,14 @@ func about(c fiber.Ctx) error {
         },
         "knowsLanguage": ["nl", "en", "de", "es"],
         "knowsAbout": [
-          "Rust",
-          "Go",
-          "PHP",
-          "Laravel",
-          "Legacy modernisering",
-          "Systeemintegratie",
+          "Softwaremodernisering",
+          "Systeem- en ERP-integraties",
           "API-ontwikkeling",
-          "Cloud-infrastructuur",
-          "DevOps"
+          "Automatisering met AI",
+          "Backend-ontwikkeling",
+          "Websites",
+          "DevOps",
+          "Cloud-infrastructuur"
         ],
         "alumniOf": {
           "@type": "EducationalOrganization",
@@ -201,6 +212,7 @@ func about(c fiber.Ctx) error {
 
 	// Lekker flexibel via de fiber.Map
 	return web.Render(c, "about", fiber.Map{
+		"CTATitle":        "Zullen we kennismaken?",
 		"Title":           title,
 		"MetaDescription": desc,
 		"StructuredData":  jsonLd,
@@ -247,8 +259,8 @@ func approach(c fiber.Ctx) error {
 }
 
 func cases(c fiber.Ctx) error {
-	title := "Opgeloste ICT vraagstukken voor MKB | Solvalutions"
-	desc := "Een selectie van trajecten: legacy-modernisering, Rust-onderdelen voor snelle dataverwerking, maatwerk dat handwerk wegnam, security-aanscherping en systeemkoppelingen. Referentie op aanvraag."
+	title := "Cases: opgeloste software- en systeemvraagstukken | Solvalutions"
+	desc := "Een selectie van trajecten: gemoderniseerde kernsystemen, snellere dataverwerking, maatwerk dat handwerk wegnam en koppelingen tussen systemen."
 	url := "https://solvalutions.nl"
 
 	structuredData := template.HTML(`
@@ -298,6 +310,7 @@ func cases(c fiber.Ctx) error {
 	`)
 
 	return web.Render(c, "cases", fiber.Map{
+		"CTATitle":        "Herken je dit vraagstuk?",
 		"Title":           title,
 		"MetaDescription": desc,
 		"StructuredData":  structuredData,
@@ -305,8 +318,8 @@ func cases(c fiber.Ctx) error {
 }
 
 func services(c fiber.Ctx) error {
-	title := "PHP/Laravel moderniseren & systemen koppelen | Solvalutions"
-	desc := "Laravel applicatie traag of niet meer efficiënt? PHP/Laravel modernisering, API-koppelingen en maatwerksoftware voor MKB. Vaste prijs per fase, Oost-Nederland."
+	title := "Diensten: software op maat, koppelingen en websites | Solvalutions"
+	desc := "Software moderniseren, systemen koppelen, werk automatiseren en websites bouwen voor MKB en logistiek. Elke opdracht is afgebakend, met een vaste prijs per fase."
 	url := "https://solvalutions.nl"
 
 	structuredData := template.HTML(`
@@ -330,7 +343,7 @@ func services(c fiber.Ctx) error {
 	        "position": 1,
 	        "item": {
 	          "@type": "Service",
-	          "name": "Legacy-modernisering",
+	          "name": "Softwaremodernisering",
 	          "description": "Verouderde systemen stap voor stap herbouwen naar gestructureerde, geteste techniek. Het draait naast de bestaande omgeving, zodat de operatie niet stilvalt.",
 	          "serviceType": "Softwaremodernisering",
 	          "provider": {
@@ -339,7 +352,20 @@ func services(c fiber.Ctx) error {
 	            "url": "` + url + `"
 	          },
 	          "areaServed": [
-	            { "@type": "AdministrativeArea", "name": "Oost-Nederland" },
+	            { "@type": "AdministrativeArea", "name": "Gelderland" },
+	            { "@type": "AdministrativeArea", "name": "Overijssel" },
+	            { "@type": "AdministrativeArea", "name": "Utrecht" },
+	            { "@type": "AdministrativeArea", "name": "Drenthe" },
+	            { "@type": "AdministrativeArea", "name": "Flevoland" },
+	            { "@type": "City", "name": "Zutphen" },
+	            { "@type": "City", "name": "Apeldoorn" },
+	            { "@type": "City", "name": "Deventer" },
+	            { "@type": "City", "name": "Arnhem" },
+	            { "@type": "City", "name": "Nijmegen" },
+	            { "@type": "City", "name": "Enschede" },
+	            { "@type": "City", "name": "Zwolle" },
+	            { "@type": "City", "name": "Amersfoort" },
+	            { "@type": "City", "name": "Utrecht" },
 	            { "@type": "Country", "name": "Nederland" }
 	          ]
 	        }
@@ -349,8 +375,8 @@ func services(c fiber.Ctx) error {
 	        "position": 2,
 	        "item": {
 	          "@type": "Service",
-	          "name": "Systeemkoppelingen en API's",
-	          "description": "Bestaande applicaties en third-party diensten via betrouwbare koppelingen en API's met elkaar laten samenwerken, zodat informatie automatisch doorstroomt.",
+	          "name": "API-, systeem- en ERP-koppelingen",
+	          "description": "Bestaande applicaties, ERP-systemen en diensten van derden aan elkaar koppelen, zodat gegevens automatisch doorstromen. Ook voor nieuwe API's en koppelingen op maat.",
 	          "serviceType": "Systeemintegratie",
 	          "provider": {
 	            "@type": "Organization",
@@ -364,8 +390,8 @@ func services(c fiber.Ctx) error {
 	        "position": 3,
 	        "item": {
 	          "@type": "Service",
-	          "name": "Procesoptimalisatie en maatwerksoftware",
-	          "description": "Handmatig terugkerend werk omzetten naar één maatwerkapplicatie die het werk wegneemt in plaats van verplaatst.",
+	          "name": "Automatisering en maatwerksoftware",
+	          "description": "Handmatig terugkerend werk automatiseren met maatwerksoftware en, waar het iets oplevert, AI, zodat het werk wordt weggenomen in plaats van verplaatst.",
 	          "serviceType": "Maatwerkontwikkeling",
 	          "provider": {
 	            "@type": "Organization",
@@ -380,7 +406,7 @@ func services(c fiber.Ctx) error {
 	        "item": {
 	          "@type": "Service",
 	          "name": "Performance en betrouwbaar draaien",
-	          "description": "Performance-kritische onderdelen herbouwen (onder andere in Rust en Go) en zorgen dat software blijft draaien met geautomatiseerde uitrol, monitoring en doordachte infrastructuur.",
+	          "description": "Onderdelen die knellen sneller en voorspelbaarder maken en zorgen dat software blijft draaien met geautomatiseerde uitrol, monitoring en doordachte infrastructuur.",
 	          "serviceType": "Performance engineering en DevOps",
 	          "provider": {
 	            "@type": "Organization",
@@ -394,9 +420,9 @@ func services(c fiber.Ctx) error {
 	        "position": 5,
 	        "item": {
 	          "@type": "Service",
-	          "name": "Rust en systeemsoftware",
-	          "description": "Kritische onderdelen in Rust bouwen of herschrijven voor snelle, voorspelbare verwerking van grote hoeveelheden data, zonder de rest van het systeem te vervangen.",
-	          "serviceType": "Systeemsoftware en performance engineering",
+	          "name": "Moderne websites",
+	          "description": "Snelle, onderhoudsarme websites die goed gevonden worden en toegankelijk zijn, met een vaste prijs per fase.",
+	          "serviceType": "Webontwikkeling",
 	          "provider": {
 	            "@type": "Organization",
 	            "name": "Solvalutions",
