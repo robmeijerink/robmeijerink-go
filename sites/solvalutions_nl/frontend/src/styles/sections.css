@@ -1051,9 +1051,9 @@
       display: none;
     }
   .dim-hero {
-      font-size: 0.66rem;
-      letter-spacing: 0.05em;
-      white-space: nowrap;
+      font-size: 0.75rem;
+      letter-spacing: 0.06em;
+      white-space: normal;
     }
   .trust {
       margin-top: 3rem;
@@ -1166,12 +1166,12 @@
 }
 
 .page-hero {
-  padding: 8rem 0 4rem;
+  padding: 7rem 0 4rem;
 }
 
 @media (min-width: 64rem) {
   .page-hero {
-      padding: 11rem 0 6rem;
+      padding: 8.5rem 0 5rem;
     }
 }
 
@@ -3583,4 +3583,95 @@ h1 + .page-hook,
   display: block;
   width: 100%;
   height: auto;
+}
+
+@media (min-width: 64rem) {
+  .page-hero-grid-top {
+    align-items: start;
+  }
+}
+
+@media (max-width: 63.99rem) {
+  .tb-cell li + li {
+    margin-top: 0;
+  }
+
+  .tb-cell li a,
+  .tb-legal a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 2.75rem;
+    min-width: 2.75rem;
+  }
+
+  .aud-often a,
+  .aud-link,
+  .eng-more a,
+  .dim a {
+    position: relative;
+  }
+
+  .aud-often a::after,
+  .aud-link::after {
+    content: '';
+    position: absolute;
+    inset: -0.7rem -0.35rem;
+  }
+
+  .eng-more a::after,
+  .dim a::after {
+    content: '';
+    position: absolute;
+    inset: -0.85rem -0.35rem;
+  }
+}
+
+@media (max-width: 47.99rem) {
+  .feat-side .feat-vig,
+  .flow-art {
+    display: none;
+  }
+
+  .tb-nav {
+    grid-column: 1 / -1;
+  }
+
+  .bom-row {
+    grid-template-columns: 1.75rem 1fr;
+    column-gap: 0.75rem;
+    padding-inline: 0;
+  }
+}
+
+.cv {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 900px;
+}
+
+@media (max-width: 47.99rem) {
+  .hide-m {
+    display: none;
+  }
+
+  .faq-collapsed details:nth-of-type(n + 6) {
+    display: none;
+  }
+
+  .faq-more {
+    margin-top: 1.5rem;
+  }
+
+  .faq-more .btn {
+    width: 100%;
+  }
+}
+
+@media (min-width: 48rem) {
+  .faq-more {
+    display: none;
+  }
+}
+
+.wa-idle:not(.wa-hide) {
+  filter: opacity(0.55);
 }

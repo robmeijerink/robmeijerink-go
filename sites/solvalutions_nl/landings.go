@@ -22,11 +22,11 @@ var websitesPage = landing{
 	View:        "websites",
 	FAQ: []faqItem{
 		{"Wat kost een website laten maken?", "Dat hangt af van wat de website moet doen: een eenvoudige bedrijfswebsite is iets anders dan een webshop of een site met koppelingen. Daarom begin ik met een korte analyse en maak ik daarna een voorstel met per fase een vaste prijs, zodat je vooraf weet wat je betaalt en zelf bepaalt hoe ver je gaat."},
-		{"Hoe lang duurt het om een website te laten bouwen?", "Dat verschilt per website. In het voorstel staat per fase wat er wordt opgeleverd en wanneer, zodat je geen vage einddatum krijgt."},
+		{"Hoe lang duurt het om een website te laten bouwen?", "Dat verschilt per website. Na de intake weet je wat er nodig is en hoe lang het duurt, en in het voorstel staat per fase wat er wordt opgeleverd en wanneer. Omdat je direct met de engineer werkt, kan er snel geschakeld worden."},
 		{"Kan mijn bestaande website worden verbeterd in plaats van vervangen?", "Ja. Eerst kijk ik waar de website tegenvalt: snelheid, opbouw, vindbaarheid of het aantal aanvragen. Daarna bepalen we of verbeteren genoeg is of dat een nieuwe website beter past."},
 		{"Wordt mijn website straks goed gevonden in Google?", "Snelheid, een heldere opbouw, goede titels en beschrijvingen en toegankelijkheid horen bij de oplevering. Daarmee leg ik een stevige basis. Een positie in Google kan niemand garanderen, want die hangt ook af van concurrentie, inhoud en tijd."},
 		{"Kan ik een webshop of formulier op mijn website krijgen?", "Ja. Denk aan een webshop, een offerteformulier, een afsprakenmodule of een contactformulier dat de aanvragen netjes doorstuurt naar jouw systemen."},
-		{"Werk je alleen voor bedrijven in Zutphen?", "Ik zit in Zutphen en werk voor bedrijven in Gelderland, Overijssel en Utrecht. Kennismaken kan bij je op locatie, het vervolg kan ook op afstand."},
+		{"Werk je alleen voor bedrijven in Zutphen?", "Solvalutions zit in Zutphen en werkt voor bedrijven in Gelderland, Overijssel en Utrecht. Kennismaken kan bij je op locatie, het vervolg kan ook op afstand."},
 		{"Wie onderhoudt de website na oplevering?", "Na oplevering blijft Solvalutions beschikbaar voor onderhoud en kleine aanpassingen. De website is gebouwd om weinig onderhoud te vragen."},
 		{"Waar moet ik op letten bij het kiezen van een webdesigner?", "Kijk naar snelheid, vindbaarheid en toegankelijkheid, en of je rechtstreeks contact hebt met degene die bouwt. Vraag ook hoe de prijs is opgebouwd en wat er na oplevering gebeurt. Bij Solvalutions praat je direct met de engineer en betaal je per fase een vaste prijs."},
 		{"Is een website op maat beter dan een template?", "Dat hangt af van wat je nodig hebt. Een template is snel en voordelig voor een eenvoudige website. Op maat loont als de website iets specifieks moet doen, heel snel moet zijn of moet koppelen met je andere systemen."},
@@ -35,6 +35,9 @@ var websitesPage = landing{
 		{"Hoe optimaliseer ik mijn website voor AI?", "Zorg dat AI-assistenten je website goed kunnen lezen en vertrouwen. Dat vraagt duidelijke koppen, korte directe antwoorden op de vragen van je klanten, gestructureerde gegevens zoals FAQ en bedrijfsinformatie, een snelle en toegankelijke website en gegevens die overal kloppen. Een garantie dat een AI je noemt bestaat niet, want die kiest zelf. Zo is ook deze website opgebouwd."},
 		{"Kan ik zelf teksten en foto's aanpassen?", "Ja. Met een CMS pas je teksten, foto's en pagina's zelf aan, zonder dat je een developer nodig hebt. Wat je precies zelf kunt wijzigen, bepalen we vooraf samen."},
 		{"Kan mijn website in WordPress of een ander CMS?", "Elk CMS is mogelijk, dus ook WordPress of het CMS dat je al gebruikt. Welk CMS het beste past hangt af van wat jij zelf wilt kunnen aanpassen."},
+		{"Van wie is de website of software na oplevering?", "Van jou. Na oplevering is het eigendom van de klant, tenzij we in overleg een licentie afspreken."},
+		{"Wie host de website of applicatie?", "Solvalutions host het zelf. Je hebt dus één aanspreekpunt voor de bouw én het beheer."},
+		{"Waarom staan er geen prijzen op de website?", "Elk project is anders, dus een bedrag zonder gesprek zegt weinig. Na de intake krijg je een voorstel met een vaste prijs per fase."},
 	},
 }
 
@@ -53,7 +56,7 @@ var conversionPage = landing{
 	OGAlt:       "Meer aanvragen uit je website, Solvalutions",
 	View:        "conversion",
 	FAQ: []faqItem{
-		{"Hoe weet je wat er beter kan?", "Ik meet eerst hoe bezoekers je website gebruiken: waar ze binnenkomen, welke pagina's ze lezen en op welk punt ze afhaken. Daaruit volgt een lijst met verbeteringen, geordend op wat het meeste oplevert voor de minste moeite."},
+		{"Hoe weet je wat er beter kan?", "Eerst wordt gemeten hoe bezoekers je website gebruiken: waar ze binnenkomen, welke pagina's ze lezen en op welk punt ze afhaken. Daaruit volgt een lijst met verbeteringen, geordend op wat het meeste oplevert voor de minste moeite."},
 		{"Hoeveel meer aanvragen kan ik verwachten?", "Dat beloof ik vooraf niet, omdat het afhangt van je aanbod, je verkeer en je huidige website. Wel leggen we de beginsituatie vast, zodat elke verbetering zichtbaar en meetbaar is."},
 		{"Heb ik veel bezoekers nodig?", "Hoe meer bezoekers, hoe sneller je betrouwbare uitkomsten van tests ziet. Heb je weinig bezoekers, dan richt ik me op duidelijke verbeteringen in plaats van op tests."},
 		{"Pas je ook mijn bestaande website aan?", "Ja, dat is meestal het uitgangspunt. Kleine aanpassingen kunnen veel doen, zoals een duidelijkere pagina of een eenvoudiger formulier. Is de basis te zwak, dan zeg ik dat eerlijk."},
@@ -88,6 +91,10 @@ var appsPage = landing{
 		{"Kan ik klein beginnen en later functies toevoegen?", "Ja. Je begint met een afgebakende eerste fase en bepaalt zelf of en hoe ver je daarna uitbreidt."},
 		{"Wat als ik later een andere partij wil?", "Dan zit je niet vast. De software wordt geleverd als geteste code die een ander team kan overnemen, en je bent niet afhankelijk van één licentie of leverancier."},
 		{"Is een eigen webapplicatie niet veel te duur voor mijn bedrijf?", "Door klein te beginnen met een afgebakende eerste fase met een vaste prijs blijft het overzichtelijk. Je bepaalt zelf hoe ver je gaat."},
+		{"Hoe lang duurt het bouwen van een webapplicatie?", "Dat verschilt per project. Na de intake weet je wat er nodig is en hoe lang het duurt, en het voorstel laat per fase zien wat er wordt opgeleverd. Doordat je direct met de engineer werkt, kan er snel geschakeld worden."},
+		{"Is mijn data veilig in een webapplicatie en hoe zit het met de AVG?", "Veiligheid en privacy zijn vanaf het begin onderdeel van de bouw, en de AVG wordt gevolgd. Wat dat voor jouw project betekent, bespreken we in de intake."},
+		{"Van wie is de website of software na oplevering?", "Van jou. Na oplevering is het eigendom van de klant, tenzij we in overleg een licentie afspreken."},
+		{"Wie host de website of applicatie?", "Solvalutions host het zelf. Je hebt dus één aanspreekpunt voor de bouw én het beheer."},
 	},
 }
 
@@ -103,7 +110,7 @@ var integrationsPage = landing{
 	OGAlt:       "API- en ERP-koppelingen, Solvalutions",
 	View:        "integrations",
 	FAQ: []faqItem{
-		{"Welke systemen kun je aan elkaar koppelen?", "Ik kan elk systeem aan elkaar koppelen: de achterliggende techniek is hetzelfde. Het gaat om boekhouding (zoals Exact Online, SnelStart, Moneybird of Twinfield), ERP (zoals AFAS), webshop (zoals Shopify of WooCommerce), magazijn, CRM (zoals HubSpot of Salesforce) of je eigen website."},
+		{"Welke systemen kun je aan elkaar koppelen?", "Elk systeem is te koppelen, ook zonder standaardkoppeling: de achterliggende techniek is hetzelfde. Het gaat om boekhouding (zoals Exact Online, SnelStart, Moneybird of Twinfield), ERP (zoals AFAS), webshop (zoals Shopify of WooCommerce), magazijn, CRM (zoals HubSpot of Salesforce) of je eigen website."},
 		{"Kan mijn website gekoppeld worden aan CRM, boekhouding of betaling?", "Ja. Een aanvraag of bestelling op je website kan automatisch in je CRM, je boekhouding of je magazijnsysteem terechtkomen, zonder dat iemand iets overtypt."},
 		{"Kan ik een koppeling laten maken met een systeem zonder API?", "Meestal wel, bijvoorbeeld via een export of rechtstreeks via de database. Dat bekijken we in de analyse, zodat je vooraf weet welke route het beste past."},
 		{"Wat gebeurt er als een koppeling een keer uitvalt?", "Een goede koppeling meldt fouten en probeert het opnieuw, zodat er geen gegevens verloren gaan. Hoe dat precies werkt leg ik vooraf met je vast."},
@@ -113,6 +120,8 @@ var integrationsPage = landing{
 		{"Moet mijn leverancier meewerken aan een koppeling?", "Soms is alleen toegang nodig, bijvoorbeeld een API-sleutel. Dat bekijken we in de analyse, zodat je vooraf weet wat er nodig is."},
 		{"Wat als een van mijn systemen wordt bijgewerkt of vervangen?", "Een goede koppeling meldt fouten, dus je merkt het meteen. Na oplevering blijft Solvalutions beschikbaar voor onderhoud en aanpassingen."},
 		{"Kun je een koppeling maken met Exact Online, SnelStart of AFAS?", "Ja. Het maakt niet uit of het gaat om Exact Online, SnelStart, AFAS, Moneybird of een ander pakket: de achterliggende techniek is hetzelfde. Hetzelfde geldt voor webshops zoals Shopify en WooCommerce en voor CRM-systemen zoals HubSpot. Wat er precies mogelijk is, bekijken we in de analyse."},
+		{"Hoe lang duurt het bouwen van een koppeling?", "Dat hangt af van de systemen en wat er moet worden uitgewisseld. Na de intake weet je hoe lang het duurt en wat er per fase wordt opgeleverd."},
+		{"Zijn mijn gegevens veilig tijdens een koppeling?", "Veiligheid en privacy zijn vanaf het begin onderdeel van de bouw, en de AVG wordt gevolgd. Welke gegevens waarheen gaan, leggen we samen vast voordat er iets wordt gebouwd."},
 	},
 }
 
@@ -152,6 +161,7 @@ var dashboardsPage = landing{
 		{"Wanneer is een dashboard zinvol?", "Als je cijfers uit meerdere bronnen haalt, handmatig rapporteert of te laat merkt dat iets afwijkt. Eén overzicht dat zichzelf bijwerkt bespaart tijd en laat sneller zien wat aandacht nodig heeft."},
 		{"Waarom een dashboard als ik al rapporten uit mijn boekhouding kan halen?", "Een rapport uit één systeem toont maar een deel van het beeld. Een dashboard combineert bronnen, werkt zichzelf bij en toont alleen wat voor jou telt, zodat je cijfers niet meer handmatig hoeft samen te voegen."},
 		{"Hoe weet ik dat de cijfers in het dashboard kloppen?", "Het dashboard gebruikt de bronnen die je al hebt en wordt grondig getest voordat het live gaat. Zo zie je overal dezelfde cijfers in plaats van drie verschillende versies."},
+		{"Is mijn bedrijfsdata veilig in een dashboard?", "Veiligheid en privacy zijn vanaf het begin onderdeel van de bouw, en de AVG wordt gevolgd. Wie welke cijfers mag zien, bepaal je vooraf."},
 	},
 }
 
@@ -167,6 +177,10 @@ var homeFAQ = []faqItem{
 	{"Is software die met AI is gemaakt niet onbetrouwbaar?", "Niet als het professioneel gebeurt. Geen vibe coding: AI helpt om gerichter en sneller te bouwen, maar niets gaat ongezien live. Elke wijziging wordt beoordeeld en grondig getest."},
 	{"Wordt mijn bedrijf gevonden door AI-assistenten zoals ChatGPT?", "Je kunt de kans vergroten, maar niet afdwingen. Een snelle, duidelijke website met goede antwoorden op de vragen van je klanten en gestructureerde gegevens helpt. Daar wordt bij het bouwen op gelet."},
 	{"Werkt Solvalutions ook voor bedrijven buiten Zutphen?", "Ja, voor bedrijven in Gelderland, Overijssel en Utrecht. Kennismaken kan bij je op locatie, het vervolg kan ook op afstand."},
+	{"Hoe lang duurt het?", "Dat verschilt per project. Na de intake weet je wat er nodig is en hoe lang het duurt, en het voorstel laat per fase zien wat er wordt opgeleverd. Omdat je direct met de engineer werkt, kan er snel geschakeld worden."},
+	{"Is mijn data veilig en hoe zit het met de AVG?", "Veiligheid en privacy zijn vanaf het begin onderdeel van de bouw, en de AVG wordt gevolgd. Wat dat voor jouw project betekent, bespreken we in de intake."},
+	{"Van wie is de website of software na oplevering?", "Van jou. Na oplevering is het eigendom van de klant, tenzij we in overleg een licentie afspreken."},
+	{"Wat voor projecten heeft Solvalutions gebouwd?", "Veel webapplicaties, van webshops tot koppelingen met boekhoudsystemen. Voorbeelden van de vraagstukken staan op de pagina Cases."},
 }
 
 var servicesFAQ = []faqItem{

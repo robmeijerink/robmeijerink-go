@@ -33,10 +33,10 @@
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
     <link rel="manifest" href="/site.webmanifest" />
 
-    {{if .CanonicalHost}}
+    {{if and .CanonicalHost (not .NoIndex)}}
     <link rel="canonical" href="https://{{ .CanonicalHost }}{{ .Path }}">
     {{end}}
-    <meta name="robots" content="index, follow">
+    <meta name="robots" content="{{ if .NoIndex }}noindex, follow{{ else }}index, follow{{ end }}">
 
     {{ if .IsProd }}
     <link rel="preload" href="{{ .Vite.Asset "src/fonts/geist-sans-latin-400-normal.woff2" }}" as="font" type="font/woff2" crossorigin>
@@ -61,7 +61,7 @@
 
     <header id="main-nav" class="fixed inset-x-0 top-0 z-[60] px-3 pt-3 sm:px-4 sm:pt-4 transition-transform duration-300">
         <div class="mx-auto flex max-w-6xl items-center justify-between gap-4 rounded-2xl px-3 py-2.5 pl-4">
-            <a href="/" class="focus-ring flex shrink-0 items-center gap-2.5" aria-label="Solvalutions Home">
+            <a href="/" class="focus-ring flex min-h-11 shrink-0 items-center gap-2.5" aria-label="Solvalutions Home">
                 <picture class="flex items-center justify-center shrink-0">
                     <source srcset="/assets/img/solvalutions-logo.webp" type="image/webp">
                     <img src="/assets/img/solvalutions-logo.png" alt="Solvalutions logo" title="Solvalutions" class="h-9 w-9 object-contain" width="36" height="36" fetchpriority="high">
@@ -84,7 +84,7 @@
             </div>
 
             <div class="flex items-center gap-1 lg:hidden">
-                <a href="https://solvalutions.com" title="Solvalutions.com in English" hreflang="en" lang="en" aria-label="EN, Solvalutions.com in English" target="_blank" rel="noopener noreferrer" class="focus-ring px-2 py-2 text-[13px] font-bold tracking-wider text-content-strong inline-flex items-center gap-1.5"><svg class="h-[1.05rem] w-[1.05rem] shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path stroke-linecap="round" d="M3 12h18M12 3c2.6 2.4 4 5.6 4 9s-1.4 6.6-4 9c-2.6-2.4-4-5.6-4-9s1.4-6.6 4-9Z"/></svg>EN</a>
+                <a href="https://solvalutions.com" title="Solvalutions.com in English" hreflang="en" lang="en" aria-label="EN, Solvalutions.com in English" target="_blank" rel="noopener noreferrer" class="focus-ring min-h-11 px-2 py-2 text-[13px] font-bold tracking-wider text-content-strong inline-flex items-center gap-1.5"><svg class="h-[1.05rem] w-[1.05rem] shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path stroke-linecap="round" d="M3 12h18M12 3c2.6 2.4 4 5.6 4 9s-1.4 6.6-4 9c-2.6-2.4-4-5.6-4-9s1.4-6.6 4-9Z"/></svg>EN</a>
 
                 <button id="mobile-menu-btn" class="relative z-[60] flex h-11 w-11 flex-col items-center justify-center gap-[6px] p-2 text-brand-dark [&.is-open>span:first-child]:translate-y-[8px] [&.is-open>span:first-child]:rotate-45 [&.is-open>span:nth-child(2)]:opacity-0 [&.is-open>span:last-child]:-translate-y-[8px] [&.is-open>span:last-child]:-rotate-45" aria-label="Menu" aria-expanded="false" aria-controls="mobile-drawer">
                     <span class="h-[2px] w-6 origin-center rounded-full bg-current transition-all duration-300"></span>

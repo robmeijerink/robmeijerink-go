@@ -102,7 +102,7 @@ func home(c fiber.Ctx) error {
 
 func contact(c fiber.Ctx) error {
 	title := "Contact: even sparren over je ICT-vraagstuk | Solvalutions"
-	desc := "Loopt er iets vast in je software? Stuur een mail of bel even. Je spreekt rechtstreeks met Rob, zonder accountmanager. Vrijblijvend."
+	desc := "Werkt je software niet efficiënt? Stuur een mail of bel even. Je spreekt rechtstreeks met Rob, zonder accountmanager. Vrijblijvend."
 	url := "https://solvalutions.nl"
 
 	jsonLd := template.HTML(`

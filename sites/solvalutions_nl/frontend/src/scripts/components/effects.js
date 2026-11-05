@@ -66,21 +66,81 @@ const initWhatsapp = () => {
     if (!button || !window.matchMedia('(max-width: 47.99rem)').matches) return;
 
     let last = window.scrollY;
+    let scrollHidden = false;
+    let idleTimer;
+    const zonesInView = new Set();
 
-    button.style.transition = 'transform 0.35s ease, opacity 0.35s ease';
+    const render = () => {
+        button.classList.toggle('wa-hide', scrollHidden || zonesInView.size > 0);
+    };
+
+    const wake = () => {
+        button.classList.remove('wa-idle');
+        clearTimeout(idleTimer);
+        idleTimer = setTimeout(() => button.classList.add('wa-idle'), 1800);
+    };
+
+    button.style.transition = 'transform 0.35s ease, opacity 0.35s ease, filter 0.35s ease';
+
+    // The call to action and the footer already show phone and mail, so the button steps aside there.
+    if ('IntersectionObserver' in window) {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) zonesInView.add(entry.target);
+                else zonesInView.delete(entry.target);
+            });
+            render();
+        });
+
+        document.querySelectorAll('#cta-section, #main-footer').forEach((zone) => observer.observe(zone));
+    }
 
     window.addEventListener('scroll', () => {
         const current = window.scrollY;
 
+        wake();
+
         if (Math.abs(current - last) < 12) return;
 
-        button.classList.toggle('wa-hide', current > last && current > 240);
+        scrollHidden = current > last && current > 240;
+        render();
         last = current;
     }, { passive: true });
+
+    window.addEventListener('touchstart', wake, { passive: true });
+    wake();
+};
+
+const initFaqMore = () => {
+    document.querySelectorAll('.faq').forEach((faq) => {
+        const items = faq.querySelectorAll('details');
+
+        if (items.length <= 6) return;
+
+        faq.classList.add('faq-collapsed');
+
+        const wrap = document.createElement('p');
+        wrap.className = 'faq-more';
+
+        const button = document.createElement('button');
+        button.type = 'button';
+        button.className = 'btn btn-secondary focus-ring';
+        button.setAttribute('aria-expanded', 'false');
+        button.textContent = `Toon alle ${items.length} vragen`;
+
+        button.addEventListener('click', () => {
+            faq.classList.remove('faq-collapsed');
+            wrap.remove();
+        });
+
+        wrap.appendChild(button);
+        faq.after(wrap);
+    });
 };
 
 export const initEffects = () => {
     initWhatsapp();
+    initFaqMore();
     initProgress();
     initReveal();
     initHeader();
