@@ -231,6 +231,21 @@
     }
 }
 
+.hero-photo.is-alt .hero-photo-alt {
+    opacity: 1;
+}
+
+.hero-photo.is-alt .hero-photo-base {
+    opacity: 0;
+}
+
+@media (hover: none) {
+    .hero-photo {
+        touch-action: manipulation;
+        -webkit-tap-highlight-color: transparent;
+    }
+}
+
 @media (prefers-reduced-motion: reduce) {
     .hero-photo-base,
     .hero-photo-alt {

@@ -86,13 +86,64 @@ function addAlternate(root) {
     image.className = 'hero-photo-alt'
     image.setAttribute('aria-hidden', 'true')
     root.append(image)
+
+    return image
+}
+
+// Touch screens have no hover, so the photo swaps on tap. It also plays once on its own
+// so visitors notice it. This stays a light CSS crossfade (no WebGL) and only starts after
+// the page has loaded, so it does not compete with the first render.
+function initTouchSwap(root) {
+    if (navigator.connection && navigator.connection.saveData) return
+
+    const start = () => {
+        const alternate = addAlternate(root)
+        const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+        const timers = []
+        let shown = false
+
+        const show = (value) => {
+            shown = value
+            root.classList.toggle('is-alt', value)
+        }
+
+        root.addEventListener('click', () => {
+            timers.forEach(clearTimeout)
+            show(!shown)
+        })
+
+        if (reduced || !('IntersectionObserver' in window)) return
+
+        const watcher = new IntersectionObserver((entries) => {
+            if (!entries[0].isIntersecting || document.hidden) return
+
+            watcher.disconnect()
+
+            alternate.decode().then(() => {
+                timers.push(setTimeout(() => show(true), 2200))
+                timers.push(setTimeout(() => show(false), 5000))
+            }).catch(() => {})
+        }, { threshold: 0.6 })
+
+        watcher.observe(root)
+    }
+
+    const later = () => setTimeout(start, 800)
+
+    if (document.readyState === 'complete') later()
+    else window.addEventListener('load', later, { once: true })
 }
 
 export async function initPhotoMorph() {
     const root = document.querySelector('.hero-photo')
 
     if (!root || !root.dataset.alt) return
-    if (!window.matchMedia('(hover: hover)').matches) return
+
+    if (!window.matchMedia('(hover: hover)').matches) {
+        initTouchSwap(root)
+
+        return
+    }
 
     addAlternate(root)
 
