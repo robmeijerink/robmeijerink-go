@@ -57,6 +57,11 @@ func tenantFor(host string, isProd bool) string {
 		}
 
 		host = strings.TrimSuffix(host, ".test")
+
+		// robmeijerink.test has a single label once ".test" is gone.
+		if host == "robmeijerink" {
+			return "robmeijerink"
+		}
 	}
 
 	labels := strings.Split(host, ".")

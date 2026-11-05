@@ -148,6 +148,8 @@ func TestTenantFor(t *testing.T) {
 		{"solvalutions.nl.test", false, "solvalutions_nl"},
 		{"solvalutions.com.test", false, "solvalutions_com"},
 		{"localhost", false, "robmeijerink"},
+		{"robmeijerink.test", false, "robmeijerink"},
+		{"evil.test", false, ""},
 		{"", true, ""},
 	}
 
