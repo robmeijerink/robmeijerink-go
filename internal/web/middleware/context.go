@@ -13,17 +13,7 @@ func RequestContext(isProd bool) fiber.Handler {
 	return func(c fiber.Ctx) error {
 		host := c.Hostname()
 
-		var site string
-		if strings.Contains(host, "solvalutions.nl") {
-			site = "solvalutions_nl"
-		} else if strings.Contains(host, "solvalutions.com") {
-			site = "solvalutions_com"
-		} else if strings.Contains(host, "robmeijerink") {
-			site = "robmeijerink"
-		} else if !isProd && strings.Contains(host, "localhost") {
-			// Allow localhost routing during development
-			site = "robmeijerink"
-		}
+		site := tenantFor(host, isProd)
 
 		// Abort early if the domain is completely unknown
 		if site == "" {
@@ -53,4 +43,37 @@ func RequestContext(isProd bool) fiber.Handler {
 
 		return c.Next()
 	}
+}
+
+// tenantFor maps a hostname to a site. It matches whole domain labels, so a
+// look-alike such as "evilsolvalutions.nl" or "solvalutions.nl.evil.com" can
+// never select a tenant. In development, ".test" names and localhost work too.
+func tenantFor(host string, isProd bool) string {
+	host = strings.ToLower(strings.TrimSuffix(host, "."))
+
+	if !isProd {
+		if host == "localhost" {
+			return "robmeijerink"
+		}
+
+		host = strings.TrimSuffix(host, ".test")
+	}
+
+	labels := strings.Split(host, ".")
+	if len(labels) < 2 {
+		return ""
+	}
+
+	switch strings.Join(labels[len(labels)-2:], ".") {
+	case "solvalutions.nl":
+		return "solvalutions_nl"
+	case "solvalutions.com":
+		return "solvalutions_com"
+	}
+
+	if labels[len(labels)-2] == "robmeijerink" {
+		return "robmeijerink"
+	}
+
+	return ""
 }

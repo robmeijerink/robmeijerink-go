@@ -126,3 +126,32 @@ func TestRequestContext_RedirectsTrailingSlash(t *testing.T) {
 	assert.NoError(t, err)
 	assert.NotEqual(t, fiber.StatusMovedPermanently, resp.StatusCode)
 }
+
+func TestTenantFor(t *testing.T) {
+	cases := []struct {
+		host   string
+		isProd bool
+		want   string
+	}{
+		{"solvalutions.nl", true, "solvalutions_nl"},
+		{"www.solvalutions.nl", true, "solvalutions_nl"},
+		{"solvalutions.com", true, "solvalutions_com"},
+		{"robmeijerink.nl", true, "robmeijerink"},
+		{"www.robmeijerink.nl", true, "robmeijerink"},
+		{"SOLVALUTIONS.NL", true, "solvalutions_nl"},
+		{"evilsolvalutions.nl", true, ""},
+		{"solvalutions.nl.evil.com", true, ""},
+		{"robmeijerink.evil.com", true, ""},
+		{"evil.com", true, ""},
+		{"localhost", true, ""},
+		{"solvalutions.nl.test", true, ""},
+		{"solvalutions.nl.test", false, "solvalutions_nl"},
+		{"solvalutions.com.test", false, "solvalutions_com"},
+		{"localhost", false, "robmeijerink"},
+		{"", true, ""},
+	}
+
+	for _, tc := range cases {
+		assert.Equal(t, tc.want, tenantFor(tc.host, tc.isProd), tc.host)
+	}
+}

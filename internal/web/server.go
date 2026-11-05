@@ -37,6 +37,15 @@ func NewServer(cfg *config.AppConfig) *Server {
 
 	app := fiber.New(fiber.Config{
 		Views: engine,
+		// App Engine terminates the connection, so the real visitor IP is in X-Forwarded-For.
+		// Without this every visitor shares one IP and one rate limit.
+		ProxyHeader: fiber.HeaderXForwardedFor,
+		TrustProxy:  true,
+		TrustProxyConfig: fiber.TrustProxyConfig{
+			Loopback:  true,
+			LinkLocal: true,
+			Private:   true,
+		},
 		ErrorHandler: func(c fiber.Ctx, err error) error {
 			code := fiber.StatusInternalServerError
 
@@ -45,7 +54,7 @@ func NewServer(cfg *config.AppConfig) *Server {
 				code = e.Code
 			}
 
-			log.Printf("ERROR [%s]: %v", c.Path(), err)
+			log.Printf("ERROR [%q]: %v", c.Path(), err)
 
 			isProd, _ := c.Locals("IsProd").(bool)
 
@@ -77,6 +86,7 @@ func NewServer(cfg *config.AppConfig) *Server {
 	app.Use(logger.New())
 
 	// Custom Modular Middlewares
+	app.Use(middleware.SecurityHeaders(cfg.IsProd))
 	app.Use(middleware.RateLimiter())
 	// app.Use(middleware.RedirectWWW())
 	app.Use(middleware.RequestContext(cfg.IsProd))
