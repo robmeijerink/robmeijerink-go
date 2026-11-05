@@ -150,7 +150,8 @@ func contact(c fiber.Ctx) error {
 	return web.Render(c, "contact", fiber.Map{
 		"Title":           title,
 		"MetaDescription": desc,
-		"StructuredData":  jsonLd + breadcrumbs("/contact", "Contact"),
+		"StructuredData":  jsonLd + breadcrumbs("/contact", "Contact") + faqStructuredData(contactFAQ),
+		"FAQ":             contactFAQ,
 	})
 }
 

@@ -3,6 +3,8 @@ package solvalutions_nl
 import (
 	"encoding/json"
 	"os"
+	"path/filepath"
+	"regexp"
 	"strings"
 	"testing"
 	"time"
@@ -30,7 +32,7 @@ func TestLandingMetaAreUniqueAndBounded(t *testing.T) {
 }
 
 func TestExtraFaqListsFollowCopyRules(t *testing.T) {
-	for name, list := range map[string][]faqItem{"home": homeFAQ, "diensten": servicesFAQ, "werkgebied": areaFAQ} {
+	for name, list := range map[string][]faqItem{"home": homeFAQ, "diensten": servicesFAQ, "werkgebied": areaFAQ, "contact": contactFAQ} {
 		require.NotEmpty(t, list, name)
 
 		for _, item := range list {
@@ -149,5 +151,30 @@ func TestOGImagesExist(t *testing.T) {
 		_, err := os.Stat("public" + page.OGImage)
 		assert.NoError(t, err, page.Path)
 		assert.NotEmpty(t, page.OGAlt, page.Path)
+	}
+}
+
+func TestImagesHaveAltAndTitle(t *testing.T) {
+	files, err := filepath.Glob("views/*.html")
+	require.NoError(t, err)
+
+	more, err := filepath.Glob("views/layouts/*.html")
+	require.NoError(t, err)
+
+	imgTag := regexp.MustCompile(`<img\b[^>]*>`)
+	svgTag := regexp.MustCompile(`<svg\b[^>]*role="img"[^>]*>(<title>[^<]+</title>)?`)
+
+	for _, file := range append(files, more...) {
+		raw, err := os.ReadFile(file)
+		require.NoError(t, err)
+
+		for _, tag := range imgTag.FindAllString(string(raw), -1) {
+			assert.Regexp(t, `\balt="[^"]+"`, tag, file)
+			assert.Regexp(t, `\btitle="[^"]+"`, tag, file)
+		}
+
+		for _, tag := range svgTag.FindAllString(string(raw), -1) {
+			assert.Contains(t, tag, "<title>", file)
+		}
 	}
 }

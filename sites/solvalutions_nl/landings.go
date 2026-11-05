@@ -26,7 +26,7 @@ var websitesPage = landing{
 		{"Kan mijn bestaande website worden verbeterd in plaats van vervangen?", "Ja. Eerst kijk ik waar de website tegenvalt: snelheid, opbouw, vindbaarheid of het aantal aanvragen. Daarna bepalen we of verbeteren genoeg is of dat een nieuwe website beter past."},
 		{"Wordt mijn website straks goed gevonden in Google?", "Snelheid, een heldere opbouw, goede titels en beschrijvingen en toegankelijkheid horen bij de oplevering. Daarmee leg ik een stevige basis. Een positie in Google kan niemand garanderen, want die hangt ook af van concurrentie, inhoud en tijd."},
 		{"Kan ik een webshop of formulier op mijn website krijgen?", "Ja. Denk aan een webshop, een offerteformulier, een afsprakenmodule of een contactformulier dat de aanvragen netjes doorstuurt naar jouw systemen."},
-		{"Werk je alleen voor bedrijven in Zutphen?", "Ik zit in Zutphen en werk voor bedrijven in heel Oost-Nederland. Kennismaken kan bij je op locatie, het vervolg kan ook op afstand."},
+		{"Werk je alleen voor bedrijven in Zutphen?", "Ik zit in Zutphen en werk voor bedrijven in Gelderland, Overijssel en Utrecht. Kennismaken kan bij je op locatie, het vervolg kan ook op afstand."},
 	},
 }
 
@@ -154,4 +154,11 @@ var areaFAQ = []faqItem{
 	{"Kom je bij mij op locatie?", "Voor een eerste kennismaking kan dat. Het vervolg loopt ook goed op afstand."},
 	{"Kan ik ook werken met Solvalutions als ik buiten deze provincies zit?", "Ja, werken op afstand kan ook. Je hoeft dus niet in de buurt te zitten. Kennismaken gaat dan online of telefonisch."},
 	{"Hoe snel krijg ik antwoord op een vraag?", "Bel of mail gerust. Meestal heb je binnen een werkdag antwoord."},
+}
+
+var contactFAQ = []faqItem{
+	{"Hoe snel krijg ik antwoord?", "Meestal binnen een werkdag, via mail, telefoon of WhatsApp."},
+	{"Moet ik mijn vraag al helder hebben?", "Nee. Een paar regels is genoeg. Samen bepalen we waar het precies om gaat."},
+	{"Kan ik een afspraak op locatie plannen?", "Ja. Kennismaken kan bij je op locatie in Gelderland, Overijssel en Utrecht. Online of telefonisch kan ook."},
+	{"Wat gebeurt er na het eerste gesprek?", "Je krijgt een afgebakend voorstel per fase, met wat er wordt gedaan, wat het oplevert en wat het kost, tegen een vaste prijs."},
 }
