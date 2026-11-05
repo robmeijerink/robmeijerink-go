@@ -4,7 +4,6 @@ import (
 	"fmt"
 	"html/template"
 	"strings"
-	"time"
 
 	"github.com/gofiber/fiber/v3"
 	"github.com/robmeijerink/robmeijerink-go/internal/web"
@@ -20,6 +19,7 @@ func Setup(router *web.DomainRouter) {
 	router.Get("/websites", websites)
 	router.Get("/conversie", conversion)
 	router.Get("/apps", apps)
+	router.Get("/dashboards", dashboards)
 	router.Get("/werkgebied", area)
 	router.Get("/over", about)
 	router.Get("/aanpak", approach)
@@ -95,7 +95,8 @@ func home(c fiber.Ctx) error {
 	return web.Render(c, "home", fiber.Map{
 		"Title":           title,
 		"MetaDescription": desc,
-		"StructuredData":  jsonLd,
+		"StructuredData":  jsonLd + faqStructuredData(homeFAQ),
+		"FAQ":             homeFAQ,
 	})
 }
 
@@ -149,7 +150,7 @@ func contact(c fiber.Ctx) error {
 	return web.Render(c, "contact", fiber.Map{
 		"Title":           title,
 		"MetaDescription": desc,
-		"StructuredData":  jsonLd,
+		"StructuredData":  jsonLd + breadcrumbs("/contact", "Contact"),
 	})
 }
 
@@ -218,7 +219,7 @@ func about(c fiber.Ctx) error {
 		"CTATitle":        "Zullen we kennismaken?",
 		"Title":           title,
 		"MetaDescription": desc,
-		"StructuredData":  jsonLd,
+		"StructuredData":  jsonLd + breadcrumbs("/over", "Over"),
 	})
 }
 
@@ -257,7 +258,7 @@ func approach(c fiber.Ctx) error {
 	return web.Render(c, "approach", fiber.Map{
 		"Title":           title,
 		"MetaDescription": desc,
-		"StructuredData":  jsonLd,
+		"StructuredData":  jsonLd + breadcrumbs("/aanpak", "Aanpak"),
 	})
 }
 
@@ -316,7 +317,7 @@ func cases(c fiber.Ctx) error {
 		"CTATitle":        "Herken je dit vraagstuk?",
 		"Title":           title,
 		"MetaDescription": desc,
-		"StructuredData":  structuredData,
+		"StructuredData":  structuredData + breadcrumbs("/cases", "Cases"),
 	})
 }
 
@@ -442,40 +443,59 @@ func services(c fiber.Ctx) error {
 	return web.Render(c, "services", fiber.Map{
 		"Title":           title,
 		"MetaDescription": desc,
-		"StructuredData":  structuredData,
+		"StructuredData":  structuredData + breadcrumbs("/diensten", "Diensten") + faqStructuredData(servicesFAQ),
+		"FAQ":             servicesFAQ,
 	})
+}
+
+// lastModified holds the date each page's content last changed. Update the
+// date for a page when its content changes, so lastmod in the sitemap stays honest.
+var lastModified = map[string]string{
+	"/":            "2026-11-05",
+	"/aanpak":      "2026-11-05",
+	"/diensten":    "2026-11-05",
+	"/integraties": "2026-11-05",
+	"/websites":    "2026-11-05",
+	"/conversie":   "2026-11-05",
+	"/apps":        "2026-11-05",
+	"/dashboards":  "2026-11-05",
+	"/werkgebied":  "2026-11-05",
+	"/cases":       "2026-11-05",
+	"/over":        "2026-11-05",
+	"/contact":     "2026-11-05",
+}
+
+var sitemapPages = []struct {
+	loc      string
+	priority string
+}{
+	{loc: "/", priority: "1.0"},
+	{loc: "/aanpak", priority: "0.8"},
+	{loc: "/diensten", priority: "0.8"},
+	{loc: "/integraties", priority: "0.9"},
+	{loc: "/websites", priority: "0.9"},
+	{loc: "/conversie", priority: "0.8"},
+	{loc: "/apps", priority: "0.8"},
+	{loc: "/dashboards", priority: "0.8"},
+	{loc: "/werkgebied", priority: "0.7"},
+	{loc: "/cases", priority: "0.8"},
+	{loc: "/over", priority: "0.8"},
+	{loc: "/contact", priority: "0.8"},
 }
 
 func sitemap(c fiber.Ctx) error {
 	host := c.Hostname()
-	now := time.Now().Format("2006-01-02")
 
 	// No hreflang alternates: .nl and .com are distinct content (NL commercial vs
 	// EN showcase), not translations of each other. Each domain self-canonicals.
-	pages := []struct {
-		loc      string
-		priority string
-	}{
-		{loc: "/", priority: "1.0"},
-		{loc: "/aanpak", priority: "0.8"},
-		{loc: "/diensten", priority: "0.8"},
-		{loc: "/integraties", priority: "0.9"},
-		{loc: "/websites", priority: "0.9"},
-		{loc: "/conversie", priority: "0.8"},
-		{loc: "/apps", priority: "0.8"},
-		{loc: "/werkgebied", priority: "0.7"},
-		{loc: "/cases", priority: "0.8"},
-		{loc: "/over", priority: "0.8"},
-		{loc: "/contact", priority: "0.8"},
-	}
 
 	var xml strings.Builder
 
 	xml.WriteString(`<?xml version="1.0" encoding="UTF-8"?>` + "\n")
 	xml.WriteString(`<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">` + "\n")
 
-	for _, page := range pages {
-		xml.WriteString(fmt.Sprintf("\t<url>\n\t\t<loc>https://%s%s</loc>\n\t\t<lastmod>%s</lastmod>\n\t\t<changefreq>monthly</changefreq>\n\t\t<priority>%s</priority>\n", host, page.loc, now, page.priority))
+	for _, page := range sitemapPages {
+		xml.WriteString(fmt.Sprintf("\t<url>\n\t\t<loc>https://%s%s</loc>\n\t\t<lastmod>%s</lastmod>\n\t\t<changefreq>monthly</changefreq>\n\t\t<priority>%s</priority>\n", host, page.loc, lastModified[page.loc], page.priority))
 		xml.WriteString("\t</url>\n")
 	}
 

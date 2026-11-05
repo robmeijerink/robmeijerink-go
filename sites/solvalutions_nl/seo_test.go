@@ -2,15 +2,17 @@ package solvalutions_nl
 
 import (
 	"encoding/json"
+	"os"
 	"strings"
 	"testing"
+	"time"
 	"unicode/utf8"
 
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 )
 
-var allLandings = []landing{websitesPage, conversionPage, appsPage, integrationsPage, areaPage}
+var allLandings = []landing{websitesPage, conversionPage, appsPage, integrationsPage, dashboardsPage, areaPage}
 
 func TestLandingMetaAreUniqueAndBounded(t *testing.T) {
 	titles := map[string]bool{}
@@ -24,6 +26,23 @@ func TestLandingMetaAreUniqueAndBounded(t *testing.T) {
 		assert.False(t, descriptions[page.Description], "dubbele description: "+page.Path)
 		titles[page.Title] = true
 		descriptions[page.Description] = true
+	}
+}
+
+func TestExtraFaqListsFollowCopyRules(t *testing.T) {
+	for name, list := range map[string][]faqItem{"home": homeFAQ, "diensten": servicesFAQ, "werkgebied": areaFAQ} {
+		require.NotEmpty(t, list, name)
+
+		for _, item := range list {
+			text := item.Question + " " + item.Answer
+
+			assert.NotContains(t, text, "—", name)
+			assert.NotContains(t, text, "–", name)
+
+			for _, banned := range []string{"Rust", "PHP", "Laravel", "vastloop", "wrijving"} {
+				assert.NotContains(t, text, banned, name)
+			}
+		}
 	}
 }
 
@@ -83,5 +102,52 @@ func TestLandingStructuredDataIsValidJSON(t *testing.T) {
 
 		var decoded map[string]any
 		require.NoError(t, json.Unmarshal([]byte(payload), &decoded), page.Path)
+	}
+}
+
+func TestSitemapHasRealLastModified(t *testing.T) {
+	require.NotEmpty(t, sitemapPages)
+
+	for _, page := range sitemapPages {
+		date, ok := lastModified[page.loc]
+		require.True(t, ok, "geen lastmod voor "+page.loc)
+
+		parsed, err := time.Parse("2006-01-02", date)
+		require.NoError(t, err, page.loc)
+		assert.False(t, parsed.After(time.Now().AddDate(0, 0, 1)), page.loc)
+	}
+}
+
+func TestBreadcrumbsAreValidJSON(t *testing.T) {
+	markup := string(breadcrumbs("/over", "Over"))
+	require.True(t, strings.HasPrefix(markup, `<script type="application/ld+json">`))
+
+	payload := strings.TrimSuffix(strings.TrimPrefix(markup, `<script type="application/ld+json">`), `</script>`)
+
+	var decoded struct {
+		Context string `json:"@context"`
+		Type    string `json:"@type"`
+		Items   []struct {
+			Position int    `json:"position"`
+			Name     string `json:"name"`
+			Item     string `json:"item"`
+		} `json:"itemListElement"`
+	}
+
+	require.NoError(t, json.Unmarshal([]byte(payload), &decoded))
+	assert.Equal(t, "BreadcrumbList", decoded.Type)
+	require.Len(t, decoded.Items, 2)
+	assert.Equal(t, "https://solvalutions.nl/over", decoded.Items[1].Item)
+}
+
+func TestOGImagesExist(t *testing.T) {
+	for _, page := range allLandings {
+		if page.OGImage == "" {
+			continue
+		}
+
+		_, err := os.Stat("public" + page.OGImage)
+		assert.NoError(t, err, page.Path)
+		assert.NotEmpty(t, page.OGAlt, page.Path)
 	}
 }

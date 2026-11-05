@@ -1,5 +1,11 @@
 package solvalutions_nl
 
+const (
+	introLead    = "Vertel kort wat je nodig hebt en wat je ermee wilt bereiken. Je krijgt een eerlijk advies en daarna een voorstel met een vaste prijs per fase. Liever eerst even sparren? Bel of mail gerust, dat is vrijblijvend."
+	introButton  = "Plan een kennismaking"
+	introSubject = "Kennismaking Solvalutions"
+)
+
 var websitesPage = landing{
 	Path:        "/websites",
 	Crumb:       "Website laten maken",
@@ -8,6 +14,11 @@ var websitesPage = landing{
 	Service:     "Website laten maken",
 	ServiceType: "Webdesign en webontwikkeling",
 	CTATitle:    "Een nieuwe website nodig?",
+	CTALead:     introLead,
+	CTAButton:   introButton,
+	CTASubject:  introSubject,
+	OGImage:     "/assets/img/solvalutions-og-web.png",
+	OGAlt:       "Website laten maken in Zutphen, Solvalutions",
 	View:        "websites",
 	FAQ: []faqItem{
 		{"Wat kost een website laten maken?", "Dat hangt af van wat de website moet doen: een eenvoudige bedrijfswebsite is iets anders dan een webshop of een site met koppelingen. Daarom begin ik met een korte analyse en maak ik daarna een voorstel met per fase een vaste prijs, zodat je vooraf weet wat je betaalt en zelf bepaalt hoe ver je gaat."},
@@ -27,6 +38,11 @@ var conversionPage = landing{
 	Service:     "Conversie optimalisatie",
 	ServiceType: "Conversie-optimalisatie van websites",
 	CTATitle:    "Meer aanvragen uit je website?",
+	CTALead:     introLead,
+	CTAButton:   introButton,
+	CTASubject:  introSubject,
+	OGImage:     "/assets/img/solvalutions-og-conversie.png",
+	OGAlt:       "Meer aanvragen uit je website, Solvalutions",
 	View:        "conversion",
 	FAQ: []faqItem{
 		{"Wat is conversie optimalisatie?", "Het verbeteren van je website zodat een groter deel van de bezoekers doet wat jij wilt: bellen, een formulier invullen, een afspraak plannen of iets kopen. Je haalt dus meer uit het verkeer dat je al hebt."},
@@ -45,6 +61,11 @@ var appsPage = landing{
 	Service:     "App en webapplicatie op maat",
 	ServiceType: "Softwareontwikkeling",
 	CTATitle:    "Een app of webapplicatie nodig?",
+	CTALead:     introLead,
+	CTAButton:   introButton,
+	CTASubject:  introSubject,
+	OGImage:     "/assets/img/solvalutions-og-apps.png",
+	OGAlt:       "App of webapplicatie op maat, Solvalutions",
 	View:        "apps",
 	FAQ: []faqItem{
 		{"Wat is het verschil tussen een app en een webapplicatie?", "Een webapplicatie werkt in de browser, op een computer en op een telefoon, zonder installatie. Een app installeer je vanuit een appstore. Voor veel bedrijfstoepassingen is een webapplicatie die goed op een telefoon werkt voldoende."},
@@ -63,6 +84,8 @@ var integrationsPage = landing{
 	Service:     "API-, systeem- en ERP-koppelingen",
 	ServiceType: "Systeemintegratie",
 	CTATitle:    "Praten je systemen nog niet met elkaar?",
+	OGImage:     "/assets/img/solvalutions-og-integraties.png",
+	OGAlt:       "API- en ERP-koppelingen, Solvalutions",
 	View:        "integrations",
 	FAQ: []faqItem{
 		{"Welke systemen kun je aan elkaar koppelen?", "Ik kan elk systeem aan elkaar koppelen: de achterliggende techniek is hetzelfde. Het gaat om boekhouding, ERP, webshop, magazijn, CRM of je eigen website."},
@@ -79,5 +102,56 @@ var areaPage = landing{
 	Title:       "Webdesign en software in Zutphen en omgeving | Solvalutions",
 	Description: "Gevestigd in Zutphen en actief voor bedrijven in Gelderland, Overijssel en Utrecht. Kennismaken bij je op locatie, het vervolg ook op afstand.",
 	CTATitle:    "Zullen we kennismaken?",
+	CTALead:     introLead,
+	CTAButton:   introButton,
+	CTASubject:  introSubject,
 	View:        "area",
+	FAQ:         areaFAQ,
+}
+
+var dashboardsPage = landing{
+	Path:        "/dashboards",
+	Crumb:       "Dashboards en data",
+	Title:       "Dashboard laten maken Zutphen: data visualisatie | Solvalutions",
+	Description: "Een dashboard laten maken in Zutphen? Data uit je boekhouding, ERP en webshop vanzelf samengebracht en helder in beeld, altijd actueel en op elk scherm.",
+	Service:     "Dashboards en datavisualisatie",
+	ServiceType: "Datavisualisatie en rapportage",
+	CTATitle:    "Cijfers die niet bij elkaar komen?",
+	CTALead:     introLead,
+	CTAButton:   introButton,
+	CTASubject:  introSubject,
+	OGImage:     "/assets/img/solvalutions-og-dashboards.png",
+	OGAlt:       "Dashboards en data, Solvalutions",
+	View:        "dashboards",
+	FAQ: []faqItem{
+		{"Wat is een dashboard?", "Een overzicht dat je belangrijkste cijfers op één plek toont, in grafieken en tabellen, zodat je in één oogopslag ziet waar je op moet sturen. Denk aan omzet, orders, voorraad, aanvragen of uren."},
+		{"Gebruik je een bestaande tool of bouw je het dashboard zelf?", "Beide kan. Ik kan je bronnen koppelen aan een bestaande tool voor rapportages, of een dashboard bouwen als webapplicatie op maat. Welke route past hangt af van je wensen, je budget en wie het dashboard gaat gebruiken. Dat bepalen we in de analyse."},
+		{"Uit welke systemen kan de data komen?", "Uit vrijwel elke bron: je boekhouding, ERP, webshop, CRM, website of zelfs losse Excel-bestanden. Ik koppel de bronnen, zodat de gegevens vanzelf bij elkaar komen en niemand ze meer hoeft samen te voegen."},
+		{"Hoe actueel zijn de cijfers?", "Dat hangt af van de bron en van wat je nodig hebt. Waar het kan worden de gegevens automatisch bijgewerkt, bijvoorbeeld dagelijks of vrijwel direct. Hoe vaak dat gebeurt leggen we vooraf vast."},
+		{"Kan ik het dashboard ook op mijn telefoon bekijken?", "Ja. Het dashboard is een webapplicatie die zich aanpast aan het scherm, dus je kunt het op een computer, tablet en telefoon bekijken."},
+		{"Wat kost een dashboard?", "Dat hangt af van het aantal bronnen en van wat je wilt laten zien. Ik begin met een korte analyse en maak daarna een voorstel met per fase een vaste prijs, zodat je klein kunt beginnen en zelf bepaalt hoe ver je gaat."},
+	},
+}
+
+var homeFAQ = []faqItem{
+	{"Wat doet Solvalutions?", "Solvalutions bouwt websites, webshops, apps en webapplicaties, dashboards en koppelingen tussen systemen, en maakt software op maat. De klanten zijn vooral MKB en logistiek, vanuit Zutphen. Je werkt direct met de engineer die het ook bouwt."},
+	{"Voor welke bedrijven werkt Solvalutions?", "Vooral voor MKB en logistiek. Daarnaast ook voor industriële bedrijven, stichtingen, bureaus en teams met een digitaal product."},
+	{"Waar begin ik als ik niet weet wat ik nodig heb?", "Met een knelpunt-analyse van twee tot drie werkdagen. Je krijgt een diagnose van waar het knelt, een plan met prioriteiten en een gesprek over de vervolgstappen. Liever eerst even sparren kan ook, dat is vrijblijvend."},
+	{"Wat kost een website, app of koppeling?", "Dat hangt af van wat er nodig is, dus een bedrag noemen zonder gesprek zegt weinig. Na een korte analyse volgt een voorstel met een vaste prijs per fase. Je weet vooraf wat het kost en zit niet vast aan een licentie of aan één leverancier."},
+	{"Werkt Solvalutions ook voor bedrijven buiten Zutphen?", "Ja, voor bedrijven in Gelderland, Overijssel en Utrecht. Kennismaken kan bij je op locatie, het vervolg kan ook op afstand."},
+	{"Wordt er AI gebruikt bij het bouwen?", "Ja, maar niet als vervanging van vakwerk. AI helpt om gerichter en sneller te bouwen. Niets gaat ongezien live: alles wordt beoordeeld voordat het wordt opgeleverd."},
+}
+
+var servicesFAQ = []faqItem{
+	{"Welke diensten biedt Solvalutions?", "Websites en webshops, conversie optimalisatie, apps en webapplicaties, dashboards, koppelingen tussen systemen en het moderniseren of automatiseren van bestaande software."},
+	{"Kan ik meerdere diensten combineren?", "Ja, en dat is vaak slim. Een website die direct koppelt met je CRM of boekhouding, of een dashboard dat gegevens uit meerdere systemen toont, vraagt om beide kanten. Dat regelt één partij, dus je hoeft niet te schakelen tussen leveranciers."},
+	{"Wat als ik nog niet weet welke dienst bij mijn probleem past?", "Gebruik de check op de homepage of bel of mail even. Samen kijken we waar het knelt en wat daarvoor het beste werkt."},
+	{"Hoe werkt de prijs?", "Per fase een vaste prijs. Je weet wat een fase oplevert en kost voordat die begint."},
+}
+
+var areaFAQ = []faqItem{
+	{"In welke regio werkt Solvalutions?", "Solvalutions is gevestigd in Zutphen en actief voor bedrijven in Gelderland, Overijssel en Utrecht, bijvoorbeeld in Apeldoorn, Deventer, Arnhem, Nijmegen, Enschede, Zwolle en Amersfoort."},
+	{"Kom je bij mij op locatie?", "Voor een eerste kennismaking kan dat. Het vervolg loopt ook goed op afstand."},
+	{"Kan ik ook werken met Solvalutions als ik buiten deze provincies zit?", "Ja, werken op afstand kan ook. Je hoeft dus niet in de buurt te zitten. Kennismaken gaat dan online of telefonisch."},
+	{"Hoe snel krijg ik antwoord op een vraag?", "Bel of mail gerust. Meestal heb je binnen een werkdag antwoord."},
 }

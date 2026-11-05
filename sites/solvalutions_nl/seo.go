@@ -23,6 +23,11 @@ type landing struct {
 	Service     string
 	ServiceType string
 	CTATitle    string
+	OGImage     string
+	OGAlt       string
+	CTALead     string
+	CTAButton   string
+	CTASubject  string
 	View        string
 	FAQ         []faqItem
 }
@@ -36,6 +41,23 @@ func organization() map[string]any {
 	}
 }
 
+func breadcrumbList(path, crumb string) map[string]any {
+	return map[string]any{
+		"@type": "BreadcrumbList",
+		"itemListElement": []any{
+			map[string]any{"@type": "ListItem", "position": 1, "name": "Solvalutions", "item": siteURL + "/"},
+			map[string]any{"@type": "ListItem", "position": 2, "name": crumb, "item": siteURL + path},
+		},
+	}
+}
+
+func breadcrumbs(path, crumb string) template.HTML {
+	list := breadcrumbList(path, crumb)
+	list["@context"] = "https://schema.org"
+
+	return jsonLD(list)
+}
+
 func landingStructuredData(page landing) template.HTML {
 	graph := []any{
 		map[string]any{
@@ -45,13 +67,7 @@ func landingStructuredData(page landing) template.HTML {
 			"url":         siteURL + page.Path,
 			"isPartOf":    map[string]any{"@type": "WebSite", "name": "Solvalutions", "url": siteURL},
 		},
-		map[string]any{
-			"@type": "BreadcrumbList",
-			"itemListElement": []any{
-				map[string]any{"@type": "ListItem", "position": 1, "name": "Solvalutions", "item": siteURL + "/"},
-				map[string]any{"@type": "ListItem", "position": 2, "name": page.Crumb, "item": siteURL + page.Path},
-			},
-		},
+		breadcrumbList(page.Path, page.Crumb),
 	}
 
 	if page.Service != "" {
@@ -100,6 +116,11 @@ func renderLanding(c fiber.Ctx, page landing) error {
 		"MetaDescription": page.Description,
 		"StructuredData":  landingStructuredData(page) + faqStructuredData(page.FAQ),
 		"CTATitle":        page.CTATitle,
+		"OGImage":         page.OGImage,
+		"OGAlt":           page.OGAlt,
+		"CTALead":         page.CTALead,
+		"CTAButton":       page.CTAButton,
+		"CTASubject":      page.CTASubject,
 		"FAQ":             page.FAQ,
 	})
 }
@@ -109,3 +130,5 @@ func conversion(c fiber.Ctx) error   { return renderLanding(c, conversionPage) }
 func apps(c fiber.Ctx) error         { return renderLanding(c, appsPage) }
 func area(c fiber.Ctx) error         { return renderLanding(c, areaPage) }
 func integrations(c fiber.Ctx) error { return renderLanding(c, integrationsPage) }
+
+func dashboards(c fiber.Ctx) error { return renderLanding(c, dashboardsPage) }
