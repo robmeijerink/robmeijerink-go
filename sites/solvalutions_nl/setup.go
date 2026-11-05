@@ -259,7 +259,8 @@ func approach(c fiber.Ctx) error {
 	return web.Render(c, "approach", fiber.Map{
 		"Title":           title,
 		"MetaDescription": desc,
-		"StructuredData":  jsonLd + breadcrumbs("/aanpak", "Aanpak"),
+		"StructuredData":  jsonLd + breadcrumbs("/aanpak", "Aanpak") + faqStructuredData(approachFAQ),
+		"FAQ":             approachFAQ,
 	})
 }
 

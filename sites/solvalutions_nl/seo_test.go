@@ -32,7 +32,7 @@ func TestLandingMetaAreUniqueAndBounded(t *testing.T) {
 }
 
 func TestExtraFaqListsFollowCopyRules(t *testing.T) {
-	for name, list := range map[string][]faqItem{"home": homeFAQ, "diensten": servicesFAQ, "werkgebied": areaFAQ, "contact": contactFAQ} {
+	for name, list := range map[string][]faqItem{"home": homeFAQ, "diensten": servicesFAQ, "werkgebied": areaFAQ, "contact": contactFAQ, "aanpak": approachFAQ} {
 		require.NotEmpty(t, list, name)
 
 		for _, item := range list {

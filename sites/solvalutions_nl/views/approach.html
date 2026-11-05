@@ -110,4 +110,16 @@
     </div>
 </section>
 
+<section class="section surf-white seam">
+    <div class="container-x">
+        <div data-reveal class="sec-head">
+            <div class="dim"><i></i><span>Veelgestelde vragen</span><i></i></div>
+        </div>
+        <div class="faq" data-reveal>
+            {{range .FAQ}}<details><summary>{{.Question}}</summary><p>{{.Answer}}</p></details>
+            {{end}}
+        </div>
+    </div>
+</section>
+
 {{ template "components/cta" . }}
