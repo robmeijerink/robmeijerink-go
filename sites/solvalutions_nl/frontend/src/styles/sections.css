@@ -3059,3 +3059,148 @@
     animation: none;
   }
 }
+
+.tblock > div:not(.tb-wide-row) {
+  border-right: 1px solid var(--color-line);
+}
+
+.tblock > div:not(.tb-wide-row):nth-child(even) {
+  border-right: 1px solid var(--color-line);
+}
+
+.tblock > div:not(.tb-wide-row):nth-child(odd) {
+  border-right: 0;
+}
+
+.tblock > .tb-id {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  padding: 1.25rem;
+}
+
+.tb-id dl + dl {
+  margin-top: 0.9rem;
+}
+
+.tb-photo {
+  flex: none;
+  width: 6.5rem;
+  height: 6.5rem;
+  object-fit: cover;
+  background: var(--color-panel-soft);
+  border: 1px solid var(--color-brand-dark);
+}
+
+@media (min-width: 64rem) {
+  .tb-photo {
+    width: 7.5rem;
+    height: 7.5rem;
+  }
+}
+
+.tb-id dd {
+  font-size: 1.25rem;
+  font-family: var(--font-display);
+  font-weight: 700;
+}
+
+@media (max-width: 29.99rem) {
+  .tblock > div:not(.tb-wide-row) {
+    border-right: 0;
+  }
+}
+
+.page-hook {
+  margin-bottom: 1.25rem;
+  font-family: var(--font-display);
+  font-size: clamp(1.4rem, 2.2vw, 1.75rem);
+  font-weight: 400;
+  line-height: 1.2;
+  color: var(--color-accent-dark);
+}
+
+.text-link {
+  font-weight: 700;
+  color: var(--color-brand-dark);
+  text-decoration: underline;
+  text-decoration-color: rgba(184, 74, 43, 0.55);
+  text-underline-offset: 4px;
+  transition: color 0.2s ease;
+}
+
+.text-link:hover {
+  color: var(--color-accent-dark);
+}
+
+.faq {
+  border-top: 2px solid var(--color-brand-dark);
+}
+
+.faq details {
+  border-bottom: 1px solid var(--color-line);
+}
+
+.faq summary {
+  position: relative;
+  display: block;
+  padding: 1.4rem 3rem 1.4rem 0.5rem;
+  cursor: pointer;
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--color-brand-dark);
+  list-style: none;
+  transition: color 0.2s ease;
+}
+
+.faq summary::-webkit-details-marker {
+  display: none;
+}
+
+.faq summary::after {
+  content: '+';
+  position: absolute;
+  right: 0.5rem;
+  top: 50%;
+  transform: translateY(-50%);
+  font-family: var(--font-sans);
+  font-size: 1.6rem;
+  font-weight: 400;
+  color: var(--color-accent-base);
+}
+
+.faq details[open] summary::after {
+  content: '\2212';
+}
+
+.faq summary:hover {
+  color: var(--color-accent-dark);
+}
+
+.faq summary:focus-visible {
+  outline: 2px solid var(--color-accent-base);
+  outline-offset: -2px;
+}
+
+.faq details p {
+  max-width: 46rem;
+  padding: 0 3rem 1.6rem 0.5rem;
+  font-size: 1.0625rem;
+  line-height: 1.7;
+  color: var(--color-content-base);
+}
+
+.flow-wide .flow-chain {
+  max-width: 28rem;
+}
+
+h1 + .page-hook,
+.page-title + .page-hook {
+  margin-top: 1rem;
+}
+
+.cta-contact {
+  margin-top: 2.5rem;
+}
