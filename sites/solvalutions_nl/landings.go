@@ -1,13 +1,13 @@
 package solvalutions_nl
 
 const (
-	introLead    = "Vertel kort wat je nodig hebt en wat je ermee wilt bereiken. Je krijgt een eerlijk advies en daarna een voorstel. Elke fase heeft een vaste prijs. Liever eerst even sparren? Bel of mail gerust, dat is vrijblijvend."
-	introButton  = "Plan een kennismaking"
+	introLead    = "Vertel kort wat je nodig hebt en wat je ermee wilt bereiken. Je krijgt een eerlijk advies en daarna een voorstel. Elke fase heeft een vaste prijs. Liever eerst even sparren? Bel of mail gerust, dat gesprek is gratis en vrijblijvend."
+	introButton  = "Plan een gratis kennismaking"
 	introSubject = "Kennismaking Solvalutions"
 )
 
 var websitesPage = landing{
-	Path:        "/websites",
+	Path:        "/website-laten-maken",
 	Crumb:       "Website laten maken",
 	Title:       "Website laten maken Zutphen: webdesign & webshop | Solvalutions",
 	Description: "Een website laten maken in Zutphen? Webdesign, webshop en formulieren die snel laden, goed gevonden worden en aanvragen opleveren. Vaste prijs per fase.",
@@ -37,7 +37,7 @@ var websitesPage = landing{
 }
 
 var conversionPage = landing{
-	Path:        "/conversie",
+	Path:        "/conversie-optimalisatie",
 	Crumb:       "Conversie optimalisatie",
 	Title:       "Conversie optimalisatie website Zutphen | Solvalutions",
 	Description: "Meer aanvragen, bellers of verkopen uit je bestaande website. Conversie optimalisatie in Zutphen: meten waar bezoekers afhaken en dat gericht verbeteren.",
@@ -61,7 +61,7 @@ var conversionPage = landing{
 }
 
 var appsPage = landing{
-	Path:        "/apps",
+	Path:        "/app-laten-maken",
 	Crumb:       "App of webapplicatie",
 	Title:       "App laten maken Zutphen: webapp & mobiele app | Solvalutions",
 	Description: "Een app of webapplicatie laten maken in Zutphen? Portalen, klantomgevingen en bedrijfsapps die ook op je telefoon werken, gekoppeld aan je systemen.",
@@ -90,7 +90,7 @@ var appsPage = landing{
 }
 
 var integrationsPage = landing{
-	Path:        "/integraties",
+	Path:        "/api-koppeling-laten-maken",
 	Crumb:       "API en systeemkoppelingen",
 	Title:       "API koppeling laten maken: ERP & systemen | Solvalutions",
 	Description: "API-, ERP- en systeemkoppelingen op maat, ook tussen je website en CRM, boekhouding of betaling. Gegevens lopen vanzelf door. Vanuit Zutphen, vaste prijs per fase.",
@@ -130,7 +130,7 @@ var areaPage = landing{
 }
 
 var dashboardsPage = landing{
-	Path:        "/dashboards",
+	Path:        "/dashboard-laten-maken",
 	Crumb:       "Dashboards en data",
 	Title:       "Dashboard laten maken Zutphen: data visualisatie | Solvalutions",
 	Description: "Een dashboard laten maken in Zutphen? Data uit je boekhouding, ERP en webshop vanzelf samengebracht en helder in beeld, altijd actueel en op elk scherm.",
@@ -157,7 +157,7 @@ var dashboardsPage = landing{
 }
 
 var homeFAQ = []faqItem{
-	{"Ik weet niet precies wat ik nodig heb. Waar begin ik?", "Met een knelpunt-analyse van twee tot drie werkdagen. Je krijgt een diagnose van waar het knelt, een plan met prioriteiten en een gesprek over de vervolgstappen. Liever eerst even sparren? Bel of mail gerust, dat is vrijblijvend."},
+	{"Ik weet niet precies wat ik nodig heb. Waar begin ik?", "Met een gratis en vrijblijvend gesprek. Daarin kijken we samen wat er speelt. Is meer onderzoek nodig, dan volgt een knelpunt-analyse van twee tot drie werkdagen, tegen een vaste prijs. Je krijgt dan een diagnose van waar het knelt, een plan met prioriteiten en een gesprek over de vervolgstappen."},
 	{"Wat gaat het me kosten?", "Dat hangt af van wat er nodig is. Ik noem hier geen bedragen, omdat een prijs zonder gesprek weinig zegt. Na een korte analyse krijg je een voorstel. Elke fase heeft een vaste prijs. Je weet dus vooraf wat het kost en zit niet vast aan een licentie of aan één leverancier."},
 	{"Kan ik eerst klein beginnen?", "Ja. We beginnen klein, bijvoorbeeld met een knelpunt-analyse. Daarna bepaal jij of en hoe ver we gaan."},
 	{"Praat ik met degene die het bouwt, of met een accountmanager?", "Met mij, degene die het ook bouwt. Er zitten geen projectmanagers of accountmanagers tussen, dus vragen en wijzigingen lopen rechtstreeks."},
@@ -189,13 +189,14 @@ var areaFAQ = []faqItem{
 var contactFAQ = []faqItem{
 	{"Moet ik mijn vraag al helder hebben?", "Nee. Een paar regels is genoeg. Samen bepalen we waar het precies om gaat."},
 	{"Hoe snel krijg ik antwoord?", "Meestal binnen een werkdag, via mail, telefoon of WhatsApp."},
-	{"Verplicht een eerste gesprek me tot iets?", "Nee. Het eerste gesprek is vrijblijvend. Daarna bepaal je zelf of je een voorstel wilt."},
+	{"Verplicht een eerste gesprek me tot iets?", "Nee. Het eerste gesprek is gratis en vrijblijvend. Daarna bepaal je zelf of je verder wilt, bijvoorbeeld met een knelpunt-analyse tegen een vaste prijs."},
 	{"Kan ik een afspraak op locatie plannen?", "Ja. Kennismaken kan bij je op locatie in Gelderland, Overijssel en Utrecht. Online of telefonisch kan ook."},
 	{"Wat gebeurt er na het eerste gesprek?", "Je krijgt een afgebakend voorstel: wat ik doe, wat het oplevert en wat het kost. Elke fase heeft een vaste prijs."},
 }
 
 var approachFAQ = []faqItem{
 	{"Wat is een knelpunt-analyse en wat krijg ik ervoor terug?", "Een afgebakende analyse van twee tot drie werkdagen. Ik breng in kaart waar tijd, geld en stabiliteit verloren gaan. Je krijgt een diagnose van waar het knelt, een plan met prioriteiten en een gesprek over de vervolgstappen."},
+	{"Is de knelpunt-analyse gratis?", "Nee. De analyse is twee tot drie dagen werk en heeft een vaste prijs, die je vooraf weet. De gesprekken daarvoor zijn wel gratis en vrijblijvend. Daarin bepalen we samen of een analyse zinvol is."},
 	{"Moet ik meteen een groot project aangaan?", "Nee. We beginnen klein, bijvoorbeeld met de knelpunt-analyse. Jij bepaalt hoe ver we gaan."},
 	{"Hoe werkt de betaling?", "Per fase een vaste prijs. Je weet vooraf wat een fase oplevert en kost, en je beslist per fase of je doorgaat."},
 	{"Moet ik technische kennis hebben?", "Nee. Ik leg alles uit in gewone taal. Begrijp je iets niet, dan hoor ik dat graag en leg ik het opnieuw uit."},

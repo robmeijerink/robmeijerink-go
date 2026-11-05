@@ -15,11 +15,11 @@ func Setup(router *web.DomainRouter) {
 	router.Get("/contact", contact)
 
 	router.Get("/diensten", services)
-	router.Get("/integraties", integrations)
-	router.Get("/websites", websites)
-	router.Get("/conversie", conversion)
-	router.Get("/apps", apps)
-	router.Get("/dashboards", dashboards)
+	router.Get("/api-koppeling-laten-maken", integrations)
+	router.Get("/website-laten-maken", websites)
+	router.Get("/conversie-optimalisatie", conversion)
+	router.Get("/app-laten-maken", apps)
+	router.Get("/dashboard-laten-maken", dashboards)
 	router.Get("/werkgebied", area)
 	router.Get("/over", about)
 	router.Get("/aanpak", approach)
@@ -453,18 +453,18 @@ func services(c fiber.Ctx) error {
 // lastModified holds the date each page's content last changed. Update the
 // date for a page when its content changes, so lastmod in the sitemap stays honest.
 var lastModified = map[string]string{
-	"/":            "2026-11-06",
-	"/aanpak":      "2026-11-05",
-	"/diensten":    "2026-11-05",
-	"/integraties": "2026-11-05",
-	"/websites":    "2026-11-05",
-	"/conversie":   "2026-11-05",
-	"/apps":        "2026-11-05",
-	"/dashboards":  "2026-11-05",
-	"/werkgebied":  "2026-11-05",
-	"/cases":       "2026-11-05",
-	"/over":        "2026-11-06",
-	"/contact":     "2026-11-05",
+	"/":                          "2026-11-06",
+	"/aanpak":                    "2026-11-06",
+	"/diensten":                  "2026-11-06",
+	"/api-koppeling-laten-maken": "2026-11-06",
+	"/website-laten-maken":       "2026-11-06",
+	"/conversie-optimalisatie":   "2026-11-06",
+	"/app-laten-maken":           "2026-11-06",
+	"/dashboard-laten-maken":     "2026-11-06",
+	"/werkgebied":                "2026-11-06",
+	"/cases":                     "2026-11-06",
+	"/over":                      "2026-11-06",
+	"/contact":                   "2026-11-06",
 }
 
 var sitemapPages = []struct {
@@ -474,11 +474,11 @@ var sitemapPages = []struct {
 	{loc: "/", priority: "1.0"},
 	{loc: "/aanpak", priority: "0.8"},
 	{loc: "/diensten", priority: "0.8"},
-	{loc: "/integraties", priority: "0.9"},
-	{loc: "/websites", priority: "0.9"},
-	{loc: "/conversie", priority: "0.8"},
-	{loc: "/apps", priority: "0.8"},
-	{loc: "/dashboards", priority: "0.8"},
+	{loc: "/api-koppeling-laten-maken", priority: "0.9"},
+	{loc: "/website-laten-maken", priority: "0.9"},
+	{loc: "/conversie-optimalisatie", priority: "0.8"},
+	{loc: "/app-laten-maken", priority: "0.8"},
+	{loc: "/dashboard-laten-maken", priority: "0.8"},
 	{loc: "/werkgebied", priority: "0.7"},
 	{loc: "/cases", priority: "0.8"},
 	{loc: "/over", priority: "0.8"},

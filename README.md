@@ -48,7 +48,7 @@ docker run --rm -v .:/app -w /app/sites/solvalutions_nl/frontend node:24-alpine 
 PORT=3600 APP_ENV=production go run .
 
 # pick the site with a Host header
-curl -s -H "Host: solvalutions.nl" http://127.0.0.1:3600/websites
+curl -s -H "Host: solvalutions.nl" http://127.0.0.1:3600/website-laten-maken
 ```
 
 Production mode serves the hashed files from `public/assets/dist`, adds the security headers (CSP, HSTS) and rate limits at 100 requests per minute per IP, so avoid hammering it with many page loads in a row (you get a 429).
