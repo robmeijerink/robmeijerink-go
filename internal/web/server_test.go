@@ -167,3 +167,17 @@ func TestServer_RateLimiterIntegration(t *testing.T) {
 	assert.True(t, hitRateLimit, "The server should return a 429 Too Many Requests status")
 	assert.Contains(t, limitBody, "429 Too Many Requests: Je bent even geblokkeerd")
 }
+
+func TestAssetCacheControl(t *testing.T) {
+	assert.Equal(t, "public, max-age=31536000, immutable", assetCacheControl("dist/app-CXIqvsxj.css"))
+	assert.Equal(t, "public, max-age=31536000, immutable", assetCacheControl("dist/geist-sans-latin-400-normal-gapTbOY8.woff2"))
+	assert.Equal(t, "public, max-age=86400", assetCacheControl("img/rob-meijerink-portret.webp"))
+	assert.Equal(t, "public, max-age=86400", assetCacheControl("dist/.vite/manifest.json"))
+}
+
+func TestCompressibleAsset(t *testing.T) {
+	assert.True(t, compressibleAsset("dist/app-CXIqvsxj.css"))
+	assert.True(t, compressibleAsset("dist/app-DXPaZJmQ.js"))
+	assert.False(t, compressibleAsset("img/rob-meijerink-portret.webp"))
+	assert.False(t, compressibleAsset("dist/font-BpqDG8I9.woff2"))
+}

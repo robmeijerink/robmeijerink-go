@@ -49,7 +49,7 @@ func TestSiteContextMiddleware(t *testing.T) {
 			requestPath:  "/",
 			isProdEnv:    true,
 			expectedSite: "solvalutions_nl",
-			expectedHost: "www.solvalutions.nl",
+			expectedHost: "solvalutions.nl",
 			expectedProd: true,
 			expectedPath: "/",
 		},
@@ -103,5 +103,57 @@ func TestSiteContextMiddleware(t *testing.T) {
 			assert.Equal(t, tt.expectedProd, body["IsProd"])
 			assert.Equal(t, tt.expectedPath, body["Path"])
 		})
+	}
+}
+
+func TestRequestContext_RedirectsTrailingSlash(t *testing.T) {
+	app := fiber.New()
+	app.Use(RequestContext(true))
+	app.Get("/over", func(c fiber.Ctx) error { return c.SendString("ok") })
+
+	req := httptest.NewRequest("GET", "/over/?a=1", nil)
+	req.Host = "solvalutions.nl"
+
+	resp, err := app.Test(req)
+	assert.NoError(t, err)
+	assert.Equal(t, fiber.StatusMovedPermanently, resp.StatusCode)
+	assert.Equal(t, "/over?a=1", resp.Header.Get("Location"))
+
+	home := httptest.NewRequest("GET", "/", nil)
+	home.Host = "solvalutions.nl"
+
+	resp, err = app.Test(home)
+	assert.NoError(t, err)
+	assert.NotEqual(t, fiber.StatusMovedPermanently, resp.StatusCode)
+}
+
+func TestTenantFor(t *testing.T) {
+	cases := []struct {
+		host   string
+		isProd bool
+		want   string
+	}{
+		{"solvalutions.nl", true, "solvalutions_nl"},
+		{"www.solvalutions.nl", true, "solvalutions_nl"},
+		{"solvalutions.com", true, "solvalutions_com"},
+		{"robmeijerink.nl", true, "robmeijerink"},
+		{"www.robmeijerink.nl", true, "robmeijerink"},
+		{"SOLVALUTIONS.NL", true, "solvalutions_nl"},
+		{"evilsolvalutions.nl", true, ""},
+		{"solvalutions.nl.evil.com", true, ""},
+		{"robmeijerink.evil.com", true, ""},
+		{"evil.com", true, ""},
+		{"localhost", true, ""},
+		{"solvalutions.nl.test", true, ""},
+		{"solvalutions.nl.test", false, "solvalutions_nl"},
+		{"solvalutions.com.test", false, "solvalutions_com"},
+		{"localhost", false, "robmeijerink"},
+		{"robmeijerink.test", false, "robmeijerink"},
+		{"evil.test", false, ""},
+		{"", true, ""},
+	}
+
+	for _, tc := range cases {
+		assert.Equal(t, tc.want, tenantFor(tc.host, tc.isProd), tc.host)
 	}
 }

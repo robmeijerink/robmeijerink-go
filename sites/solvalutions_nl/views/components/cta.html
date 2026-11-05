@@ -1,0 +1,17 @@
+{{define "components/cta"}}
+<section id="cta-section" class="band-accent seam seam-dark">
+    <div class="container-x cta-pad">
+        <div class="dim dim-light"><i></i><span>Eerste stap</span><i></i></div>
+        <h2 class="cta-title">{{ or .CTATitle "Loopt je software de groei in de weg?" }}</h2>
+        <div class="cta-row">
+            <p class="cta-lead">{{ or .CTALead "Begin met een knelpunt-analyse van twee tot drie werkdagen. Je ontvangt een diagnose van waar het knelt, een plan met prioriteiten en een gesprek over de vervolgstappen. Liever eerst even sparren? Bel of mail gerust, dat is vrijblijvend." }}</p>
+            <a href="mailto:info@solvalutions.nl?subject={{ or .CTASubject "Knelpunt-analyse aanvragen" }}" class="cta-btn focus-ring">
+                {{ or .CTAButton "Plan een knelpunt-analyse" }}
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14m-6-6 6 6-6 6"/></svg>
+            </a>
+        </div>
+
+        <p class="cta-contact">Of bel even: <a href="tel:+31649691374" class="focus-ring">06 49 69 13 74</a> &middot; <a href="mailto:info@solvalutions.nl" class="focus-ring">info@solvalutions.nl</a></p>
+    </div>
+</section>
+{{end}}

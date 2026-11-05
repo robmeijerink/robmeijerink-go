@@ -1,5 +1,8 @@
 @import 'tailwindcss';
 @import './whatsapp-btn.css';
+@import './effects.css';
+@import './scene.css';
+@import './sections.css';
 
 @source '../../../views/';
 
@@ -12,6 +15,30 @@
 }
 
 @font-face {
+  font-family: 'Geist Sans';
+  src: url('../fonts/geist-sans-latin-500-normal.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Geist Sans';
+  src: url('../fonts/geist-sans-latin-700-normal.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Geist Sans';
+  src: url('../fonts/geist-sans-latin-800-normal.woff2') format('woff2');
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
   font-family: 'Geist Mono';
   src: url('../fonts/geist-mono-latin-400-normal.woff2') format('woff2');
   font-weight: 400;
@@ -19,50 +46,152 @@
   font-display: swap;
 }
 
+@font-face {
+  font-family: 'Barlow Semi Condensed';
+  src: url('../fonts/barlow-semi-condensed-latin-400-normal.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Barlow Semi Condensed';
+  src: url('../fonts/barlow-semi-condensed-latin-500-normal.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Barlow Semi Condensed';
+  src: url('../fonts/barlow-semi-condensed-latin-700-normal.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
 @theme {
-  /* Fonts */
   --font-sans: 'Geist Sans', system-ui, sans-serif;
+  --font-display: 'Barlow Semi Condensed', 'Geist Sans', system-ui, sans-serif;
   --font-mono: 'Geist Mono', ui-monospace, monospace;
 
-  /* Structural Colors */
   --color-canvas: #F7F3EC;
-  --color-panel: #FFFFFF;
+  --color-panel: #FDFBF7;
+  --color-warm-white: #FDFBF7;
   --color-panel-soft: #F1ECE4;
+  --color-line: rgba(11, 34, 57, 0.1);
 
-  /* Typography & Content Colors */
   --color-content-strong: #0B2239;
   --color-content-base: #3A536B;
-  --color-content-muted: #6B7C8F;
+  --color-content-muted: #5B6B7C;
 
-  /* Brand Colors */
   --color-brand-dark: #0B2239;
   --color-brand-base: #034980;
   --color-brand-light: #045594;
 
-  /* Accent Colors (Rust/Terracotta) */
   --color-accent-dark: #8C3A21;
   --color-accent-base: #B84A2B;
   --color-accent-light: #D96A4C;
 
-  /* Shadows */
-  --shadow-soft: 0 20px 60px -20px rgba(11,34,57,0.12);
-  --shadow-medium: 0 30px 80px -20px rgba(11,34,57,0.18);
+  --shadow-soft: 0 24px 60px -28px rgba(11, 34, 57, 0.28);
+  --shadow-card: 0 1px 2px rgba(11, 34, 57, 0.04), 0 16px 40px -20px rgba(11, 34, 57, 0.22);
+}
 
-  --color-content-muted: #52525B;
-  --color-panel: #F4F4F5;
+html {
+  scroll-padding-top: 6rem;
+}
+
+body {
+  background-image:
+    linear-gradient(to right, rgba(184, 74, 43, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(184, 74, 43, 0.04) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-display);
+  letter-spacing: -0.005em;
+}
+
+h2,
+h3 {
+  text-wrap: balance;
+}
+
+.container-x {
+  width: 100%;
+  max-width: 76rem;
+  margin-inline: auto;
+  padding-inline: 1.25rem;
+}
+
+@media (min-width: 64rem) {
+  .container-x {
+    padding-inline: 2rem;
+  }
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  border-radius: 0.25rem;
+  padding: 0.95rem 1.5rem;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  line-height: 1.2;
+  transition:
+    background-color 0.2s ease,
+    border-color 0.2s ease,
+    color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.btn svg {
+  width: 1.05rem;
+  height: 1.05rem;
+}
+
+.btn-primary {
+  background: var(--color-accent-dark);
+  color: #fff;
+  box-shadow: 0 10px 24px -12px rgba(140, 58, 33, 0.7);
+}
+
+.btn-primary:hover {
+  background: var(--color-accent-base);
+}
+
+.btn-secondary {
+  background: var(--color-warm-white);
+  color: var(--color-brand-dark);
+  border: 1px solid rgba(11, 34, 57, 0.16);
+}
+
+.btn-secondary:hover {
+  border-color: var(--color-brand-dark);
+}
+
+.focus-ring:focus-visible {
+  outline: 2px solid var(--color-accent-base);
+  outline-offset: 3px;
 }
 
 #flow-canvas {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 1;
-    pointer-events: none;
+  opacity: 0.55;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  pointer-events: none;
 }
 
 main {
-    position: relative;
-    z-index: 10;
+  position: relative;
+  z-index: 10;
 }

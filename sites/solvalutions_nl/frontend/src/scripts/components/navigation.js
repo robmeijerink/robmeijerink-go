@@ -1,76 +1,37 @@
 export const initNavigation = () => {
     const nav = document.getElementById('main-nav');
-    const navBackground = document.getElementById('nav-background');
-    if (!nav || !navBackground) return;
 
-    let lastScrollY = window.scrollY;
-    let isNavVisible = true;
-    let scrollUpAccumulator = 0;
-
-    const handleScroll = () => {
-        const currentScrollY = window.scrollY;
-        const delta = currentScrollY - lastScrollY;
-
-        if (currentScrollY > 50) {
-            navBackground.classList.remove('bg-transparent', 'border-transparent');
-            navBackground.classList.add('bg-canvas/10', 'backdrop-blur-sm', 'border-content-strong/5');
-        } else {
-            navBackground.classList.remove('bg-canvas/10', 'backdrop-blur-sm', 'border-content-strong/5');
-            navBackground.classList.add('bg-transparent', 'border-transparent');
-        }
-
-        if (currentScrollY <= 150) {
-            if (!isNavVisible) {
-                nav.style.transform = '';
-                isNavVisible = true;
-            }
-            scrollUpAccumulator = 0;
-        } else if (delta > 0) {
-            if (isNavVisible) {
-                nav.style.transform = 'translateY(-100%)';
-                isNavVisible = false;
-            }
-            scrollUpAccumulator = 0;
-        } else if (delta < 0) {
-            scrollUpAccumulator += Math.abs(delta);
-            if (!isNavVisible && scrollUpAccumulator > 80) {
-                nav.style.transform = '';
-                isNavVisible = true;
-            }
-        }
-        lastScrollY = currentScrollY;
-    };
-
-    window.addEventListener('scroll', handleScroll, { passive: true });
+    if (!nav) return;
 
     const btn = document.getElementById('mobile-menu-btn');
     const overlay = document.getElementById('mobile-overlay');
     const drawer = document.getElementById('mobile-drawer');
 
-    if (btn && overlay && drawer) {
-        const toggleMenu = () => {
-            const isCurrentlyOpen = overlay.classList.contains('is-open');
+    if (!btn || !overlay || !drawer) return;
 
-            nav.classList.toggle('is-open');
-            btn.classList.toggle('is-open');
-            overlay.classList.toggle('is-open');
-            drawer.classList.toggle('is-open');
+    const toggleMenu = () => {
+        const isCurrentlyOpen = overlay.classList.contains('is-open');
 
-            btn.setAttribute('aria-expanded', !isCurrentlyOpen);
+        nav.classList.toggle('is-open');
+        btn.classList.toggle('is-open');
+        overlay.classList.toggle('is-open');
+        drawer.classList.toggle('is-open');
 
-            document.body.style.overflow = isCurrentlyOpen ? '' : 'hidden';
-        };
+        btn.setAttribute('aria-expanded', String(!isCurrentlyOpen));
 
-        btn.addEventListener('click', toggleMenu);
-        overlay.addEventListener('click', toggleMenu);
+        document.body.style.overflow = isCurrentlyOpen ? '' : 'hidden';
+    };
 
-        nav.addEventListener('click', (e) => {
-            if (nav.classList.contains('is-open') && !e.target.closest('button, a')) {
-                const drawerLeft = drawer.getBoundingClientRect().left;
-                if (e.clientX < drawerLeft) {
-                    toggleMenu();
-                }
-            }
-        });
-    }
+    btn.addEventListener('click', toggleMenu);
+    overlay.addEventListener('click', toggleMenu);
+
+    document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape' && overlay.classList.contains('is-open')) toggleMenu();
+    });
+
+    nav.addEventListener('click', (event) => {
+        if (!nav.classList.contains('is-open') || event.target.closest('button, a')) return;
+
+        if (event.clientX < drawer.getBoundingClientRect().left) toggleMenu();
+    });
 };

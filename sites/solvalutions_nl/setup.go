@@ -4,7 +4,6 @@ import (
 	"fmt"
 	"html/template"
 	"strings"
-	"time"
 
 	"github.com/gofiber/fiber/v3"
 	"github.com/robmeijerink/robmeijerink-go/internal/web"
@@ -16,6 +15,12 @@ func Setup(router *web.DomainRouter) {
 	router.Get("/contact", contact)
 
 	router.Get("/diensten", services)
+	router.Get("/integraties", integrations)
+	router.Get("/websites", websites)
+	router.Get("/conversie", conversion)
+	router.Get("/apps", apps)
+	router.Get("/dashboards", dashboards)
+	router.Get("/werkgebied", area)
 	router.Get("/over", about)
 	router.Get("/aanpak", approach)
 
@@ -23,8 +28,8 @@ func Setup(router *web.DomainRouter) {
 }
 
 func home(c fiber.Ctx) error {
-	title := "Software moderniseren – MKB Oost-Nederland | Solvalutions"
-	desc := "Modernisering van verouderde B2B software voor MKB en maakindustrie in Oost-Nederland, met Rust en Go waar snelheid telt. Minder handwerk, minder fouten, vaste prijs per fase."
+	title := "Website laten maken & software op maat Zutphen | Solvalutions"
+	desc := "Website laten maken in Zutphen? Ook webshops, apps, koppelingen en software op maat voor MKB en logistiek. Direct met de engineer, vaste prijs per fase."
 	url := "https://solvalutions.nl"
 
 	jsonLd := template.HTML(`
@@ -53,17 +58,29 @@ func home(c fiber.Ctx) error {
         "addressCountry": "NL"
       },
       "areaServed": [
-        { "@type": "AdministrativeArea", "name": "Oost-Nederland" },
+        { "@type": "AdministrativeArea", "name": "Gelderland" },
+        { "@type": "AdministrativeArea", "name": "Overijssel" },
+        { "@type": "AdministrativeArea", "name": "Utrecht" },
+        { "@type": "AdministrativeArea", "name": "Drenthe" },
+        { "@type": "AdministrativeArea", "name": "Flevoland" },
+        { "@type": "City", "name": "Zutphen" },
+        { "@type": "City", "name": "Apeldoorn" },
+        { "@type": "City", "name": "Deventer" },
+        { "@type": "City", "name": "Arnhem" },
+        { "@type": "City", "name": "Nijmegen" },
+        { "@type": "City", "name": "Enschede" },
+        { "@type": "City", "name": "Zwolle" },
+        { "@type": "City", "name": "Amersfoort" },
+        { "@type": "City", "name": "Utrecht" },
         { "@type": "Country", "name": "Nederland" }
       ],
       "knowsAbout": [
-        "Rust",
-        "Go",
-        "PHP",
-        "Laravel",
-        "Legacy modernisering",
-        "Systeemintegratie",
+        "Softwaremodernisering",
+        "Systeem- en ERP-integraties",
         "API-ontwikkeling",
+        "Automatisering met AI",
+        "Backend-ontwikkeling",
+        "Websites",
         "DevOps",
         "Cloud-infrastructuur"
       ],
@@ -78,13 +95,14 @@ func home(c fiber.Ctx) error {
 	return web.Render(c, "home", fiber.Map{
 		"Title":           title,
 		"MetaDescription": desc,
-		"StructuredData":  jsonLd,
+		"StructuredData":  jsonLd + faqStructuredData(homeFAQ),
+		"FAQ":             homeFAQ,
 	})
 }
 
 func contact(c fiber.Ctx) error {
-	title := "Contact — Even sparren over je ICT vraagstuk | Solvalutions"
-	desc := "Loopt er iets vast in je software? Stuur een mail of bel even — rechtstreeks met Rob, geen accountmanager. Geen verplichtingen."
+	title := "Contact: even sparren over je ICT-vraagstuk | Solvalutions"
+	desc := "Werkt je software niet efficiënt? Stuur een mail of bel even. Je spreekt rechtstreeks met Rob, zonder accountmanager. Vrijblijvend."
 	url := "https://solvalutions.nl"
 
 	jsonLd := template.HTML(`
@@ -132,13 +150,14 @@ func contact(c fiber.Ctx) error {
 	return web.Render(c, "contact", fiber.Map{
 		"Title":           title,
 		"MetaDescription": desc,
-		"StructuredData":  jsonLd,
+		"StructuredData":  jsonLd + breadcrumbs("/contact", "Contact") + faqStructuredData(contactFAQ),
+		"FAQ":             contactFAQ,
 	})
 }
 
 func about(c fiber.Ctx) error {
-	title := "Senior PHP developer Zutphen, Gelderland | Rob Meijerink"
-	desc := "Tien jaar full-stack developer, nu zelfstandig vanuit Zutphen. Eén engineer, geen tussenlagen — je werkt rechtstreeks met de persoon die het bouwt."
+	title := "Over Solvalutions: Rob Meijerink, software architect in Zutphen"
+	desc := "Sinds 2011 actief als developer en architect, nu zelfstandig vanuit Zutphen. Eén engineer, zonder tussenlagen: je werkt rechtstreeks met de persoon die het bouwt."
 	url := "https://solvalutions.nl"
 
 	jsonLd := template.HTML(`
@@ -157,8 +176,8 @@ func about(c fiber.Ctx) error {
       "mainEntity": {
         "@type": "Person",
         "name": "Rob Meijerink",
-        "jobTitle": "Software Engineer",
-        "description": "Senior full-stack en backend engineer met ruim 10 jaar ervaring in legacy-modernisering, systeemintegratie en maatwerksoftware.",
+        "jobTitle": "Software architect",
+        "description": "Software architect en developer, actief sinds 2011, gespecialiseerd in softwaremodernisering, systeemkoppelingen, automatisering en maatwerksoftware.",
         "url": "https://robmeijerink.nl",
         "image": "` + url + `/assets/img/foto-rob-meijerink-solvalutions-avatar-320.jpg",
         "address": {
@@ -169,15 +188,14 @@ func about(c fiber.Ctx) error {
         },
         "knowsLanguage": ["nl", "en", "de", "es"],
         "knowsAbout": [
-          "Rust",
-          "Go",
-          "PHP",
-          "Laravel",
-          "Legacy modernisering",
-          "Systeemintegratie",
+          "Softwaremodernisering",
+          "Systeem- en ERP-integraties",
           "API-ontwikkeling",
-          "Cloud-infrastructuur",
-          "DevOps"
+          "Automatisering met AI",
+          "Backend-ontwikkeling",
+          "Websites",
+          "DevOps",
+          "Cloud-infrastructuur"
         ],
         "alumniOf": {
           "@type": "EducationalOrganization",
@@ -199,15 +217,16 @@ func about(c fiber.Ctx) error {
 
 	// Lekker flexibel via de fiber.Map
 	return web.Render(c, "about", fiber.Map{
+		"CTATitle":        "Zullen we kennismaken?",
 		"Title":           title,
 		"MetaDescription": desc,
-		"StructuredData":  jsonLd,
+		"StructuredData":  jsonLd + breadcrumbs("/over", "Over"),
 	})
 }
 
 func approach(c fiber.Ctx) error {
-	title := "Aanpak – vaste prijs per fase | Solvalutions"
-	desc := "Klein beginnen, vaste prijs per fase, naast je systeem bouwen. Geen open eindjes — zo werk ik aan modernisering, koppelingen en maatwerk."
+	title := "Aanpak: vaste prijs per fase | Solvalutions"
+	desc := "Klein beginnen, vaste prijs per fase, naast je systeem bouwen. Zo werk ik aan modernisering, koppelingen en maatwerk."
 	url := "https://solvalutions.nl"
 
 	jsonLd := template.HTML(`
@@ -240,13 +259,14 @@ func approach(c fiber.Ctx) error {
 	return web.Render(c, "approach", fiber.Map{
 		"Title":           title,
 		"MetaDescription": desc,
-		"StructuredData":  jsonLd,
+		"StructuredData":  jsonLd + breadcrumbs("/aanpak", "Aanpak") + faqStructuredData(approachFAQ),
+		"FAQ":             approachFAQ,
 	})
 }
 
 func cases(c fiber.Ctx) error {
-	title := "Opgeloste ICT vraagstukken voor MKB | Solvalutions"
-	desc := "Een selectie van trajecten: legacy-modernisering, Rust-onderdelen voor snelle dataverwerking, maatwerk dat handwerk wegnam, security-aanscherping en systeemkoppelingen. Referentie op aanvraag."
+	title := "Cases: opgeloste software- en systeemvraagstukken | Solvalutions"
+	desc := "Een selectie van trajecten: gemoderniseerde kernsystemen, snellere dataverwerking, maatwerk dat handwerk wegnam en koppelingen tussen systemen."
 	url := "https://solvalutions.nl"
 
 	structuredData := template.HTML(`
@@ -268,7 +288,7 @@ func cases(c fiber.Ctx) error {
 	      {
 	        "@type": "ListItem",
 	        "position": 1,
-	        "name": "Vastgelopen kernsysteem stap voor stap herbouwd, zonder dat het bedrijf stillag",
+	        "name": "Kernsysteem dat niet meer efficiënt werkte stap voor stap herbouwd, zonder dat het bedrijf stillag",
 	        "description": "Legacy-modernisering: herbouw naar gestructureerde, geteste architectuur draaiend naast de bestaande omgeving."
 	      },
 	      {
@@ -296,15 +316,16 @@ func cases(c fiber.Ctx) error {
 	`)
 
 	return web.Render(c, "cases", fiber.Map{
+		"CTATitle":        "Herken je dit vraagstuk?",
 		"Title":           title,
 		"MetaDescription": desc,
-		"StructuredData":  structuredData,
+		"StructuredData":  structuredData + breadcrumbs("/cases", "Cases"),
 	})
 }
 
 func services(c fiber.Ctx) error {
-	title := "PHP/Laravel moderniseren & systemen koppelen | Solvalutions"
-	desc := "Laravel applicatie traag of vastgelopen? PHP/Laravel modernisering, API-koppelingen en maatwerksoftware voor MKB. Vaste prijs per fase, Oost-Nederland."
+	title := "Diensten: software op maat, koppelingen en websites | Solvalutions"
+	desc := "Software moderniseren, systemen koppelen, werk automatiseren en websites bouwen voor MKB en logistiek. Elke opdracht is afgebakend, met een vaste prijs per fase."
 	url := "https://solvalutions.nl"
 
 	structuredData := template.HTML(`
@@ -328,8 +349,8 @@ func services(c fiber.Ctx) error {
 	        "position": 1,
 	        "item": {
 	          "@type": "Service",
-	          "name": "Legacy-modernisering",
-	          "description": "Verouderde systemen stap voor stap herbouwen naar gestructureerde, geteste techniek — draaiend naast de bestaande omgeving, zodat de operatie niet stillegt.",
+	          "name": "Softwaremodernisering",
+	          "description": "Verouderde systemen stap voor stap herbouwen naar gestructureerde, geteste techniek. Het draait naast de bestaande omgeving, zodat de operatie niet stilvalt.",
 	          "serviceType": "Softwaremodernisering",
 	          "provider": {
 	            "@type": "Organization",
@@ -337,7 +358,20 @@ func services(c fiber.Ctx) error {
 	            "url": "` + url + `"
 	          },
 	          "areaServed": [
-	            { "@type": "AdministrativeArea", "name": "Oost-Nederland" },
+	            { "@type": "AdministrativeArea", "name": "Gelderland" },
+	            { "@type": "AdministrativeArea", "name": "Overijssel" },
+	            { "@type": "AdministrativeArea", "name": "Utrecht" },
+	            { "@type": "AdministrativeArea", "name": "Drenthe" },
+	            { "@type": "AdministrativeArea", "name": "Flevoland" },
+	            { "@type": "City", "name": "Zutphen" },
+	            { "@type": "City", "name": "Apeldoorn" },
+	            { "@type": "City", "name": "Deventer" },
+	            { "@type": "City", "name": "Arnhem" },
+	            { "@type": "City", "name": "Nijmegen" },
+	            { "@type": "City", "name": "Enschede" },
+	            { "@type": "City", "name": "Zwolle" },
+	            { "@type": "City", "name": "Amersfoort" },
+	            { "@type": "City", "name": "Utrecht" },
 	            { "@type": "Country", "name": "Nederland" }
 	          ]
 	        }
@@ -347,8 +381,8 @@ func services(c fiber.Ctx) error {
 	        "position": 2,
 	        "item": {
 	          "@type": "Service",
-	          "name": "Systeemkoppelingen en API's",
-	          "description": "Bestaande applicaties en third-party diensten via betrouwbare koppelingen en API's met elkaar laten samenwerken, zodat informatie automatisch doorstroomt.",
+	          "name": "API-, systeem- en ERP-koppelingen",
+	          "description": "Bestaande applicaties, ERP-systemen en diensten van derden aan elkaar koppelen, zodat gegevens automatisch doorstromen. Ook voor nieuwe API's en koppelingen op maat.",
 	          "serviceType": "Systeemintegratie",
 	          "provider": {
 	            "@type": "Organization",
@@ -362,8 +396,8 @@ func services(c fiber.Ctx) error {
 	        "position": 3,
 	        "item": {
 	          "@type": "Service",
-	          "name": "Procesoptimalisatie en maatwerksoftware",
-	          "description": "Handmatig terugkerend werk omzetten naar één maatwerkapplicatie die het werk wegneemt in plaats van verplaatst.",
+	          "name": "Automatisering en maatwerksoftware",
+	          "description": "Handmatig terugkerend werk automatiseren met maatwerksoftware en, waar het iets oplevert, AI, zodat het werk wordt weggenomen in plaats van verplaatst.",
 	          "serviceType": "Maatwerkontwikkeling",
 	          "provider": {
 	            "@type": "Organization",
@@ -378,7 +412,7 @@ func services(c fiber.Ctx) error {
 	        "item": {
 	          "@type": "Service",
 	          "name": "Performance en betrouwbaar draaien",
-	          "description": "Performance-kritische onderdelen herbouwen (onder andere in Rust en Go) en zorgen dat software blijft draaien met geautomatiseerde uitrol, monitoring en doordachte infrastructuur.",
+	          "description": "Onderdelen die knellen sneller en voorspelbaarder maken en zorgen dat software blijft draaien met geautomatiseerde uitrol, monitoring en doordachte infrastructuur.",
 	          "serviceType": "Performance engineering en DevOps",
 	          "provider": {
 	            "@type": "Organization",
@@ -392,9 +426,9 @@ func services(c fiber.Ctx) error {
 	        "position": 5,
 	        "item": {
 	          "@type": "Service",
-	          "name": "Rust en systeemsoftware",
-	          "description": "Kritische onderdelen in Rust bouwen of herschrijven voor snelle, voorspelbare verwerking van grote hoeveelheden data, zonder de rest van het systeem te vervangen.",
-	          "serviceType": "Systeemsoftware en performance engineering",
+	          "name": "Moderne websites",
+	          "description": "Snelle, onderhoudsarme websites die goed gevonden worden en toegankelijk zijn, met een vaste prijs per fase.",
+	          "serviceType": "Webontwikkeling",
 	          "provider": {
 	            "@type": "Organization",
 	            "name": "Solvalutions",
@@ -411,35 +445,59 @@ func services(c fiber.Ctx) error {
 	return web.Render(c, "services", fiber.Map{
 		"Title":           title,
 		"MetaDescription": desc,
-		"StructuredData":  structuredData,
+		"StructuredData":  structuredData + breadcrumbs("/diensten", "Diensten") + faqStructuredData(servicesFAQ),
+		"FAQ":             servicesFAQ,
 	})
+}
+
+// lastModified holds the date each page's content last changed. Update the
+// date for a page when its content changes, so lastmod in the sitemap stays honest.
+var lastModified = map[string]string{
+	"/":            "2026-11-05",
+	"/aanpak":      "2026-11-05",
+	"/diensten":    "2026-11-05",
+	"/integraties": "2026-11-05",
+	"/websites":    "2026-11-05",
+	"/conversie":   "2026-11-05",
+	"/apps":        "2026-11-05",
+	"/dashboards":  "2026-11-05",
+	"/werkgebied":  "2026-11-05",
+	"/cases":       "2026-11-05",
+	"/over":        "2026-11-05",
+	"/contact":     "2026-11-05",
+}
+
+var sitemapPages = []struct {
+	loc      string
+	priority string
+}{
+	{loc: "/", priority: "1.0"},
+	{loc: "/aanpak", priority: "0.8"},
+	{loc: "/diensten", priority: "0.8"},
+	{loc: "/integraties", priority: "0.9"},
+	{loc: "/websites", priority: "0.9"},
+	{loc: "/conversie", priority: "0.8"},
+	{loc: "/apps", priority: "0.8"},
+	{loc: "/dashboards", priority: "0.8"},
+	{loc: "/werkgebied", priority: "0.7"},
+	{loc: "/cases", priority: "0.8"},
+	{loc: "/over", priority: "0.8"},
+	{loc: "/contact", priority: "0.8"},
 }
 
 func sitemap(c fiber.Ctx) error {
 	host := c.Hostname()
-	now := time.Now().Format("2006-01-02")
 
 	// No hreflang alternates: .nl and .com are distinct content (NL commercial vs
 	// EN showcase), not translations of each other. Each domain self-canonicals.
-	pages := []struct {
-		loc      string
-		priority string
-	}{
-		{loc: "/", priority: "1.0"},
-		{loc: "/aanpak", priority: "0.8"},
-		{loc: "/diensten", priority: "0.8"},
-		{loc: "/cases", priority: "0.8"},
-		{loc: "/over", priority: "0.8"},
-		{loc: "/contact", priority: "0.8"},
-	}
 
 	var xml strings.Builder
 
 	xml.WriteString(`<?xml version="1.0" encoding="UTF-8"?>` + "\n")
 	xml.WriteString(`<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">` + "\n")
 
-	for _, page := range pages {
-		xml.WriteString(fmt.Sprintf("\t<url>\n\t\t<loc>https://%s%s</loc>\n\t\t<lastmod>%s</lastmod>\n\t\t<changefreq>monthly</changefreq>\n\t\t<priority>%s</priority>\n", host, page.loc, now, page.priority))
+	for _, page := range sitemapPages {
+		xml.WriteString(fmt.Sprintf("\t<url>\n\t\t<loc>https://%s%s</loc>\n\t\t<lastmod>%s</lastmod>\n\t\t<changefreq>monthly</changefreq>\n\t\t<priority>%s</priority>\n", host, page.loc, lastModified[page.loc], page.priority))
 		xml.WriteString("\t</url>\n")
 	}
 
