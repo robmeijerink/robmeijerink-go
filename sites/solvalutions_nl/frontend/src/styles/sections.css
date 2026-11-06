@@ -3100,12 +3100,9 @@
 
 @media (min-width: 64rem) {
   .check-opts {
-    display: flex;
-    flex-direction: column;
-  }
-
-  .check-opt {
-    flex: 1;
+    position: sticky;
+    top: 6.5rem;
+    align-self: start;
   }
 }
 
