@@ -1,0 +1,57 @@
+# Solvalutions
+
+> Solvalutions is a specialized B2B software engineering agency from the Netherlands, founded and led by Rob Meijerink. It builds high-performance backends, systems software in Rust and Go, cloud-native architecture and scalable business software. Clients work directly with the lead architect: no account managers, no overhead.
+
+This site (solvalutions.com) is the English-language showcase of Solvalutions for international and technical audiences. The Dutch site, https://solvalutions.nl, is separate content (not a translation) aimed at Dutch SMEs and logistics companies, covering websites, system integrations, automation and custom software with a fixed price per phase. Rob Meijerink's personal freelance profile is at https://robmeijerink.nl.
+
+## Pages
+
+- [Home](https://solvalutions.com/): what Solvalutions specializes in: high-performance backends, cloud native, API first and domain-driven design.
+- [About](https://solvalutions.com/about): company profile, core stack and core principles.
+- [Approach](https://solvalutions.com/approach): methodology (domain-driven design, efficiency, cloud native) and how the agency is organized.
+- [Cases](https://solvalutions.com/cases): selected case studies with the problem, solution and stack.
+- [Contact](https://solvalutions.com/contact): email and LinkedIn.
+
+## Key facts
+
+- Company: Solvalutions, based in Zutphen, the Netherlands
+- Founder & Lead Engineer: Rob Meijerink (15+ years of experience)
+- Model: you work directly with the lead architect, as a specialized technical team that scales up with a trusted network of senior engineers only when a project demands it
+- Core stack: Rust, Go (Golang), PHP/Laravel, Tailwind CSS, minimal JavaScript
+- Focus: high-performance B2B software, scalable business solutions, reliable architecture
+
+## Services
+
+- High-performance backends: replacing bloated legacy systems with compiled, type-safe services. Rust where predictable latency and memory safety matter, Go where speed of delivery and simplicity win. Optimized for concurrency, low latency and high throughput. Technologies: gRPC, microservices, Rust, Tokio, Axum, WebAssembly, Go, PHP/Laravel.
+- Cloud native: Kubernetes, Terraform and AWS/Azure/GCP automation. Infrastructure as Code is the default; deployments are automated so systems are highly available, scalable and reproducible.
+- API first: reliable REST and GraphQL APIs that developers enjoy using.
+- Domain-driven design: business logic modelled into code that mirrors reality, reducing technical debt from day one.
+
+## Principles
+
+- Performance as a feature: applications engineered from the ground up to be fast.
+- Radical pragmatism: no hype-driven development; proven, boring technologies, and the simple route when a simple solution solves the problem.
+- True partnership: transparent communication, clean code handovers, no black-box development.
+- Lean by design: no account managers, no overhead, no endless meetings; senior-level execution on every commit.
+
+## Case studies
+
+- Data Aggregation Engine (2026): a platform merging data from a dozen internal and third-party sources per request got slower with every customer. Rebuilt in Rust with concurrent fetching and streaming merges: predictable response times and bounded memory. Stack: Rust, Tokio, Axum, PostgreSQL, Redis.
+- Batch Processing, Rewritten (2026): a nightly PHP import that took hours and ran out of memory, rewritten in Rust as a streaming pipeline, validated record by record against the legacy output, now finishing in a fraction of the time. Stack: Rust, Serde, PostgreSQL, PHP/Laravel.
+- One Calculation Engine, Everywhere (2026): pricing and planning rules that existed in three versions, extracted into one Rust library exposed to PHP via FFI and to the browser via WebAssembly, so every surface produces identical results. Stack: Rust, WebAssembly, FFI, Laravel, TypeScript.
+- High-Throughput API Layer (2026): a public API with tail-latency problems rebuilt in Rust with async I/O, typed request handling and structured caching: stable p99 latency, lower infrastructure usage, backwards-compatible OpenAPI contract. Stack: Rust, Axum, OpenAPI, Redis.
+- Legacy Cloud Migration (2025): a fragmented PHP monolith migrated to Go-based microservices, reducing infrastructure costs by 40% while doubling request capacity. Stack: Go, Kubernetes, PostgreSQL, gRPC.
+- Headless Commerce Engine (2026): a bottlenecked WordPress/WooCommerce monolith replaced by a headless architecture with Go APIs: 5x faster checkout and scalability during flash sales. Stack: Go, WordPress, MySQL/MariaDB, WooCommerce, Redis.
+
+## Contact
+
+- Email: info@solvalutions.nl
+- Phone: +31 6 49 69 13 74
+- LinkedIn: https://linkedin.com/in/robm89
+- No sales pitches: direct communication with an engineer.
+
+## Optional
+
+- [Solvalutions (Dutch site)](https://solvalutions.nl): services for Dutch SMEs and logistics: websites, integrations, dashboards, automation and custom software.
+- [Rob Meijerink](https://robmeijerink.nl): personal profile of the founder as a freelance senior developer and DevOps engineer.
+- [Sitemap](https://solvalutions.com/sitemap.xml)

@@ -148,6 +148,7 @@ func registerFileRoutes(app *fiber.App) {
 			"apple-touch-icon.png":         true,
 			"site.webmanifest":             true,
 			"robots.txt":                   true,
+			"llms.txt":                     true,
 			"web-app-manifest-192x192.png": true,
 			"web-app-manifest-512x512.png": true,
 		}

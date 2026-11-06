@@ -1,0 +1,85 @@
+# Solvalutions
+
+> Solvalutions is het bedrijf van Rob Meijerink, software architect in Zutphen (Gelderland). Hij bouwt websites, webshops en apps, en maakt API-, ERP- en systeemkoppelingen, dashboards, procesautomatisering (met AI waar het iets oplevert) en software op maat voor MKB en logistiek. Je werkt direct met de engineer die het bouwt, zonder accountmanager, en elke fase heeft vooraf een vaste prijs.
+
+Solvalutions werkt voor bedrijven in Gelderland, Overijssel en Utrecht, en ook op afstand in de rest van Nederland. Rob is actief als developer sinds 2015. Deze site (solvalutions.nl) is de Nederlandstalige commerciële site. https://solvalutions.com is een aparte Engelstalige showcase (geen vertaling). Robs persoonlijke profiel als freelance developer voor teams staat op https://robmeijerink.nl.
+
+## Diensten
+
+- [Website laten maken](https://solvalutions.nl/website-laten-maken): webdesign, webshops, offerteformulieren en afsprakenmodules in Zutphen. Snel, onderhoudsarm, SEO en toegankelijkheid inbegrepen, zelf aan te passen in elk CMS (ook WordPress). Pagina's die nu goed gevonden worden, blijven bij de overstap behouden. Rob host de website zelf.
+- [API koppeling laten maken](https://solvalutions.nl/api-koppeling-laten-maken): API-, ERP- en systeemkoppelingen, ook zonder standaardkoppeling. Bijvoorbeeld Exact Online, SnelStart, AFAS, Moneybird, Twinfield, Shopify, WooCommerce, HubSpot en Salesforce. Ook systemen zonder API (via export of database) en nieuwe API's op maat. Koppelingen melden fouten en proberen opnieuw, zodat er geen gegevens verloren gaan.
+- [Processen automatiseren](https://solvalutions.nl/processen-automatiseren): terugkerend handwerk zoals overtypen, controleren en doorsturen van orders, facturen, aanvragen en mails automatiseren. AI leest mails, pdf's en formulieren waar dat iets oplevert; waar nodig bevestigt een medewerker de uitkomst. Draait bovenop bestaande systemen.
+- [App laten maken](https://solvalutions.nl/app-laten-maken): webapplicaties, klantportalen, apps voor medewerkers, interne systemen en backends/API's voor digitale producten. Werkt ook op de telefoon, met inloggen en rechten, gekoppeld aan boekhouding of ERP.
+- [Dashboard laten maken](https://solvalutions.nl/dashboard-laten-maken): data uit boekhouding, ERP, webshop, CRM en Excel samengebracht in één actueel dashboard (omzet en orders, voorraad en levering, aanvragen, uren en capaciteit). Via een bestaande tool zoals Power BI of Looker Studio, of als eigen webapplicatie op maat.
+- [Conversie optimalisatie](https://solvalutions.nl/conversie-optimalisatie): meer aanvragen, bellers en bestellingen uit een bestaande website. Nulmeting, verbeterlijst geordend op effect en moeite, daarna aanpassen en meten.
+- [Legacy-modernisering](https://solvalutions.nl/diensten): verouderde software waar niemand meer graag aan komt, stap voor stap herbouwen naar gestructureerde, geteste techniek. Het nieuwe systeem draait naast het oude, zodat het bedrijf niet stilvalt. Daarna zijn aanpassingen weer voorspelbaar en hangt het bedrijf niet meer af van één systeem of één persoon.
+- [Performance en betrouwbaarheid](https://solvalutions.nl/diensten): software die traag wordt bij drukte, spannende releases of oplopende cloudkosten. Resultaat: software die drukte aankan, zonder stress live gaat en minder kost in beheer, met geautomatiseerde uitrol en monitoring.
+- [Alle diensten](https://solvalutions.nl/diensten): overzicht van alle diensten. Diensten zijn te combineren, bijvoorbeeld een website die koppelt met je CRM of boekhouding, geregeld door één partij.
+
+## Over het bedrijf
+
+- [Home](https://solvalutions.nl/): overzicht van alle diensten, de check "Waar loop je tegenaan?" die bij je situatie de passende diensten toont, de aanpak, voor wie, cases en veelgestelde vragen.
+- [Over](https://solvalutions.nl/over): Rob Meijerink, software architect. Begonnen in online marketing en technische SEO, sinds 2015 full stack developer en jarenlang verantwoordelijk voor bedrijfskritische software. Nu zelfstandig onder de naam Solvalutions.
+- [Aanpak](https://solvalutions.nl/aanpak): werkwijze in drie stappen en vier vaste uitgangspunten.
+- [Cases](https://solvalutions.nl/cases): opgeloste vraagstukken, met situatie, aanpak en resultaat.
+- [Werkgebied](https://solvalutions.nl/werkgebied): Zutphen en omgeving; Gelderland, Overijssel, Utrecht en op afstand.
+- [Contact](https://solvalutions.nl/contact): mail, telefoon en WhatsApp, en hoe een eerste contact verloopt.
+
+## Aanpak en voorwaarden
+
+1. Knelpunt-analyse: twee tot drie werkdagen, tegen een vaste prijs (niet gratis). Je krijgt een diagnose van waar tijd, geld en stabiliteit weglekken, een plan met prioriteiten en een gesprek over de vervolgstappen. De gesprekken daarvóór zijn gratis en vrijblijvend.
+2. Plan en vaste prijs: een afgebakend voorstel met wat er gebeurt, wat het oplevert en wat het kost. Elke fase heeft een vaste prijs; je beslist per fase of je doorgaat en kunt na elke fase stoppen.
+3. Bouw en oplevering: gebouwd naast de bestaande systemen, zodat het bedrijf doordraait en de kans op fouten of downtime minimaal is. Na oplevering beschikbaar voor onderhoud en kleine aanpassingen.
+
+Uitgangspunten: klein beginnen en eerst waarde bewijzen; naast je systeem bouwen, geen big bang; vaste prijs zonder open eindjes; onderhoudbaar, ook zonder Rob.
+
+Belangrijke feiten:
+
+- Prijzen: er worden online geen bedragen genoemd. Na een korte analyse volgt een voorstel met een vaste prijs per fase. Geen losse uren, maar een afgebakend resultaat.
+- Eigendom: het resultaat en de code zijn van de klant, tenzij in overleg een licentie wordt afgesproken. Geteste code die een ander team kan overnemen; geen vendor lock-in.
+- Hosting: Rob host zelf, dus één aanspreekpunt voor bouw en beheer.
+- Privacy: veiligheid en privacy zijn vanaf het begin onderdeel van de bouw; Solvalutions volgt de AVG.
+- AI: ingezet waar het iets oplevert, met AI-oplossingen in productie (software die documenten en mails leest, controleert en doorzet). Geen vibe coding: niets gaat ongezien live, elke wijziging wordt beoordeeld en getest.
+- Communicatie: uitleg in gewone taal, geen technische kennis nodig. Eerlijk over wat wel en niet kan, ook als iets goedkoper of slimmer kan.
+- Reactietijd: meestal binnen één werkdag.
+- Locatie: kennismaken en de knelpunt-analyse kunnen bij je op locatie in Gelderland, Overijssel en Utrecht; het vervolg kan ook op afstand.
+
+## Voor wie
+
+- MKB met verouderde software die de groei remt of afhangt van één persoon (modernisering, automatisering, koppelingen).
+- Logistiek (transport, opslag en distributie): systemen die niet met elkaar praten en gegevens die met de hand worden overgetypt.
+- Industrie en maakbedrijven: planning, voorraad en facturatie koppelen en minder handwerk.
+- Stichtingen en non-profit: een moderne website of digitale oplossing met weinig onderhoud en een vaste prijs.
+- Digitale producten en start-ups: een technische partner die meedenkt en meebouwt.
+- Bureaus en teams: onderaanneming op resultaatbasis, bijvoorbeeld voor backend-kennis of extra capaciteit.
+
+## Cases
+
+- Legacy-modernisering: een verouderde maatwerkapplicatie die het hart van de operatie was, stap voor stap overgezet naar een moderne cloud-architectuur, zonder stilstand. Nieuwe functies staan nu in dagen live in plaats van weken.
+- Nachtelijke verwerking van uren naar minuten: een zware verwerking opnieuw opgebouwd en vergeleken met het oude systeem, zodat de overstap zonder risico kon.
+- Data uit tien bronnen in één overzicht: gegevens worden tegelijk opgehaald, met voorspelbare reactietijden, ook bij drukte.
+- Eén rekenmodel voor al je systemen: prijs- en planningsregels uit drie systemen samengebracht, zodat webapplicatie en backoffice hetzelfde rekenen.
+- Een API die ook onder druk snel blijft: stabielere reactietijden en minder serverkosten, zonder impact op bestaande koppelingen.
+- Verder: een maatwerkapplicatie die handmatig, foutgevoelig werk overnam; een koppeling met een boekhoudsysteem; geautomatiseerde releases en infrastructuur; datasecurity aangescherpt.
+
+## Werkgebied
+
+Gevestigd in Zutphen. Actief in Gelderland (Zutphen, Apeldoorn, Arnhem, Nijmegen), Overijssel (Deventer, Zwolle, Enschede) en Utrecht (Utrecht, Amersfoort), en op afstand in heel Nederland.
+
+## Contact
+
+- E-mail: info@solvalutions.nl
+- Telefoon en WhatsApp: 06 49 69 13 74 (+31 6 49 69 13 74)
+- Vestiging: Zutphen, Gelderland
+- KvK: 98238175
+- Btw: NL005319604B24
+- Een eerste gesprek is gratis en vrijblijvend; een paar regels over je situatie is genoeg.
+
+## Optional
+
+- [Volledige versie met alle veelgestelde vragen](https://solvalutions.nl/llms-full.txt)
+- [Algemene voorwaarden (pdf)](https://solvalutions.nl/assets/2026_ALGEMENE_VOORWAARDEN_SOLVALUTIONS.pdf)
+- [Privacyverklaring (pdf)](https://solvalutions.nl/assets/2026_PRIVACYVERKLARING_SOLVALUTIONS.pdf)
+- [Solvalutions (Engels)](https://solvalutions.com): Engelstalige showcase met high-performance cases in Rust en Go.
+- [Rob Meijerink](https://robmeijerink.nl): persoonlijk profiel als freelance senior developer en DevOps engineer.
+- [Sitemap](https://solvalutions.nl/sitemap.xml)

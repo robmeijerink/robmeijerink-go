@@ -1,0 +1,68 @@
+# Rob Meijerink
+
+> Rob Meijerink is een freelance Senior Software Developer & DevOps Engineer (ZZP) uit Zutphen, Nederland, met meer dan 15 jaar ervaring. Hij bouwt schaalbare backend-systemen en API's: in Rust of Go waar performance en voorspelbaar gedrag onder druk tellen, en in PHP/Laravel voor snelle en gebruiksvriendelijke bedrijfsapplicaties. Hij is inzetbaar in bestaande development teams, remote, hybride of op locatie.
+
+Deze site (robmeijerink.nl) is het persoonlijke profiel van Rob als freelance developer voor teams en organisaties die een ervaren developer willen inhuren. Voor afgebakende projecten met een vaste prijs per fase (websites, koppelingen, automatisering, maatwerksoftware voor MKB) werkt Rob onder zijn bedrijfsnaam Solvalutions: https://solvalutions.nl (Nederlands) en https://solvalutions.com (Engels).
+
+## Pagina's
+
+- [Home](https://robmeijerink.nl/): werkwijze in teams, specialisaties, open source projecten en veelgestelde vragen over samenwerken.
+- [Expertise](https://robmeijerink.nl/expertise): specialisaties per vakgebied, gebruikte technieken en loopbaan.
+
+## Profiel in het kort
+
+- Naam: Rob Meijerink
+- Rol: Freelance Senior Software Developer & DevOps Engineer; Lead Software Architect bij Solvalutions
+- Ervaring: 15+ jaar
+- Beschikbaarheid: beschikbaar voor freelance projecten; de eerstvolgende startperiode staat op de homepage
+- Vestiging: Zutphen, Gelderland, Nederland
+- Werkvorm: remote, hybride of op locatie; als zelfstandige en autonoom (Wet DBA-proof), afspraken vooraf schriftelijk vastgelegd
+- Opdrachten: development teams die vastlopen op techniek of op de hoeveelheid werk, extra capaciteit in een bestaand team, complexe business cases zelfstandig oppakken, en onderaanneming voor bureaus
+- Rol in een team: adviseert over architectuur én werkt hands-on mee, van full stack tot DevOps
+
+## Werkwijze in teams
+
+- Van meekijken naar aanpakken: eerst meekijken en leren hoe het team werkt, samen de kern van het probleem bepalen, daarna zelfstandig oppakken, rustig en stap voor stap.
+- Van business-eis naar techniek: wat het bedrijf nodig heeft vertalen naar schaalbare techniek die past bij de fase van het product. Vaak een modulaire monoliet om snel te kunnen bewegen; groeit het platform of team, dan gecontroleerd opsplitsen naar microservices.
+- Bedrijfskritische systemen blijven draaien terwijl ze verbeterd worden. Na de opdracht staat het team sterker: developers groeien mee en blijven gemotiveerd.
+- Overdracht: duidelijke, geteste code met complete documentatie, een uitleggesprek en daarna beschikbaar voor vragen.
+- Kwaliteit: automatische unit- en integratietests die via CI/CD-pipelines bij elke wijziging draaien voordat iets live gaat.
+
+Voorbeeld uit de praktijk: een team van 6 tot 10 developers kwam niet meer vooruit door technische complexiteit. De architectuur werd teruggebracht naar de basis, de CI/CD-pipelines rechtgetrokken en de code testbaar gemaakt. Daarna ging het team van wekelijks naar meerdere keren per week live, met aanzienlijk minder fouten in productie en beter schaalbare applicaties. Het project werd afgerond zoals gepland.
+
+## Specialisaties
+
+- Backend & API: schaalbare API's, backend-systemen en bedrijfsapplicaties. Rust voor performance-kritische en foutgevoelige onderdelen, Go voor services en cloud-tooling, PHP/Laravel voor complexe business-logica. Technieken: Rust, Tokio, Axum, WebAssembly, Go (Golang), PHP, Laravel, MVC/OOP, MySQL, PostgreSQL, Python, SaaS, cloud applications, unit- en integratietests.
+- Cloud & DevOps: Infrastructure as Code als standaard. Herhaalbaar uitrollen met CI/CD; handmatig beheer maakt plaats voor automatisering. Docker, Kubernetes, Google Cloud, AWS en bare metal op Linux.
+- Systeemarchitectuur: complexe business-logica vertalen naar onderhoudbare architectuur met Domain Driven Design en Event Sourcing. Een fundament dat meegroeit, nu en over vijf jaar.
+- Frontend: strakke, snelle en responsive interfaces met JavaScript, TypeScript, Tailwind CSS, Vue.js en React, met oog voor Developer Experience en web-vitals.
+- Effectief met AI werken: AI beheerst ingezet om sneller op te leveren zonder risico's. Geen vibe coding, maar stap voor stap met agentic development, met eigen code reviews en bijbehorende tests.
+
+## Loopbaan
+
+- 2025 – heden: Lead Software Architect bij Solvalutions. Advisering en hands-on backend development bij complexe migraties naar microservices en cloud-native infrastructuur; developers coachen naar een hogere standaard.
+- 2020 – 2025: Senior Full Stack Engineer. Schaalbare PHP/Laravel-applicaties, transitie van handmatige deployments naar volledige CI/CD-automatisering, API-integraties en real-time dataverwerking.
+- 2015 – 2020: Junior / Medior Backend Web Developer. Backend-architecturen in Laravel en maatwerk WordPress-ecosystemen; specialisatie in Vue.js, TypeScript en Node.js.
+- 2007 – 2015: Linux HomeLab System Admin. Beheer van netwerk, NAS en gedeelde diensten; de basis voor automatisering en softwareontwikkeling.
+
+## Open source
+
+- [snelstart-b2b](https://github.com/robmeijerink/snelstart-b2b): Rust-client voor de SnelStart B2B API (v2).
+- [xaf-auditfile](https://github.com/robmeijerink/xaf-auditfile): snelle, geheugenzuinige streaming-parser in Rust voor Nederlandse XAF-auditbestanden (XAF 4.0).
+- [laposta-rs](https://github.com/robmeijerink/laposta-rs): Rust-wrapper voor de Laposta API voor e-mailmarketing.
+- Alle projecten: https://github.com/robmeijerink
+
+## Contact
+
+- Telefoon en WhatsApp: +31 6 49 69 13 74 (https://wa.me/31649691374)
+- LinkedIn: https://linkedin.com/in/robm89
+- GitHub: https://github.com/robmeijerink
+- Reactie meestal binnen 1 werkdag. Een eerste gesprek ("een keer koffie drinken") is vrijblijvend.
+- Starten: verschilt per opdracht, er is geen vast minimum.
+
+## Optional
+
+- [Volledige versie met alle veelgestelde vragen](https://robmeijerink.nl/llms-full.txt)
+- [Solvalutions (NL)](https://solvalutions.nl): Robs bedrijf voor MKB en logistiek: websites, koppelingen, automatisering en software op maat, vaste prijs per fase.
+- [Solvalutions (EN)](https://solvalutions.com): Engelstalige showcase van Solvalutions met high-performance cases in Rust en Go.
+- [Sitemap](https://robmeijerink.nl/sitemap.xml)

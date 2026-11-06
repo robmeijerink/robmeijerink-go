@@ -25,6 +25,7 @@ func Setup(router *web.DomainRouter) {
 	router.Get("/over", about)
 	router.Get("/aanpak", approach)
 
+	router.Get("/llms-full.txt", llmsFull)
 	router.Get("/sitemap.xml", sitemap)
 }
 
@@ -160,7 +161,7 @@ func contact(c fiber.Ctx) error {
 
 func about(c fiber.Ctx) error {
 	title := "Over Solvalutions: Rob Meijerink, software architect in Zutphen"
-	desc := "Sinds 2011 actief als developer en architect, nu zelfstandig vanuit Zutphen. Eén engineer, zonder tussenlagen: je werkt rechtstreeks met de persoon die het bouwt."
+	desc := "Sinds 2015 actief als developer en architect, nu zelfstandig vanuit Zutphen. Eén engineer, zonder tussenlagen: je werkt rechtstreeks met de persoon die het bouwt."
 	url := "https://solvalutions.nl"
 
 	jsonLd := template.HTML(`
@@ -180,7 +181,7 @@ func about(c fiber.Ctx) error {
         "@type": "Person",
         "name": "Rob Meijerink",
         "jobTitle": "Software architect",
-        "description": "Software architect en developer, actief sinds 2011, gespecialiseerd in softwaremodernisering, systeemkoppelingen, automatisering en maatwerksoftware.",
+        "description": "Software architect en developer, actief sinds 2015, gespecialiseerd in softwaremodernisering, systeemkoppelingen, automatisering en maatwerksoftware.",
         "url": "https://robmeijerink.nl",
         "image": "` + url + `/assets/img/foto-rob-meijerink-solvalutions-avatar-320.jpg",
         "address": {

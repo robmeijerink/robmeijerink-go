@@ -16,6 +16,7 @@ func Setup(router *web.DomainRouter) {
 	router.Get("/expertise", work)
 	// router.Get("/blog", blog)
 
+	router.Get("/llms-full.txt", llmsFull)
 	router.Get("/sitemap.xml", sitemap)
 }
 
