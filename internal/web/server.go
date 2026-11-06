@@ -153,6 +153,12 @@ func registerFileRoutes(app *fiber.App) {
 			"web-app-manifest-512x512.png": true,
 		}
 
+		// RFC 9116 places security.txt under /.well-known/; the legacy root
+		// path redirects there for scanners and people who try it first.
+		if file == "security.txt" {
+			return c.Redirect().Status(fiber.StatusMovedPermanently).To("/.well-known/security.txt")
+		}
+
 		if rootFiles[file] {
 			site := c.Locals("Site").(string)
 			// c.Set("Cache-Control", "public, max-age=3600, must-revalidate")
@@ -162,6 +168,30 @@ func registerFileRoutes(app *fiber.App) {
 		// If it's not a whitelisted root file, pass to the next handler
 		return c.Next()
 	})
+
+	// Well-known files (RFC 8615). Not every site has every file: the PGP key
+	// lives on solvalutions.nl only, so a missing file falls through to a 404.
+	app.Get("/.well-known/:file", func(c fiber.Ctx) error {
+		file := c.Params("file")
+
+		if !wellKnownFiles[file] {
+			return c.Next()
+		}
+
+		site := c.Locals("Site").(string)
+		path := fmt.Sprintf("./sites/%s/public/.well-known/%s", site, file)
+
+		if _, err := os.Stat(path); err != nil {
+			return c.Next()
+		}
+
+		return c.SendFile(path)
+	})
+}
+
+var wellKnownFiles = map[string]bool{
+	"security.txt": true,
+	"pgp-key.txt":  true,
 }
 
 // hashedAsset matches Vite output such as dist/app-CXIqvsxj.css, whose name

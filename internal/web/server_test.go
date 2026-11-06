@@ -181,3 +181,17 @@ func TestCompressibleAsset(t *testing.T) {
 	assert.False(t, compressibleAsset("img/rob-meijerink-portret.webp"))
 	assert.False(t, compressibleAsset("dist/font-BpqDG8I9.woff2"))
 }
+
+func TestServer_LegacySecurityTxtRedirects(t *testing.T) {
+	server := setupTestServer(false)
+
+	for _, host := range []string{"robmeijerink.nl", "solvalutions.nl", "solvalutions.com"} {
+		req := httptest.NewRequest("GET", "/security.txt", nil)
+		req.Host = host
+
+		resp, err := server.App.Test(req)
+		assert.NoError(t, err)
+		assert.Equal(t, fiber.StatusMovedPermanently, resp.StatusCode, host)
+		assert.Equal(t, "/.well-known/security.txt", resp.Header.Get("Location"), host)
+	}
+}

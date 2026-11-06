@@ -1,0 +1,10 @@
+# Found a security issue on robmeijerink.nl? Please report it to us privately.
+# Encrypt sensitive details with the PGP key linked below.
+# Key fingerprint: 9FD0 CC8F E861 9979 FC0D 6D05 6B37 8D21 99C1 F06F
+
+Contact: mailto:rob.meijerink@gmail.com
+Expires: 2027-11-01T00:00:00.000Z
+Encryption: https://robmeijerink.nl/.well-known/pgp-key.txt
+Encryption: https://keys.mailvelope.com/pks/lookup?op=get&search=rob.meijerink%40gmail.com
+Preferred-Languages: nl, en
+Canonical: https://robmeijerink.nl/.well-known/security.txt
