@@ -4485,6 +4485,20 @@ h1 + .page-hook,
     display: none;
   }
 
+  /* One size for card and list titles on phones, matching .case-card,
+     .aud-small and .eng-list. Feature cards (.aud-card, .feat, .dos) stay larger. */
+  .aud h3,
+  .aud-4 h3,
+  .bom-main h3,
+  .stn h3,
+  .pil .pil-t {
+    font-size: 1.4rem;
+  }
+
+  .nowrap-m {
+    white-space: nowrap;
+  }
+
   .faq-collapsed details:nth-of-type(n + 6) {
     display: none;
   }
