@@ -14,7 +14,7 @@ import (
 	"github.com/stretchr/testify/require"
 )
 
-var allLandings = []landing{websitesPage, conversionPage, appsPage, integrationsPage, dashboardsPage, areaPage}
+var allLandings = []landing{websitesPage, conversionPage, appsPage, integrationsPage, dashboardsPage, automationPage, areaPage}
 
 func TestLandingMetaAreUniqueAndBounded(t *testing.T) {
 	titles := map[string]bool{}
@@ -46,6 +46,27 @@ func TestExtraFaqListsFollowCopyRules(t *testing.T) {
 			}
 		}
 	}
+}
+
+func TestSplitFaqListsHaveEqualColumns(t *testing.T) {
+	lists := map[string][]faqItem{"home": homeFAQ, "diensten": servicesFAQ, "werkgebied": areaFAQ, "contact": contactFAQ, "aanpak": approachFAQ}
+	for _, page := range allLandings {
+		lists[page.Path] = page.FAQ
+	}
+
+	for name, list := range lists {
+		if faqRows(list) == 0 {
+			continue
+		}
+
+		assert.Zero(t, len(list)%2, "oneven aantal vragen in een FAQ met twee kolommen: "+name)
+		assert.Equal(t, len(list)/2, faqRows(list), name)
+	}
+}
+
+func TestFaqRowsKeepsShortListsInOneColumn(t *testing.T) {
+	assert.Zero(t, faqRows(make([]faqItem, faqSplitMin)))
+	assert.Equal(t, 4, faqRows(make([]faqItem, 8)))
 }
 
 func TestLandingCopyRules(t *testing.T) {

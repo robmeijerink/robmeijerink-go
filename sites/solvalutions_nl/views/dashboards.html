@@ -108,7 +108,7 @@
         <div data-reveal class="sec-head">
             <div class="dim"><i></i><span>Veelgestelde vragen</span><i></i></div>
         </div>
-        <div class="faq" data-reveal>
+        <div class="faq{{if .FAQRows}} faq-split{{end}}" data-reveal{{if .FAQRows}} style="--rows:{{.FAQRows}}"{{end}}>
             {{range .FAQ}}<details><summary>{{.Question}}</summary><p>{{.Answer}}</p></details>
             {{end}}
         </div>

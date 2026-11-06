@@ -2,7 +2,7 @@ package solvalutions_nl
 
 const (
 	introLead    = "Vertel kort wat je nodig hebt en wat je ermee wilt bereiken. Je krijgt een eerlijk advies en daarna een voorstel. Elke fase heeft een vaste prijs. Liever eerst even sparren? Bel of mail gerust, dat gesprek is gratis en vrijblijvend."
-	introButton  = "Plan een gratis kennismaking"
+	introButton  = "Plan een kennismaking"
 	introSubject = "Kennismaking Solvalutions"
 )
 
@@ -85,6 +85,7 @@ var appsPage = landing{
 		{"Kan ik klein beginnen en later functies toevoegen?", "Ja. We beginnen met een afgebakende eerste fase. Daarna bepaal jij of en hoe ver we uitbreiden."},
 		{"Wat als ik later een andere partij wil?", "Dan zit je niet vast. De applicatie is van jou, tenzij we in overleg een licentie afspreken, en ik lever geteste code die een ander team kan overnemen."},
 		{"Hoe lang duurt het om een webapplicatie te bouwen?", "Dat verschilt per project. Na de intake weet je wat er nodig is en hoe lang het duurt, en het voorstel laat per fase zien wat je krijgt. Omdat je direct met mij werkt, kan ik snel schakelen."},
+		{"Kan een bestaande applicatie worden verbeterd in plaats van opnieuw gebouwd?", "Ja. Vaak is verbeteren of stap voor stap vernieuwen slimmer dan opnieuw beginnen. Eerst kijk ik waar de applicatie knelt, daarna bepalen we samen wat het meeste oplevert."},
 		{"Wie host de applicatie en is mijn data veilig?", "Ik host de applicatie zelf, dus je hebt één aanspreekpunt voor de bouw én het beheer. Veiligheid en privacy zijn vanaf het begin onderdeel van de bouw en ik volg de AVG. Wat dat voor jouw project betekent, bespreken we in de intake."},
 	},
 }
@@ -152,7 +153,32 @@ var dashboardsPage = landing{
 		{"Hoe weet ik dat de cijfers in het dashboard kloppen?", "Het dashboard gebruikt de bronnen die je al hebt en ik test het grondig voordat het live gaat. Zo zie je overal dezelfde cijfers in plaats van drie verschillende versies."},
 		{"Kan ik het dashboard ook op mijn telefoon bekijken?", "Ja. Het dashboard is een webapplicatie die zich aanpast aan het scherm, dus je kunt het op een computer, tablet en telefoon bekijken."},
 		{"Waar hangt de prijs van een dashboard van af?", "Van het aantal bronnen en van wat je wilt laten zien. Ik begin met een korte analyse. Daarna krijg je een voorstel. Elke fase heeft een vaste prijs. Zo begin je klein en bepaal jij hoe ver we gaan."},
+		{"Hoe lang duurt het om een dashboard te laten maken?", "Dat hangt af van het aantal bronnen en wat je wilt zien. Na de intake weet je hoe lang het duurt en wat er per fase wordt opgeleverd."},
 		{"Is mijn bedrijfsdata veilig in een dashboard?", "Veiligheid en privacy zijn vanaf het begin onderdeel van de bouw en ik volg de AVG. Wie welke cijfers mag zien, bepaal je vooraf."},
+	},
+}
+
+var automationPage = landing{
+	Path:        "/processen-automatiseren",
+	Crumb:       "Processen automatiseren",
+	Title:       "Processen automatiseren Zutphen: AI automatisering | Solvalutions",
+	Description: "Processen automatiseren in Zutphen? Automatisering op maat, met AI waar het past: minder overtypen, minder fouten en werk dat altijd doorloopt. Vaste prijs per fase.",
+	Service:     "Processen automatiseren",
+	ServiceType: "Procesautomatisering",
+	CTATitle:    "Werk dat elke week terugkomt?",
+	CTALead:     introLead,
+	CTAButton:   introButton,
+	CTASubject:  introSubject,
+	View:        "automation",
+	FAQ: []faqItem{
+		{"Welk werk kan ik laten automatiseren?", "Vooral terugkerend werk waarbij iemand gegevens leest, controleert en doorzet. Denk aan orders, facturen, aanvragen of mails die nu met de hand in je systemen worden overgetypt."},
+		{"Heb ik AI nodig om te automatiseren?", "Niet altijd. Veel werk is met gewone software al te automatiseren. AI zet ik in waar het echt iets oplevert, bijvoorbeeld om mails en documenten te lezen."},
+		{"Heb je AI-automatisering al in productie gebouwd?", "Ja. Ik heb AI-oplossingen gebouwd die in productie draaien, zoals software die documenten en mails leest, controleert en doorzet naar de juiste systemen."},
+		{"Moet ik mijn huidige systemen vervangen?", "Meestal niet. De automatisering werkt bovenop je bestaande systemen, via koppelingen. Je hoeft dus niet alles te vervangen."},
+		{"Wat als de automatisering een fout maakt?", "Elke automatisering test ik grondig voordat hij live gaat. Fouten worden gemeld, zodat je het meteen merkt. Waar nodig bevestigt een medewerker de uitkomst voordat er iets gebeurt."},
+		{"Is automatiseren met AI veilig voor mijn gegevens?", "Veiligheid en privacy zijn vanaf het begin onderdeel van de bouw en ik volg de AVG. Welke gegevens de AI te zien krijgt, leggen we vooraf samen vast."},
+		{"Waar hangt de prijs van automatisering van af?", "Van het proces en de systemen die meedoen. Na een korte analyse krijg je een voorstel. Elke fase heeft een vaste prijs, zodat je klein kunt beginnen."},
+		{"Wat gebeurt er als de collega die het proces kent weggaat?", "Dan draait het gewoon door. Het proces zit in geteste software in plaats van in iemands hoofd, en een ander team kan de code overnemen."},
 	},
 }
 
@@ -164,6 +190,7 @@ var homeFAQ = []faqItem{
 	{"Ga je mij dingen verkopen die ik niet nodig heb?", "Nee. Eerlijk zijn over wat wel en niet kan hoort bij het werk. Als iets goedkoper of slimmer kan, zeg ik dat, ook als het minder werk voor mij betekent."},
 	{"Ligt mijn bedrijf stil tijdens de overstap naar nieuwe software?", "Nee. Ik bouw naast je bestaande omgeving, zodat je gewoon doordraait tijdens de overstap en we de kans op fouten of downtime minimaliseren."},
 	{"Van wie is de software na oplevering, en kan een ander het overnemen?", "Van jou, tenzij we in overleg een licentie afspreken. Ik lever geteste code die een ander team kan overnemen, dus je zit niet vast aan mij of aan één leverancier."},
+	{"Heb je ervaring met het maken van AI-oplossingen?", "Ja. Ik heb AI-oplossingen gebouwd die in productie draaien, zoals software die documenten en mails leest, controleert en doorzet naar de juiste systemen. AI zet ik alleen in waar het echt iets oplevert, en elke uitkomst wordt getest."},
 	{"Welk werk kan ik automatiseren met AI en is dat veilig?", "Vooral terugkerend werk waarbij iemand gegevens leest, controleert en doorzet. Denk aan gegevens uit mails, pdf's of formulieren die nu worden overgetypt in je systemen. Veiligheid en privacy zijn vanaf het begin onderdeel van de bouw en ik volg de AVG. Welke gegevens de AI te zien krijgt, bepalen we vooraf. Waar nodig bouw ik een controlestap in, zodat een medewerker de uitkomst bevestigt."},
 	{"Is software die met AI is gemaakt niet onbetrouwbaar?", "Niet als het professioneel gebeurt. Geen vibe coding: ik gebruik AI om gerichter en sneller te bouwen, maar niets gaat ongezien live. Elke wijziging beoordeel ik zelf en test ik grondig."},
 	{"Wordt mijn bedrijf gevonden door AI-assistenten zoals ChatGPT?", "Je kunt de kans vergroten, maar niet afdwingen. Een snelle, duidelijke website met goede antwoorden op de vragen van je klanten en gestructureerde gegevens helpt. Daar let ik bij het bouwen op en ik stem de inhoud er ook op af."},
@@ -204,4 +231,5 @@ var approachFAQ = []faqItem{
 	{"Wat gebeurt er na oplevering, en wat als er iets misgaat?", "Niets gaat ongezien live: elke wijziging beoordeel ik en test ik grondig. Na oplevering blijf ik beschikbaar voor onderhoud en kleine aanpassingen."},
 	{"Van wie is het eindresultaat en wie host het?", "Het is van jou, tenzij we in overleg een licentie afspreken. De hosting doe ik zelf, dus je hebt één aanspreekpunt voor de bouw én het beheer."},
 	{"Is mijn data veilig en hoe zit het met de AVG?", "Veiligheid en privacy zijn vanaf het begin onderdeel van de bouw en ik volg de AVG. Wat dat voor jouw project betekent, bespreken we in de intake."},
+	{"Kan ik na een fase stoppen?", "Ja. Je beslist na elke fase of je doorgaat. Wat in een fase is opgeleverd, is van jou."},
 }

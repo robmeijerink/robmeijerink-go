@@ -1,5 +1,3 @@
-const TEETH = { v1: 12, v2: 8 };
-const DIRECTION = { v1: 1, v2: -1 };
 const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 const desktop = window.matchMedia('(min-width: 64rem)');
 
@@ -13,7 +11,6 @@ export const initLine = () => {
     const stations = Array.from(line.querySelectorAll('[data-station]'));
     const belt = line.querySelector('.belt');
     const crate = line.querySelector('.belt-crate');
-    const gears = Array.from(line.querySelectorAll('.sc-gr'));
     let frame = null;
 
     const progress = () => {
@@ -24,9 +21,8 @@ export const initLine = () => {
         return clamp((window.innerHeight * 0.85 - rect.top) / (window.innerHeight * 0.75));
     };
 
-    const update = (time) => {
+    const update = () => {
         const value = progress();
-        const drive = value * 700 + (reduced ? 0 : time / 40);
         const index = Math.min(stations.length - 1, Math.floor(value * stations.length));
 
         stations.forEach((station, position) => {
@@ -34,17 +30,11 @@ export const initLine = () => {
             station.classList.toggle('is-done', position < index);
         });
 
-        gears.forEach((gear) => {
-            const angle = Number(gear.dataset.ph) + (DIRECTION[gear.dataset.g] * drive) / TEETH[gear.dataset.g];
-
-            gear.setAttribute('transform', `rotate(${angle.toFixed(2)})`);
-        });
-
         if (belt && crate && desktop.matches) {
             const travel = Math.max(0, belt.clientWidth - crate.offsetWidth);
 
             crate.style.setProperty('--cx', `${(value * travel).toFixed(1)}px`);
-            crate.classList.toggle('is-digital', value > 0.84);
+            crate.classList.toggle('is-live', value > 0.84);
         }
     };
 
@@ -54,13 +44,13 @@ export const initLine = () => {
     const loop = (time) => {
         if (!compact.matches || time - lastUpdate >= 33) {
             lastUpdate = time;
-            update(time);
+            update();
         }
 
         frame = requestAnimationFrame(loop);
     };
 
-    update(0);
+    update();
 
     if (reduced) return;
 

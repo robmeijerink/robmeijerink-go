@@ -20,6 +20,7 @@ func Setup(router *web.DomainRouter) {
 	router.Get("/conversie-optimalisatie", conversion)
 	router.Get("/app-laten-maken", apps)
 	router.Get("/dashboard-laten-maken", dashboards)
+	router.Get("/processen-automatiseren", automation)
 	router.Get("/werkgebied", area)
 	router.Get("/over", about)
 	router.Get("/aanpak", approach)
@@ -29,7 +30,7 @@ func Setup(router *web.DomainRouter) {
 
 func home(c fiber.Ctx) error {
 	title := "Solvalutions | Website laten maken & software vanuit Zutphen"
-	desc := "Website laten maken in Zutphen? Ook webshops, apps, koppelingen en software op maat voor MKB en logistiek. Direct met de engineer, vaste prijs per fase."
+	desc := "Website laten maken in Zutphen? Webshops, apps, koppelingen, automatisering en software op maat voor MKB en logistiek. Direct met de engineer, vaste prijs per fase."
 	url := "https://solvalutions.nl"
 
 	jsonLd := template.HTML(`
@@ -97,6 +98,7 @@ func home(c fiber.Ctx) error {
 		"MetaDescription": desc,
 		"StructuredData":  jsonLd + faqStructuredData(homeFAQ),
 		"FAQ":             homeFAQ,
+		"FAQRows":         faqRows(homeFAQ),
 	})
 }
 
@@ -152,6 +154,7 @@ func contact(c fiber.Ctx) error {
 		"MetaDescription": desc,
 		"StructuredData":  jsonLd + breadcrumbs("/contact", "Contact") + faqStructuredData(contactFAQ),
 		"FAQ":             contactFAQ,
+		"FAQRows":         faqRows(contactFAQ),
 	})
 }
 
@@ -261,6 +264,7 @@ func approach(c fiber.Ctx) error {
 		"MetaDescription": desc,
 		"StructuredData":  jsonLd + breadcrumbs("/aanpak", "Aanpak") + faqStructuredData(approachFAQ),
 		"FAQ":             approachFAQ,
+		"FAQRows":         faqRows(approachFAQ),
 	})
 }
 
@@ -447,6 +451,7 @@ func services(c fiber.Ctx) error {
 		"MetaDescription": desc,
 		"StructuredData":  structuredData + breadcrumbs("/diensten", "Diensten") + faqStructuredData(servicesFAQ),
 		"FAQ":             servicesFAQ,
+		"FAQRows":         faqRows(servicesFAQ),
 	})
 }
 
@@ -461,6 +466,7 @@ var lastModified = map[string]string{
 	"/conversie-optimalisatie":   "2026-11-06",
 	"/app-laten-maken":           "2026-11-06",
 	"/dashboard-laten-maken":     "2026-11-06",
+	"/processen-automatiseren":   "2026-11-06",
 	"/werkgebied":                "2026-11-06",
 	"/cases":                     "2026-11-06",
 	"/over":                      "2026-11-06",
@@ -479,6 +485,7 @@ var sitemapPages = []struct {
 	{loc: "/conversie-optimalisatie", priority: "0.8"},
 	{loc: "/app-laten-maken", priority: "0.8"},
 	{loc: "/dashboard-laten-maken", priority: "0.8"},
+	{loc: "/processen-automatiseren", priority: "0.9"},
 	{loc: "/werkgebied", priority: "0.7"},
 	{loc: "/cases", priority: "0.8"},
 	{loc: "/over", priority: "0.8"},

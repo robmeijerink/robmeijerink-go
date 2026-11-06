@@ -46,6 +46,147 @@
     0 18px 48px -14px rgba(11, 34, 57, 0.4);
 }
 
+.nav-dd {
+  position: relative;
+}
+
+.nav-dd-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.nav-dd-chev {
+  width: 0.95rem;
+  height: 0.95rem;
+  transition: transform 0.25s ease;
+}
+
+.nav-dd-panel {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  width: 40rem;
+  padding-top: 0.9rem;
+  opacity: 0;
+  visibility: hidden;
+  transform: translate(-50%, 6px);
+  transition:
+    opacity 0.2s ease,
+    transform 0.2s ease,
+    visibility 0.2s;
+}
+
+.nav-dd-card {
+  border: 1px solid var(--color-brand-dark);
+  background: var(--color-warm-white);
+  box-shadow: 6px 6px 0 var(--color-accent-base);
+}
+
+.nav-dd-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.25rem;
+  padding: 0.75rem;
+}
+
+.nav-dd-item {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  padding: 0.65rem;
+  transition: background-color 0.2s ease;
+}
+
+.nav-dd-item:hover,
+.nav-dd-item.is-current {
+  background: var(--color-canvas);
+}
+
+.nav-dd-ico {
+  flex-shrink: 0;
+  width: 3.4rem;
+}
+
+.nav-dd-ico svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.nav-dd-item strong {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 700;
+  line-height: 1.15;
+  color: var(--color-brand-dark);
+}
+
+.nav-dd-item small {
+  display: block;
+  margin-top: 0.15rem;
+  font-size: 0.8125rem;
+  color: var(--color-content-base);
+}
+
+.nav-dd-all {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.9rem 1.4rem;
+  border-top: 1px solid var(--color-line);
+  font-size: 0.9375rem;
+  font-weight: 700;
+  color: var(--color-accent-dark);
+}
+
+.nav-dd-all svg {
+  width: 1rem;
+  height: 1rem;
+  transition: transform 0.2s ease;
+}
+
+.nav-dd-all:hover svg {
+  transform: translateX(4px);
+}
+
+.nav-dd:hover .nav-dd-panel,
+.nav-dd.is-open .nav-dd-panel {
+  opacity: 1;
+  visibility: visible;
+  transform: translate(-50%, 0);
+}
+
+.nav-dd:hover .nav-dd-chev,
+.nav-dd.is-open .nav-dd-chev {
+  transform: rotate(180deg);
+}
+
+.m-dd summary::-webkit-details-marker {
+  display: none;
+}
+
+.m-dd summary {
+  list-style: none;
+}
+
+.m-dd-chev {
+  transition: transform 0.25s ease;
+}
+
+.m-dd[open] .m-dd-chev {
+  transform: rotate(180deg);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nav-dd-panel,
+  .nav-dd-chev,
+  .m-dd-chev {
+    transition: none;
+  }
+}
+
 .scroll-progress {
   position: fixed;
   inset: 0 0 auto 0;

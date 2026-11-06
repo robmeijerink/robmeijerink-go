@@ -15,6 +15,20 @@ type faqItem struct {
 	Answer   string
 }
 
+// faqSplitMin is the number of questions above which a FAQ is shown in two
+// columns on desktop.
+const faqSplitMin = 6
+
+// faqRows returns the number of rows per column for a two-column FAQ, or 0
+// when the list is short enough for a single column.
+func faqRows(items []faqItem) int {
+	if len(items) <= faqSplitMin {
+		return 0
+	}
+
+	return (len(items) + 1) / 2
+}
+
 type landing struct {
 	Path        string
 	Crumb       string
@@ -122,6 +136,7 @@ func renderLanding(c fiber.Ctx, page landing) error {
 		"CTAButton":       page.CTAButton,
 		"CTASubject":      page.CTASubject,
 		"FAQ":             page.FAQ,
+		"FAQRows":         faqRows(page.FAQ),
 	})
 }
 
@@ -132,3 +147,4 @@ func area(c fiber.Ctx) error         { return renderLanding(c, areaPage) }
 func integrations(c fiber.Ctx) error { return renderLanding(c, integrationsPage) }
 
 func dashboards(c fiber.Ctx) error { return renderLanding(c, dashboardsPage) }
+func automation(c fiber.Ctx) error { return renderLanding(c, automationPage) }
