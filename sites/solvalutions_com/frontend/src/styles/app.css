@@ -253,7 +253,7 @@
   .tk-fn { color: var(--color-ice); }
   .tk-ty { color: #7fd6c8; }
   .tk-str { color: var(--color-ok); }
-  .tk-com { color: #5b6e8c; font-style: italic; }
+  .tk-com { color: #6f84a4; font-style: italic; }
   .tk-prompt { color: var(--color-ice-dim); }
   .tk-ok { color: var(--color-ok); }
 
@@ -381,11 +381,15 @@
   }
 
   .step[data-state='idle'] > :not(.step-track) {
-    opacity: 0.45;
+    opacity: 0.85;
   }
 
   .step[data-state='done'] > :not(.step-track) {
-    opacity: 0.8;
+    opacity: 0.92;
+  }
+
+  .step[data-state='active'] .leading-relaxed {
+    color: var(--color-text);
   }
 
   .step[data-state='active'] h2 {
