@@ -57,7 +57,7 @@ Belangrijke feiten:
 
 - Legacy-modernisering: een verouderde maatwerkapplicatie die het hart van de operatie was, stap voor stap overgezet naar een moderne cloud-architectuur, zonder stilstand. Nieuwe functies staan nu in dagen live in plaats van weken.
 - Nachtelijke verwerking van uren naar minuten: een zware verwerking opnieuw opgebouwd en vergeleken met het oude systeem, zodat de overstap zonder risico kon.
-- Data uit tien bronnen in één overzicht: gegevens worden tegelijk opgehaald, met voorspelbare reactietijden, ook bij drukte.
+- Data uit tien bronnen in één goed overzicht: gegevens worden tegelijk opgehaald, met voorspelbare reactietijden, ook bij drukte.
 - Eén rekenmodel voor al je systemen: prijs- en planningsregels uit drie systemen samengebracht, zodat webapplicatie en backoffice hetzelfde rekenen.
 - Een API die ook onder druk snel blijft: stabielere reactietijden en minder serverkosten, zonder impact op bestaande koppelingen.
 - Verder: een maatwerkapplicatie die handmatig, foutgevoelig werk overnam; een koppeling met een boekhoudsysteem; geautomatiseerde releases en infrastructuur; datasecurity aangescherpt.

@@ -4424,6 +4424,11 @@ h1 + .page-hook,
 }
 
 @media (max-width: 63.99rem) {
+  .tb-legal > p {
+    font-size: min(0.8125rem, 2.8vw);
+    white-space: nowrap;
+  }
+
   .tb-cell li + li {
     margin-top: 0;
   }
