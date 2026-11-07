@@ -21,8 +21,8 @@ func Setup(router *web.DomainRouter) {
 }
 
 func home(c fiber.Ctx) error {
-	title := "Solvalutions | High-Performance B2B Software Engineering"
-	desc := "Specialized B2B tech agency for high-performance digital infrastructure, systems software in Rust and Go, and scalable software solutions."
+	title := "Solvalutions | Digital Solutions for Business Problems"
+	desc := "Solvalutions solves business problems with digital solutions: custom software, APIs, AI and cloud infrastructure. Backends in Rust and Go."
 	url := "https://solvalutions.com"
 
 	jsonLd := template.HTML(`
@@ -60,8 +60,8 @@ func home(c fiber.Ctx) error {
 }
 
 func contact(c fiber.Ctx) error {
-	title := "Contact | Your Experienced Tech Partner | Solvalutions"
-	desc := "Facing a complex technical challenge or need a scalable application? Contact Solvalutions. Your experienced tech partner for high-performance solutions"
+	title := "Contact | Tell Us Your Problem | Solvalutions"
+	desc := "Got a business problem you want solved with software? Contact Solvalutions and talk directly with an engineer."
 	url := "https://solvalutions.com"
 
 	jsonLd := template.HTML(`
@@ -117,8 +117,8 @@ func contact(c fiber.Ctx) error {
 // }
 
 func about(c fiber.Ctx) error {
-	title := "B2B Software Engineering Agency | About Solvalutions"
-	desc := "Solvalutions is a specialized B2B software engineering agency. We build lean, high-performance digital infrastructure that scales with your business."
+	title := "About | Software That Solves Problems | Solvalutions"
+	desc := "Solvalutions is a software engineering agency that builds digital solutions for businesses. We solve problems and deliver solutions."
 	url := "https://solvalutions.com"
 
 	jsonLd := template.HTML(`
@@ -154,8 +154,8 @@ func about(c fiber.Ctx) error {
 }
 
 func approach(c fiber.Ctx) error {
-	title := "Approach | High-Performance Tech Architecture | Solvalutions"
-	desc := "Discover our lean methodology for building scalable, high-performance Rust and Go backends and cloud-native systems. Domain-driven design with brutal efficiency."
+	title := "Approach | From Problem to Solution | Solvalutions"
+	desc := "How we turn business problems into working solutions: understand the domain, build lean with Rust and Go, and run it cloud-native."
 
 	jsonLd := template.HTML(`
 	<script type="application/ld+json">
@@ -167,18 +167,18 @@ func approach(c fiber.Ctx) error {
 	  "step": [
 	    {
 	      "@type": "HowToStep",
-	      "name": "Analysis & Strategy",
-	      "text": "We analyze complex business problems to find the most lean and effective technical solution."
+	      "name": "Understand the problem",
+	      "text": "We map your business reality to code and define the domain boundaries before building anything."
 	    },
 	    {
 	      "@type": "HowToStep",
-	      "name": "Architecture Design",
-	      "text": "Designing solid, scalable foundations using proven technologies like Rust, Go and cloud-native principles."
+	      "name": "Build the solution",
+	      "text": "We pick Rust or Go for the problem and build lean, type-safe APIs and services."
 	    },
 	    {
 	      "@type": "HowToStep",
-	      "name": "High-Performance Engineering",
-	      "text": "Building the solution with a focus on speed, security, and maintainability without unnecessary overhead."
+	      "name": "Run it reliably",
+	      "text": "Infrastructure as Code automates deployments so the system is available, scalable and reproducible."
 	    }
 	  ]
 	}
@@ -193,8 +193,8 @@ func approach(c fiber.Ctx) error {
 }
 
 func cases(c fiber.Ctx) error {
-	title := "Case Studies | Proven Engineering Success | Solvalutions"
-	desc := "Explore our portfolio of high-performance B2B software solutions. From cloud-native migrations to custom Rust and Go backend architectures."
+	title := "Case Studies | Problems Solved | Solvalutions"
+	desc := "Business problems we solved with software, from slow batch imports to cloud migrations, built with Rust and Go."
 	url := "https://solvalutions.com"
 
 	structuredData := template.HTML(`
@@ -236,7 +236,7 @@ func cases(c fiber.Ctx) error {
 	        "@type": "ListItem",
 	        "position": 5,
 	        "name": "Cloud Infrastructure Migration",
-	        "description": "Scalable architecture for a logistics partner."
+	        "description": "A fragmented PHP monolith migrated to Go microservices on Kubernetes."
 	      },
 	      {
 	        "@type": "ListItem",

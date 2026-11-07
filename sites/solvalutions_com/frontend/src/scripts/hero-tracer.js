@@ -1,22 +1,30 @@
+const ICE = '159, 211, 255'
+
 export function initHeroTracer(canvas) {
     if (!canvas) return
 
     const ctx = canvas.getContext('2d')
+    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    const gridSize = 48
+    const tracers = []
 
     let width, height, columns, rows
-    const gridSize = 40
-    const tracers = []
-    const numTracers = 8
+    let running = false
+    let raf = 0
 
     function resize() {
-        width = canvas.width = window.innerWidth
-        height = canvas.height = window.innerHeight
+        const rect = canvas.parentElement.getBoundingClientRect()
+        const dpr = Math.min(window.devicePixelRatio || 1, 2)
+        width = rect.width
+        height = rect.height
+        canvas.width = width * dpr
+        canvas.height = height * dpr
+        canvas.style.width = width + 'px'
+        canvas.style.height = height + 'px'
+        ctx.setTransform(dpr, 0, 0, dpr, 0, 0)
         columns = Math.floor(width / gridSize)
         rows = Math.floor(height / gridSize)
     }
-
-    window.addEventListener('resize', resize)
-    resize()
 
     class Tracer {
         constructor() {
@@ -29,7 +37,6 @@ export function initHeroTracer(canvas) {
             this.history = []
             this.maxLength = 15 + Math.random() * 20
             this.speed = 2
-
             this.dir = Math.floor(Math.random() * 4)
         }
 
@@ -42,11 +49,9 @@ export function initHeroTracer(canvas) {
             if (this.dir === 2) this.x -= this.speed
             if (this.dir === 3) this.y -= this.speed
 
-            if (this.x % gridSize === 0 && this.y % gridSize === 0) {
-                if (Math.random() < 0.3) {
-                    const turn = Math.random() < 0.5 ? -1 : 1
-                    this.dir = (this.dir + turn + 4) % 4
-                }
+            if (this.x % gridSize === 0 && this.y % gridSize === 0 && Math.random() < 0.3) {
+                const turn = Math.random() < 0.5 ? -1 : 1
+                this.dir = (this.dir + turn + 4) % 4
             }
 
             if (this.x < 0 || this.x > width || this.y < 0 || this.y > height) {
@@ -57,44 +62,72 @@ export function initHeroTracer(canvas) {
         draw() {
             if (this.history.length < 2) return
 
-            ctx.beginPath()
-            ctx.lineWidth = 2
+            ctx.lineWidth = 1.5
             ctx.lineCap = 'round'
-            ctx.strokeStyle = '#38bdf8'
 
             for (let i = 0; i < this.history.length - 1; i++) {
-                const opacity = i / this.history.length
-                ctx.globalAlpha = opacity
-                ctx.moveTo(this.history[i].x, this.history[i].y)
-                ctx.lineTo(this.history[i+1].x, this.history[i+1].y)
+                const a = this.history[i]
+                const b = this.history[i + 1]
+                ctx.strokeStyle = `rgba(${ICE}, ${(i / this.history.length) * 0.8})`
+                ctx.beginPath()
+                ctx.moveTo(a.x, a.y)
+                ctx.lineTo(b.x, b.y)
+                ctx.stroke()
             }
-            ctx.stroke()
 
             const head = this.history[this.history.length - 1]
-            ctx.globalAlpha = 1
             ctx.fillStyle = '#fff'
-            ctx.shadowBlur = 10
-            ctx.shadowColor = '#38bdf8'
             ctx.fillRect(head.x - 2, head.y - 2, 4, 4)
-            ctx.shadowBlur = 0
         }
     }
 
-    for (let i = 0; i < numTracers; i++) {
-        tracers.push(new Tracer())
+    function build() {
+        tracers.length = 0
+        const count = width < 768 ? 4 : 8
+        for (let i = 0; i < count; i++) tracers.push(new Tracer())
     }
 
-    function animate() {
+    function frame() {
         ctx.clearRect(0, 0, width, height)
 
-        tracers.forEach(t => {
+        for (const t of tracers) {
             t.update()
             t.draw()
-        })
-
-        requestAnimationFrame(animate)
+        }
     }
 
-    animate()
-}
+    function loop() {
+        if (!running) return
+        frame()
+        raf = requestAnimationFrame(loop)
+    }
 
+    function start() {
+        if (running || reduced) return
+        running = true
+        raf = requestAnimationFrame(loop)
+    }
+
+    function stop() {
+        running = false
+        cancelAnimationFrame(raf)
+    }
+
+    resize()
+    build()
+
+    new ResizeObserver(() => {
+        resize()
+        build()
+    }).observe(canvas.parentElement)
+
+    new IntersectionObserver(([entry]) => {
+        if (entry.isIntersecting && !document.hidden) start()
+        else stop()
+    }).observe(canvas)
+
+    document.addEventListener('visibilitychange', () => {
+        if (document.hidden) stop()
+        else start()
+    })
+}

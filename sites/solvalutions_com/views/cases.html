@@ -1,168 +1,173 @@
-<div class="container mx-auto px-6 py-10 sm:py-24">
-    <header class="mb-16 border-l-4 border-brand-blue pl-6">
-        <h1 class="text-4xl md:text-5xl font-bold tracking-tighter mb-4 uppercase">
-            Selected <span class="text-brand-accent">Cases</span>
+<section class="py-12 sm:py-24 md:py-28">
+    <div class="max-w-7xl mx-auto px-6">
+        <p class="hero-fade idx mb-8" style="--d: 0ms">Cases</p>
+        <h1 class="text-4xl md:text-6xl leading-[1.08] mb-6">
+            <span class="hero-word" style="--i: 0">Selected</span>
+            <span class="hero-word text-ice" style="--i: 1">Cases</span><span class="hero-word text-ice" style="--i: 1">.</span>
         </h1>
-        <p class="text-gray-400 max-w-2xl text-lg leading-relaxed">
-            A look into the systems we've engineered, with Rust for the parts where latency, memory safety and throughput decide. No fluff, just high-performance architecture that solves real business challenges.
+        <p class="hero-fade text-lg text-muted max-w-2xl leading-relaxed" style="--d: 450ms">
+            Business problems we solved with digital solutions. Where latency, memory safety and throughput decide, we use Rust.
         </p>
-    </header>
+    </div>
+</section>
 
-    <section class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<section class="pb-24">
+    <div class="max-w-7xl mx-auto px-6">
 
-        <article class="group bg-neutral-900/50 border border-white/10 p-8 hover:border-brand-blue/50 transition-all duration-300">
-            <div class="flex justify-between items-start mb-6">
-                <span class="inline-flex items-center px-2.5 py-1 rounded-md bg-brand-accent/10 border border-brand-accent/20 text-brand-accent font-mono text-[10px] sm:text-xs uppercase tracking-widest leading-none">
-                    Data Aggregation
-                </span>
-                <span class="text-xs font-mono text-slate-400">2026</span>
+        <article class="hair reveal grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 py-12">
+            <div class="lg:col-span-5">
+                <p class="font-mono text-[11px] uppercase tracking-[0.16em] text-ice-dim mb-5">Data Aggregation <span class="text-muted">· 2026</span></p>
+                <h2 class="text-2xl text-white mb-4">Data Aggregation Engine</h2>
+                <p class="leading-relaxed mb-6">
+                    A platform pulled data from a dozen internal and third-party sources and merged it per request, which got slower with every new customer. We rebuilt the aggregation layer in Rust: concurrent fetching, streaming merges, and predictable response times with bounded memory use.
+                </p>
+                <p class="font-mono text-xs text-ice-dim">Rust · Tokio · Axum · PostgreSQL · Redis</p>
             </div>
-
-            <h2 class="text-2xl font-bold mb-4 transition-colors">
-                Data Aggregation Engine
-            </h2>
-
-            <p class="text-slate-400 mb-8 leading-relaxed">
-                A platform pulled data from a dozen internal and third-party sources and merged it per request, which got slower with every new customer. We rebuilt the aggregation layer in Rust: concurrent fetching, streaming merges, and predictable response times with bounded memory use.
-            </p>
-
-            <div class="flex flex-wrap gap-3 mb-8">
-                <span class="text-[10px] font-mono border border-white/20 px-2 py-1 text-gray-300">Rust</span>
-                <span class="text-[10px] font-mono border border-white/20 px-2 py-1 text-gray-300">Tokio</span>
-                <span class="text-[10px] font-mono border border-white/20 px-2 py-1 text-gray-300">Axum</span>
-                <span class="text-[10px] font-mono border border-white/20 px-2 py-1 text-gray-300">PostgreSQL</span>
-                <span class="text-[10px] font-mono border border-white/20 px-2 py-1 text-gray-300">Redis</span>
-            </div>
-        </article>
-
-        <article class="group bg-neutral-900/50 border border-white/10 p-8 hover:border-brand-blue/50 transition-all duration-300">
-            <div class="flex justify-between items-start mb-6">
-                <span class="inline-flex items-center px-2.5 py-1 rounded-md bg-sky-400/10 border border-sky-400/20 text-sky-300 font-mono text-[10px] sm:text-xs uppercase tracking-widest leading-none">
-                    Performance Rewrite
-                </span>
-                <span class="text-xs font-mono text-slate-400">2026</span>
-            </div>
-
-            <h2 class="text-2xl font-bold mb-4 transition-colors">
-                Batch Processing, Rewritten
-            </h2>
-
-            <p class="text-slate-400 mb-8 leading-relaxed">
-                A nightly PHP import that took hours and regularly ran out of memory. Rewritten in Rust as a streaming pipeline, validated against the legacy output record by record, and now finishing within a fraction of the time.
-            </p>
-
-            <div class="flex flex-wrap gap-3 mb-8">
-                <span class="text-[10px] font-mono border border-white/20 px-2 py-1 text-gray-300">Rust</span>
-                <span class="text-[10px] font-mono border border-white/20 px-2 py-1 text-gray-300">Serde</span>
-                <span class="text-[10px] font-mono border border-white/20 px-2 py-1 text-gray-300">PostgreSQL</span>
-                <span class="text-[10px] font-mono border border-white/20 px-2 py-1 text-gray-300">PHP / Laravel</span>
+            <div class="lg:col-span-7">
+                <div class="term" data-type data-speed="8">
+                    <div class="term-bar"><b>aggregate.rs</b><span>Rust</span></div>
+                    <div class="term-body">
+<pre class="code-lines"><code><span class="tl ln"><span class="tk-kw">async fn</span> <span class="tk-fn">aggregate</span>(req: <span class="tk-ty">Query</span>, sources: &amp;[<span class="tk-ty">Source</span>]) -&gt; <span class="tk-ty">Result</span>&lt;<span class="tk-ty">Report</span>&gt; {</span>
+<span class="tl ln">    <span class="tk-com">// Fetch every source concurrently</span></span>
+<span class="tl ln">    <span class="tk-kw">let</span> parts = <span class="tk-fn">try_join_all</span>(sources.<span class="tk-fn">iter</span>().<span class="tk-fn">map</span>(|s| s.<span class="tk-fn">fetch</span>(&amp;req))).<span class="tk-kw">await</span>?;</span>
+<span class="tl ln"> </span>
+<span class="tl ln">    <span class="tk-com">// Merge as a stream, bounded memory</span></span>
+<span class="tl ln">    <span class="tk-kw">let</span> report = stream::<span class="tk-fn">iter</span>(parts)</span>
+<span class="tl ln">        .<span class="tk-fn">fold</span>(<span class="tk-ty">Report</span>::<span class="tk-fn">default</span>(), |acc, p| <span class="tk-kw">async move</span> { acc.<span class="tk-fn">merge</span>(p) })</span>
+<span class="tl ln">        .<span class="tk-kw">await</span>;</span>
+<span class="tl ln"> </span>
+<span class="tl ln">    <span class="tk-ty">Ok</span>(report)</span>
+<span class="tl ln">}</span></code></pre>
+                    </div>
+                </div>
             </div>
         </article>
 
-        <article class="group bg-neutral-900/50 border border-white/10 p-8 hover:border-brand-blue/50 transition-all duration-300">
-            <div class="flex justify-between items-start mb-6">
-                <span class="inline-flex items-center px-2.5 py-1 rounded-md bg-brand-accent/10 border border-brand-accent/20 text-brand-accent font-mono text-[10px] sm:text-xs uppercase tracking-widest leading-none">
-                    Shared Core
-                </span>
-                <span class="text-xs font-mono text-slate-400">2026</span>
+        <article class="hair reveal grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 py-12">
+            <div class="lg:col-span-5">
+                <p class="font-mono text-[11px] uppercase tracking-[0.16em] text-ice-dim mb-5">Performance Rewrite <span class="text-muted">· 2026</span></p>
+                <h2 class="text-2xl text-white mb-4">Batch Processing, Rewritten</h2>
+                <p class="leading-relaxed mb-6">
+                    A nightly PHP import that took hours and regularly ran out of memory. Rewritten in Rust as a streaming pipeline, validated against the legacy output record by record, and now finishing within a fraction of the time.
+                </p>
+                <p class="font-mono text-xs text-ice-dim">Rust · Serde · PostgreSQL · PHP / Laravel</p>
             </div>
-
-            <h2 class="text-2xl font-bold mb-4 transition-colors">
-                One Calculation Engine, Everywhere
-            </h2>
-
-            <p class="text-slate-400 mb-8 leading-relaxed">
-                Pricing and planning rules that existed in three slightly different versions. Extracted into one Rust library, exposed to PHP through FFI and to the browser through WebAssembly, so every surface now produces identical results.
-            </p>
-
-            <div class="flex flex-wrap gap-3 mb-8">
-                <span class="text-[10px] font-mono border border-white/20 px-2 py-1 text-gray-300">Rust</span>
-                <span class="text-[10px] font-mono border border-white/20 px-2 py-1 text-gray-300">WebAssembly</span>
-                <span class="text-[10px] font-mono border border-white/20 px-2 py-1 text-gray-300">FFI</span>
-                <span class="text-[10px] font-mono border border-white/20 px-2 py-1 text-gray-300">Laravel</span>
-                <span class="text-[10px] font-mono border border-white/20 px-2 py-1 text-gray-300">TypeScript</span>
-            </div>
-        </article>
-
-        <article class="group bg-neutral-900/50 border border-white/10 p-8 hover:border-brand-blue/50 transition-all duration-300">
-            <div class="flex justify-between items-start mb-6">
-                <span class="inline-flex items-center px-2.5 py-1 rounded-md bg-sky-400/10 border border-sky-400/20 text-sky-300 font-mono text-[10px] sm:text-xs uppercase tracking-widest leading-none">
-                    High-Performance API
-                </span>
-                <span class="text-xs font-mono text-slate-400">2026</span>
-            </div>
-
-            <h2 class="text-2xl font-bold mb-4 transition-colors">
-                High-Throughput API Layer
-            </h2>
-
-            <p class="text-slate-400 mb-8 leading-relaxed">
-                A public API under growing load where tail latency drove customer complaints. Rebuilt as a Rust service with async I/O, typed request handling and structured caching: stable p99 latency, lower infrastructure usage, and an OpenAPI contract that stayed backwards compatible.
-            </p>
-
-            <div class="flex flex-wrap gap-3 mb-8">
-                <span class="text-[10px] font-mono border border-white/20 px-2 py-1 text-gray-300">Rust</span>
-                <span class="text-[10px] font-mono border border-white/20 px-2 py-1 text-gray-300">Axum</span>
-                <span class="text-[10px] font-mono border border-white/20 px-2 py-1 text-gray-300">OpenAPI</span>
-                <span class="text-[10px] font-mono border border-white/20 px-2 py-1 text-gray-300">Redis</span>
+            <div class="lg:col-span-7">
+                <div class="term" data-type data-speed="8">
+                    <div class="term-bar"><b>import.rs</b><span>Rust</span></div>
+                    <div class="term-body">
+<pre class="code-lines"><code><span class="tl ln"><span class="tk-kw">fn</span> <span class="tk-fn">import</span>(input: <span class="tk-kw">impl</span> <span class="tk-ty">Read</span>) -&gt; <span class="tk-ty">Result</span>&lt;<span class="tk-ty">Summary</span>&gt; {</span>
+<span class="tl ln">    <span class="tk-kw">let mut</span> rows = csv::<span class="tk-ty">Reader</span>::<span class="tk-fn">from_reader</span>(input);</span>
+<span class="tl ln">    <span class="tk-kw">let mut</span> summary = <span class="tk-ty">Summary</span>::<span class="tk-fn">default</span>();</span>
+<span class="tl ln"> </span>
+<span class="tl ln">    <span class="tk-kw">for</span> record <span class="tk-kw">in</span> rows.<span class="tk-fn">deserialize</span>::&lt;<span class="tk-ty">Record</span>&gt;() {</span>
+<span class="tl ln">        <span class="tk-com">// One record at a time, never the whole file</span></span>
+<span class="tl ln">        <span class="tk-kw">let</span> record = record?;</span>
+<span class="tl ln">        <span class="tk-fn">matches_legacy</span>(&amp;record)?;</span>
+<span class="tl ln">        summary.<span class="tk-fn">add</span>(record);</span>
+<span class="tl ln">    }</span>
+<span class="tl ln">    <span class="tk-ty">Ok</span>(summary)</span>
+<span class="tl ln">}</span></code></pre>
+                    </div>
+                </div>
             </div>
         </article>
 
-        <article class="group bg-neutral-900/50 border border-white/10 p-8 hover:border-brand-blue/50 transition-all duration-300">
-            <div class="flex justify-between items-start mb-6">
-                <span class="inline-flex items-center px-2.5 py-1 rounded-md bg-brand-accent/10 border border-brand-accent/20 text-brand-accent font-mono text-[10px] sm:text-xs uppercase tracking-widest leading-none">
-                    Infrastructure
-                </span>
-                <span class="text-xs font-mono text-slate-400">2025</span>
+        <article class="hair reveal grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 py-12">
+            <div class="lg:col-span-5">
+                <p class="font-mono text-[11px] uppercase tracking-[0.16em] text-ice-dim mb-5">Shared Core <span class="text-muted">· 2026</span></p>
+                <h2 class="text-2xl text-white mb-4">One Calculation Engine, Everywhere</h2>
+                <p class="leading-relaxed mb-6">
+                    Pricing and planning rules that existed in three slightly different versions. Extracted into one Rust library, exposed to PHP through FFI and to the browser through WebAssembly, so every surface now produces identical results.
+                </p>
+                <p class="font-mono text-xs text-ice-dim">Rust · WebAssembly · FFI · Laravel · TypeScript</p>
             </div>
-
-            <h2 class="text-2xl font-bold mb-4 transition-colors">
-                Legacy Cloud Migration
-            </h2>
-
-            <p class="text-gray-400 mb-8 leading-relaxed">
-                Migrated a fragmented PHP monolith to a distributed Go-based microservices architecture. Reduced infrastructure costs by 40% while doubling request capacity.
-            </p>
-
-            <div class="flex flex-wrap gap-3 mb-8">
-                <span class="text-[10px] font-mono border border-white/20 px-2 py-1 text-gray-300">Go</span>
-                <span class="text-[10px] font-mono border border-white/20 px-2 py-1 text-gray-300">Kubernetes</span>
-                <span class="text-[10px] font-mono border border-white/20 px-2 py-1 text-gray-300">PostgreSQL</span>
-                <span class="text-[10px] font-mono border border-white/20 px-2 py-1 text-gray-300">gRPC</span>
-            </div>
-        </article>
-
-        <article class="group bg-neutral-900/50 border border-white/10 p-8 hover:border-brand-blue/50 transition-all duration-300">
-            <div class="flex justify-between items-start mb-6">
-                <span class="inline-flex items-center px-2.5 py-1 rounded-md bg-sky-400/10 border border-sky-400/20 text-sky-300 font-mono text-[10px] sm:text-xs uppercase tracking-widest leading-none">
-                    E-Commerce Refactor
-                </span>
-                <span class="text-xs font-mono text-slate-400">2026</span>
-            </div>
-
-            <h2 class="text-2xl font-bold mb-4 transition-colors">
-                Headless Commerce Engine
-            </h2>
-
-            <p class="text-slate-400 mb-8 leading-relaxed">
-                Replaced a bottlenecked WordPress/WooCommerce monolith with a headless architecture. By refactoring logic into high-performance Go APIs, we achieved 5x faster checkout speeds and seamless scalability during flash sales.
-            </p>
-
-            <div class="flex flex-wrap gap-3 mb-8">
-                <span class="text-[10px] font-mono border border-white/20 px-2 py-1 text-gray-300">Go</span>
-                <span class="text-[10px] font-mono border border-white/20 px-2 py-1 text-gray-300">WordPress</span>
-                <span class="text-[10px] font-mono border border-white/20 px-2 py-1 text-gray-300">MySQL / MariaDB</span>
-                <span class="text-[10px] font-mono border border-white/20 px-2 py-1 text-gray-300">WooCommerce</span>
-                <span class="text-[10px] font-mono border border-white/20 px-2 py-1 text-gray-300">Redis Cache</span>
+            <div class="lg:col-span-7">
+                <div class="term" data-type data-speed="8">
+                    <div class="term-bar"><b>lib.rs</b><span>Rust</span></div>
+                    <div class="term-body">
+<pre class="code-lines"><code><span class="tl ln"><span class="tk-kw">pub fn</span> <span class="tk-fn">calculate</span>(input: &amp;<span class="tk-ty">Input</span>) -&gt; <span class="tk-ty">Quote</span> {</span>
+<span class="tl ln">    <span class="tk-ty">Quote</span>::<span class="tk-fn">from_rules</span>(input, &amp;RULES)</span>
+<span class="tl ln">}</span>
+<span class="tl ln"> </span>
+<span class="tl ln"><span class="tk-com">// Browser</span></span>
+<span class="tl ln">#[wasm_bindgen]</span>
+<span class="tl ln"><span class="tk-kw">pub fn</span> <span class="tk-fn">calculate_js</span>(json: &amp;<span class="tk-ty">str</span>) -&gt; <span class="tk-ty">String</span> {</span>
+<span class="tl ln">    <span class="tk-fn">to_json</span>(&amp;<span class="tk-fn">calculate</span>(&amp;<span class="tk-fn">from_json</span>(json)))</span>
+<span class="tl ln">}</span>
+<span class="tl ln"> </span>
+<span class="tl ln"><span class="tk-com">// PHP, via FFI</span></span>
+<span class="tl ln">#[no_mangle]</span>
+<span class="tl ln"><span class="tk-kw">pub extern "C" fn</span> <span class="tk-fn">calculate_c</span>(ptr: *<span class="tk-kw">const</span> c_char) -&gt; *<span class="tk-kw">mut</span> c_char {</span>
+<span class="tl ln">    <span class="tk-fn">to_c</span>(&amp;<span class="tk-fn">calculate</span>(&amp;<span class="tk-fn">from_c</span>(ptr)))</span>
+<span class="tl ln">}</span></code></pre>
+                    </div>
+                </div>
             </div>
         </article>
 
-        <article class="md:col-span-2 border border-white/5 border-dashed p-12 flex items-center justify-center">
-            <div class="text-center">
-                <p class="text-slate-400 font-mono text-sm mb-2">// More cases incoming</p>
-                <p class="text-slate-300 text-xs uppercase tracking-tighter">New Project in Engineering Phase</p>
+        <article class="hair reveal grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 py-12">
+            <div class="lg:col-span-5">
+                <p class="font-mono text-[11px] uppercase tracking-[0.16em] text-ice-dim mb-5">High-Performance API <span class="text-muted">· 2026</span></p>
+                <h2 class="text-2xl text-white mb-4">High-Throughput API Layer</h2>
+                <p class="leading-relaxed mb-6">
+                    A public API under growing load where tail latency drove customer complaints. Rebuilt as a Rust service with async I/O, typed request handling and structured caching: stable p99 latency, lower infrastructure usage, and an OpenAPI contract that stayed backwards compatible.
+                </p>
+                <p class="font-mono text-xs text-ice-dim">Rust · Axum · OpenAPI · Redis</p>
+            </div>
+            <div class="lg:col-span-7">
+                <div class="term" data-type data-speed="8">
+                    <div class="term-bar"><b>orders.rs</b><span>Rust</span></div>
+                    <div class="term-body">
+<pre class="code-lines"><code><span class="tl ln"><span class="tk-kw">async fn</span> <span class="tk-fn">get_order</span>(</span>
+<span class="tl ln">    <span class="tk-ty">State</span>(app): <span class="tk-ty">State</span>&lt;<span class="tk-ty">App</span>&gt;,</span>
+<span class="tl ln">    <span class="tk-ty">Path</span>(id): <span class="tk-ty">Path</span>&lt;<span class="tk-ty">OrderId</span>&gt;,</span>
+<span class="tl ln">) -&gt; <span class="tk-ty">Result</span>&lt;<span class="tk-ty">Json</span>&lt;<span class="tk-ty">Order</span>&gt;, <span class="tk-ty">ApiError</span>&gt; {</span>
+<span class="tl ln">    <span class="tk-com">// Typed request, cache first</span></span>
+<span class="tl ln">    <span class="tk-kw">if let</span> <span class="tk-ty">Some</span>(hit) = app.cache.<span class="tk-fn">get</span>(&amp;id).<span class="tk-kw">await</span> {</span>
+<span class="tl ln">        <span class="tk-kw">return</span> <span class="tk-ty">Ok</span>(<span class="tk-ty">Json</span>(hit));</span>
+<span class="tl ln">    }</span>
+<span class="tl ln">    <span class="tk-kw">let</span> order = app.db.<span class="tk-fn">order</span>(id).<span class="tk-kw">await</span>?;</span>
+<span class="tl ln">    app.cache.<span class="tk-fn">set</span>(&amp;id, &amp;order).<span class="tk-kw">await</span>;</span>
+<span class="tl ln">    <span class="tk-ty">Ok</span>(<span class="tk-ty">Json</span>(order))</span>
+<span class="tl ln">}</span></code></pre>
+                    </div>
+                </div>
             </div>
         </article>
 
-    </section>
-</div>
+        <div class="relative" data-constellation-zone>
+            <div class="absolute inset-0 lg:left-auto lg:right-0 lg:w-7/12 opacity-40 lg:opacity-100 pointer-events-none [mask-image:radial-gradient(ellipse_at_center,#000_65%,transparent_100%)]" aria-hidden="true">
+                <canvas data-constellation class="absolute inset-0 w-full h-full"></canvas>
+            </div>
+
+            <article class="reveal relative z-10 grid grid-cols-1 lg:grid-cols-12">
+                <div class="lg:col-span-5 border-t border-line py-12">
+                    <p class="font-mono text-[11px] uppercase tracking-[0.16em] text-ice-dim mb-5">Infrastructure <span class="text-muted">· 2025</span></p>
+                    <h2 class="text-2xl text-white mb-4">Legacy Cloud Migration</h2>
+                    <p class="leading-relaxed mb-6">
+                        Migrated a fragmented PHP monolith to a distributed Go-based microservices architecture. Reduced infrastructure costs by 40% while doubling request capacity.
+                    </p>
+                    <p class="font-mono text-xs text-ice-dim">Go · Kubernetes · PostgreSQL · gRPC</p>
+                </div>
+            </article>
+
+            <article class="reveal relative z-10 grid grid-cols-1 lg:grid-cols-12">
+                <div class="lg:col-span-5 border-t border-line py-12">
+                    <p class="font-mono text-[11px] uppercase tracking-[0.16em] text-ice-dim mb-5">E-Commerce Refactor <span class="text-muted">· 2026</span></p>
+                    <h2 class="text-2xl text-white mb-4">Headless Commerce Engine</h2>
+                    <p class="leading-relaxed mb-6">
+                        Replaced a bottlenecked WordPress/WooCommerce monolith with a headless architecture. By refactoring logic into high-performance Go APIs, we achieved 5x faster checkout speeds and seamless scalability during flash sales.
+                    </p>
+                    <p class="font-mono text-xs text-ice-dim">Go · WordPress · MySQL / MariaDB · WooCommerce · Redis Cache</p>
+                </div>
+            </article>
+        </div>
+
+        <div class="hair reveal py-12">
+            <p class="font-mono text-sm text-muted mb-2"><span class="tk-com">// More cases incoming</span></p>
+            <p class="font-mono text-xs uppercase tracking-[0.16em] text-ice-dim">New Project in Engineering Phase <span class="caret"></span></p>
+        </div>
+
+    </div>
+</section>

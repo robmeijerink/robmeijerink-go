@@ -1,14 +1,14 @@
 # Solvalutions
 
-> Solvalutions is a specialized B2B software engineering agency from the Netherlands, founded and led by Rob Meijerink. It builds high-performance backends, systems software in Rust and Go, cloud-native architecture and scalable business software. Clients work directly with the lead architect: no account managers, no overhead.
+> Solvalutions is a software engineering agency from the Netherlands, founded and led by Rob Meijerink. It solves business problems with digital solutions: custom software, APIs, AI and cloud infrastructure. Backends are built in Rust and Go. The name says it: solve and solutions. Clients work directly with the lead architect: no account managers, no overhead.
 
 This site (solvalutions.com) is the English-language showcase of Solvalutions for international and technical audiences. The Dutch site, https://solvalutions.nl, is separate content (not a translation) aimed at Dutch SMEs and logistics companies, covering websites, system integrations, automation and custom software with a fixed price per phase. Rob Meijerink's personal freelance profile is at https://robmeijerink.nl.
 
 ## Pages
 
-- [Home](https://solvalutions.com/): what Solvalutions specializes in: high-performance backends, cloud native, API first and domain-driven design.
-- [About](https://solvalutions.com/about): company profile, core stack and core principles.
-- [Approach](https://solvalutions.com/approach): methodology (domain-driven design, efficiency, cloud native) and how the agency is organized.
+- [Home](https://solvalutions.com/): what Solvalutions builds: high-performance backends, cloud native, API first, domain-driven design and AI solutions.
+- [About](https://solvalutions.com/about): company profile, what the name stands for, core stack and core principles.
+- [Approach](https://solvalutions.com/approach): methodology (understand the problem, build the solution, run it reliably) and how the agency is organized.
 - [Cases](https://solvalutions.com/cases): selected case studies with the problem, solution and stack.
 - [Contact](https://solvalutions.com/contact): email and LinkedIn.
 
@@ -18,14 +18,15 @@ This site (solvalutions.com) is the English-language showcase of Solvalutions fo
 - Founder & Lead Engineer: Rob Meijerink (15+ years of experience)
 - Model: you work directly with the lead architect, as a specialized technical team that scales up with a trusted network of senior engineers only when a project demands it
 - Core stack: Rust, Go (Golang), PHP/Laravel, Tailwind CSS, minimal JavaScript
-- Focus: high-performance B2B software, scalable business solutions, reliable architecture
+- Focus: digital solutions, custom software, APIs and AI, reliable architecture
 
 ## Services
 
 - High-performance backends: replacing bloated legacy systems with compiled, type-safe services. Rust where predictable latency and memory safety matter, Go where speed of delivery and simplicity win. Optimized for concurrency, low latency and high throughput. Technologies: gRPC, microservices, Rust, Tokio, Axum, WebAssembly, Go, PHP/Laravel.
 - Cloud native: Kubernetes, Terraform and AWS/Azure/GCP automation. Infrastructure as Code is the default; deployments are automated so systems are highly available, scalable and reproducible.
-- API first: reliable REST and GraphQL APIs that developers enjoy using.
+- API first: reliable APIs that developers enjoy using, in the form that fits the system: REST, GraphQL, gRPC, WebSockets and webhooks, documented with OpenAPI.
 - Domain-driven design: business logic modelled into code that mirrors reality, reducing technical debt from day one.
+- AI solutions: AI added to existing software, agents that automate tasks, and search over a company's own documents and data. AI is also used while building, without vibe coding: everything is reviewed and tested.
 
 ## Principles
 

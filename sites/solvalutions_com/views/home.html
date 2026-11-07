@@ -1,126 +1,222 @@
-<section class="relative pt-8 sm:pt-20 pb-32 overflow-hidden">
-    <canvas id="tech-grid-tracer-canvas" class="absolute inset-0 w-full h-full z-0 opacity-60"></canvas>
-
-    <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full z-0 pointer-events-none">
-        <div class="absolute top-[-10%] left-1/2 -translate-x-1/2 w-150 h-100 bg-brand-accent/10 blur-[120px] rounded-full"></div>
+<section class="relative pt-10 sm:pt-20 pb-24 sm:pb-32 overflow-hidden">
+    <div class="absolute inset-0 z-0 opacity-70" aria-hidden="true">
+        <canvas id="tech-grid-tracer-canvas" class="absolute inset-0 w-full h-full"></canvas>
     </div>
+    <div class="absolute inset-x-0 bottom-0 h-40 z-0 bg-gradient-to-t from-ink to-transparent pointer-events-none"></div>
 
     <div class="max-w-7xl mx-auto px-6 relative z-10">
-        <div class="max-w-3xl">
-            <div class="flex flex-wrap items-center gap-3 mb-6">
-                <span class="animate-neon-flicker inline-flex items-center gap-2 w-full sm:w-auto px-2 py-1 rounded border border-brand-accent/30 bg-brand-accent/5 text-[10px] font-mono text-brand-accent uppercase tracking-[0.2em]">
-                    <span class="w-1.5 h-1.5 rounded-full bg-brand-accent animate-pulse shadow-[0_0_8px_var(--color-emerald-500)]"></span>
-                    Available for <span class="whitespace-nowrap">{{ .AvailableForWorkQ }}</span>
-                </span>
-                <span class="w-1 h-1 rounded-full bg-slate-700"></span>
-                <span class="text-xs font-mono text-slate-500 italic w-full sm:w-auto">// Engineering high-performance backends</span>
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-14 lg:gap-10 items-center">
+            <div class="lg:col-span-7">
+                <div class="hero-fade flex flex-wrap items-center gap-3 mb-7" style="--d: 0ms">
+                    <span class="font-mono text-xs text-muted"><span class="tk-prompt">$</span> status</span>
+                    <span class="status-pill w-full sm:w-auto">
+                        <span class="w-1.5 h-1.5 rounded-full bg-ok shrink-0 animate-pulse motion-reduce:animate-none shadow-[0_0_8px_var(--color-ok)]"></span>
+                        Available for <span class="whitespace-nowrap">{{ .AvailableForWorkQ }}</span>
+                    </span>
+                    <span class="hidden sm:block w-1 h-1 rounded-full bg-line-strong"></span>
+                    <span class="text-xs font-mono text-muted italic">// Solving problems with software</span>
+                </div>
+
+                <h1 class="text-4xl md:text-6xl leading-[1.08] mb-8 break-words">
+                    <span class="hero-word text-ice" style="--i: 0">Digital</span>
+                    <span class="hero-word text-ice" style="--i: 1">solutions</span>
+                    <span class="hero-word" style="--i: 2">that</span>
+                    <span class="hero-word" style="--i: 3">solve</span>
+                    <span class="hero-word" style="--i: 4">business</span>
+                    <span class="hero-word" style="--i: 5">problems.</span>
+                </h1>
+
+                <p class="hero-fade text-lg md:text-xl text-muted mb-10 leading-relaxed max-w-2xl" style="--d: 650ms">
+                    Solvalutions turns business problems into working digital solutions. Custom software, APIs, AI and cloud infrastructure. Backends in Rust and Go.
+                </p>
+
+                <div class="hero-fade flex flex-wrap gap-4" style="--d: 800ms">
+                    <a href="/contact" class="btn btn-primary">Get in touch <span aria-hidden="true">→</span></a>
+                    <a href="/cases" class="btn btn-ghost">View Cases</a>
+                </div>
             </div>
 
-            <h1 class="text-4xl md:text-6xl font-extrabold text-white leading-[1.1] mb-8 tracking-tighter break-words">
-                Building the <span class="text-transparent bg-clip-text bg-linear-to-r from-brand-accent to-blue-400">digital backbone</span> for tech-driven business.
-            </h1>
-
-            <p class="text-lg md:text-xl text-slate-400 mb-10 leading-relaxed max-w-2xl">
-                Solvalutions specializes in scalable backends, systems software in Rust and Go, cloud-native architecture, and specialized B2B software engineering. We don't just write code; we build solutions.
-            </p>
-
-            <div class="flex flex-wrap gap-4">
-                <a href="/contact" class="px-8 py-4 bg-white text-brand-bg font-bold rounded-xl hover:bg-brand-accent transition-all duration-300 shadow-(--brand-glow) hover:scale-[1.02]">
-                    Get in touch
-                </a>
-                <a href="/cases" class="px-8 py-4 bg-brand-surface border border-slate-700 text-white font-bold rounded-xl hover:bg-slate-800 transition-all">
-                    View Cases
-                </a>
+            <div class="hero-fade lg:col-span-5" style="--d: 500ms">
+                <div class="term max-sm:text-[11px]" data-type data-delay="900" aria-label="Example cloud deployment in a terminal">
+                    <div class="term-bar">
+                        <b>~/solvalutions</b>
+                        <span>zsh</span>
+                    </div>
+                    <div class="term-body !overflow-x-hidden">
+<pre><code><span class="tl"><span class="tk-prompt">$</span> terraform apply -auto-approve</span>
+<span class="tl" data-instant><span class="tk-ok">Apply complete!</span></span>
+<span class="tl"><span class="tk-prompt">$</span> kubectl apply -f deploy/</span>
+<span class="tl" data-instant>deployment.apps/api <span class="tk-ok">configured</span></span>
+<span class="tl"><span class="tk-prompt">$</span> kubectl rollout status deploy/api</span>
+<span class="tl" data-instant>deployment "api" <span class="tk-ok">successfully rolled out</span></span>
+<span class="tl"><span class="tk-prompt">$</span> kubectl get pods</span>
+<span class="tl" data-instant><span class="tk-com">NAME                  READY   STATUS    RESTARTS</span></span>
+<span class="tl" data-instant>api-7c9d8b6f5-4xk2p   1/1     <span class="tk-ok">Running</span>   0</span>
+<span class="tl" data-instant>api-7c9d8b6f5-9tqzw   1/1     <span class="tk-ok">Running</span>   0</span>
+<span class="tl" data-instant>api-7c9d8b6f5-m8v7c   1/1     <span class="tk-ok">Running</span>   0</span>
+<span class="tl"><span class="tk-prompt">$</span> <span class="caret"></span></span></code></pre>
+                    </div>
+                </div>
             </div>
         </div>
 
-        <div class="mt-20 p-1 rounded-2xl bg-linear-to-b from-slate-700 to-transparent">
-            <div class="bg-brand-bg rounded-[14px] p-6 md:p-8 flex flex-col md:flex-row items-center justify-between gap-8 border border-slate-800/50">
-                <div class="flex gap-4 items-center">
-                    <div class="w-12 h-12 rounded-lg bg-brand-accent/10 flex items-center justify-center text-brand-accent">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
-                        </svg>
-                    </div>
-                    <div>
-                        <h2 class="text-white font-bold">Fast by default</h2>
-                        <p class="text-sm text-slate-400">Rust and Go services with <span class="whitespace-nowrap">&lt; 50ms</span> latency.</p>
-                    </div>
+        <div class="mt-20 grid grid-cols-1 md:grid-cols-2 border-y border-line">
+            <div class="reveal flex gap-6 items-center py-7 md:pr-8" data-draw>
+                <svg class="w-28 h-16 shrink-0 text-ice-dim" viewBox="0 0 112 64" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+                    <path class="flow-dash" d="M4 32h104" opacity=".5"/>
+                    <rect x="40" y="16" width="32" height="32" rx="3" class="text-ice" stroke="currentColor"/>
+                    <path d="M50 32h12M58 27l5 5-5 5" class="text-ice"/>
+                    <rect class="pkt text-ice" style="--run: 28px" x="6" y="30" width="4" height="4" fill="currentColor" stroke="none"/>
+                    <rect class="pkt text-ice" style="--run: 28px; animation-delay: 1.2s" x="78" y="30" width="4" height="4" fill="currentColor" stroke="none"/>
+                </svg>
+                <div>
+                    <h2 class="text-white text-lg mb-1">Fast by default</h2>
+                    <p class="text-sm">Rust and Go services built for low, predictable latency.</p>
                 </div>
-                <div class="h-px w-full md:h-12 md:w-px bg-slate-800"></div>
-                <div class="flex gap-4 items-center">
-                    <div class="w-12 h-12 rounded-lg bg-emerald-400/10 flex items-center justify-center text-emerald-400">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-                        </svg>
-                    </div>
-                    <div>
-                        <h2 class="text-white font-bold">Secure Architecture</h2>
-                        <p class="text-sm text-slate-400">Hardened cloud setups and Kubernetes native.</p>
-                    </div>
+            </div>
+            <div class="reveal flex gap-6 items-center py-7 md:pl-8 border-t md:border-t-0 md:border-l border-line" style="--d: 120ms" data-draw>
+                <svg class="w-28 h-16 shrink-0 text-ice-dim" viewBox="0 0 112 64" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+                    <path class="pulse-ring text-ice" opacity=".7" d="M56 6l24 8v16c0 14-10 24-24 28-14-4-24-14-24-28V14z"/>
+                    <path class="text-ice" fill="rgb(159 211 255 / .06)" d="M56 6l24 8v16c0 14-10 24-24 28-14-4-24-14-24-28V14z"/>
+                    <path class="draw-line text-ice" style="--len: 100; --d: 500ms" pathLength="100" d="M46 32l8 8 14-16"/>
+                </svg>
+                <div>
+                    <h2 class="text-white text-lg mb-1">Secure Architecture</h2>
+                    <p class="text-sm">Hardened cloud setups and Kubernetes native.</p>
                 </div>
             </div>
         </div>
     </div>
 </section>
 
-<section class="py-32">
+<section class="py-24 sm:py-32">
     <div class="max-w-7xl mx-auto px-6">
-        <div class="mb-16">
-            <h2 class="text-3xl md:text-4xl font-extrabold text-white tracking-tighter mb-4">Engineered for <span class="text-brand-accent">impact</span>.</h2>
-            <p class="text-slate-400 max-w-xl">We specialize in the high-stakes parts of your stack. No fluff, just performance.</p>
+        <div class="reveal mb-14">
+            <p class="idx mb-6">01 / Expertise</p>
+            <h2 class="text-3xl md:text-5xl mb-4">Problems we solve<span class="text-ice">.</span></h2>
+            <p class="max-w-xl">Five areas where we turn a business problem into a working solution.</p>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-12 gap-4">
-            <div class="md:col-span-8 p-8 rounded-3xl bg-brand-surface border border-slate-800 hover:border-brand-accent/50 transition-colors group">
-                <div class="flex items-center gap-4 mb-4">
-                    <div class="w-12 h-12 rounded-xl bg-brand-accent/10 flex items-center justify-center text-brand-accent shrink-0">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
-                    </div>
-                    <h2 class="text-2xl font-bold text-white">High-Performance Backends</h2>
+        <div>
+            <article class="hair reveal grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-10 py-10 items-center" data-draw>
+                <p class="md:col-span-1 font-mono text-sm text-ice-dim">01</p>
+                <div class="md:col-span-7">
+                    <h2 class="text-2xl text-white mb-4">High-Performance Backends</h2>
+                    <p class="leading-relaxed mb-6">Slow, outdated systems hold your business back. We replace them with fast, type-safe services. Rust where predictable latency and memory safety matter, Go where speed of delivery and simplicity win.</p>
+                    <p class="font-mono text-xs text-ice-dim leading-loose">gRPC · Microservices · Rust · Tokio / Axum · WebAssembly · Go (Golang) · PHP / Laravel</p>
                 </div>
-
-                <p class="text-slate-400 leading-relaxed mb-6">Replacing bloated legacy systems with compiled, type-safe services. Rust where predictable latency and memory safety matter, Go where speed of delivery and simplicity win. Optimized for concurrency, low latency, and high throughput.</p>
-
-                <div class="flex flex-wrap gap-2 font-mono text-[10px] uppercase tracking-widest">
-                    <span class="px-2 py-1 bg-sky-400/10 rounded border border-sky-400/20 text-sky-300">gRPC</span>
-                    <span class="px-2 py-1 bg-sky-400/10 rounded border border-sky-400/20 text-sky-300">Microservices</span>
-                    <span class="px-2 py-1 bg-sky-400/10 rounded border border-sky-400/20 text-sky-300">Rust</span>
-                    <span class="px-2 py-1 bg-sky-400/10 rounded border border-sky-400/20 text-sky-300">Tokio / Axum</span>
-                    <span class="px-2 py-1 bg-sky-400/10 rounded border border-sky-400/20 text-sky-300">WebAssembly</span>
-                    <span class="px-2 py-1 bg-sky-400/10 rounded border border-sky-400/20 text-sky-300">Go (Golang)</span>
-                    <span class="px-2 py-1 bg-sky-400/10 rounded border border-sky-400/20 text-sky-300">PHP / Laravel</span>
+                <div class="md:col-span-4 flex md:justify-end">
+                    <svg class="w-full max-w-[260px] text-ice-dim" viewBox="0 0 220 110" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+                        <path class="flow-dash" d="M8 55h52M160 55h52" opacity=".5"/>
+                        <rect class="text-ice" x="60" y="18" width="100" height="74" rx="10" fill="rgb(159 211 255 / .06)" stroke="currentColor"/>
+                        <circle class="blink text-ok" cx="73" cy="30" r="2.5" fill="currentColor" stroke="none"/>
+                        <rect class="load-bar text-ice" style="--d: 0s" x="73" y="44" width="74" height="6" rx="3" fill="currentColor" stroke="none" opacity=".75"/>
+                        <rect class="load-bar text-ice" style="--d: .6s" x="73" y="58" width="74" height="6" rx="3" fill="currentColor" stroke="none" opacity=".55"/>
+                        <rect class="load-bar text-ice" style="--d: 1.2s" x="73" y="72" width="74" height="6" rx="3" fill="currentColor" stroke="none" opacity=".4"/>
+                        <rect class="pkt text-ice" style="--run: 50px" x="8" y="53" width="4" height="4" fill="currentColor" stroke="none"/>
+                        <rect class="pkt text-ice" style="--run: 50px; animation-delay: .8s" x="8" y="53" width="4" height="4" fill="currentColor" stroke="none"/>
+                        <rect class="pkt text-ice" style="--run: 50px; animation-delay: 1.6s" x="160" y="53" width="4" height="4" fill="currentColor" stroke="none"/>
+                    </svg>
                 </div>
-            </div>
+            </article>
 
-            <div class="md:col-span-4 p-8 rounded-3xl bg-brand-surface border border-slate-800">
-                <div class="flex items-center gap-4 mb-4">
-                    <div class="w-12 h-12 rounded-xl bg-emerald-400/10 flex items-center justify-center text-emerald-400 shrink-0">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z" /></svg>
-                    </div>
-                    <h2 class="text-xl font-bold text-white">Cloud Native</h2>
+            <article class="hair reveal grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-10 py-10 items-center" data-draw>
+                <p class="md:col-span-1 font-mono text-sm text-ice-dim">02</p>
+                <div class="md:col-span-7">
+                    <h2 class="text-2xl text-white mb-4">Cloud Native</h2>
+                    <p class="leading-relaxed">Your system has to stay up and grow with you. We automate deployments with Kubernetes, Terraform and AWS/Azure/GCP. Infrastructure as Code is our default.</p>
                 </div>
-                <p class="text-sm text-slate-400">Kubernetes, Terraform, and AWS/Azure/GCP automation. Infrastructure as Code is our default standard.</p>
-            </div>
+                <div class="md:col-span-4 flex md:justify-end">
+                    <svg class="w-full max-w-[260px] text-ice-dim" viewBox="0 0 220 110" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+                        <rect class="flow-dash" x="16" y="10" width="188" height="90" rx="12" opacity=".55"/>
+                        <rect class="pod pod-on text-ice" x="36" y="36" width="40" height="38" rx="7" fill="rgb(159 211 255 / .06)" stroke="currentColor"/>
+                        <rect class="pod text-ice" style="--d: 1.2s" x="90" y="36" width="40" height="38" rx="7" fill="rgb(159 211 255 / .06)" stroke="currentColor"/>
+                        <rect class="pod text-ice" style="--d: 2.4s" x="144" y="36" width="40" height="38" rx="7" fill="rgb(159 211 255 / .06)" stroke="currentColor"/>
+                        <circle class="blink text-ok" cx="46" cy="46" r="2.5" fill="currentColor" stroke="none"/>
+                        <circle class="blink text-ok" style="--d: .4s" cx="100" cy="46" r="2.5" fill="currentColor" stroke="none"/>
+                        <circle class="blink text-ok" style="--d: .8s" cx="154" cy="46" r="2.5" fill="currentColor" stroke="none"/>
+                    </svg>
+                </div>
+            </article>
 
-            <div class="md:col-span-4 p-8 rounded-3xl bg-brand-surface border border-slate-800">
-                <div class="flex items-center gap-4 mb-4">
-                    <div class="w-12 h-12 rounded-xl bg-blue-400/10 flex items-center justify-center text-blue-400 shrink-0">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" /></svg>
-                    </div>
-                    <h2 class="text-xl font-bold text-white">API First</h2>
+            <article class="hair reveal grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-10 py-10 items-center" data-draw>
+                <p class="md:col-span-1 font-mono text-sm text-ice-dim">03</p>
+                <div class="md:col-span-7">
+                    <h2 class="text-2xl text-white mb-4">API First</h2>
+                    <p class="leading-relaxed mb-6">Your systems need to work together. We build reliable APIs that developers enjoy using, in the form that fits your system and scales with your business goals.</p>
+                    <p class="font-mono text-xs text-ice-dim leading-loose">REST · GraphQL · gRPC · WebSockets · Webhooks · OpenAPI</p>
                 </div>
-                <p class="text-sm text-slate-400">Reliable REST and GraphQL APIs that developers actually enjoy using.</p>
-            </div>
+                <div class="md:col-span-4 flex md:justify-end">
+                    <svg class="w-full max-w-[260px] text-ice-dim" viewBox="0 0 220 110" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+                        <rect x="8" y="30" width="50" height="50" rx="10" fill="rgb(159 211 255 / .06)"/>
+                        <rect class="text-ice" x="162" y="30" width="50" height="50" rx="10" fill="rgb(159 211 255 / .06)" stroke="currentColor"/>
+                        <circle class="blink text-ok" cx="174" cy="42" r="2.5" fill="currentColor" stroke="none"/>
+                        <path class="flow-dash text-ice" d="M64 46h86"/>
+                        <path class="text-ice" d="M150 41l6 5-6 5"/>
+                        <path class="flow-dash" d="M156 66H70" opacity=".7"/>
+                        <path d="M70 61l-6 5 6 5"/>
+                        <rect class="pkt text-ice" style="--run: 80px" x="66" y="44" width="4" height="4" fill="currentColor" stroke="none"/>
+                        <rect class="pkt text-ice" style="--run: -80px; animation-delay: 1.2s" x="152" y="64" width="4" height="4" fill="currentColor" stroke="none"/>
+                        <text x="66" y="38" font-size="8" fill="currentColor" stroke="none" class="font-mono">GET /v1/orders</text>
+                        <text x="104" y="88" font-size="8" fill="currentColor" stroke="none" class="font-mono">200</text>
+                    </svg>
+                </div>
+            </article>
 
-            <div class="md:col-span-8 p-8 rounded-3xl bg-brand-surface border border-slate-800">
-                <h2 class="text-xl font-bold text-white mb-4">Domain Driven Design</h2>
-                <p class="text-sm text-slate-400 mb-6">We model your business logic into code that mirrors reality, reducing technical debt from day one.</p>
-                <div class="h-1 w-full bg-slate-800 rounded-full overflow-hidden">
-                    <div class="h-full bg-brand-accent w-[85%]"></div>
+            <article class="hair reveal grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-10 py-10 items-center" data-draw>
+                <p class="md:col-span-1 font-mono text-sm text-ice-dim">04</p>
+                <div class="md:col-span-7">
+                    <h2 class="text-2xl text-white mb-4">Domain Driven Design</h2>
+                    <p class="leading-relaxed">Software should mirror how your business works. We model your business logic into code, which reduces technical debt from day one.</p>
                 </div>
-                <p class="text-[10px] font-mono mt-2 uppercase tracking-widest text-slate-100">System reliability: 99.9% target</p>
-            </div>
+                <div class="md:col-span-4 flex md:justify-end">
+                    <svg class="w-full max-w-[260px] text-ice-dim" viewBox="0 0 220 110" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+                        <g class="ctx" style="--d: 0s">
+                            <rect class="text-ice" x="8" y="28" width="52" height="54" rx="10" fill="rgb(159 211 255 / .06)" stroke="currentColor"/>
+                            <rect x="18" y="40" width="14" height="14" rx="3" fill="currentColor" stroke="none" opacity=".6"/>
+                            <path d="M18 66h32M18 74h20" opacity=".5"/>
+                        </g>
+                        <g class="ctx" style="--d: 1.2s">
+                            <rect class="text-ice" x="84" y="28" width="52" height="54" rx="10" fill="rgb(159 211 255 / .06)" stroke="currentColor"/>
+                            <rect x="94" y="40" width="14" height="14" rx="3" fill="currentColor" stroke="none" opacity=".6"/>
+                            <path d="M94 66h32M94 74h20" opacity=".5"/>
+                        </g>
+                        <g class="ctx" style="--d: 2.4s">
+                            <rect class="text-ice" x="160" y="28" width="52" height="54" rx="10" fill="rgb(159 211 255 / .06)" stroke="currentColor"/>
+                            <rect x="170" y="40" width="14" height="14" rx="3" fill="currentColor" stroke="none" opacity=".6"/>
+                            <path d="M170 66h32M170 74h20" opacity=".5"/>
+                        </g>
+                        <path class="flow-dash" d="M60 55h24M136 55h24" opacity=".6"/>
+                        <rect class="pkt text-ice" style="--run: 20px" x="62" y="53" width="4" height="4" fill="currentColor" stroke="none"/>
+                        <rect class="pkt text-ice" style="--run: 20px; animation-delay: 1.2s" x="138" y="53" width="4" height="4" fill="currentColor" stroke="none"/>
+                    </svg>
+                </div>
+            </article>
+
+            <article class="hair reveal grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-10 py-10 items-center" data-draw>
+                <p class="md:col-span-1 font-mono text-sm text-ice-dim">05</p>
+                <div class="md:col-span-7">
+                    <h2 class="text-2xl text-white mb-4">AI Solutions</h2>
+                    <p class="leading-relaxed mb-6">Your team loses time on work that software could do. We add AI to your existing software, build agents that automate tasks, and make your own documents and data searchable. We also use AI while building, but without vibe coding: everything is reviewed and tested.</p>
+                    <p class="font-mono text-xs text-ice-dim leading-loose">LLM integrations · Agents · Search over your data · Automation</p>
+                </div>
+                <div class="md:col-span-4 flex md:justify-end">
+                    <svg class="w-full max-w-[260px] text-ice-dim" viewBox="0 0 220 110" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+                        <rect x="8" y="26" width="48" height="58" rx="8" fill="rgb(159 211 255 / .06)"/>
+                        <path d="M18 42h28M18 52h28M18 62h18" opacity=".5"/>
+                        <path class="flow-dash" d="M56 55h34M130 55h34" opacity=".6"/>
+                        <circle class="spin text-ice" cx="110" cy="55" r="21" stroke-dasharray="5 6"/>
+                        <circle class="text-ice" cx="110" cy="55" r="13" fill="rgb(159 211 255 / .06)" stroke="currentColor"/>
+                        <path class="twinkle text-ice" d="M110 46v18M101 55h18" stroke-linecap="round"/>
+                        <rect class="text-ice" x="164" y="30" width="48" height="50" rx="10" fill="rgb(159 211 255 / .06)" stroke="currentColor"/>
+                        <rect class="load-bar text-ice" style="--d: 0s" x="173" y="42" width="30" height="5" rx="2.5" fill="currentColor" stroke="none" opacity=".7"/>
+                        <rect class="load-bar text-ice" style="--d: .5s" x="173" y="53" width="22" height="5" rx="2.5" fill="currentColor" stroke="none" opacity=".5"/>
+                        <rect class="load-bar text-ice" style="--d: 1s" x="173" y="64" width="26" height="5" rx="2.5" fill="currentColor" stroke="none" opacity=".4"/>
+                        <rect class="pkt text-ice" style="--run: 34px" x="56" y="53" width="4" height="4" fill="currentColor" stroke="none"/>
+                        <rect class="pkt text-ice" style="--run: 34px; animation-delay: 1.2s" x="130" y="53" width="4" height="4" fill="currentColor" stroke="none"/>
+                    </svg>
+                </div>
+            </article>
         </div>
     </div>
 </section>

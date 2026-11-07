@@ -1,18 +1,26 @@
 import '../styles/app.css'
+import { initReveal } from './reveal.js'
+import { initTypeTerm } from './type-term.js'
+import { initSteps } from './steps.js'
 
-// Main
+initReveal()
+initTypeTerm()
+initSteps()
+
 const tracerCanvas = document.getElementById('tech-grid-tracer-canvas')
 
 if (tracerCanvas) {
-    const loadHeroTracer = async () => {
-        try {
-            (await import('./hero-tracer.js')).initHeroTracer(tracerCanvas)
-        } catch (err) {
-            console.error("Kon de hero tracer niet laden:", err)
-        }
-    }
+    import('./hero-tracer.js')
+        .then(m => m.initHeroTracer(tracerCanvas))
+        .catch(err => console.error('Hero tracer failed to load:', err))
+}
 
-    loadHeroTracer()
+const constellations = document.querySelectorAll('canvas[data-constellation]')
+
+if (constellations.length) {
+    import('./constellation.js')
+        .then(m => constellations.forEach(canvas => m.initConstellation(canvas)))
+        .catch(err => console.error('Constellation failed to load:', err))
 }
 
 const openBtn = document.getElementById('mobile-menu-open')
@@ -21,17 +29,12 @@ const menu = document.getElementById('mobile-menu')
 const backdrop = document.getElementById('mobile-menu-backdrop')
 
 function toggleMenu(isOpen) {
-    if (isOpen) {
-        menu.classList.remove('translate-x-full')
-        backdrop.classList.add('opacity-100', 'pointer-events-auto')
-        backdrop.classList.remove('opacity-0', 'pointer-events-none')
-        document.body.style.overflow = 'hidden'
-    } else {
-        menu.classList.add('translate-x-full')
-        backdrop.classList.remove('opacity-100', 'pointer-events-auto')
-        backdrop.classList.add('opacity-0', 'pointer-events-none')
-        document.body.style.overflow = ''
-    }
+    menu.classList.toggle('translate-x-full', !isOpen)
+    backdrop.classList.toggle('opacity-100', isOpen)
+    backdrop.classList.toggle('pointer-events-auto', isOpen)
+    backdrop.classList.toggle('opacity-0', !isOpen)
+    backdrop.classList.toggle('pointer-events-none', !isOpen)
+    document.body.style.overflow = isOpen ? 'hidden' : ''
 }
 
 openBtn.addEventListener('click', () => toggleMenu(true))
