@@ -52,24 +52,26 @@
                 </p>
                 <p class="font-mono text-xs text-ice-dim">Rust · Serde · PostgreSQL · PHP / Laravel</p>
             </div>
-            <div class="lg:col-span-7">
-                <div class="term" data-type data-speed="8">
-                    <div class="term-bar"><b>import.rs</b><span>Rust</span></div>
-                    <div class="term-body">
-<pre class="code-lines"><code><span class="tl ln"><span class="tk-kw">fn</span> <span class="tk-fn">import</span>(input: <span class="tk-kw">impl</span> <span class="tk-ty">Read</span>) -&gt; <span class="tk-ty">Result</span>&lt;<span class="tk-ty">Summary</span>&gt; {</span>
-<span class="tl ln">    <span class="tk-kw">let mut</span> rows = csv::<span class="tk-ty">Reader</span>::<span class="tk-fn">from_reader</span>(input);</span>
-<span class="tl ln">    <span class="tk-kw">let mut</span> summary = <span class="tk-ty">Summary</span>::<span class="tk-fn">default</span>();</span>
-<span class="tl ln"> </span>
-<span class="tl ln">    <span class="tk-kw">for</span> record <span class="tk-kw">in</span> rows.<span class="tk-fn">deserialize</span>::&lt;<span class="tk-ty">Record</span>&gt;() {</span>
-<span class="tl ln">        <span class="tk-com">// One record at a time, never the whole file</span></span>
-<span class="tl ln">        <span class="tk-kw">let</span> record = record?;</span>
-<span class="tl ln">        <span class="tk-fn">matches_legacy</span>(&amp;record)?;</span>
-<span class="tl ln">        summary.<span class="tk-fn">add</span>(record);</span>
-<span class="tl ln">    }</span>
-<span class="tl ln">    <span class="tk-ty">Ok</span>(summary)</span>
-<span class="tl ln">}</span></code></pre>
-                    </div>
-                </div>
+            <div class="lg:col-span-7 flex lg:justify-end items-center">
+                <svg class="w-full max-w-[560px] text-ice-dim" viewBox="0 0 560 240" fill="none" stroke="currentColor" stroke-width="1.5" role="img" aria-label="Records stream through a read, validate and write pipeline into PostgreSQL">
+                    <rect x="16" y="70" width="74" height="100" rx="10" fill="rgb(159 211 255 / .06)"/>
+                    <path d="M30 92h46M30 106h46M30 120h46M30 134h30M30 148h38" opacity=".5"/>
+                    <text x="53" y="194" text-anchor="middle" font-size="12" fill="currentColor" stroke="none" class="font-mono">import</text>
+                    <path class="flow-dash" d="M90 120h70" opacity=".6"/>
+                    <rect class="pkt text-ice" style="--run: 62px" x="92" y="118" width="5" height="5" fill="currentColor" stroke="none"/><rect class="pkt text-ice" style="--run: 62px; animation-delay: .8s" x="92" y="118" width="5" height="5" fill="currentColor" stroke="none"/><rect class="pkt text-ice" style="--run: 62px; animation-delay: 1.6s" x="92" y="118" width="5" height="5" fill="currentColor" stroke="none"/>
+                    <rect class="text-ice" x="160" y="52" width="250" height="136" rx="14" fill="rgb(159 211 255 / .06)" stroke="currentColor"/>
+                    <g class="ctx" style="--d: 0s"><rect class="text-ice" x="174" y="92" width="64" height="56" rx="8" fill="rgb(159 211 255 / .06)" stroke="currentColor"/><text x="206" y="125" text-anchor="middle" font-size="11" fill="currentColor" stroke="none" class="font-mono">read</text></g>
+                    <g class="ctx" style="--d: 1.2s"><rect class="text-ice" x="256" y="92" width="64" height="56" rx="8" fill="rgb(159 211 255 / .06)" stroke="currentColor"/><text x="288" y="125" text-anchor="middle" font-size="11" fill="currentColor" stroke="none" class="font-mono">validate</text></g>
+                    <g class="ctx" style="--d: 2.4s"><rect class="text-ice" x="338" y="92" width="64" height="56" rx="8" fill="rgb(159 211 255 / .06)" stroke="currentColor"/><text x="370" y="125" text-anchor="middle" font-size="11" fill="currentColor" stroke="none" class="font-mono">write</text></g>
+                    <path class="flow-dash" d="M238 120h18M320 120h18" opacity=".7"/>
+                    <text x="285" y="174" text-anchor="middle" font-size="11" fill="currentColor" stroke="none" class="font-mono" opacity=".7">record by record</text>
+                    <path class="flow-dash" d="M410 120h70" opacity=".6"/>
+                    <rect class="pkt text-ice" style="--run: 62px" x="412" y="118" width="5" height="5" fill="currentColor" stroke="none"/><rect class="pkt text-ice" style="--run: 62px; animation-delay: .8s" x="412" y="118" width="5" height="5" fill="currentColor" stroke="none"/><rect class="pkt text-ice" style="--run: 62px; animation-delay: 1.6s" x="412" y="118" width="5" height="5" fill="currentColor" stroke="none"/>
+                    <ellipse class="text-ice" cx="510" cy="92" rx="30" ry="10" fill="rgb(159 211 255 / .06)" stroke="currentColor"/>
+                    <path class="text-ice" d="M480 92v56c0 6 13 10 30 10s30-4 30-10V92" stroke="currentColor"/>
+                    <path d="M480 120c0 6 13 10 30 10s30-4 30-10" opacity=".5"/>
+                    <text x="510" y="190" text-anchor="middle" font-size="11" fill="currentColor" stroke="none" class="font-mono" opacity=".7">PostgreSQL</text>
+                </svg>
             </div>
         </article>
 
@@ -115,34 +117,42 @@
                 </p>
                 <p class="font-mono text-xs text-ice-dim">Rust · Axum · OpenAPI · Redis</p>
             </div>
-            <div class="lg:col-span-7">
-                <div class="term" data-type data-speed="8">
-                    <div class="term-bar"><b>orders.rs</b><span>Rust</span></div>
-                    <div class="term-body">
-<pre class="code-lines"><code><span class="tl ln"><span class="tk-kw">async fn</span> <span class="tk-fn">get_order</span>(</span>
-<span class="tl ln">    <span class="tk-ty">State</span>(app): <span class="tk-ty">State</span>&lt;<span class="tk-ty">App</span>&gt;,</span>
-<span class="tl ln">    <span class="tk-ty">Path</span>(id): <span class="tk-ty">Path</span>&lt;<span class="tk-ty">OrderId</span>&gt;,</span>
-<span class="tl ln">) -&gt; <span class="tk-ty">Result</span>&lt;<span class="tk-ty">Json</span>&lt;<span class="tk-ty">Order</span>&gt;, <span class="tk-ty">ApiError</span>&gt; {</span>
-<span class="tl ln">    <span class="tk-com">// Typed request, cache first</span></span>
-<span class="tl ln">    <span class="tk-kw">if let</span> <span class="tk-ty">Some</span>(hit) = app.cache.<span class="tk-fn">get</span>(&amp;id).<span class="tk-kw">await</span> {</span>
-<span class="tl ln">        <span class="tk-kw">return</span> <span class="tk-ty">Ok</span>(<span class="tk-ty">Json</span>(hit));</span>
-<span class="tl ln">    }</span>
-<span class="tl ln">    <span class="tk-kw">let</span> order = app.db.<span class="tk-fn">order</span>(id).<span class="tk-kw">await</span>?;</span>
-<span class="tl ln">    app.cache.<span class="tk-fn">set</span>(&amp;id, &amp;order).<span class="tk-kw">await</span>;</span>
-<span class="tl ln">    <span class="tk-ty">Ok</span>(<span class="tk-ty">Json</span>(order))</span>
-<span class="tl ln">}</span></code></pre>
-                    </div>
-                </div>
+            <div class="lg:col-span-7 flex lg:justify-end items-center">
+                <svg class="w-full max-w-[510px] text-ice-dim" viewBox="0 0 510 240" fill="none" stroke="currentColor" stroke-width="1.5" role="img" aria-label="Many requests reach an API service, which answers from a cache or the database">
+                    <path class="flow-dash" d="M16 60h174M16 100h174M16 140h174M16 180h174" opacity=".5"/>
+                    <rect class="pkt text-ice" style="--run: 170px" x="16" y="58" width="5" height="5" fill="currentColor" stroke="none"/><rect class="pkt text-ice" style="--run: 170px; animation-delay: .6s" x="16" y="98" width="5" height="5" fill="currentColor" stroke="none"/><rect class="pkt text-ice" style="--run: 170px; animation-delay: 1.2s" x="16" y="138" width="5" height="5" fill="currentColor" stroke="none"/><rect class="pkt text-ice" style="--run: 170px; animation-delay: 1.8s" x="16" y="178" width="5" height="5" fill="currentColor" stroke="none"/><rect class="pkt text-ice" style="--run: 170px; animation-delay: 1.2s" x="16" y="58" width="5" height="5" fill="currentColor" stroke="none"/><rect class="pkt text-ice" style="--run: 170px; animation-delay: .3s" x="16" y="138" width="5" height="5" fill="currentColor" stroke="none"/>
+                    <rect class="text-ice" x="190" y="30" width="120" height="180" rx="14" fill="rgb(159 211 255 / .06)" stroke="currentColor"/>
+                    <circle class="blink text-ok" cx="206" cy="48" r="3" fill="currentColor" stroke="none"/>
+                    <rect class="load-bar text-ice" style="--d: 0s" x="206" y="80" width="88" height="6" rx="3" fill="currentColor" stroke="none" opacity=".75"/>
+                    <rect class="load-bar text-ice" style="--d: .6s" x="206" y="100" width="88" height="6" rx="3" fill="currentColor" stroke="none" opacity=".55"/>
+                    <rect class="load-bar text-ice" style="--d: 1.2s" x="206" y="120" width="88" height="6" rx="3" fill="currentColor" stroke="none" opacity=".4"/>
+                    <text x="250" y="190" text-anchor="middle" font-size="12" fill="currentColor" stroke="none" class="font-mono">API</text>
+                    <path class="flow-dash" d="M310 90h90" opacity=".6"/>
+                    <rect class="pkt text-ice" style="--run: 86px; animation-duration: 1.2s" x="312" y="88" width="5" height="5" fill="currentColor" stroke="none"/><rect class="pkt text-ice" style="--run: 86px; animation-delay: .6s; animation-duration: 1.2s" x="312" y="88" width="5" height="5" fill="currentColor" stroke="none"/>
+                    <rect class="text-ice" x="400" y="62" width="90" height="56" rx="10" fill="rgb(159 211 255 / .06)" stroke="currentColor"/>
+                    <text x="445" y="95" text-anchor="middle" font-size="12" fill="currentColor" stroke="none" class="font-mono">cache</text>
+                    <path class="flow-dash" d="M310 170h90" opacity=".6"/>
+                    <rect class="pkt text-ice" style="--run: 86px" x="312" y="168" width="5" height="5" fill="currentColor" stroke="none"/><rect class="pkt text-ice" style="--run: 86px; animation-delay: 1.6s" x="312" y="168" width="5" height="5" fill="currentColor" stroke="none"/>
+                    <ellipse class="text-ice" cx="445" cy="150" rx="32" ry="10" fill="rgb(159 211 255 / .06)" stroke="currentColor"/>
+                    <path class="text-ice" d="M413 150v36c0 6 14 10 32 10s32-4 32-10v-36" stroke="currentColor"/>
+                    <text x="445" y="224" text-anchor="middle" font-size="11" fill="currentColor" stroke="none" class="font-mono" opacity=".7">database</text>
+                </svg>
             </div>
         </article>
 
+        <div class="reveal relative z-10 flex items-center gap-4 pt-12 pb-10" role="separator" aria-label="2025">
+            <span class="w-3 h-3 bg-ice shrink-0"></span>
+            <span class="font-mono text-base tracking-[0.2em] text-ice">2025</span>
+            <span class="h-px flex-1 bg-line-strong"></span>
+        </div>
+
         <div class="relative" data-constellation-zone>
-            <div class="absolute inset-0 lg:left-auto lg:right-0 lg:w-7/12 opacity-40 lg:opacity-100 pointer-events-none [mask-image:radial-gradient(ellipse_at_center,#000_65%,transparent_100%)]" aria-hidden="true">
+            <div class="absolute inset-0 mt-6 lg:left-auto lg:right-0 lg:w-7/12 opacity-40 lg:opacity-100 pointer-events-none [mask-image:radial-gradient(ellipse_at_center,#000_65%,transparent_100%)]" aria-hidden="true">
                 <canvas data-constellation class="absolute inset-0 w-full h-full"></canvas>
             </div>
 
             <article class="reveal relative z-10 grid grid-cols-1 lg:grid-cols-12">
-                <div class="lg:col-span-5 border-t border-line py-12">
+                <div class="lg:col-span-5 pb-12">
                     <p class="font-mono text-[11px] uppercase tracking-[0.16em] text-ice-dim mb-5">Infrastructure <span class="text-muted">· 2025</span></p>
                     <h2 class="text-2xl text-white mb-4">Legacy Cloud Migration</h2>
                     <p class="leading-relaxed mb-6">
@@ -154,7 +164,7 @@
 
             <article class="reveal relative z-10 grid grid-cols-1 lg:grid-cols-12">
                 <div class="lg:col-span-5 border-t border-line py-12">
-                    <p class="font-mono text-[11px] uppercase tracking-[0.16em] text-ice-dim mb-5">E-Commerce Refactor <span class="text-muted">· 2026</span></p>
+                    <p class="font-mono text-[11px] uppercase tracking-[0.16em] text-ice-dim mb-5">E-Commerce Refactor <span class="text-muted">· 2025</span></p>
                     <h2 class="text-2xl text-white mb-4">Headless Commerce Engine</h2>
                     <p class="leading-relaxed mb-6">
                         Replaced a bottlenecked WordPress/WooCommerce monolith with a headless architecture. By refactoring logic into high-performance Go APIs, we achieved 5x faster checkout speeds and seamless scalability during flash sales.
