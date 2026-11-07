@@ -4,7 +4,6 @@ import (
 	"fmt"
 	"html/template"
 	"strings"
-	"time"
 
 	"github.com/gofiber/fiber/v3"
 	"github.com/robmeijerink/robmeijerink-go/internal/web"
@@ -257,30 +256,40 @@ func cases(c fiber.Ctx) error {
 	})
 }
 
+// lastModified holds the date each page's content last changed. Update the
+// date for a page when its content changes, so lastmod in the sitemap stays honest.
+var lastModified = map[string]string{
+	"/":         "2026-11-07",
+	"/about":    "2026-11-07",
+	"/approach": "2026-11-07",
+	"/cases":    "2026-11-07",
+	"/contact":  "2026-11-07",
+}
+
+var sitemapPages = []struct {
+	loc      string
+	priority string
+}{
+	{loc: "/", priority: "1.0"},
+	{loc: "/about", priority: "0.8"},
+	{loc: "/approach", priority: "0.8"},
+	{loc: "/cases", priority: "0.8"},
+	{loc: "/contact", priority: "0.8"},
+}
+
 func sitemap(c fiber.Ctx) error {
 	host := c.Hostname()
-	now := time.Now().Format("2006-01-02")
 
 	// No hreflang alternates: .com (EN showcase) and .nl (NL commercial) are
 	// distinct content, not translations of each other. Each domain self-canonicals.
-	pages := []struct {
-		loc      string
-		priority string
-	}{
-		{loc: "/", priority: "1.0"},
-		{loc: "/about", priority: "0.8"},
-		{loc: "/approach", priority: "0.8"},
-		{loc: "/cases", priority: "0.8"},
-		{loc: "/contact", priority: "0.8"},
-	}
 
 	var xml strings.Builder
 
 	xml.WriteString(`<?xml version="1.0" encoding="UTF-8"?>` + "\n")
 	xml.WriteString(`<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">` + "\n")
 
-	for _, page := range pages {
-		xml.WriteString(fmt.Sprintf("\t<url>\n\t\t<loc>https://%s%s</loc>\n\t\t<lastmod>%s</lastmod>\n\t\t<changefreq>monthly</changefreq>\n\t\t<priority>%s</priority>\n", host, page.loc, now, page.priority))
+	for _, page := range sitemapPages {
+		xml.WriteString(fmt.Sprintf("\t<url>\n\t\t<loc>https://%s%s</loc>\n\t\t<lastmod>%s</lastmod>\n\t\t<changefreq>monthly</changefreq>\n\t\t<priority>%s</priority>\n", host, page.loc, lastModified[page.loc], page.priority))
 		xml.WriteString("\t</url>\n")
 	}
 
