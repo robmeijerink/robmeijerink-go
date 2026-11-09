@@ -4726,3 +4726,12 @@ h1 + .page-hook,
   text-transform: uppercase;
   color: var(--color-accent-dark);
 }
+
+.pair-k {
+  align-items: flex-start;
+  line-height: 1.35;
+}
+
+.pair-k::before {
+  margin-top: 0.1em;
+}
