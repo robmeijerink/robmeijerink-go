@@ -47,6 +47,7 @@ Voorbeeld uit de praktijk: een team van 6 tot 10 developers kwam niet meer vooru
 
 ## Open source
 
+- [picqer-rs](https://github.com/robmeijerink/picqer-rs): async Rust-client voor de Picqer API voor warehouse en fulfilment.
 - [myparcel-rs](https://github.com/robmeijerink/myparcel-rs): Rust SDK voor de MyParcel API voor verzendingen, labels en track & trace.
 - [snelstart-b2b](https://github.com/robmeijerink/snelstart-b2b): Rust-client voor de SnelStart B2B API (v2).
 - [xaf-auditfile](https://github.com/robmeijerink/xaf-auditfile): snelle, geheugenzuinige streaming-parser in Rust voor Nederlandse XAF-auditbestanden (XAF 4.0).
