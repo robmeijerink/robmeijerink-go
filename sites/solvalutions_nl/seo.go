@@ -148,3 +148,5 @@ func integrations(c fiber.Ctx) error { return renderLanding(c, integrationsPage)
 
 func dashboards(c fiber.Ctx) error { return renderLanding(c, dashboardsPage) }
 func automation(c fiber.Ctx) error { return renderLanding(c, automationPage) }
+func solutions(c fiber.Ctx) error  { return renderLanding(c, solutionsPage) }
+func logistics(c fiber.Ctx) error  { return renderLanding(c, logisticsPage) }

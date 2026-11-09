@@ -1787,11 +1787,29 @@
 .page-title {
   margin-top: 2rem;
   margin-bottom: 1.5rem;
-  max-width: 16ch;
-  font-size: clamp(2.5rem, 5vw, 4.2rem);
+  max-width: 22ch;
+  font-size: 2.2rem;
   font-weight: 700;
-  line-height: 1.02;
+  line-height: 1.04;
   color: var(--color-brand-dark);
+}
+
+@media (min-width: 40rem) {
+  .page-title {
+      font-size: 3rem;
+    }
+}
+
+@media (min-width: 64rem) {
+  .page-title {
+      font-size: 2.7rem;
+    }
+}
+
+@media (min-width: 80rem) {
+  .page-title {
+      font-size: 3.1rem;
+    }
 }
 
 .page-hero-vig svg {
@@ -4525,4 +4543,186 @@ h1 + .page-hook,
 
 .wa-idle:not(.wa-hide) {
   filter: opacity(0.55);
+}
+
+.web-cta {
+  display: grid;
+  gap: 1.25rem;
+  align-items: center;
+  margin-top: 2.5rem;
+  padding: 1.5rem;
+  color: var(--color-brand-dark);
+  background: var(--color-warm-white);
+  border: 1px solid var(--color-brand-dark);
+  box-shadow: 6px 6px 0 var(--color-accent-base);
+  transition:
+    transform 0.35s ease,
+    box-shadow 0.35s ease;
+}
+
+.web-cta:hover {
+  transform: translate(3px, 3px);
+  box-shadow: 3px 3px 0 var(--color-accent-base);
+}
+
+.web-cta-art {
+  display: none;
+}
+
+.web-cta-ico {
+  display: block;
+  width: 6.5rem;
+  height: auto;
+}
+
+.web-cta-text {
+  display: grid;
+  gap: 0.35rem;
+}
+
+.web-cta-text strong {
+  font-family: "Barlow Semi Condensed", sans-serif;
+  font-size: 1.9rem;
+  font-weight: 700;
+  line-height: 1.05;
+}
+
+.web-cta-text span {
+  font-size: 1.05rem;
+  line-height: 1.45;
+  color: var(--color-content-base);
+}
+
+.web-cta-btn {
+  justify-self: start;
+}
+
+@media (min-width: 48rem) {
+  .web-cta {
+    grid-template-columns: auto 1fr auto;
+    gap: 2rem;
+    padding: 1.75rem 2rem;
+  }
+
+  .web-cta-art {
+    display: block;
+  }
+
+  .web-cta-text strong {
+    font-size: 2.3rem;
+  }
+}
+
+.so-flow {
+  stroke-dasharray: 5 6;
+  animation: so-dash 1.2s linear infinite;
+}
+
+@keyframes so-dash {
+  to {
+    stroke-dashoffset: -22;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .so-flow {
+    animation: none;
+  }
+}
+
+.lg-chain {
+  align-items: start;
+}
+
+@media (min-width: 64rem) {
+  .lg-chain {
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      grid-template-rows: auto auto auto auto;
+      column-gap: 1.5rem;
+      row-gap: 0;
+      align-items: stretch;
+    }
+
+  .lg-chain > li {
+      display: grid;
+      grid-row: span 4;
+      grid-template-rows: subgrid;
+      row-gap: 0;
+    }
+}
+
+.lg-chain h3 {
+  margin-top: 0.75rem;
+}
+
+.lg-chain p + p {
+  margin-top: 0.6rem;
+}
+
+.lg-ico {
+  display: block;
+  width: 5.5rem;
+  height: auto;
+}
+
+.lg-road {
+  stroke-dasharray: 22 16;
+  animation: lg-road 1s linear infinite;
+}
+
+@keyframes lg-road {
+  to {
+    stroke-dashoffset: -38;
+  }
+}
+
+.lg-wheel {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: lg-spin 0.8s linear infinite;
+}
+
+@keyframes lg-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.lg-truck {
+  animation: lg-bob 0.9s ease-in-out infinite;
+}
+
+@keyframes lg-bob {
+  50% {
+    transform: translateY(-2px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lg-road,
+  .lg-wheel,
+  .lg-truck {
+    animation: none;
+  }
+}
+
+.lg-big-art {
+  width: 5.5rem;
+  margin-bottom: 1rem;
+}
+
+.lg-big-ico {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.lg-k {
+  display: block;
+  margin-bottom: 0.2rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-accent-dark);
 }

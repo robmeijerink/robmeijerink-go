@@ -20,6 +20,8 @@ type faqSection struct {
 var faqSections = []faqSection{
 	{"Algemeen", "/", homeFAQ},
 	{"Diensten", "/diensten", servicesFAQ},
+	{solutionsPage.Crumb, solutionsPage.Path, solutionsPage.FAQ},
+	{logisticsPage.Crumb, logisticsPage.Path, logisticsPage.FAQ},
 	{websitesPage.Crumb, websitesPage.Path, websitesPage.FAQ},
 	{conversionPage.Crumb, conversionPage.Path, conversionPage.FAQ},
 	{appsPage.Crumb, appsPage.Path, appsPage.FAQ},

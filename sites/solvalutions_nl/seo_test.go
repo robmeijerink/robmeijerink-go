@@ -14,7 +14,7 @@ import (
 	"github.com/stretchr/testify/require"
 )
 
-var allLandings = []landing{websitesPage, conversionPage, appsPage, integrationsPage, dashboardsPage, automationPage, areaPage}
+var allLandings = []landing{websitesPage, conversionPage, appsPage, integrationsPage, dashboardsPage, automationPage, solutionsPage, logisticsPage, areaPage}
 
 func TestLandingMetaAreUniqueAndBounded(t *testing.T) {
 	titles := map[string]bool{}
