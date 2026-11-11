@@ -32,8 +32,8 @@ func Setup(router *web.DomainRouter) {
 }
 
 func home(c fiber.Ctx) error {
-	title := "Software, koppelingen, AI en websites op maat | Solvalutions"
-	desc := "Software op maat, koppelingen, automatisering met AI en websites voor MKB en logistiek in Zutphen. Direct contact, vaste prijs per fase."
+	title := "Software, koppelingen en webdesign in Zutphen | Solvalutions"
+	desc := "Software op maat, koppelingen, automatisering met AI, websites en webdesign voor MKB en logistiek in Zutphen. Direct contact, vaste prijs per fase."
 	url := "https://solvalutions.nl"
 
 	jsonLd := template.HTML(`
@@ -461,11 +461,11 @@ func services(c fiber.Ctx) error {
 // lastModified holds the date each page's content last changed. Update the
 // date for a page when its content changes, so lastmod in the sitemap stays honest.
 var lastModified = map[string]string{
-	"/":                          "2026-11-09",
+	"/":                          "2026-11-11",
 	"/aanpak":                    "2026-11-06",
 	"/diensten":                  "2026-11-09",
 	"/api-koppeling-laten-maken": "2026-11-09",
-	"/website-laten-maken":       "2026-11-09",
+	"/website-laten-maken":       "2026-11-11",
 	"/conversie-optimalisatie":   "2026-11-09",
 	"/app-laten-maken":           "2026-11-09",
 	"/dashboard-laten-maken":     "2026-11-09",

@@ -37,7 +37,7 @@ Uitgangspunten: klein beginnen en eerst waarde bewijzen; naast je systeem bouwen
 
 Belangrijke feiten:
 
-- Prijzen: er worden online geen bedragen genoemd. Na een korte analyse volgt een voorstel met een vaste prijs per fase. Geen losse uren, maar een afgebakend resultaat.
+- Prijzen: voor software, koppelingen en automatisering worden online geen bedragen genoemd. Een maatwerk design voor een website kan vanaf €599 excl. btw (een indicatie; afhankelijk van de vraag kan het lager uitvallen; informeren naar de mogelijkheden kan vrijblijvend). Na een korte analyse volgt een voorstel met een vaste prijs per fase. Geen losse uren, maar een afgebakend resultaat.
 - Eigendom: het resultaat en de code zijn van de klant, tenzij in overleg een licentie wordt afgesproken. Geteste code die een ander team kan overnemen; geen vendor lock-in.
 - Hosting: Rob host zelf, dus één aanspreekpunt voor bouw en beheer.
 - Privacy: veiligheid en privacy zijn vanaf het begin onderdeel van de bouw; Solvalutions volgt de AVG.
