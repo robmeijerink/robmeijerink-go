@@ -185,7 +185,7 @@ func about(c fiber.Ctx) error {
         "jobTitle": "Software architect",
         "description": "Software architect en developer, actief sinds 2015, gespecialiseerd in softwaremodernisering, systeemkoppelingen, automatisering en maatwerksoftware.",
         "url": "https://robmeijerink.nl",
-        "image": "` + url + `/assets/img/foto-rob-meijerink-solvalutions-avatar-320.jpg",
+        "image": "` + url + `/assets/img/rob-meijerink-portret.webp",
         "address": {
           "@type": "PostalAddress",
           "addressLocality": "Zutphen",
