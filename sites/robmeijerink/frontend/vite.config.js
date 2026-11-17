@@ -10,7 +10,7 @@ export default defineConfig({
         emptyOutDir: true,
         manifest: true,
         rollupOptions: {
-            input: path.resolve(__dirname, 'src/scripts/app.js'),
+            input: path.resolve(import.meta.dirname, 'src/scripts/app.js'),
             output: {
                 entryFileNames: `[name]-[hash].js`,
                 chunkFileNames: `[name]-[hash].js`,
