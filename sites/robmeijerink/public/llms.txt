@@ -1,6 +1,6 @@
 # Rob Meijerink
 
-> Rob Meijerink is een freelance Senior Software Developer & DevOps Engineer (ZZP) uit Zutphen, Nederland, met meer dan 15 jaar ervaring. Hij bouwt schaalbare backend-systemen en API's: in Rust of Go waar performance en voorspelbaar gedrag onder druk tellen, en in PHP/Laravel voor snelle en gebruiksvriendelijke bedrijfsapplicaties. Hij is inzetbaar in bestaande development teams, remote, hybride of op locatie.
+> Rob Meijerink is een freelance Senior Software Engineer (full stack, ZZP) uit Zutphen, Nederland, met meer dan 15 jaar ervaring. Hij bouwt en moderniseert bedrijfssoftware, koppelt systemen aan elkaar en automatiseert handwerk, en zet het zelf betrouwbaar live met CI/CD. Backends en API's bouwt hij in Rust of Go waar performance en voorspelbaar gedrag onder druk tellen, en in PHP/Laravel voor snelle en gebruiksvriendelijke bedrijfsapplicaties. Hij is inzetbaar in bestaande development teams, remote, hybride of op locatie.
 
 Deze site (robmeijerink.nl) is het persoonlijke profiel van Rob als freelance developer voor teams en organisaties die een ervaren developer willen inhuren. Voor afgebakende projecten met een vaste prijs per fase (websites, koppelingen, automatisering, maatwerksoftware voor MKB) werkt Rob onder zijn bedrijfsnaam Solvalutions: https://solvalutions.nl (Nederlands) en https://solvalutions.com (Engels).
 
@@ -12,13 +12,13 @@ Deze site (robmeijerink.nl) is het persoonlijke profiel van Rob als freelance de
 ## Profiel in het kort
 
 - Naam: Rob Meijerink
-- Rol: Freelance Senior Software Developer & DevOps Engineer; Lead Software Architect bij Solvalutions
+- Rol: Freelance Senior Software Engineer (full stack), via zijn bedrijf Solvalutions
 - Ervaring: 15+ jaar
-- Beschikbaarheid: beschikbaar voor freelance projecten; de eerstvolgende startperiode staat op de homepage
+- Beschikbaarheid: beschikbaar voor freelance projecten; de eerstvolgende startperiode staat op de homepage. Inhuur via robmeijerink.nl is op uurbasis; afgebakende projecten met een vaste prijs per fase lopen via Solvalutions
 - Vestiging: Zutphen, Gelderland, Nederland
 - Werkvorm: remote, hybride of op locatie; als zelfstandige en autonoom (Wet DBA-proof), afspraken vooraf schriftelijk vastgelegd
-- Opdrachten: development teams die vastlopen op techniek of op de hoeveelheid werk, extra capaciteit in een bestaand team, complexe business cases zelfstandig oppakken, en onderaanneming voor bureaus
-- Rol in een team: adviseert over architectuur én werkt hands-on mee, van full stack tot DevOps
+- Opdrachten: vooral full stack werk aan bedrijfssoftware, API's en koppelingen; development teams die vastlopen op techniek of op de hoeveelheid werk, extra capaciteit in een bestaand team, complexe business cases zelfstandig oppakken, en onderaanneming voor bureaus
+- Rol in een team: adviseert over architectuur én werkt hands-on mee: full stack, met koppelingen en betrouwbare releases (CI/CD)
 
 ## Werkwijze in teams
 
@@ -32,22 +32,22 @@ Voorbeeld uit de praktijk: een team van 6 tot 10 developers kwam niet meer vooru
 
 ## Specialisaties
 
-- Backend & API: schaalbare API's, backend-systemen en bedrijfsapplicaties. Rust voor performance-kritische en foutgevoelige onderdelen, Go voor services en cloud-tooling, PHP/Laravel voor complexe business-logica. Technieken: Rust, Tokio, Axum, WebAssembly, Go (Golang), PHP, Laravel, MVC/OOP, MySQL, PostgreSQL, Python, SaaS, cloud applications, unit- en integratietests.
+- Backend & API: schaalbare systemen en API's, met type-safety en performance als uitgangspunt. Complexe business-logica in PHP/Laravel, services in Go, performance-kritische en foutgevoelige onderdelen in Rust. Koppelingen met boekhouding, magazijn en verzending. Technieken: PHP, Laravel, MySQL, PostgreSQL, API-koppelingen, Go (Golang), Rust, Tokio, Axum, WebAssembly, Python, MVC/OOP, SaaS, unit- en integratietests.
+- Frontend: interfaces in Vue of React met TypeScript en Tailwind CSS. Gestuurd op web-vitals, zodat pagina's snel laden en op elk scherm goed werken, met een prettige Developer Experience voor het team.
+- Systeemarchitectuur: complexe business-logica vertaald naar een heldere architectuur, met Domain Driven Design en Event Sourcing waar dat past. Een betrouwbaar fundament dat meegroeit met het bedrijf.
 - Cloud & DevOps: Infrastructure as Code als standaard. Herhaalbaar uitrollen met CI/CD; handmatig beheer maakt plaats voor automatisering. Docker, Kubernetes, Google Cloud, AWS en bare metal op Linux.
-- Systeemarchitectuur: complexe business-logica vertalen naar onderhoudbare architectuur met Domain Driven Design en Event Sourcing. Een fundament dat meegroeit, nu en over vijf jaar.
-- Frontend: strakke, snelle en responsive interfaces met JavaScript, TypeScript, Tailwind CSS, Vue.js en React, met oog voor Developer Experience en web-vitals.
-- Effectief met AI werken: AI beheerst ingezet om sneller op te leveren zonder risico's. Geen vibe coding, maar stap voor stap met agentic development, met eigen code reviews en bijbehorende tests.
+- Effectief met AI werken: AI versnelt het werk, maar elke wijziging wordt zelf gereviewd en afgedekt met tests. Geen vibe coding.
 
 ## Loopbaan
 
-- 2025 – heden: Lead Software Architect bij Solvalutions. Advisering en hands-on backend development bij complexe migraties naar microservices en cloud-native infrastructuur; developers coachen naar een hogere standaard.
+- 2025 – heden: Senior Software Engineer (full stack) via Solvalutions. Bouw en modernisering van bedrijfssoftware, met onder meer koppelingen met SnelStart, MyParcel en Picqer en een multi-tenant platform in Go op Google Cloud. Hands-on in teams, met architectuuradvies en coaching van developers.
 - 2020 – 2025: Senior Full Stack Engineer. Schaalbare PHP/Laravel-applicaties, transitie van handmatige deployments naar volledige CI/CD-automatisering, API-integraties en real-time dataverwerking.
 - 2015 – 2020: Junior / Medior Backend Web Developer. Backend-architecturen in Laravel en maatwerk WordPress-ecosystemen; specialisatie in Vue.js, TypeScript en Node.js.
 - 2007 – 2015: Linux HomeLab System Admin. Beheer van netwerk, NAS en gedeelde diensten; de basis voor automatisering en softwareontwikkeling.
 
 ## Open source
 
-- [picqer-rs](https://github.com/robmeijerink/picqer-rs): async Rust-client voor de Picqer API voor warehouse en fulfilment.
+- [picqer-rs](https://github.com/robmeijerink/picqer-rs): async Rust SDK voor de Picqer API voor warehouse en fulfilment.
 - [myparcel-rs](https://github.com/robmeijerink/myparcel-rs): Rust SDK voor de MyParcel API voor verzendingen, labels en track & trace.
 - [snelstart-b2b](https://github.com/robmeijerink/snelstart-b2b): Rust-client voor de SnelStart B2B API (v2).
 - [xaf-auditfile](https://github.com/robmeijerink/xaf-auditfile): snelle, geheugenzuinige streaming-parser in Rust voor Nederlandse XAF-auditbestanden (XAF 4.0).

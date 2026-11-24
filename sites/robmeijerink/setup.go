@@ -29,17 +29,21 @@ func home(c fiber.Ctx) error {
       "mainEntity": {
         "@type": "Person",
         "name": "Rob Meijerink",
-        "jobTitle": "Freelance Senior Software Developer · Platform & DevOps",
+        "jobTitle": "Freelance Senior Software Engineer · Full Stack",
         "url": "https://robmeijerink.nl",
         "image": "https://robmeijerink.nl/assets/img/og-rob-meijerink.jpg",
         "knowsAbout": [
-          "Rust",
-          "Go",
-          "Python",
+          "Full stack development",
           "PHP",
           "Laravel",
           "TypeScript",
           "Vue.js",
+          "React",
+          "API-koppelingen",
+          "Procesautomatisering",
+          "Go",
+          "Rust",
+          "Python",
           "Software architectuur",
           "Microservices",
           "DevOps",
@@ -67,9 +71,9 @@ func home(c fiber.Ctx) error {
 	`)
 
 	return web.Render(c, "home", fiber.Map{
-		"Title":           "Freelance Software Developer · Platform & DevOps | Rob Meijerink",
-		"MetaDescription": "Freelance senior software developer beschikbaar. Cloudplatforms en CI/CD met Kubernetes, Terraform en GitOps, plus Go, Rust, Python en PHP/Laravel.",
-		"Keywords":        "Freelance, ZZP, Software Developer, inhuren, Platform Engineering, DevOps, CI/CD, Rust, Rust developer, Go, Golang, Python, PHP, Laravel, TypeScript, Vue.js, Kubernetes, Terraform, GitOps, Cloud, B2B",
+		"Title":           "Freelance Senior Software Engineer · Full Stack | Rob Meijerink",
+		"MetaDescription": "Freelance full stack developer inhuren. Bedrijfssoftware, API's en koppelingen in Laravel, Vue, TypeScript, Go en Rust, betrouwbaar live met CI/CD.",
+		"Keywords":        "Freelance, ZZP, Full Stack Developer, Software Engineer, inhuren, PHP, Laravel, Vue.js, React, TypeScript, API, koppelingen, automatisering, Go, Golang, Rust, Python, DevOps, CI/CD, Docker, Kubernetes, B2B",
 		"StructuredData":  jsonLd + faqStructuredData(faqItems),
 		"FAQ":             faqItems,
 	})
@@ -97,14 +101,17 @@ func work(c fiber.Ctx) error {
 	  "mainEntity": {
 	    "@type": "Person",
 	    "name": "Rob Meijerink",
-	    "jobTitle": "Freelance Senior Software Developer · Platform & DevOps",
+	    "jobTitle": "Freelance Senior Software Engineer · Full Stack",
 	    "url": "https://robmeijerink.nl",
 	    "knowsAbout": [
-	      "Rust",
-	      "Go",
-	      "Python",
+	      "Full stack development",
 	      "PHP",
 	      "Laravel",
+	      "API-koppelingen",
+	      "Procesautomatisering",
+	      "Go",
+	      "Rust",
+	      "Python",
 	      "Systeem architectuur",
 	      "DevOps",
 	      "Docker",
@@ -135,9 +142,9 @@ func work(c fiber.Ctx) error {
 	`)
 
 	return web.Render(c, "work", fiber.Map{
-		"Title":           "Freelance Platform & DevOps Developer inhuren | Rob Meijerink",
-		"MetaDescription": "Freelance Software Developer inhuren: cloudplatforms en CI/CD met Kubernetes, Terraform en GitOps, backends in Go, Rust, Python en PHP/Laravel.",
-		"Keywords":        "Freelance, Developer, inhuren, Platform Engineering, Ervaring, CV, ZZP, DevOps, Systeem Architectuur, Domain Driven Design, Event Sourcing, Rust, Go, Golang, Python, PHP, Laravel, TypeScript, Vue.js, Kubernetes, Terraform, GitOps, CI/CD",
+		"Title":           "Freelance Full Stack Developer inhuren | Rob Meijerink",
+		"MetaDescription": "Senior full stack developer inhuren: backends en API's in PHP/Laravel, Go en Rust, frontends in Vue en React, koppelingen en betrouwbare releases.",
+		"Keywords":        "Freelance, Full Stack Developer, Software Engineer, inhuren, Ervaring, CV, ZZP, API, koppelingen, DevOps, Systeem Architectuur, Domain Driven Design, Event Sourcing, Rust, Go, Golang, Python, PHP, Laravel, TypeScript, Vue.js, Kubernetes, Terraform, GitOps, CI/CD",
 		"StructuredData":  jsonLd,
 	})
 }

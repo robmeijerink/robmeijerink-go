@@ -13,7 +13,7 @@ import { initCardSpotlight } from './card-spotlight.js'
 import { initWhatsappReveal } from './whatsapp-reveal.js'
 
 document.addEventListener('DOMContentLoaded', () => {
-    initTypedCursor('Geen hypes, gewoon betrouwbare platforms en stabiele\u00a0software.')
+    initTypedCursor('Geen hypes, gewoon betrouwbare en onderhoudbare\u00a0software.')
     initReveal()
     initSectionNav()
     initTimelineProgress()

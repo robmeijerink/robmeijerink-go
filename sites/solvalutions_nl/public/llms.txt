@@ -83,5 +83,5 @@ Gevestigd in Zutphen. Actief in Gelderland (Zutphen, Apeldoorn, Arnhem, Nijmegen
 - [Algemene voorwaarden (pdf)](https://solvalutions.nl/assets/2026_ALGEMENE_VOORWAARDEN_SOLVALUTIONS.pdf)
 - [Privacyverklaring (pdf)](https://solvalutions.nl/assets/2026_PRIVACYVERKLARING_SOLVALUTIONS.pdf)
 - [Solvalutions (Engels)](https://solvalutions.com): Engelstalige showcase met high-performance cases in Rust en Go.
-- [Rob Meijerink](https://robmeijerink.nl): persoonlijk profiel als freelance senior developer en DevOps engineer.
+- [Rob Meijerink](https://robmeijerink.nl): persoonlijk profiel als freelance senior software engineer (full stack), voor inhuur in teams.
 - [Sitemap](https://solvalutions.nl/sitemap.xml)

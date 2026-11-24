@@ -13,15 +13,15 @@ type faqItem struct {
 var faqItems = []faqItem{
 	{
 		Question: "Wat voor opdrachten pak je op?",
-		Answer:   "Van development teams die vastlopen, op techniek of op de hoeveelheid werk, tot extra capaciteit in een bestaand team. Ook pak ik complexe business cases zelfstandig op en werk ik als onderaannemer voor bureaus.",
+		Answer:   "Vooral full stack werk aan bedrijfssoftware, API's en koppelingen. Ik versterk teams die vastlopen op techniek of op de hoeveelheid werk. Ook pak ik complexe business cases zelfstandig op en werk ik als onderaannemer voor bureaus.",
 	},
 	{
 		Question: "Adviseer je alleen, of bouw je ook zelf?",
-		Answer:   "Beide: ik adviseer over architectuur en werk hands-on mee in je team, van full stack tot DevOps.",
+		Answer:   "Beide: ik adviseer over architectuur en werk hands-on mee in je team. Full stack, en ik zet het zelf betrouwbaar live met CI/CD.",
 	},
 	{
 		Question: "Kun je meewerken aan bestaande projecten?",
-		Answer:   "Ja, ook in bestaande projecten. PHP/Laravel is een vast onderdeel van mijn werk, naast Rust en Go.",
+		Answer:   "Ja. PHP/Laravel en Vue zijn een vast onderdeel van mijn werk, naast Go en Rust. Ik werk me snel in een bestaande codebase in.",
 	},
 	{
 		Question: "Hoe borg je de kwaliteit van de code?",
@@ -29,7 +29,7 @@ var faqItems = []faqItem{
 	},
 	{
 		Question: "Hoe werk je met AI, en wie controleert de code?",
-		Answer:   "AI zet ik beheerst in om sneller op te leveren, zonder risico's te nemen. Geen vibe coding, maar stap voor stap met agentic development. De code controleer ik zelf, nauwkeurig met eigen code reviews en bijbehorende tests.",
+		Answer:   "AI versnelt het werk, maar ik blijf verantwoordelijk voor de code. Elke wijziging review ik zelf en dek ik af met tests. Zo komt er niets ongecontroleerd in productie.",
 	},
 	{
 		Question: "Hoe functioneer je in een team?",
@@ -45,7 +45,11 @@ var faqItems = []faqItem{
 	},
 	{
 		Question: "Wanneer kun je starten, en hoe werken we samen?",
-		Answer:   "Dat verschilt per opdracht en er is geen vast minimum. Ik werk remote, hybride of op locatie. Samen leggen we de afspraken vooraf schriftelijk vast.",
+		Answer:   "Dat hangt af van mijn lopende opdrachten. Stuur me een bericht, dan hoor je binnen een werkdag wanneer ik kan starten. Er is geen vast minimum. Ik werk remote, hybride of op locatie, en we leggen de afspraken vooraf schriftelijk vast.",
+	},
+	{
+		Question: "Wat is het verschil tussen jou en Solvalutions?",
+		Answer:   "Via robmeijerink.nl huur je mij in voor je team, op uurbasis. Solvalutions is mijn bedrijf voor afgebakende projecten met een vaste prijs per fase. In beide gevallen werk je direct met mij.",
 	},
 	{
 		Question: "Voldoe je aan de Wet DBA?",

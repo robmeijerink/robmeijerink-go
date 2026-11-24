@@ -41,7 +41,7 @@ This site (solvalutions.com) is the English-language showcase of Solvalutions fo
 - Batch Processing, Rewritten (2026): a nightly PHP import that took hours and ran out of memory, rewritten in Rust as a streaming pipeline, validated record by record against the legacy output, now finishing in a fraction of the time. Stack: Rust, Serde, PostgreSQL, PHP/Laravel.
 - One Calculation Engine, Everywhere (2026): pricing and planning rules that existed in three versions, extracted into one Rust library exposed to PHP via FFI and to the browser via WebAssembly, so every surface produces identical results. Stack: Rust, WebAssembly, FFI, Laravel, TypeScript.
 - High-Throughput API Layer (2026): a public API with tail-latency problems rebuilt in Rust with async I/O, typed request handling and structured caching: stable p99 latency, lower infrastructure usage, backwards-compatible OpenAPI contract. Stack: Rust, Axum, OpenAPI, Redis.
-- Legacy Cloud Migration (2025): a fragmented PHP monolith migrated to Go-based microservices, reducing infrastructure costs by 40% while doubling request capacity. Stack: Go, Kubernetes, PostgreSQL, gRPC.
+- Legacy Cloud Migration (2025): a fragmented PHP monolith migrated to Go-based microservices, reducing infrastructure costs by up to 40% while doubling request capacity. Stack: Go, Kubernetes, PostgreSQL, gRPC.
 - Headless Commerce Engine (2025): a bottlenecked WordPress/WooCommerce monolith replaced by a headless architecture with Go APIs: 5x faster checkout and scalability during flash sales. Stack: Go, WordPress, MySQL/MariaDB, WooCommerce, Redis.
 
 ## Contact
@@ -54,5 +54,5 @@ This site (solvalutions.com) is the English-language showcase of Solvalutions fo
 ## Optional
 
 - [Solvalutions (Dutch site)](https://solvalutions.nl): services for Dutch SMEs and logistics: websites, integrations, dashboards, automation and custom software.
-- [Rob Meijerink](https://robmeijerink.nl): personal profile of the founder as a freelance senior developer and DevOps engineer.
+- [Rob Meijerink](https://robmeijerink.nl): personal profile of the founder as a freelance senior software engineer (full stack), for hire in development teams.
 - [Sitemap](https://solvalutions.com/sitemap.xml)
