@@ -40,7 +40,7 @@ Voorbeeld uit de praktijk: een team van 6 tot 10 developers kwam niet meer vooru
 
 ## Loopbaan
 
-- 2025 – heden: Senior Software Engineer (full stack) via Solvalutions. Bouw en modernisering van bedrijfssoftware, met onder meer koppelingen met SnelStart, MyParcel en Picqer en een multi-tenant platform in Go op Google Cloud. Hands-on in teams, met architectuuradvies en coaching van developers.
+- 2025 – heden: Freelance Senior Software Engineer via Solvalutions. Bouw en modernisering van bedrijfssoftware, met onder meer koppelingen met SnelStart, MyParcel en Picqer en een multi-tenant platform in Go op Google Cloud. Hands-on in teams, met architectuuradvies en coaching van developers.
 - 2020 – 2025: Senior Full Stack Engineer. Schaalbare PHP/Laravel-applicaties, transitie van handmatige deployments naar volledige CI/CD-automatisering, API-integraties en real-time dataverwerking.
 - 2015 – 2020: Junior / Medior Backend Web Developer. Backend-architecturen in Laravel en maatwerk WordPress-ecosystemen; specialisatie in Vue.js, TypeScript en Node.js.
 - 2007 – 2015: Linux HomeLab System Admin. Beheer van netwerk, NAS en gedeelde diensten; de basis voor automatisering en softwareontwikkeling.
